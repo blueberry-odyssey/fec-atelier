@@ -1,10 +1,10 @@
-var path = require("path");
+var path = require('path');
 
 module.exports = {
-  entry: "./client/src/index.jsx",
+  entry: './client/src/index.jsx',
   output: {
-    filename: "bundle.js",
-    path: path.join(__dirname, "/client/dist"),
+    filename: 'bundle.js',
+    path: path.join(__dirname, '/client/dist'),
   },
   module: {
     rules: [
@@ -12,9 +12,16 @@ module.exports = {
         test: /\.jsx?/,
         exclude: /node_modules/,
         use: {
-          loader: "babel-loader",
+          loader: 'babel-loader',
         },
       },
+      {
+        test: /\.css$/,
+        use: [
+          'style-loader',
+          'css-loader'
+        ]
+      }
     ],
   },
 };
