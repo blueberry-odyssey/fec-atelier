@@ -1,3 +1,15 @@
-.title {
-  background-color: red;
+.app-body {
+  display: grid;
+  grid-template-rows: auto;
+  min-height: 30em;
+}
+
+.component-1 {
+  background-color: rgb(57, 118, 125);
+}
+.component-2 {
+  background-color: rgb(91, 181, 191);
+}
+.component-3 {
+  background-color: rgb(127, 242, 255);
 }

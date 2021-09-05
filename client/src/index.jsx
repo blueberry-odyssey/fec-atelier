@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import 'reset-css';
 import './index.css';
 
 class App extends React.Component {
@@ -9,10 +10,13 @@ class App extends React.Component {
     this.state = {};
   }
 
-
   render() {
     return (
-      <h1 className='title'>This is FEC</h1>
+      <div className='app-body'>
+        <div className='component-1'>Replace w/Component 1</div>
+        <div className='component-2'>Replace w/Component 2</div>
+        <div className='component-3'>Replace w/Component 3</div>
+      </div>
     )
   }
 }
