@@ -5,10 +5,6 @@ const port = 3000;
 
 app.use(express.static('client/dist'));
 
-// app.get('/', (req, res) => {
-//   res.send('Hello World!')
-// })
-
 app.listen(port, () => {
   console.log(`FEC app listening at http://localhost:${port}`)
 })
