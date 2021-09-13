@@ -1,13 +1,13 @@
 const express = require('express');
 const app = express();
 const port = 3000;
-// const config = require('../config.js');
+const config = require('../config.js');
 
 
 //FOR AXIOS REQUEST OPTIONS
 // let options = {
-//   url: ,
-//   method: ,
+//   url: 'https://app-hrsei-api.herokuapp.com/api/fec2/:hr-rpp/',
+//   method: 'GET',
 //   headers: {
 //     'User-Agent': 'request',
 //     'Authorization': `token ${config.TOKEN}`
@@ -17,10 +17,10 @@ const port = 3000;
 
 app.use(express.static('client/dist'));
 
-// app.get('/', (req, res) => {
-//   res.send('Hello World!')
-// })
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+});
 
 app.listen(port, () => {
   console.log(`FEC app listening at http://localhost:${port}`)
-})
+});
