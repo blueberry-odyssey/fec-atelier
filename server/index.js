@@ -6,7 +6,7 @@ const config = require('../config.js');
 
 //FOR AXIOS REQUEST OPTIONS
 // let options = {
-//   url: 'https://app-hrsei-api.herokuapp.com/api/fec2/:hr-rpp/',
+//   url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/',
 //   method: 'GET',
 //   headers: {
 //     'User-Agent': 'request',

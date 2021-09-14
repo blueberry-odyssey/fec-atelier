@@ -22,7 +22,9 @@ class RatingsReviews extends React.Component {
       <div>
         <table>
           <thead>
-            <td>RATINGS & REVIEWS</td>
+            <tr>
+              <th>RATINGS & REVIEWS</th>
+            </tr>
           </thead>
           <tbody>
             <tr>
