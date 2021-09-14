@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import RelatedItems from './components/Related-items/Related-Items.jsx'
 import 'reset-css';
 import './index.css';
 import ProductInfo from './components/ProductInfo.jsx';
@@ -17,7 +18,7 @@ class App extends React.Component {
           <ProductInfo />
         </div>
         <div className='component-2'>Replace w/Component 2</div>
-        <div className='component-3'>Replace w/Component 3</div>
+        <RelatedItems/>
       </div>
     )
   }
