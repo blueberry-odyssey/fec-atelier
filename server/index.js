@@ -5,6 +5,7 @@ const config = require('../config.js');
 const bodyParser = require('body-parser');
 const axios = require('axios');
 const basePath = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp';
+const jeremiahServer = require('./jeremiahServer')
 
 //FOR AXIOS REQUEST OPTIONS
 // let options = {
@@ -22,6 +23,8 @@ let params = {
 app.use(express.json())
 
 app.use(express.static('client/dist'));
+// console.log('apple', jeremiahServer.apple)
+// jeremiahServer.findRelated();
 
 app.get('/findRelatedItems', (req, res) => {
   console.log("req received", req.query.id);
@@ -37,6 +40,7 @@ app.get('/findRelatedItems', (req, res) => {
 app.get('/relatedProducts', (req, res) => {
   let styles = '/styles'
   if (!req.query.styles) {styles = ''}
+  console.log('req styles present?', req.query.styles, 'styles:', styles)
   let productIDs = req.query.data;
   let relatedProductData = [];
 
@@ -48,12 +52,11 @@ app.get('/relatedProducts', (req, res) => {
       })
     )
   })
-  // console.log('nothing', relatedProductData);
   axios.all(
     relatedProductData
   )
     .then(axios.spread((...results) => {
-      console.log('incoming data', results);
+      // console.log('incoming data', results);
       res.send(results);
     }))
     .catch(err => { throw err; })

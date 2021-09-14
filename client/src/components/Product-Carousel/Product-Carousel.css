@@ -1,0 +1,6 @@
+.carousel {
+  background-color: yellow;
+  display: grid;
+  grid-template-rows: 1fr;
+  margin: 2em;
+}

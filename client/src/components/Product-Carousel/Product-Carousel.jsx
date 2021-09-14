@@ -1,15 +1,15 @@
 import React from 'react';
-import 'Product-Carousel.css';
+import './Product-Carousel.css';
+import RelatedProduct from '../Related-Product/Related-Product.jsx';
 
-export default class ProductCarousel extends React.Component {
-  constructor(props) {
-    super(props)
-  }
+export default function ProductCarousel ({relatedItems}) {
 
-  render() {
     return (
-    <div>
-    </div>
+      <div className='carousel'>
+        {relatedItems.map(product => {
+          return <RelatedProduct  key={product.id} product={product}/>
+        })}
+      </div>
     )
-  }
+
 };
