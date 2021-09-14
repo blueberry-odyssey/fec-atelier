@@ -36,16 +36,16 @@ app.get('/findRelatedItems', (req, res) => {
 
 app.get('/relatedProducts', (req, res) => {
   let styles = '/styles'
-  if (!req.query.styles) {styles = ''}
+  if (!req.query.styles) { styles = '' }
   let productIDs = req.query.data;
   let relatedProductData = [];
 
   productIDs.forEach(item => {
     relatedProductData.push(
       axios.get(basePath + `/products/${item + styles}`, params)
-      .then(result => {
-        return result.data
-      })
+        .then(result => {
+          return result.data
+        })
     )
   })
   // console.log('nothing', relatedProductData);
@@ -53,7 +53,7 @@ app.get('/relatedProducts', (req, res) => {
     relatedProductData
   )
     .then(axios.spread((...results) => {
-      console.log('incoming data', results);
+      // console.log('incoming data', results);
       res.send(results);
     }))
     .catch(err => { throw err; })
