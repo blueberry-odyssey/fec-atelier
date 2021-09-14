@@ -59,6 +59,30 @@ app.get('/relatedProducts', (req, res) => {
     .catch(err => { throw err; })
 })
 
+
+// ============ RATINGS & REVIEWS ================ //
+
+// grab reviews, sort reviews
+app.get('/reviews', (req, res) => {
+
+})
+
+// get metadata/characteristics of product
+app.get('/reviews/meta', (req, res) => {
+
+})
+
+// add a review
+app.post('/reviews', (req, res) => {
+
+})
+
+// to mark reviews either as helpful or to report
+app.put('/reviews', (req, res) => {
+
+})
+
+
 app.listen(port, () => {
   console.log(`FEC app listening at http://localhost:${port}`)
 });
