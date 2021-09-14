@@ -61,4 +61,4 @@ app.get('/relatedProducts', (req, res) => {
 
 app.listen(port, () => {
   console.log(`FEC app listening at http://localhost:${port}`)
-})
+});
