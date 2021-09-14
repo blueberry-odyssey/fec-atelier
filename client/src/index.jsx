@@ -21,7 +21,7 @@ class App extends React.Component {
         <div className='component-2'>
           <RatingsReviews />
         </div>
-        <div className='component-3'>Replace w/Component 3</div>
+        <RelatedItems/>
       </div>
     )
   }

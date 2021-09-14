@@ -17,28 +17,47 @@ export default class RelatedItems extends React.Component {
   componentDidMount() {
     axios.get('/findRelatedItems', { params: { id: this.state.id } })
       .then(result => {
-        console.log('client items', result)
-        this.getAllRelatedProducts(result)
+        let productIDArray = result.data;
+          axios.get('/relatedProducts', { params: {productIDArray, styles: '' }})
+            .then(data => {
+              this.setState({
+                relatedItems: data.data
+              })
+            })
+            .catch(err => { throw err; })
+            .then(() => {
+              axios.get('/relatedProducts', { params: {productIDArray, styles: '/styles' }})
+                .then(styleData => {
+                  console.log('relatedStyle Data', styleData);
+                  this.setState({
+                    relatedStyleData: styleData.data
+                  })
+                })
+                .catch(err => { throw err; })
+            })
       })
       .catch(err => { throw err; })
   }
 
-  getAllRelatedProducts (productIDArray) {
-    axios.get('/relatedProducts', {params: productIDArray})
-      .then(data => {
-        console.log('relatedProducts Data', data.data);
-        this.setState({
-          relatedItems: data.data
-        })
-      })
-      .catch(err => {throw err;})
-
-    // axios.get('/relatedProducts', {params: productIDArray, styles: true})
-    //   .then(data => {
-    //     console.log('relatedStyle Data', data);
-    //   })
-    //   .catch(err => {throw err;})
-  }
+  // getAllRelatedProducts(productIDArray) {
+  //   axios.get('/relatedProducts', { params: {productIDArray, styles: '' }})
+  //     .then(data => {
+  //       this.setState({
+  //         relatedItems: data.data
+  //       })
+  //     })
+  //     .catch(err => { throw err; })
+  //     .then(() => {
+  //       axios.get('/relatedProducts', { params: {productIDArray, styles: '/styles' }})
+  //         .then(styleData => {
+  //           console.log('relatedStyle Data', styleData);
+  //           this.setState({
+  //             relatedStyleData: styleData.data
+  //           })
+  //         })
+  //         .catch(err => { throw err; })
+  //     })
+  // }
 
   // getAllRelatedProductStyles(productIDArray) {
   //   axios.get('/relatedProducts', {params: productIDArray, styles: true})
@@ -51,7 +70,7 @@ export default class RelatedItems extends React.Component {
   render() {
     return (
       <>
-        <ProductCarousel relatedItems={this.state.relatedItems}/>
+        <ProductCarousel relatedItems={this.state.relatedItems} styles={this.state.relatedStyleData}/>
       </>
     )
   }

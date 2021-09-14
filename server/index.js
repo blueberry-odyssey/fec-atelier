@@ -20,14 +20,15 @@ let params = {
   headers: { Authorization: config.TOKEN },
 };
 
-app.use(express.json())
+app.use(express.json());
+
+app.use(express.urlencoded({extended: true}));
 
 app.use(express.static('client/dist'));
 // console.log('apple', jeremiahServer.apple)
 // jeremiahServer.findRelated();
 
 app.get('/findRelatedItems', (req, res) => {
-  console.log("req received", req.query.id);
   let productId = req.query.id;
   axios.get(basePath + `/products/${productId}/related`, params)
     .then(result => {
@@ -38,10 +39,9 @@ app.get('/findRelatedItems', (req, res) => {
 })
 
 app.get('/relatedProducts', (req, res) => {
-  let styles = '/styles'
-  if (!req.query.styles) {styles = ''}
-  console.log('req styles present?', req.query.styles, 'styles:', styles)
-  let productIDs = req.query.data;
+  let styles = req.query.styles;
+  // console.log('req styles present?', req.query, 'styllles:', styles);
+  let productIDs = req.query.productIDArray;
   let relatedProductData = [];
 
   productIDs.forEach(item => {

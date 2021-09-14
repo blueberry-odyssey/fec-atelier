@@ -1,6 +1,17 @@
 .carousel {
-  background-color: yellow;
   display: grid;
-  grid-template-rows: 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  justify-content: space-between;
   margin: 2em;
+  transition: transform 1s;
 }
+.carousel-container {
+  display: grid;
+  grid-template-columns: 1fr 10fr 1fr;
+  justify-content: space-between;
+}
+
+button {
+  cursor: pointer;
+}
+
