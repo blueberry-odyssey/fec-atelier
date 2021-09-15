@@ -1,6 +1,6 @@
 import React from 'react';
-import AddReview from './AddReview/AddReview.jsx';
-import Characteristics from './Characteristics/Characteristics.jsx';
+import axios from 'axios';
+import $ from 'jquery';
 import ReviewsList from './ReviewsList/ReviewsList.jsx';
 import StarsRating from './StarsRating/StarsRating.jsx';
 
@@ -11,7 +11,8 @@ class RatingsReviews extends React.Component {
       id: 47421,
       metadata: null,
       sort: '',
-      totalReviews: 0
+      count: 0,
+      reviews: null
     };
     // state would hold:
     // - metadata
@@ -20,10 +21,16 @@ class RatingsReviews extends React.Component {
     // - number of reviews shown
 
     // bind class methods here
-  }
+    this.getReviews = this.getReviews.bind(this);
+    this.getMetadata = this.getMetadata.bind(this);
+    this.postReview = this.postReview.bind(this);
+    this.reportReview = this.reportReview.bind(this);
+    this.markHelpful = this.markHelpful.bind(this)
+;  }
 
   componentDidMount() {
     //invoke getReviews
+    this.getReviews();
   }
 
   componentDidUpdate() {
@@ -34,10 +41,31 @@ class RatingsReviews extends React.Component {
     // make get request to get 2 reviews at first load
     // try to make it as a multi-functioning request
     // if state already has reviews, get 5 more instead of 2
+    $.ajax({
+      method: 'GET',
+      url: '/reviews',
+      data: {
+        product_id: this.state.id,
+        sort: this.state.sort,
+        count: this.state.count
+      },
+      success: (data) => {
+        console.log('client getReviews success:', data);
+      }
+    })
   }
 
-  getMoreReviews() {
-    // if above idea doesn't work, make separate request
+  getMetadata() {
+    $.ajax({
+      method: 'GET',
+      url: '/reviews/meta',
+      data: {
+        product_id: this.state.id
+      },
+      success: (data) => {
+        console.log('client getMetadata success:', data);
+      }
+    })
   }
 
   postReview() {
@@ -45,15 +73,37 @@ class RatingsReviews extends React.Component {
     // should have a form page pop up to grab body params
     // pass body params into post request
     // add review in api, but does it need to render immediately?
+    $.ajax({
+      method: 'POST',
+      url: '/reviews',
+      data: {},
+      success: (data) => {
+        console.log('client postReview success:', data);
+      }
+    })
   }
 
   reportReview() {
     // make put request to report a review
+    $.ajax({
+      method: 'PUT',
+      url: '/reviews/' + this.state.id + '/report',
+      success: (data) => {
+        console.log('client reportReview success:', data);
+      }
+    })
   }
 
-  helpfulReview() {
+  markHelpful() {
     // make put request to mark a review as helpful
     // should change the # of 'yes' for helpful
+    $.ajax({
+      method: 'PUT',
+      url: '/reviews/' + this.state.id + '/helpful',
+      success: (data) => {
+        console.log('client markHelpful success:', data);
+      }
+    })
   }
 
   render () {
@@ -67,7 +117,7 @@ class RatingsReviews extends React.Component {
           </thead>
           <tbody>
             <tr>
-              <td><StarsRating id={this.state.id}/></td>
+              <td><StarsRating id={this.state.id} /></td>
               <td><ReviewsList id={this.state.id} /></td>
             </tr>
           </tbody>

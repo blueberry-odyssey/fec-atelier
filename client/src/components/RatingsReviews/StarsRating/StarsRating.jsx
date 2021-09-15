@@ -1,5 +1,5 @@
 import React from 'react';
-import Characteristics from '../Characteristics/Characteristics.jsx';
+import Characteristics from './Characteristics.jsx';
 
 const StarsRating = (props) => {
 

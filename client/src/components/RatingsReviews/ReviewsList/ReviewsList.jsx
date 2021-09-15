@@ -1,8 +1,8 @@
 import React from 'react';
 import axios from 'axios';
-import ReviewBlock from '../ReviewBlock/ReviewBlock.jsx';
-import AddReview from '../AddReview/AddReview.jsx';
-import MoreReviews from '../MoreReviews/MoreReviews.jsx';
+import ReviewBlock from './ReviewBlock.jsx';
+import AddReview from './AddReview.jsx';
+import MoreReviews from './MoreReviews.jsx';
 
 const ReviewsList = (props) => {
 
