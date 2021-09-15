@@ -6,6 +6,8 @@ const bodyParser = require('body-parser');
 const axios = require('axios');
 const basePath = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp';
 
+const productRouter = require('./productRoutes.js');
+
 //FOR AXIOS REQUEST OPTIONS
 // let options = {
 //   url: basePath,
@@ -22,6 +24,8 @@ let params = {
 app.use(express.json())
 
 app.use(express.static('client/dist'));
+
+app.use('/products', productRouter);
 
 app.get('/findRelatedItems', (req, res) => {
   console.log("req received", req.query.id);
