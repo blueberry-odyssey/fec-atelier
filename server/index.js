@@ -5,7 +5,7 @@ const config = require('../config.js');
 const bodyParser = require('body-parser');
 const axios = require('axios');
 const basePath = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp';
-const jeremiahServer = require('./jeremiahServer')
+const productRouter = require('./productRoutes.js');
 
 //FOR AXIOS REQUEST OPTIONS
 // let options = {
@@ -21,46 +21,32 @@ let params = {
 };
 
 app.use(express.json());
-
 app.use(express.urlencoded({extended: true}));
-
 app.use(express.static('client/dist'));
-// console.log('apple', jeremiahServer.apple)
-// jeremiahServer.findRelated();
+app.use('/products', productRouter);
 
-app.get('/findRelatedItems', (req, res) => {
-  let productId = req.query.id;
-  axios.get(basePath + `/products/${productId}/related`, params)
-    .then(result => {
-      // console.log('incoming data', result.data);
-      res.send(result.data);
-    })
-    .catch(err => { throw err; })
+// ============ RATINGS & REVIEWS ================ //
+
+// grab reviews, sort reviews
+app.get('/reviews', (req, res) => {
+
 })
 
-app.get('/relatedProducts', (req, res) => {
-  let styles = req.query.styles;
-  // console.log('req styles present?', req.query, 'styllles:', styles);
-  let productIDs = req.query.productIDArray;
-  let relatedProductData = [];
+// get metadata/characteristics of product
+app.get('/reviews/meta', (req, res) => {
 
-  productIDs.forEach(item => {
-    relatedProductData.push(
-      axios.get(basePath + `/products/${item + styles}`, params)
-      .then(result => {
-        return result.data
-      })
-    )
-  })
-  axios.all(
-    relatedProductData
-  )
-    .then(axios.spread((...results) => {
-      // console.log('incoming data', results);
-      res.send(results);
-    }))
-    .catch(err => { throw err; })
 })
+
+// add a review
+app.post('/reviews', (req, res) => {
+
+})
+
+// to mark reviews either as helpful or to report
+app.put('/reviews', (req, res) => {
+
+})
+
 
 app.listen(port, () => {
   console.log(`FEC app listening at http://localhost:${port}`)

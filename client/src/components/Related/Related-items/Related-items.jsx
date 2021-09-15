@@ -15,10 +15,10 @@ export default class RelatedItems extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('/findRelatedItems', { params: { id: this.state.id } })
+    axios.get('/products/findRelatedItems', { params: { id: this.state.id } })
       .then(result => {
         let productIDArray = result.data;
-          axios.get('/relatedProducts', { params: {productIDArray, styles: '' }})
+          axios.get('/products/relatedProductsAndStyles', { params: {productIDArray, styles: '' }})
             .then(data => {
               this.setState({
                 relatedItems: data.data
@@ -26,7 +26,7 @@ export default class RelatedItems extends React.Component {
             })
             .catch(err => { throw err; })
             .then(() => {
-              axios.get('/relatedProducts', { params: {productIDArray, styles: '/styles' }})
+              axios.get('/products/relatedProductsAndStyles', { params: {productIDArray, styles: '/styles' }})
                 .then(styleData => {
                   console.log('relatedStyle Data', styleData);
                   this.setState({

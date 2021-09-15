@@ -3,14 +3,13 @@ import './Related-Product.css'
 
 export default function RelatedProduct({ product, styleData}) {
 
-  // let oneStyleImg = styleData.results[0].photos[0].thumbnail_url || null;
   let oneStyleImg = null;
   styleData ? oneStyleImg = styleData.results[0].photos[0].thumbnail_url : null;
-  console.log('where my image', styleData)
+  // console.log('where my image', oneStyleImg)
   return (
     <div className='each-product'>
       <section>
-        <img href={oneStyleImg}></img>
+        <img src={oneStyleImg}></img>
         <div>Star Button</div>
       </section>
       <section>

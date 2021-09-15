@@ -1,9 +1,12 @@
 import React from 'react';
+import Characteristics from './Characteristics.jsx';
 
 const StarsRating = (props) => {
+
   return (
     <div>
-      <p>Stars Rating here</p>
+      <p>Stars Rating goes here</p><br />
+      <Characteristics />
     </div>
   )
 }
