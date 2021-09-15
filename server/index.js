@@ -6,6 +6,8 @@ const bodyParser = require('body-parser');
 const axios = require('axios');
 const basePath = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp';
 
+const productRouter = require('./productRoutes.js');
+
 //FOR AXIOS REQUEST OPTIONS
 // let options = {
 //   url: basePath,
@@ -23,6 +25,8 @@ app.use(express.json())
 
 app.use(express.static('client/dist'));
 
+app.use('/products', productRouter);
+
 app.get('/findRelatedItems', (req, res) => {
   console.log("req received", req.query.id);
   let productId = req.query.id;
@@ -36,16 +40,16 @@ app.get('/findRelatedItems', (req, res) => {
 
 app.get('/relatedProducts', (req, res) => {
   let styles = '/styles'
-  if (!req.query.styles) {styles = ''}
+  if (!req.query.styles) { styles = '' }
   let productIDs = req.query.data;
   let relatedProductData = [];
 
   productIDs.forEach(item => {
     relatedProductData.push(
       axios.get(basePath + `/products/${item + styles}`, params)
-      .then(result => {
-        return result.data
-      })
+        .then(result => {
+          return result.data
+        })
     )
   })
   // console.log('nothing', relatedProductData);
@@ -53,7 +57,7 @@ app.get('/relatedProducts', (req, res) => {
     relatedProductData
   )
     .then(axios.spread((...results) => {
-      console.log('incoming data', results);
+      // console.log('incoming data', results);
       res.send(results);
     }))
     .catch(err => { throw err; })
