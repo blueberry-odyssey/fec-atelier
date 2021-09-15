@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import RelatedItems from './components/Related-items/Related-Items.jsx'
+import RelatedItems from './components/Related/Related-items/Related-Items.jsx'
 import 'reset-css';
 import './index.css';
 import ProductInfo from './components/ProductInfo.jsx';
