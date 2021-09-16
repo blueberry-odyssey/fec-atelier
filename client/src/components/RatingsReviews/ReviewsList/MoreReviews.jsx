@@ -1,8 +1,9 @@
 import React from 'react';
 
 const MoreReviews = (props) => {
+  //console.log('more reviews props:', props);
   return (
-    <button>More Reviews</button>
+    <button onClick={props.getReviews}>More Reviews</button>
   )
 }
 
