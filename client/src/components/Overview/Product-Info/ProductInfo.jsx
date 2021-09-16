@@ -10,7 +10,7 @@ const ProductInfo = function (props) {
     <div>
       <h2>Product Information: </h2>
       <StarRating />
-      <ItemDetails />
+      <ItemDetails category={props.productData.category} name={props.productData.name} description={props.productData.description} />
       <Price />
 
     </div>
@@ -18,7 +18,7 @@ const ProductInfo = function (props) {
 }
 
 ProductInfo.propTypes = {
-  product_id: PropTypes.string.isRequired
+  productData: PropTypes.object.isRequired
 };
 
 export default ProductInfo;
