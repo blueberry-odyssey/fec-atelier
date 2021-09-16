@@ -5,7 +5,6 @@ const config = require('../config.js');
 const bodyParser = require('body-parser');
 const axios = require('axios');
 const basePath = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp';
-
 const productRouter = require('./productRoutes.js');
 const reviewsRouter = require('./reviewsRoutes.js');
 
@@ -29,7 +28,6 @@ app.use(bodyParser.urlencoded({
 }));
 
 app.use(express.static('client/dist'));
-
 app.use('/products', productRouter);
 
 app.use('/reviews', reviewsRouter);

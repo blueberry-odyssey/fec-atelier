@@ -1,0 +1,23 @@
+.carousel {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  justify-content: space-between;
+  margin: 2em;
+  transition: transform 1s;
+}
+.carousel-container {
+  display: grid;
+  grid-template-columns: 1fr 10fr 1fr;
+  justify-content: space-between;
+}
+
+button {
+  cursor: pointer;
+}
+
+h1 {
+  width: 100%;
+  display: block;
+  top: 0;
+  left: 0;
+}
