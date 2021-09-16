@@ -42,7 +42,7 @@ class Overview extends React.Component {
       <div>
         <h1>ATELIER OVERVIEW</h1>
         <ImageGallery />
-        <ProductInfo product_id={this.props['product_id']} />
+        <ProductInfo productData={this.state} />
         <StyleSelector />
         <Cart />
       </div>
