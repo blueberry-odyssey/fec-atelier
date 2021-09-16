@@ -1,14 +1,26 @@
 import React from 'react';
+import $ from 'jquery';
 import Characteristics from './Characteristics.jsx';
 
-const StarsRating = (props) => {
+export default class StarsRating extends React.Component {
+  constructor(props) {
+    super(props);
+    //console.log('stars rating', props);
+    this.state = {
+      id: props.id,
+      characteristics: null,
+      ratings: null,
+      recommended: null
+    };
 
-  return (
-    <div>
-      <p>Stars Rating goes here</p><br />
-      <Characteristics />
-    </div>
-  )
+  }
+
+  render() {
+    return (
+      <div>
+        <p>Stars Rating goes here</p><br />
+        <Characteristics metadata={this.state.metadata}/>
+      </div>
+    )
+  }
 }
-
-export default StarsRating;

@@ -4,7 +4,7 @@ import RelatedItems from './components/Related-items/Related-Items.jsx'
 // import 'reset-css';
 import './index.css';
 import Overview from './components/Overview/Overview.jsx';
-import RatingsReviews from './components/RatingsReviews.jsx';
+import RatingsReviews from './components/RatingsReviews/RatingsReviews.jsx';
 
 class App extends React.Component {
   constructor(props) {
