@@ -7,6 +7,7 @@ const axios = require('axios');
 const basePath = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp';
 
 const productRouter = require('./productRoutes.js');
+const reviewsRouter = require('./reviewsRoutes.js');
 
 //FOR AXIOS REQUEST OPTIONS
 // let options = {
@@ -30,6 +31,8 @@ app.use(bodyParser.urlencoded({
 app.use(express.static('client/dist'));
 
 app.use('/products', productRouter);
+
+app.use('/reviews', reviewsRouter);
 
 app.get('/findRelatedItems', (req, res) => {
   console.log("req received", req.query.id);
@@ -65,29 +68,6 @@ app.get('/relatedProducts', (req, res) => {
       res.send(results);
     }))
     .catch(err => { throw err; })
-})
-
-
-// ============ RATINGS & REVIEWS ================ //
-
-// grab reviews, sort reviews
-app.get('/reviews', (req, res) => {
-
-})
-
-// get metadata/characteristics of product
-app.get('/reviews/meta', (req, res) => {
-
-})
-
-// add a review
-app.post('/reviews', (req, res) => {
-
-})
-
-// to mark reviews either as helpful or to report
-app.put('/reviews', (req, res) => {
-
 })
 
 
