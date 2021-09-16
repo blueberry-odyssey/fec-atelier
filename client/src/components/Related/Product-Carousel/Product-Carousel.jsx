@@ -28,6 +28,7 @@ export default class ProductCarousel extends React.Component {
     console.log('style in carousel', styles);
     return (
       <div className='carousel-container'>
+        <h1>Related Products</h1>
         <button onClick={this.moveLeft}>Go Left</button>
         <div className='carousel' style={{ 'transform': `translateX(${this.state.translate}px)` }}>
           {relatedItems.map((product, idx) => {

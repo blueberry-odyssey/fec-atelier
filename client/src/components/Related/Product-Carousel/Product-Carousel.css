@@ -15,3 +15,9 @@ button {
   cursor: pointer;
 }
 
+h1 {
+  width: 100%;
+  display: block;
+  top: 0;
+  left: 0;
+}

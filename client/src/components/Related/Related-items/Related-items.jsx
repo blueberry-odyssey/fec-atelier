@@ -8,35 +8,8 @@ export default class RelatedItems extends React.Component {
     super(props)
     //state id is placeholder var for all related products
     this.state = {
-      id: 47421,
-      relatedItems: [],
-      relatedStyleData: []
     }
-  }
 
-  componentDidMount() {
-    axios.get('/products/findRelatedItems', { params: { id: this.state.id } })
-      .then(result => {
-        let productIDArray = result.data;
-          axios.get('/products/relatedProductsAndStyles', { params: {productIDArray, styles: '' }})
-            .then(data => {
-              this.setState({
-                relatedItems: data.data
-              })
-            })
-            .catch(err => { throw err; })
-            .then(() => {
-              axios.get('/products/relatedProductsAndStyles', { params: {productIDArray, styles: '/styles' }})
-                .then(styleData => {
-                  console.log('relatedStyle Data', styleData);
-                  this.setState({
-                    relatedStyleData: styleData.data
-                  })
-                })
-                .catch(err => { throw err; })
-            })
-      })
-      .catch(err => { throw err; })
   }
 
   // getAllRelatedProducts(productIDArray) {
@@ -68,9 +41,10 @@ export default class RelatedItems extends React.Component {
   // }
 
   render() {
+    let {relatedItems, styleData} = this.props;
     return (
       <>
-        <ProductCarousel relatedItems={this.state.relatedItems} styles={this.state.relatedStyleData}/>
+        <ProductCarousel relatedItems={relatedItems} styles={styleData}/>
       </>
     )
   }
