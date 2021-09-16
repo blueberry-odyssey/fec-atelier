@@ -11,6 +11,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       id: 47421,
+      product_id: '47421',
       relatedItems: [],
       styleData: []
     };
@@ -37,13 +38,17 @@ class App extends React.Component {
             .catch(err => { throw err; })
       })
       .catch(err => { throw err; })
+    //every time we change the product_id
+    //...average rating, number of reviews,
   }
+  //function to get array of stars
+
 
   render() {
     return (
       <div className='app-body'>
         <div className='component-1'>
-          <Overview />
+          <Overview product_id={this.state['product_id']} />
         </div>
         <div className='component-2'>
           <RatingsReviews />

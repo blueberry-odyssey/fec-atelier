@@ -25,7 +25,7 @@ export default class ProductCarousel extends React.Component {
 
   render() {
     const { relatedItems, styles} = this.props;
-    console.log('style in carousel', styles);
+    // console.log('style in carousel', styles);
     return (
       <div className='carousel-container'>
         <h1>Related Products</h1>

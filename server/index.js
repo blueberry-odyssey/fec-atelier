@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 const axios = require('axios');
 const basePath = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp';
 const productRouter = require('./productRoutes.js');
+const reviewsRouter = require('./reviewsRoutes.js');
 
 //FOR AXIOS REQUEST OPTIONS
 // let options = {
@@ -21,30 +22,50 @@ let params = {
 };
 
 app.use(express.json());
-app.use(express.urlencoded({extended: true}));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
+
 app.use(express.static('client/dist'));
 app.use('/products', productRouter);
 
-// ============ RATINGS & REVIEWS ================ //
+app.use('/reviews', reviewsRouter);
 
-// grab reviews, sort reviews
-app.get('/reviews', (req, res) => {
-
+app.get('/findRelatedItems', (req, res) => {
+  console.log("req received", req.query.id);
+  let productId = req.query.id;
+  axios.get(basePath + `/products/${productId}/related`, params)
+    .then(result => {
+      // console.log('incoming data', result.data);
+      res.send(result.data);
+    })
+    .catch(err => { throw err; })
 })
 
-// get metadata/characteristics of product
-app.get('/reviews/meta', (req, res) => {
+app.get('/relatedProducts', (req, res) => {
+  let styles = '/styles'
+  if (!req.query.styles) { styles = '' }
+  let productIDs = req.query.data;
+  let relatedProductData = [];
 
-})
-
-// add a review
-app.post('/reviews', (req, res) => {
-
-})
-
-// to mark reviews either as helpful or to report
-app.put('/reviews', (req, res) => {
-
+  productIDs.forEach(item => {
+    relatedProductData.push(
+      axios.get(basePath + `/products/${item + styles}`, params)
+        .then(result => {
+          return result.data
+        })
+    )
+  })
+  // console.log('nothing', relatedProductData);
+  axios.all(
+    relatedProductData
+  )
+    .then(axios.spread((...results) => {
+      // console.log('incoming data', results);
+      res.send(results);
+    }))
+    .catch(err => { throw err; })
 })
 
 

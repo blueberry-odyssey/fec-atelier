@@ -1,16 +1,23 @@
 const productRouter = require('express').Router();
 const axios = require('axios');
-const basePath = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp';
 const config = require('../config.js');
+const basePath = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp';
+
 
 let params = {
   headers: { Authorization: config.TOKEN },
 };
 
-// productRouter.get('/testing', function (req, res) {
-//   console.log('overviewRouter NEWWWW GET /testing endpoint reached!');
-//   res.end();
-// });
+productRouter.post('/getProductDetails', function (req, res) {
+  console.log('POST /getProductDetails endpoint reached!');
+  console.log('req.body: ', req.body);
+  axios.get(`${basePath}/products/${req.body['product_id']}/`, params)
+    .then(function (productData) {
+      console.log('productData!!: ', productData.data);
+      res.send(productData.data);
+      res.end();
+    })
+});
 
 //productRouter.post('/endpoint', function(req, res) {});
 
