@@ -40,11 +40,19 @@ class Overview extends React.Component {
     console.log('Overview.jsx props product_id', this.props);
     return (
       <div>
-        <h1>ATELIER OVERVIEW</h1>
-        <ImageGallery />
-        <ProductInfo productData={this.state} />
-        <StyleSelector />
-        <Cart />
+        <h1 className='title'>blueberry odyssey</h1>
+        <p className='site-message'>SALE! 50% OFF SELECT ITEMS!</p>
+        <div className='overview-container'>
+          <div className='image-gallery'>
+            <ImageGallery />
+          </div>
+
+          <div className='product-details'>
+            <ProductInfo productData={this.state} />
+            <StyleSelector />
+            <Cart />
+          </div>
+        </div>
       </div>
     )
   }
