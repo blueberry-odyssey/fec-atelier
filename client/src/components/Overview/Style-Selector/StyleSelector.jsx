@@ -4,8 +4,7 @@ import Thumbnails from './Thumbnails.jsx';
 const StyleSelector = function (props) {
   return (
     <div>
-      <h2>Style Selector: </h2>
-      <p>Style Selected: </p>
+      <p><b>STYLE /</b> STYLE SELECTED</p>
       <Thumbnails />
     </div>
   )
