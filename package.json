@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Front End Capstone project for Hack Reactor",
   "main": "index.js",
+  "jest": {
+    "transform": {}
+  },
   "scripts": {
     "test": "jest",
     "build": "webpack --mode development --watch",
@@ -25,8 +28,7 @@
     "bootstrap": "^5.1.0",
     "express": "^4.17.1",
     "jquery": "^3.6.0",
-    "react": "^17.0.2",
-    "reset-css": "^5.0.1"
+    "react": "^17.0.2"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.15.4",

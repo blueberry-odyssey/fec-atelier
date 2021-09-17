@@ -6,7 +6,7 @@ import './index.css';
 import Overview from './components/Overview/Overview.jsx';
 import RatingsReviews from './components/RatingsReviews/RatingsReviews.jsx';
 
-class App extends React.Component {
+export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
