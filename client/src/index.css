@@ -1,11 +1,11 @@
 .app-body {
-  display: grid;
-  grid-template-rows: auto;
+  /* display: grid;
+  grid-template-rows: auto; */
   min-height: 30em;
 }
 
 #app {
-  margin: 200px;
+  margin: 10%;
   margin-top: 0%;
 }
 
@@ -21,7 +21,7 @@
   display: flex;
   align-items: center;
   justify-content: start;
-  background-color: rgb(126, 133, 134);
+  background-color: rgb(96, 30, 158);
   color: aliceblue;
   width: auto;
   height: 80px;
@@ -35,13 +35,13 @@
   font-family: 'Cantarell', sans-serif;
   font-style: italic;
   letter-spacing: 1px;
-  color: rgb(126, 133, 134);
+  color: blueviolet;
   margin: 10px;
 }
 
 .overview-container {
   display: flex;
-  border: solid black 2px;
+  /* border: solid black 2px; */
 }
 
 .image-gallery {

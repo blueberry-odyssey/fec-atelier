@@ -21,21 +21,21 @@ class App extends React.Component {
     axios.get('/products/findRelatedItems', { params: { id: this.state.id } })
       .then(result => {
         let productIDArray = result.data;
-          axios.get('/products/relatedProductsAndStyles', { params: {productIDArray, styles: '' }})
-            .then(data => {
-              this.setState({
-                relatedItems: data.data
-              })
-              axios.get('/products/relatedProductsAndStyles', { params: {productIDArray, styles: '/styles' }})
-                .then(styleData => {
-                  // console.log('relatedStyle Data', styleData);
-                  this.setState({
-                    styleData: styleData.data
-                  })
-                })
-                .catch(err => { throw err; })
+        axios.get('/products/relatedProductsAndStyles', { params: { productIDArray, styles: '' } })
+          .then(data => {
+            this.setState({
+              relatedItems: data.data
             })
-            .catch(err => { throw err; })
+            axios.get('/products/relatedProductsAndStyles', { params: { productIDArray, styles: '/styles' } })
+              .then(styleData => {
+                // console.log('relatedStyle Data', styleData);
+                this.setState({
+                  styleData: styleData.data
+                })
+              })
+              .catch(err => { throw err; })
+          })
+          .catch(err => { throw err; })
       })
       .catch(err => { throw err; })
     //every time we change the product_id
@@ -50,11 +50,11 @@ class App extends React.Component {
         <div className='component-1'>
           <Overview product_id={this.state['product_id']} />
         </div>
+        <div className='component-3'>
+          <RelatedItems relatedItems={this.state.relatedItems} styleData={this.state.styleData} />
+        </div>
         <div className='component-2'>
           <RatingsReviews />
-        </div>
-        <div className='component-3'>
-          <RelatedItems relatedItems={this.state.relatedItems} styleData={this.state.styleData}/>
         </div>
       </div>
     )
