@@ -5,12 +5,17 @@ import React from 'react';
 const StarRating = function (props) {
   //just filler stars, no JS functionality
   return (
-    <div>
-      <span className="fa fa-star"></span>
-      <span className="fa fa-star"></span>
-      <span className="fa fa-star"></span>
-      <span className="fa fa-star"></span>
-      <span className="fa fa-star"></span>
+    <div className='overview-rating'>
+      <div>
+        <span className="fa fa-star"></span>
+        <span className="fa fa-star"></span>
+        <span className="fa fa-star"></span>
+        <span className="fa fa-star"></span>
+        <span className="fa fa-star"></span>
+      </div>
+
+      <div className='overview-rating-link'>Read all reviews</div>
+
     </div>
   )
 }

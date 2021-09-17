@@ -8,7 +8,6 @@ const ProductInfo = function (props) {
   console.log('ProductInfo props product_id', props);
   return (
     <div>
-      <h2>Product Information: </h2>
       <StarRating />
       <ItemDetails category={props.productData.category} name={props.productData.name} description={props.productData.description} />
       <Price />

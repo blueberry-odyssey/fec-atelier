@@ -2,7 +2,7 @@ import React from 'react';
 
 const ImageGallery = function (props) {
   return (
-    <h2>Image Gallery: </h2>
+    <div className='image'>image goes here</div>
   )
 }
 
