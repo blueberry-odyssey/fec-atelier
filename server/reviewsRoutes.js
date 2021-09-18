@@ -19,7 +19,7 @@ reviewsRouter.get('/getAllReviews', (req, res) => {
   // retrieve reviews by product id
   axios.get(basePath + '/reviews/', options)
     .then((results) => {
-      //console.log('axios getReviews response: ', results.data);
+      console.log('axios getReviews response: ', results.data);
       res.send(results.data);
     })
     .catch((err) => {
@@ -47,10 +47,30 @@ reviewsRouter.get('/meta/getMeta', (req, res) => {
       };
 
       //parse ratings average here
+      let average;
+      let totalVotes = 0;
+      let totalScore = 0;
+      let votes = Object.values(results.data.ratings);
+
+      votes.forEach(vote => {
+        totalVotes += parseInt(vote);
+      });
+
+      for (var key in results.data.ratings) {
+        totalScore += parseInt(key) * parseInt(results.data.ratings[key]);
+      }
+
+      average = totalScore / totalVotes;
+      parsedData["average"] = parseInt(average.toFixed(2));
 
       //parse recommended percentage here
+      let falseRec = results.data.recommended.false;
+      let trueRec = results.data.recommended.true;
+      let recommended = trueRec / falseRec;
+      parsedData["recommended"] = recommended;
 
-      res.send(results.data);
+      console.log('reviews server parsed data:', parsedData);
+      res.send(parsedData);
     })
     .catch((err) => {
       console.log(err);
@@ -105,9 +125,9 @@ reviewsRouter.put('/report', (req, res) => {
   };
 
   axios.put(basePath + '/reviews/' + reviewId + '/report', {}, options)
-    .then((results) => {
-      //console.log('axios report success');
-      res.send('axios report put request success:', results);
+    .then((result) => {
+      console.log('axios report success');
+      res.status(204).end();
     })
     .catch((err) => {
       console.log('server axios error message:', err);
@@ -124,9 +144,9 @@ reviewsRouter.put('/helpful', (req, res) => {
   };
 
   axios.put(basePath + '/reviews/' + reviewId + '/helpful', {}, options)
-    .then((results) => {
-      //console.log('axios helpful success');
-      res.send('axios helpful put request success:', results);
+    .then((result) => {
+      console.log('axios helpful success');
+      res.status(204).end();
     })
     .catch((err) => {
       console.log(err);

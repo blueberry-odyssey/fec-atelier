@@ -13,7 +13,11 @@ export default class App extends React.Component {
       // id: 47421,
       product_id: '47421',
       relatedItems: [],
-      styleData: []
+      styleData: [],
+      ratings: 0,
+      characteristics: null,
+      recommended: 0,
+      updated: false
     };
 
     this.updateOverviewProduct = this.updateOverviewProduct.bind(this);
@@ -46,31 +50,53 @@ export default class App extends React.Component {
           .catch(err => { throw err; })
       })
       .catch(err => { throw err; })
-    //every time we change the product_id
-    //...average rating, number of reviews,
-  }
-  //function to get array of stars
 
+    axios.get('/reviews/meta/getMeta', { params: { product_id: this.state.id } })
+      .then(result => {
+        console.log(result.data);
+        this.setState({
+          ratings: result.data.average,
+          characteristics: result.data.characteristics,
+          recommended: result.data.recommended,
+          updated: true
+        });
+      })
+      .catch(err => {
+        throw err;
+      });
+
+  }
 
   render() {
-    console.log('indes style', this.state.styleData);
-    return (
-      <div className='app-body'>
-        <div className='component-1'>
-          {/* <Overview product_id={this.state['product_id']} /> */}
+    if (this.state.updated === true) {
+      return (
+        <div className='app-body'>
+          <div className='component-1'>
+            <Overview product_id={this.state['product_id']} />
+          </div>
+          <div className='component-3'>
+            <RelatedItems relatedItems={this.state.relatedItems} styleData={this.state.styleData} />
+          </div>
+          <div className='component-2'>
+            <RatingsReviews {... this.state}/>
+          </div>
         </div>
-        <div className='component-3'>
-          <RelatedItems
-            relatedItems={this.state.relatedItems}
-            styleData={this.state.styleData}
-            updateOverviewProduct={this.updateOverviewProduct}
-          />
+      )
+    } else {
+      return (
+        <div className='app-body'>
+          <div className='component-1'>
+            <Overview product_id={this.state['product_id']} />
+          </div>
+          <div className='component-3'>
+            <RelatedItems relatedItems={this.state.relatedItems} styleData={this.state.styleData} />
+          </div>
+          <div className='component-2'>
+            <RatingsReviews {... this.state}/>
+          </div>
         </div>
-        <div className='component-2'>
-          {/* <RatingsReviews /> */}
-        </div>
-      </div>
-    )
+      )
+    }
   }
 }
 
