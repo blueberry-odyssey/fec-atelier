@@ -16,6 +16,14 @@ describe('Overview Testing', () => {
     // console.log(__dirname);
   })
 
+  test('renders image gallery, product info, style selector, and cart', () => {
+    let wrapper = shallow(<Overview />, { disableLifecycleMethods: true })
+    expect(wrapper.find('ImageGallery').exists()).toBe(true);
+    expect(wrapper.find('ProductInfo').exists()).toBe(true);
+    expect(wrapper.find('StyleSelector').exists()).toBe(true);
+    expect(wrapper.find('Cart').exists()).toBe(true);
+  })
+
   test('state is passed as props to ProductInfo Component', () => {
     //set fake state on overview
     let wrapper = shallow(<Overview />, { disableLifecycleMethods: true })
@@ -31,18 +39,7 @@ describe('Overview Testing', () => {
 
     expect(childComponent.prop('productData').name).toBe('Boo');
     expect(childComponent.prop('productData').category).toBe('Foo');
-
-    // console.log(
-    //   wrapper
-    //     .setState({
-    //       name: 'Foo',
-    //       category: 'Foo'
-    //     })
-    //     .find(ProductInfo)
-    //     .prop('productData')
-    // )
   })
-
 })
 
 //you can pass in props
