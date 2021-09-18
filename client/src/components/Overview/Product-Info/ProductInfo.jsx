@@ -16,8 +16,8 @@ const ProductInfo = function (props) {
   );
 }
 
-ProductInfo.propTypes = {
-  productData: PropTypes.object.isRequired
-};
+// ProductInfo.propTypes = {
+//   productData: PropTypes.object.isRequired
+// };
 
 export default ProductInfo;
