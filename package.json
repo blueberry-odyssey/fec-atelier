@@ -4,7 +4,7 @@
   "description": "Front End Capstone project for Hack Reactor",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
+    "test": "jest --coverage",
     "build": "webpack --mode development --watch",
     "start": "nodemon server/index.js"
   },

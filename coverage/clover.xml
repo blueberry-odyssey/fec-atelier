@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1632000822897" clover="3.2.0">
+  <project timestamp="1632000822897" name="All files">
+    <metrics statements="39" coveredstatements="21" conditionals="2" coveredconditionals="1" methods="25" coveredmethods="7" elements="66" coveredelements="29" complexity="0" loc="39" ncloc="39" packages="4" files="8" classes="8"/>
+    <package name="client.src.components.RatingsReviews">
+      <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="2"/>
+      <file name="RatingsReviews.jsx" path="/Users/michellekim/rpp30/fec-atelier/client/src/components/RatingsReviews/RatingsReviews.jsx">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="2"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="client.src.components.RatingsReviews.ReviewsList">
+      <metrics statements="28" coveredstatements="12" conditionals="2" coveredconditionals="1" methods="19" coveredmethods="3"/>
+      <file name="AddReview.jsx" path="/Users/michellekim/rpp30/fec-atelier/client/src/components/RatingsReviews/ReviewsList/AddReview.jsx">
+        <metrics statements="2" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="3" count="2" type="stmt"/>
+        <line num="4" count="0" type="stmt"/>
+      </file>
+      <file name="MoreReviews.jsx" path="/Users/michellekim/rpp30/fec-atelier/client/src/components/RatingsReviews/ReviewsList/MoreReviews.jsx">
+        <metrics statements="2" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="3" count="2" type="stmt"/>
+        <line num="5" count="0" type="stmt"/>
+      </file>
+      <file name="ReviewBlock.jsx" path="/Users/michellekim/rpp30/fec-atelier/client/src/components/RatingsReviews/ReviewsList/ReviewBlock.jsx">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="3" count="3" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+      </file>
+      <file name="ReviewsList.jsx" path="/Users/michellekim/rpp30/fec-atelier/client/src/components/RatingsReviews/ReviewsList/ReviewsList.jsx">
+        <metrics statements="22" coveredstatements="8" conditionals="2" coveredconditionals="1" methods="16" coveredmethods="2"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="21" count="1" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
+        <line num="23" count="1" type="stmt"/>
+        <line num="24" count="1" type="stmt"/>
+        <line num="28" count="0" type="stmt"/>
+        <line num="39" count="0" type="stmt"/>
+        <line num="41" count="0" type="stmt"/>
+        <line num="48" count="0" type="stmt"/>
+        <line num="57" count="0" type="stmt"/>
+        <line num="71" count="0" type="stmt"/>
+        <line num="74" count="0" type="stmt"/>
+        <line num="79" count="0" type="stmt"/>
+        <line num="81" count="0" type="stmt"/>
+        <line num="84" count="0" type="stmt"/>
+        <line num="91" count="0" type="stmt"/>
+        <line num="93" count="0" type="stmt"/>
+        <line num="96" count="0" type="stmt"/>
+        <line num="102" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="103" count="1" type="stmt"/>
+        <line num="122" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="client.src.components.RatingsReviews.StarsRating">
+      <metrics statements="7" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="2"/>
+      <file name="Characteristics.jsx" path="/Users/michellekim/rpp30/fec-atelier/client/src/components/RatingsReviews/StarsRating/Characteristics.jsx">
+        <metrics statements="3" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="3" count="2" type="stmt"/>
+        <line num="4" count="0" type="stmt"/>
+        <line num="5" count="0" type="stmt"/>
+      </file>
+      <file name="StarsRating.jsx" path="/Users/michellekim/rpp30/fec-atelier/client/src/components/RatingsReviews/StarsRating/StarsRating.jsx">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="36" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="tests.components.RatingsReviews">
+      <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="fixtures.js" path="/Users/michellekim/rpp30/fec-atelier/tests/components/RatingsReviews/fixtures.js">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="3" type="stmt"/>
+      </file>
+    </package>
+  </project>
+</coverage>

@@ -14,7 +14,7 @@
 }
 
 .component-2 {
-  background-color: rgb(91, 181, 191);
+  background-color: white;
 }
 
 .title {
@@ -80,4 +80,21 @@
 .product-description {
   font-size: 13px;
   font-style: italic;
+}
+
+.stars-column {
+  width: 400px;
+}
+
+.reviews-column {
+
+}
+
+#review-block {
+  width: 400px;
+  background-color: thistle;
+}
+
+#review-body {
+  width: 250px;
 }
