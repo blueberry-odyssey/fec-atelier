@@ -24,20 +24,25 @@ export default class ProductCarousel extends React.Component {
   }
 
   render() {
-    const { relatedItems, styles} = this.props;
-    // console.log('style in carousel', styles);
-    return (
-      <div className='carousel-container'>
-        <h1>Related Products</h1>
-        <button onClick={this.moveLeft}>Go Left</button>
-        <div className='carousel' style={{ 'transform': `translateX(${this.state.translate}px)` }}>
-          {relatedItems.map((product, idx) => {
-            return <RelatedProduct key={product.id} product={product} styleData={styles[idx]}/>
-          })}
+    // const { relatedItems, styleData } = this.props;
+    console.log('style in carousel', this.props.styleData);
+    if (this.props.styleData) {
+      return (
+        <div className='carousel-container'>
+          {/* <h1>Related Products</h1> */}
+          <button onClick={this.moveLeft}>Go Left</button>
+          <div className='carousel' style={{ 'transform': `translateX(${this.state.translate}px)` }}>
+            {this.props.relatedItems.map((product, idx) => {
+              return <RelatedProduct
+                      key={product.id}
+                      product={product}
+                      styleData={this.props.styleData[idx]}
+                      updateOverviewProduct={this.updateOverviewProduct}/>
+            })}
+          </div>
+          <button onClick={this.moveRight}>Go Right</button>
         </div>
-        <button onClick={this.moveRight}>Go Right</button>
-      </div>
-    )
+      )
+    }
   }
-
 };

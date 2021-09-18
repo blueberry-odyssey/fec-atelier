@@ -1,7 +1,7 @@
 import React from 'react';
 import './Related-Product.css'
 
-export default function RelatedProduct({ product, styleData }) {
+export default function RelatedProduct({ product, styleData, updateOverviewProduct }) {
   let oneStyleImg = null;
   let originalPrice = null;
   let salePrice = null;
@@ -13,16 +13,16 @@ export default function RelatedProduct({ product, styleData }) {
         salePrice = styleData.results[i].sale_price;
       }
     }
-    // oneStyleImg = styleData.results[0].photos[0].thumbnail_url
+    console.log("oneStyleImg", oneStyleImg)
   }
 
   // console.log('where my image', oneStyleImg)
   let handleProductClick = () => {
-    let currentProduct = e.target.value;
-
+    let currentProduct = e.target;
+    console.log('currentProduct', currentProduct)
   }
   return (
-    <div className='each-product'>
+    <div className='each-product' onClick={handleProductClick}>
       <div>
         <img src={oneStyleImg}></img>
         {/* <div>Star Button</div> */}
