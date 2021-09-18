@@ -1,5 +1,5 @@
 import React from 'react';
-import $ from 'jquery';
+import axios from 'axios';
 import ReviewBlock from './ReviewBlock.jsx';
 import AddReview from './AddReview.jsx';
 import MoreReviews from './MoreReviews.jsx';
@@ -8,12 +8,13 @@ export default class ReviewsList extends React.Component {
 
   constructor(props) {
     super(props);
-    console.log('reviews list props:', props);
+    //console.log('reviews list props:', props);
     this.state = {
       id: props.id,
+      page: 0,
       sort: '',
       count: 0,
-      reviews: null,
+      reviews: [],
       characteristics: props.characteristics
     };
 
@@ -35,18 +36,17 @@ export default class ReviewsList extends React.Component {
     // make get request to get 2 reviews at first load
     // try to make it as a multi-functioning request
     // if state already has reviews, get 5 more instead of 2
-    $.ajax({
-      method: 'GET',
-      url: '/reviews/getAllReviews',
-      data: {
-        product_id: this.state.id
-        // sort: this.state.sort,
-        // count: this.state.count
-      },
-      success: (data) => {
-        console.log('client getReviews success:', data);
-      }
-    })
+    axios.get('/reviews/getAllReviews', { params: { product_id: this.state.id } })
+      .then(result => {
+        this.setState({
+          page: result.data.page,
+          count: result.data.count,
+          reviews: result.data.results
+        });
+      })
+      .catch(err => {
+        throw err;
+      });
   }
 
   postReview() {
@@ -54,10 +54,8 @@ export default class ReviewsList extends React.Component {
     // should have a form page pop up to grab body params
     // pass body params into post request
     // add review in api, but does it need to render immediately?
-    $.ajax({
-      method: 'POST',
-      url: '/reviews/postReview',
-      data: {
+    axios.post('/reviews/postReview', {
+      params: {
         product_id: this.state.id,
         rating: 5,
         summary: 'I\'m testing postReview',
@@ -67,56 +65,75 @@ export default class ReviewsList extends React.Component {
         email: 'bhbh1234@yahoo.com',
         photos: [],
         characteristics: this.state.characteristics
-      },
-      success: (data) => {
-        console.log('client postReview success:', data);
       }
     })
+      .then(result => {
+        console.log('client post success', result);
+      })
+      .catch(err => {
+        throw err;
+      });
   }
 
   reportReview() {
-    // make put request to report a review
-    $.ajax({
-      method: 'PUT',
-      url: '/reviews/report',
-      success: (data) => {
-        console.log('client reportReview success:', data);
-      }
-    })
+    axios.put('/reviews/report')
+      .then(result => {
+        console.log('client reportReview success', result);
+      })
+      .catch(err => {
+        throw err;
+      });
   }
 
   markHelpful() {
     // make put request to mark a review as helpful
     // should change the # of 'yes' for helpful
-    $.ajax({
-      method: 'PUT',
-      url: '/reviews/helpful',
-      success: (data) => {
-        console.log('client markHelpful success:', data);
-      }
-    })
+    axios.put('/reviews/helpful')
+      .then(result => {
+        console.log('client markHelpful success:', result);
+      })
+      .catch(err => {
+        throw err;
+      });
   }
 
   render() {
     //console.log('reviews list props:', props);
-    return (
+    if (this.state.reviews !== null) {
+      return (
+        <div>
+          {/* <button onClick={this.reportReview}>Report Test</button>
+          <button onClick={this.markHelpful}>Helpful Test</button>
+          <button onClick={this.postReview}>Post Review Test</button>
+          <br /> */}
+          <p>(total number) reviews, sorted by (drop down menu to filter)</p><br/>
+          <ReviewBlock reviews={this.state.reviews} reportReview={this.reportReview} markHelpful={this.markHelpful} />
+          <table>
+            <tbody>
+              <tr>
+                <td><MoreReviews id={this.state.id}/></td>
+                <td><AddReview id={this.state.id}/></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      )
+    } else {
+      return (
       <div>
-        <button onClick={this.reportReview}>Report Test</button>
-        <button onClick={this.markHelpful}>Helpful Test</button>
-        <button onClick={this.postReview}>Post Review Test</button>
-        <br />
-        <p>(total number) reviews, sorted by (drop down menu to filter)</p><br/>
-        <ReviewBlock id={this.state.id}/>
-        <table>
-          <tbody>
-            <tr>
-              <td><MoreReviews id={this.state.id}/></td>
-              <td><AddReview id={this.state.id}/></td>
-            </tr>
-          </tbody>
-        </table>
+          <p>(total number) reviews, sorted by (drop down menu to filter)</p><br/>
+          <ReviewBlock reviews={this.state.reviews} reportReview={this.reportReview} markHelpful={this.markHelpful} />
+          <table>
+            <tbody>
+              <tr>
+                <td><MoreReviews id={this.state.id}/></td>
+                <td><AddReview id={this.state.id}/></td>
+              </tr>
+            </tbody>
+          </table>
       </div>
-    )
+      )
+    }
   }
 };
 
