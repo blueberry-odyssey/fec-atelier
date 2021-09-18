@@ -4,10 +4,12 @@
   "description": "Front End Capstone project for Hack Reactor",
   "main": "index.js",
   "jest": {
-    "transform": {}
+    "moduleNameMapper": {
+      "\\.(css|less)$": "<rootDir>/__mocks__/styleMock.js"
+    }
   },
   "scripts": {
-    "test": "jest",
+    "test": "jest --coverage",
     "build": "webpack --mode development --watch",
     "start": "nodemon server/index.js"
   },

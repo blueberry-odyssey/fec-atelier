@@ -7,15 +7,18 @@ export default class RelatedItems extends React.Component {
   constructor(props) {
     super(props)
     //state id is placeholder var for all related products
-    this.state = {
-    }
   }
 
   render() {
-    let {relatedItems, styleData} = this.props;
+    // let {relatedItems, styleData} = this.props;
+    // console.log('style data in main', this.props);
     return (
       <>
-        <ProductCarousel relatedItems={relatedItems} styles={styleData}/>
+        <h1>Related Products</h1>
+        <ProductCarousel
+        relatedItems={this.props.relatedItems}
+        styleData={this.props.styleData}
+        updateOverviewProduct={this.updateOverviewProduct}/>
       </>
     )
   }
