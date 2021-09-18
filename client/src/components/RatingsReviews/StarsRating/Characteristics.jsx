@@ -1,7 +1,6 @@
 import React from 'react';
 
 const Characteristics = (props) => {
-  console.log('characteristics props:', props);
   return (
     // <div>
     //   {props.map(factor => (

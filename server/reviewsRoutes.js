@@ -6,7 +6,6 @@ const basePath = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp';
 
 // grab reviews, sort reviews
 reviewsRouter.get('/getAllReviews', (req, res) => {
-  //console.log('server getReviews req:', req);
   let productId = parseInt(req.query.product_id);
 
   let options = {
@@ -19,7 +18,6 @@ reviewsRouter.get('/getAllReviews', (req, res) => {
   // retrieve reviews by product id
   axios.get(basePath + '/reviews/', options)
     .then((results) => {
-      console.log('axios getReviews response: ', results.data);
       res.send(results.data);
     })
     .catch((err) => {
@@ -41,7 +39,6 @@ reviewsRouter.get('/meta/getMeta', (req, res) => {
 
   axios.get(basePath + '/reviews/meta/', options)
     .then((results) => {
-      //console.log('axios getMeta response: ', results.data);
       let parsedData = {
         characteristics: results.data.characteristics
       };
@@ -69,7 +66,6 @@ reviewsRouter.get('/meta/getMeta', (req, res) => {
       let recommended = trueRec / falseRec;
       parsedData["recommended"] = recommended;
 
-      console.log('reviews server parsed data:', parsedData);
       res.send(parsedData);
     })
     .catch((err) => {
