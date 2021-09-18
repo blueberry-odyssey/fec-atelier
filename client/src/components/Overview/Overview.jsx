@@ -58,8 +58,8 @@ class Overview extends React.Component {
   }
 }
 
-Overview.propTypes = {
-  product_id: PropTypes.string.isRequired
-};
+// Overview.propTypes = {
+//   product_id: PropTypes.string.isRequired
+// };
 
 export default Overview;
