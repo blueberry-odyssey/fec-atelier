@@ -12,12 +12,12 @@ export default class ProductCarousel extends React.Component {
     this.moveRight = this.moveRight.bind(this);
   }
 
-  moveLeft () {
+  moveLeft() {
     this.setState({
       translate: this.state.translate - 50
     })
   }
-  moveRight () {
+  moveRight() {
     this.setState({
       translate: this.state.translate + 50
     })
@@ -34,15 +34,17 @@ export default class ProductCarousel extends React.Component {
           <div className='carousel' style={{ 'transform': `translateX(${this.state.translate}px)` }}>
             {this.props.relatedItems.map((product, idx) => {
               return <RelatedProduct
-                      key={product.id}
-                      product={product}
-                      styleData={this.props.styleData[idx]}
-                      updateOverviewProduct={this.updateOverviewProduct}/>
+                key={product.id}
+                product={product}
+                styleData={this.props.styleData[idx]}
+                updateOverviewProduct={this.updateOverviewProduct} />
             })}
           </div>
           <button onClick={this.moveRight}>Go Right</button>
         </div>
       )
+    } else {
+      return <h1>Else statment in product carousel, something is broken</h1>
     }
   }
 };
