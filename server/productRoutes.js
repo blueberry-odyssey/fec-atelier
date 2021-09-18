@@ -9,11 +9,11 @@ let params = {
 };
 
 productRouter.post('/getProductDetails', function (req, res) {
-  console.log('POST /getProductDetails endpoint reached!');
-  console.log('req.body: ', req.body);
+  // console.log('POST /getProductDetails endpoint reached!');
+  // console.log('req.body: ', req.body);
   axios.get(`${basePath}/products/${req.body['product_id']}/`, params)
     .then(function (productData) {
-      console.log('productData!!: ', productData.data);
+      // console.log('productData!!: ', productData.data);
       res.send(productData.data);
       res.end();
     })
@@ -22,8 +22,8 @@ productRouter.post('/getProductDetails', function (req, res) {
 //productRouter.post('/endpoint', function(req, res) {});
 
 productRouter.get('/findRelatedItems', (req, res) => {
-  let productId = req.query.id;
-  axios.get(basePath + `/products/${productId}/related`, params)
+  let productID = req.query.id;
+  axios.get(basePath + `/products/${productID}/related`, params)
     .then(result => {
       // console.log('incoming data', result.data);
       res.send(result.data);

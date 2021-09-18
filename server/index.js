@@ -32,42 +32,6 @@ app.use('/products', productRouter);
 
 app.use('/reviews', reviewsRouter);
 
-app.get('/findRelatedItems', (req, res) => {
-  console.log("req received", req.query.id);
-  let productId = req.query.id;
-  axios.get(basePath + `/products/${productId}/related`, params)
-    .then(result => {
-      // console.log('incoming data', result.data);
-      res.send(result.data);
-    })
-    .catch(err => { throw err; })
-})
-
-app.get('/relatedProducts', (req, res) => {
-  let styles = '/styles'
-  if (!req.query.styles) { styles = '' }
-  let productIDs = req.query.data;
-  let relatedProductData = [];
-
-  productIDs.forEach(item => {
-    relatedProductData.push(
-      axios.get(basePath + `/products/${item + styles}`, params)
-        .then(result => {
-          return result.data
-        })
-    )
-  })
-  // console.log('nothing', relatedProductData);
-  axios.all(
-    relatedProductData
-  )
-    .then(axios.spread((...results) => {
-      // console.log('incoming data', results);
-      res.send(results);
-    }))
-    .catch(err => { throw err; })
-})
-
 
 app.listen(port, () => {
   console.log(`FEC app listening at http://localhost:${port}`)

@@ -6,11 +6,11 @@ import './index.css';
 import Overview from './components/Overview/Overview.jsx';
 import RatingsReviews from './components/RatingsReviews/RatingsReviews.jsx';
 
-class App extends React.Component {
+export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: 47421,
+      // id: 47421,
       product_id: '47421',
       relatedItems: [],
       styleData: [],
@@ -19,10 +19,18 @@ class App extends React.Component {
       recommended: 0,
       updated: false
     };
+
+    this.updateOverviewProduct = this.updateOverviewProduct.bind(this);
+  }
+
+  updateOverviewProduct (newProductID) {
+    this.setState({
+      product_id: newProductID
+    })
   }
 
   componentDidMount() {
-    axios.get('/products/findRelatedItems', { params: { id: this.state.id } })
+    axios.get('/products/findRelatedItems', { params: { id: this.state.product_id } })
       .then(result => {
         let productIDArray = result.data;
         axios.get('/products/relatedProductsAndStyles', { params: { productIDArray, styles: '' } })
@@ -32,7 +40,7 @@ class App extends React.Component {
             })
             axios.get('/products/relatedProductsAndStyles', { params: { productIDArray, styles: '/styles' } })
               .then(styleData => {
-                // console.log('relatedStyle Data', styleData);
+                console.log('relatedStyle Data', styleData);
                 this.setState({
                   styleData: styleData.data
                 })
