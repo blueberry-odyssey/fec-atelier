@@ -4,15 +4,17 @@
   justify-content: space-between;
   margin: 2em;
   transition: transform 1s;
+  overflow-x: auto;
 }
 .carousel-container {
   display: grid;
-  grid-template-columns: 1fr 10fr 1fr;
+  grid-template-columns: 0.5fr 10fr 0.5fr;
   justify-content: space-between;
 }
 
 button {
   cursor: pointer;
+  font-stretch: narrower;
 }
 
 h1 {
@@ -20,4 +22,25 @@ h1 {
   display: block;
   top: 0;
   left: 0;
+}
+
+#right-button {
+  border: none;
+  background-color: unset;
+}
+
+button:hover {
+  color: thistle;
+}
+
+#left-button {
+  border: none;
+  background-color: unset;
+  transform: rotate(180deg)
+}
+
+i {
+  font-weight: 100;
+  font-stretch: narrower;
+  font-size: 15em;
 }

@@ -11,7 +11,7 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       // id: 47421,
-      product_id: '47421',
+      product_id: '47423',
       relatedItems: [],
       styleData: []
     };

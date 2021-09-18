@@ -30,7 +30,7 @@ export default class ProductCarousel extends React.Component {
       return (
         <div className='carousel-container'>
           {/* <h1>Related Products</h1> */}
-          <button onClick={this.moveLeft}>Go Left</button>
+          <button id='left-button' onClick={this.moveLeft}><i class="fas fa-chevron-right"></i></button>
           <div className='carousel' style={{ 'transform': `translateX(${this.state.translate}px)` }}>
             {this.props.relatedItems.map((product, idx) => {
               return <RelatedProduct
@@ -40,7 +40,8 @@ export default class ProductCarousel extends React.Component {
                       updateOverviewProduct={this.updateOverviewProduct}/>
             })}
           </div>
-          <button onClick={this.moveRight}>Go Right</button>
+          <button id='right-button' onClick={this.moveRight}><i class="fas fa-chevron-right"></i></button>
+          {/* <i class="fas fa-chevron-right"></i> */}
         </div>
       )
     }
