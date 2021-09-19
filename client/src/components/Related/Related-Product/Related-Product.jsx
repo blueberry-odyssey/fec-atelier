@@ -6,14 +6,17 @@ export default function RelatedProduct({ product, styleData, updateOverviewProdu
   let originalPrice = null;
   let salePrice = null;
   if (styleData) {
+    oneStyleImg = styleData.results[0].photos[0].thumbnail_url;
+    originalPrice = styleData.results[0].original_price;
     for (let i = 0; i < styleData.results.length; i++) {
       if (styleData.results[i]['default?']) {
         oneStyleImg = styleData.results[i].photos[0].thumbnail_url;
         originalPrice = styleData.results[i].original_price;
+        console.log('og price', originalPrice)
         salePrice = styleData.results[i].sale_price;
+        continue;
       }
     }
-    console.log("oneStyleImg", oneStyleImg)
   }
 
   // console.log('where my image', oneStyleImg)
@@ -27,9 +30,9 @@ export default function RelatedProduct({ product, styleData, updateOverviewProdu
         <img src={oneStyleImg}></img>
         {/* <div>Star Button</div> */}
       </div>
-      <div>
-        <div>{product.category}</div>
-        <div>{product.name}</div>
+      <section>
+        <p>{product.category}</p>
+        <h3>{product.name}</h3>
         {salePrice ?
           <div>
             <div id='red'>{salePrice}</div>
@@ -39,7 +42,7 @@ export default function RelatedProduct({ product, styleData, updateOverviewProdu
           <div>{originalPrice}</div>
         }
         <div>Star Rating</div>
-      </div>
+      </section>
     </div>
   )
 };

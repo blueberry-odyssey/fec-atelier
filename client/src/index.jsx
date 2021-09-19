@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
-import RelatedItems from './components/Related/Related-items/Related-Items.jsx'
+import RelatedProducts from './components/Related/Related-Products/Related-Products.jsx'
 import './index.css';
 import Overview from './components/Overview/Overview.jsx';
 import RatingsReviews from './components/RatingsReviews/RatingsReviews.jsx';
@@ -10,7 +10,6 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      // id: 47421,
       product_id: '47423',
       relatedItems: [],
       styleData: [],
@@ -45,11 +44,11 @@ export default class App extends React.Component {
                   styleData: styleData.data
                 })
               })
-              .catch(err => { throw err; })
+              .catch(err => { throw err; });
           })
-          .catch(err => { throw err; })
+          .catch(err => { throw err; });
       })
-      .catch(err => { throw err; })
+      .catch(err => { throw err; });
 
     axios.get('/reviews/meta/getMeta', { params: { product_id: this.state.id } })
       .then(result => {
@@ -64,39 +63,38 @@ export default class App extends React.Component {
       .catch(err => {
         throw err;
       });
-
   }
 
   render() {
-    if (this.state.updated === true) {
+    // if (this.state.updated === true) {
       return (
         <div className='app-body'>
           <div className='component-1'>
-            <Overview product_id={this.state['product_id']} />
+            {/* <Overview product_id={this.state['product_id']} /> */}
           </div>
           <div className='component-3'>
-            <RelatedItems relatedItems={this.state.relatedItems} styleData={this.state.styleData} />
+            <RelatedProducts relatedItems={this.state.relatedItems} styleData={this.state.styleData} />
           </div>
           <div className='component-2'>
-            <RatingsReviews {... this.state}/>
+            {/* <RatingsReviews {... this.state}/> */}
           </div>
         </div>
       )
-    } else {
-      return (
-        <div className='app-body'>
-          <div className='component-1'>
-            <Overview product_id={this.state['product_id']} />
-          </div>
-          <div className='component-3'>
-            <RelatedItems relatedItems={this.state.relatedItems} styleData={this.state.styleData} />
-          </div>
-          <div className='component-2'>
-            <RatingsReviews {... this.state}/>
-          </div>
-        </div>
-      )
-    }
+    // } else {
+    //   return (
+    //     <div className='app-body'>
+    //       <div className='component-1'>
+    //         <Overview product_id={this.state['product_id']} />
+    //       </div>
+    //       <div className='component-3'>
+    //         <RelatedItems relatedItems={this.state.relatedItems} styleData={this.state.styleData} />
+    //       </div>
+    //       <div className='component-2'>
+    //         <RatingsReviews {... this.state}/>
+    //       </div>
+    //     </div>
+    //   )
+    // }
   }
 }
 
