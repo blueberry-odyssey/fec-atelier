@@ -1,15 +1,13 @@
 .each-product {
-  /* background-color: whitesmoke; */
   font-family: 'Cantarell', sans-serif;
   height: 24em;
   width: 15em;
   margin: 1em;
-  /* border: solid black; */
 }
 
-.each-product > div:first-child {
-  height: 18em;
-  position: relative;
+#add-button {
+  text-align: center;
+  background-color: thistle;
 }
 
 section {
@@ -34,12 +32,4 @@ p {
 
 h3 {
   margin: 0;
-}
-
-#starIcon {
-  z-index: 1;
-  position: absolute;
-  font-size: 1em;
-  top: 5px;
-  right: 5px;
 }

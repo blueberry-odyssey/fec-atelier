@@ -6,6 +6,8 @@ export default function RelatedProduct({ product, styleData, updateOverviewProdu
   let originalPrice = null;
   let salePrice = null;
   if (styleData) {
+    oneStyleImg = styleData.results[0].photos[0].thumbnail_url;
+    originalPrice = styleData.results[0].original_price;
     for (let i = 0; i < styleData.results.length; i++) {
       if (styleData.results[i]['default?']) {
         oneStyleImg = styleData.results[i].photos[0].thumbnail_url;
@@ -13,23 +15,24 @@ export default function RelatedProduct({ product, styleData, updateOverviewProdu
         salePrice = styleData.results[i].sale_price;
       }
     }
-    console.log("oneStyleImg", oneStyleImg)
+    // console.log('og price', salePrice)
   }
 
-  // console.log('where my image', oneStyleImg)
-  let handleProductClick = () => {
-    let currentProduct = e.target;
+  // console.log('where my image', product)
+  let handleProductClick = (e) => {
+    let currentProduct = e.target.parentNode;
     console.log('currentProduct', currentProduct)
   }
+
   return (
-    <div className='each-product' onClick={handleProductClick}>
+    <div className='each-product' onClick={()=>{updateOverviewProduct(product.id)}}>
       <div>
         <img src={oneStyleImg}></img>
-        {/* <div>Star Button</div> */}
+        <i id="starIcon" className="far fa-star"></i>
       </div>
-      <div>
-        <div>{product.category}</div>
-        <div>{product.name}</div>
+      <section>
+        <p>{product.category}</p>
+        <h3>{product.name}</h3>
         {salePrice ?
           <div>
             <div id='red'>{salePrice}</div>
@@ -39,7 +42,7 @@ export default function RelatedProduct({ product, styleData, updateOverviewProdu
           <div>{originalPrice}</div>
         }
         <div>Star Rating</div>
-      </div>
+      </section>
     </div>
   )
 };
