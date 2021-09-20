@@ -101,13 +101,18 @@ export default class ReviewsList extends React.Component {
     //console.log('reviews list props:', props);
     if (this.state.reviews !== null) {
       return (
-        <div>
+        <div className='reviews-column'>
           {/* <button onClick={this.reportReview}>Report Test</button>
           <button onClick={this.markHelpful}>Helpful Test</button>
           <button onClick={this.postReview}>Post Review Test</button>
           <br /> */}
-          <p>(total number) reviews, sorted by (drop down menu to filter)</p><br/>
-          <ReviewBlock reviews={this.state.reviews} reportReview={this.reportReview} markHelpful={this.markHelpful} />
+          <p>(total number) reviews, sorted by:
+          <select>
+            <option>Relevance</option>
+            <option>Helpfulness</option>
+            <option>Newest</option>
+          </select></p><br/>
+          <ReviewBlock className='review-block' reviews={this.state.reviews} reportReview={this.reportReview} markHelpful={this.markHelpful} />
           <table>
             <tbody>
               <tr>
@@ -120,17 +125,23 @@ export default class ReviewsList extends React.Component {
       )
     } else {
       return (
-      <div>
-          <p>(total number) reviews, sorted by (drop down menu to filter)</p><br/>
-          <ReviewBlock reviews={this.state.reviews} reportReview={this.reportReview} markHelpful={this.markHelpful} />
-          <table>
-            <tbody>
-              <tr>
-                <td><MoreReviews id={this.state.id}/></td>
-                <td><AddReview id={this.state.id}/></td>
-              </tr>
-            </tbody>
-          </table>
+      <div className='reviews-column'>
+        <p>(total number) reviews, sorted by:
+        <select>
+          <option>Relevance</option>
+          <option>Helpfulness</option>
+          <option>Newest</option>
+        </select></p>
+        <br/>
+        <ReviewBlock reviews={this.state.reviews} reportReview={this.reportReview} markHelpful={this.markHelpful} />
+        <table>
+          <tbody>
+            <tr>
+              <td><MoreReviews id={this.state.id}/></td>
+              <td><AddReview id={this.state.id}/></td>
+            </tr>
+          </tbody>
+        </table>
       </div>
       )
     }

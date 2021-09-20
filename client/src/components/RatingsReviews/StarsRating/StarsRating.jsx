@@ -33,8 +33,21 @@ export default class StarsRating extends React.Component {
 
   render() {
     return (
-      <div>
-        <p>Stars Rating goes here</p><br />
+      <div className='stars-column'>
+        <div className='stars-block'>
+          <h2>5 Stars&nbsp;&nbsp;
+            <i className="fas fa-star fa-sm"></i>
+            <i className="fas fa-star fa-sm"></i>
+            <i className="fas fa-star fa-sm"></i>
+            <i className="fas fa-star fa-sm"></i>
+            <i className="fas fa-star fa-sm"></i>
+          </h2><br/>
+          <p>5 stars</p><br/>
+          <p>4 stars</p><br/>
+          <p>3 stars</p><br/>
+          <p>2 stars</p><br/>
+          <p>1 stars</p><br/>
+        </div><br />
         <Characteristics {... this.state} />
       </div>
     )

@@ -3,7 +3,7 @@ import React from 'react';
 const AddReview = (props) => {
   return (
     <div>
-      <button>Add A Review</button>
+      <button className='add-review-btn'>Add A Review</button>
     </div>
   )
 }

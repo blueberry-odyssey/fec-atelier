@@ -21,15 +21,11 @@ export default class RatingsReviews extends React.Component {
   render () {
     return (
       <div>
-        <h2>RATINGS & REVIEWS</h2>
-        <table>
-          <tbody>
-            <tr>
-              <td><StarsRating className='stars-column' {... this.state} /></td>
-              <td><ReviewsList className='reviews-column' id={this.state.id} characteristics={this.state.characteristics} /></td>
-            </tr>
-          </tbody>
-        </table>
+        <h2 className='reviews-header'>RATINGS & REVIEWS</h2>
+        <div className='reviews-container'>
+          <StarsRating {... this.state} />
+          <ReviewsList id={this.state.id} characteristics={this.state.characteristics} />
+        </div>
       </div>
     )
   }
