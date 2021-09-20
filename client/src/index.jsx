@@ -10,6 +10,7 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      id: 47421,
       product_id: '47423',
       relatedItems: [],
       styleData: [],
@@ -23,8 +24,11 @@ export default class App extends React.Component {
   }
 
   updateOverviewProduct (newProductID) {
+    console.log('newProd', newProductID)
+    let newProductIDString = newProductID.toString();
     this.setState({
-      product_id: newProductID
+      product_id: newProductID,
+      id: newProductID
     })
   }
 
@@ -66,35 +70,35 @@ export default class App extends React.Component {
   }
 
   render() {
-    // if (this.state.updated === true) {
+    if (this.state.updated === true) {
       return (
         <div className='app-body'>
           <div className='component-1'>
-            {/* <Overview product_id={this.state['product_id']} /> */}
+            <Overview product_id={this.state['product_id']} />
+          </div>
+          <div className='component-3'>
+            <RelatedProducts relatedItems={this.state.relatedItems} styleData={this.state.styleData} updateOverviewProduct={this.updateOverviewProduct}/>
+          </div>
+          <div className='component-2'>
+            <RatingsReviews {... this.state}/>
+          </div>
+        </div>
+      )
+    } else {
+      return (
+        <div className='app-body'>
+          <div className='component-1'>
+            <Overview product_id={this.state['product_id']} />
           </div>
           <div className='component-3'>
             <RelatedProducts relatedItems={this.state.relatedItems} styleData={this.state.styleData} />
           </div>
           <div className='component-2'>
-            {/* <RatingsReviews {... this.state}/> */}
+            <RatingsReviews {... this.state}/>
           </div>
         </div>
       )
-    // } else {
-    //   return (
-    //     <div className='app-body'>
-    //       <div className='component-1'>
-    //         <Overview product_id={this.state['product_id']} />
-    //       </div>
-    //       <div className='component-3'>
-    //         <RelatedItems relatedItems={this.state.relatedItems} styleData={this.state.styleData} />
-    //       </div>
-    //       <div className='component-2'>
-    //         <RatingsReviews {... this.state}/>
-    //       </div>
-    //     </div>
-    //   )
-    // }
+    }
   }
 }
 

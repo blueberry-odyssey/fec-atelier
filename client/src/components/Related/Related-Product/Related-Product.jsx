@@ -12,23 +12,23 @@ export default function RelatedProduct({ product, styleData, updateOverviewProdu
       if (styleData.results[i]['default?']) {
         oneStyleImg = styleData.results[i].photos[0].thumbnail_url;
         originalPrice = styleData.results[i].original_price;
-        console.log('og price', originalPrice)
         salePrice = styleData.results[i].sale_price;
-        continue;
       }
     }
+    // console.log('og price', salePrice)
   }
 
-  // console.log('where my image', oneStyleImg)
-  let handleProductClick = () => {
-    let currentProduct = e.target;
+  // console.log('where my image', product)
+  let handleProductClick = (e) => {
+    let currentProduct = e.target.parentNode;
     console.log('currentProduct', currentProduct)
   }
+
   return (
-    <div className='each-product' onClick={handleProductClick}>
+    <div className='each-product' onClick={()=>{updateOverviewProduct(product.id)}}>
       <div>
         <img src={oneStyleImg}></img>
-        {/* <div>Star Button</div> */}
+        <i id="starIcon" className="far fa-star"></i>
       </div>
       <section>
         <p>{product.category}</p>

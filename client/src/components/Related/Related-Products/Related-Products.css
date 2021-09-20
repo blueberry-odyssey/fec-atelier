@@ -1,11 +1,9 @@
-.related-items {
-  /* background-color: grey; */
-}
-
 h1 {
   font-family: 'Cantarell', sans-serif;
+  font-weight: bolder;
 }
 
 #pink {
   color: thistle;
+  background-color: gray;
 }
