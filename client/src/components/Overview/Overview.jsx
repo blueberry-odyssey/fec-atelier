@@ -10,28 +10,49 @@ class Overview extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {};
+    this.state = {
+      productData: {},
+      styles: []
+    };
     this.getProductDetails = this.getProductDetails.bind(this);
+    this.getStyles = this.getStyles.bind(this);
   }
 
   componentDidMount() {
-    this.getProductDetails();
+    this.getProductDetails(this.props['product_id']);
+    this.getStyles(this.props['product_id']);
   }
 
-  getProductDetails() {
+  getProductDetails(productId) {
     let context = this;
     console.log(context.props['product_id']);
     axios({
-      method: 'post',
+      method: 'get',
       url: '/products/getProductDetails',
-      data: { product_id: context.props['product_id'] }
+      params: { product_id: productId }
     })
       .then(function (productData) {
         console.log('productData: ', productData.data);
-        context.setState(productData.data);
+        context.setState({ productData: productData.data });
       })
       .catch(function (err) {
         console.log('error in getProductDetails index.jsx: ', err);
+      })
+  }
+
+  getStyles(productId) {
+    let context = this;
+    axios({
+      method: 'get',
+      url: '/products/getStyles',
+      params: { product_id: productId }
+    })
+      .then(function (styles) {
+        console.log('styles array: ', styles);
+        context.setState({ styles: styles.data });
+      })
+      .catch(function (err) {
+        console.log('err in getStyles overview.jsx: ', err);
       })
   }
 
@@ -48,7 +69,7 @@ class Overview extends React.Component {
           </div>
 
           <div className='product-details'>
-            <ProductInfo productData={this.state} />
+            <ProductInfo productData={this.state.productData} />
             <StyleSelector />
             <Cart />
           </div>
