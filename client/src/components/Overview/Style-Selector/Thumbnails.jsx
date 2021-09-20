@@ -5,7 +5,11 @@ import React from 'react';
 //first style is default
 const Thumbnails = function (props) {
   return (
-    <h3>Thumbnails Component</h3>
+    <div className='styles'>
+      {props.styles.map(function (style) {
+        return <p key={style.name}>{style.name}</p>
+      })}
+    </div>
   )
 }
 

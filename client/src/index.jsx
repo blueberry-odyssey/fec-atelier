@@ -10,7 +10,7 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: 47421,
+      id: 47423,
       product_id: '47423',
       relatedItems: [],
       styleData: [],
@@ -23,7 +23,7 @@ export default class App extends React.Component {
     this.updateOverviewProduct = this.updateOverviewProduct.bind(this);
   }
 
-  updateOverviewProduct (newProductID) {
+  updateOverviewProduct(newProductID) {
     console.log('newProd', newProductID)
     let newProductIDString = newProductID.toString();
     this.setState({
@@ -77,10 +77,10 @@ export default class App extends React.Component {
             <Overview product_id={this.state['product_id']} />
           </div>
           <div className='component-3'>
-            <RelatedProducts relatedItems={this.state.relatedItems} styleData={this.state.styleData} updateOverviewProduct={this.updateOverviewProduct}/>
+            <RelatedProducts relatedItems={this.state.relatedItems} styleData={this.state.styleData} updateOverviewProduct={this.updateOverviewProduct} />
           </div>
           <div className='component-2'>
-            <RatingsReviews {... this.state}/>
+            <RatingsReviews {... this.state} />
           </div>
         </div>
       )
@@ -94,7 +94,7 @@ export default class App extends React.Component {
             <RelatedProducts relatedItems={this.state.relatedItems} styleData={this.state.styleData} />
           </div>
           <div className='component-2'>
-            <RatingsReviews {... this.state}/>
+            <RatingsReviews {... this.state} />
           </div>
         </div>
       )

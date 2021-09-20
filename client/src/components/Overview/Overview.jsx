@@ -12,15 +12,16 @@ class Overview extends React.Component {
 
     this.state = {
       productData: {},
-      styles: []
+      // styles: [],
+      // cartData: {}
     };
     this.getProductDetails = this.getProductDetails.bind(this);
-    this.getStyles = this.getStyles.bind(this);
+    // this.getStyles = this.getStyles.bind(this);
   }
 
   componentDidMount() {
     this.getProductDetails(this.props['product_id']);
-    this.getStyles(this.props['product_id']);
+    // this.getStyles(this.props['product_id']);
   }
 
   getProductDetails(productId) {
@@ -40,21 +41,21 @@ class Overview extends React.Component {
       })
   }
 
-  getStyles(productId) {
-    let context = this;
-    axios({
-      method: 'get',
-      url: '/products/getStyles',
-      params: { product_id: productId }
-    })
-      .then(function (styles) {
-        console.log('styles array: ', styles);
-        context.setState({ styles: styles.data });
-      })
-      .catch(function (err) {
-        console.log('err in getStyles overview.jsx: ', err);
-      })
-  }
+  // getStyles(productId) {
+  //   let context = this;
+  //   axios({
+  //     method: 'get',
+  //     url: '/products/getStyles',
+  //     params: { product_id: productId }
+  //   })
+  //     .then(function (styles) {
+  //       console.log('styles array: ', styles);
+  //       context.setState({ styles: styles.data });
+  //     })
+  //     .catch(function (err) {
+  //       console.log('err in getStyles overview.jsx: ', err);
+  //     })
+  // }
 
   //invoke ProductInfo, StyleSelector, Cart, and ImageGallery Components
   render() {
@@ -70,7 +71,7 @@ class Overview extends React.Component {
 
           <div className='product-details'>
             <ProductInfo productData={this.state.productData} />
-            <StyleSelector />
+            <StyleSelector product_id={this.props['product_id']} />
             <Cart />
           </div>
         </div>
