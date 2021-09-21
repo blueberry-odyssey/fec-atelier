@@ -5,7 +5,7 @@
 }
 
 #app {
-  margin: 5%;
+  margin: 10%;
   margin-top: 0%;
 }
 
@@ -94,6 +94,14 @@
 .styles img {
   width: 25%;
   min-width: 100px;
+  /* border-radius: 50%; */
+  height: 8em;
+  /* object-fit: cover;  */
+  /* width: 8em;  */
+  border-radius:500px;
+  /* -moz-border-radius:500px;
+  -webkit-border-radius:500px; */
+  /* margin:3px; */
 }
 
 .sale-price {
