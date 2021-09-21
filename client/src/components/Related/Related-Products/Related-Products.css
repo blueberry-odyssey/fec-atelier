@@ -1,6 +1,5 @@
-h1 {
+.related > h1 {
   font-family: 'Cantarell', sans-serif;
-  font-weight: bolder;
 }
 
 #pink {

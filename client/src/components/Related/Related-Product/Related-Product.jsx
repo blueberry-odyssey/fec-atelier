@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Related-Product.css'
+import ModalPopup from '../Modal-Popup/Modal-Popup.jsx'
 
-export default function RelatedProduct({ product, styleData, updateOverviewProduct }) {
-  let oneStyleImg = null;
-  let originalPrice = null;
+export default function RelatedProduct({ product, styleData, updateOverviewProduct, overviewCharacteristics }) {
+  const [display, setDisplay] = useState(false);
+
+  let oneStyleImg, originalPrice;
   let salePrice = null;
   if (styleData) {
     oneStyleImg = styleData.results[0].photos[0].thumbnail_url;
@@ -18,6 +20,10 @@ export default function RelatedProduct({ product, styleData, updateOverviewProdu
     // console.log('og price', salePrice)
   }
 
+  let handleStarClick = () => {
+    setDisplay(!display);
+  }
+
   // console.log('where my image', product)
   let handleProductClick = (e) => {
     let currentProduct = e.target.parentNode;
@@ -28,7 +34,12 @@ export default function RelatedProduct({ product, styleData, updateOverviewProdu
     <div className='each-product' onClick={()=>{updateOverviewProduct(product.id)}}>
       <div>
         <img src={oneStyleImg}></img>
-        <i id="starIcon" className="far fa-star"></i>
+        <i onClick={handleStarClick} id="starIcon" className="far fa-star"></i>
+        <ModalPopup
+        show={display}
+        thumbnailFeatures={product.features}
+        thumbnailID={product.id}
+        overviewCharacteristics={overviewCharacteristics}/>
       </div>
       <section>
         <p>{product.category}</p>

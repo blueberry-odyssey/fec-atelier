@@ -27,7 +27,7 @@ export default class App extends React.Component {
     console.log('newProd', newProductID)
     let newProductIDString = newProductID.toString();
     this.setState({
-      product_id: newProductID,
+      product_id: newProductIDString,
       id: newProductID
     })
   }
@@ -74,13 +74,17 @@ export default class App extends React.Component {
       return (
         <div className='app-body'>
           <div className='component-1'>
-            <Overview product_id={this.state['product_id']} />
+            {/* <Overview product_id={this.state['product_id']} /> */}
           </div>
           <div className='component-3'>
-            <RelatedProducts relatedItems={this.state.relatedItems} styleData={this.state.styleData} updateOverviewProduct={this.updateOverviewProduct}/>
+            <RelatedProducts
+            relatedItems={this.state.relatedItems}
+            styleData={this.state.styleData}
+            updateOverviewProduct={this.updateOverviewProduct}
+            overviewCharacteristics={this.state.characteristics}/>
           </div>
           <div className='component-2'>
-            <RatingsReviews {... this.state}/>
+            {/* <RatingsReviews {... this.state}/> */}
           </div>
         </div>
       )
@@ -88,13 +92,17 @@ export default class App extends React.Component {
       return (
         <div className='app-body'>
           <div className='component-1'>
-            <Overview product_id={this.state['product_id']} />
+            {/* <Overview product_id={this.state['product_id']} /> */}
           </div>
           <div className='component-3'>
-            <RelatedProducts relatedItems={this.state.relatedItems} styleData={this.state.styleData} />
+            <RelatedProducts
+            relatedItems={this.state.relatedItems}
+            styleData={this.state.styleData}
+            updateOverviewProduct={this.updateOverviewProduct}
+            overviewCharacteristics={this.state.characteristics}/>
           </div>
           <div className='component-2'>
-            <RatingsReviews {... this.state}/>
+            {/* <RatingsReviews {... this.state}/> */}
           </div>
         </div>
       )

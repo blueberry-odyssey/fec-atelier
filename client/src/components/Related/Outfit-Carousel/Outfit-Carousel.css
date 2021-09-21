@@ -1,35 +1,11 @@
-.each-product {
+/* .each-product {
   font-family: 'Cantarell', sans-serif;
   height: 24em;
   width: 15em;
   margin: 1em;
-}
+} */
 
 #add-button {
   text-align: center;
   background-color: thistle;
-}
-
-section {
-  width: inherit;
-  height: 6em;
-  background-color: thistle;
-}
-
-img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  float: left;
-  z-index: 2;
-}
-
-p {
-  vertical-align: top;
-  margin: 0;
-}
-
-h3 {
-  margin: 0;
 }
