@@ -7,7 +7,7 @@ const Thumbnails = function (props) {
   return (
     <div className='styles'>
       {props.styles.map(function (style) {
-        return <p key={style.name}>{style.name}</p>
+        return <img key={style.name} src={style.photos[0]['thumbnail_url']}></img>
       })}
     </div>
   )
