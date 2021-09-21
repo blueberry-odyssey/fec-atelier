@@ -21,7 +21,9 @@ export default function RelatedProduct({ product, styleData, updateOverviewProdu
   }
 
   let handleStarClick = () => {
-    setDisplay(!display);
+    if (!display) {
+      setDisplay(true);
+    }
   }
 
   // console.log('where my image', product)
@@ -37,8 +39,7 @@ export default function RelatedProduct({ product, styleData, updateOverviewProdu
         <i onClick={handleStarClick} id="starIcon" className="far fa-star"></i>
         <ModalPopup
         show={display}
-        thumbnailFeatures={product.features}
-        thumbnailID={product.id}
+        product={product}
         overviewCharacteristics={overviewCharacteristics}/>
       </div>
       <section>
