@@ -5,8 +5,11 @@
 }
 
 #app {
-  margin: 5%;
+  /* display: flex; */
+  margin: auto;
   margin-top: 0%;
+  width: 1000px;
+  align-content: center;
 }
 
 .component-1 {
@@ -86,9 +89,68 @@
   width: 400px;
 }
 
-.reviews-column {
-
+.styles {
+  display: flex;
+  flex-wrap: wrap;
 }
+
+.row {
+  width: 100%;
+  margin: 0%;
+  padding:0%;
+  align-content: center;
+  justify-content: center;
+}
+
+.thumbnail {
+  width: 80px;
+  height: 80px;
+  margin: 5px;
+  border-radius: 50%;
+}
+
+.sale-price {
+  color: red;
+}
+
+.dropdowns {
+  margin-top: 20px;
+  margin-left: 5px;
+}
+
+.dropdown {
+  width: 170px;
+  height: 50px;
+  text-align: center;
+  font-size: medium;
+  font-family: 'Playfair Display', serif;
+  margin: 5px;
+}
+
+.cart-button {
+  width: 170px;
+  height: 50px;
+  text-align: center;
+  font-size: medium;
+  font-family: 'Playfair Display', serif;
+  margin: 5px;
+  border:rgb(96, 30, 158) solid;
+  border-width: 1px;
+  background-color: white;
+}
+
+.cart-button:hover{
+  color:thistle;
+  cursor: pointer;
+}
+
+.cart-buttons {
+  margin-left: 5px;
+}
+
+/* .reviews-column {
+
+} */
 
 #review-block {
   width: 400px;

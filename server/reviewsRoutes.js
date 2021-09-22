@@ -19,7 +19,7 @@ reviewsRouter.get('/getAllReviews', (req, res) => {
   // retrieve reviews by product id
   axios.get(basePath + '/reviews/', options)
     .then((results) => {
-      console.log('axios getReviews response: ', results.data);
+      // console.log('axios getReviews response: ', results.data);
       res.send(results.data);
     })
     .catch((err) => {
@@ -69,7 +69,7 @@ reviewsRouter.get('/meta/getMeta', (req, res) => {
       let recommended = trueRec / falseRec;
       parsedData["recommended"] = recommended;
 
-      console.log('reviews server parsed data:', parsedData);
+      // console.log('reviews server parsed data:', parsedData);
       res.send(parsedData);
     })
     .catch((err) => {
@@ -80,7 +80,7 @@ reviewsRouter.get('/meta/getMeta', (req, res) => {
 
 // add a review
 reviewsRouter.post('/postReview', (req, res) => {
-  console.log('server req:', req.body);
+  // console.log('server req:', req.body);
 
   let options = {
     headers: {
@@ -102,7 +102,7 @@ reviewsRouter.post('/postReview', (req, res) => {
     characteristics: req.body.characteristics
   };
 
-  console.log('server parsed body:', parsed);
+  // console.log('server parsed body:', parsed);
 
   axios.post('/reviews', parsed, options)
     .then((results) => {
@@ -126,11 +126,11 @@ reviewsRouter.put('/report', (req, res) => {
 
   axios.put(basePath + '/reviews/' + reviewId + '/report', {}, options)
     .then((result) => {
-      console.log('axios report success');
+      // console.log('axios report success');
       res.status(204).end();
     })
     .catch((err) => {
-      console.log('server axios error message:', err);
+      // console.log('server axios error message:', err);
     });
 })
 
@@ -145,7 +145,7 @@ reviewsRouter.put('/helpful', (req, res) => {
 
   axios.put(basePath + '/reviews/' + reviewId + '/helpful', {}, options)
     .then((result) => {
-      console.log('axios helpful success');
+      // console.log('axios helpful success');
       res.status(204).end();
     })
     .catch((err) => {

@@ -23,7 +23,7 @@ export default class App extends React.Component {
     this.updateOverviewProduct = this.updateOverviewProduct.bind(this);
   }
 
-  updateOverviewProduct (newProductID) {
+  updateOverviewProduct(newProductID) {
     console.log('newProd', newProductID)
     let newProductIDString = newProductID.toString();
     this.setState({
@@ -78,15 +78,15 @@ export default class App extends React.Component {
           </div>
           <div className='component-3'>
             <RelatedProducts
-            relatedItems={this.state.relatedItems}
-            styleData={this.state.styleData}
-            updateOverviewProduct={this.updateOverviewProduct}
-            overviewCharacteristics={this.state.characteristics}/>
+              relatedItems={this.state.relatedItems}
+              styleData={this.state.styleData}
+              updateOverviewProduct={this.updateOverviewProduct}
+              overviewCharacteristics={this.state.characteristics} />
           </div>
           <div className='component-2'>
-            <RatingsReviews {... this.state}/>
+            <RatingsReviews {... this.state} />
           </div>
-        </div>
+        </div >
       )
     } else {
       return (
@@ -96,13 +96,13 @@ export default class App extends React.Component {
           </div>
           <div className='component-3'>
             <RelatedProducts
-            relatedItems={this.state.relatedItems}
-            styleData={this.state.styleData}
-            updateOverviewProduct={this.updateOverviewProduct}
-            overviewCharacteristics={this.state.characteristics}/>
+              relatedItems={this.state.relatedItems}
+              styleData={this.state.styleData}
+              updateOverviewProduct={this.updateOverviewProduct}
+              overviewCharacteristics={this.state.characteristics} />
           </div>
           <div className='component-2'>
-            <RatingsReviews {... this.state}/>
+            <RatingsReviews {... this.state} />
           </div>
         </div>
       )
