@@ -7,12 +7,14 @@ class Cart extends React.Component {
     this.state = {
       selectedStyle: {},
       skus: {},
-      quantityList: 1,
+      quantityAvailable: 1,
+      quantityArray: [],
       sizeSelected: ''
     };
 
     this.handleSizeChange = this.handleSizeChange.bind(this);
     this.manipulateData = this.manipulateData.bind(this);
+    this.createQuantityArray = this.createQuantityArray.bind(this);
     // this.handleQuantityChange = this.handleQuantityChange.bind(this);
     // this.findAvailableQuantity = this.findAvailableQuantity.bind(this);
   }
@@ -34,7 +36,17 @@ class Cart extends React.Component {
 
     this.manipulateData(this.state.skus).forEach(function ({ size, quantity }) {
       if (size === event.target.value) {
-        context.setState({ quantityList: quantity });
+        context.setState({ quantityAvailable: quantity });
+
+        let quantityArray;
+
+        if (quantity >= 15) {
+          quantityArray = context.createQuantityArray(15);
+        } else {
+          quantityArray = context.createQuantityArray(quantity);
+        }
+
+        context.setState({ quantityArray: quantityArray });
       }
     });
   }
@@ -46,6 +58,10 @@ class Cart extends React.Component {
       array.push(object[key]);
     }
     return array;
+  }
+
+  createQuantityArray(quantity) {
+    return [...Array(quantity + 1).keys()].slice(1);
   }
 
   // componentDidMount() {
@@ -70,6 +86,7 @@ class Cart extends React.Component {
     // console.log(this.state.skus && Object.values(this.state.skus));
     let result = this.manipulateData(this.state.skus);
     // console.log('result: ', this.result);
+    console.log(this.createQuantityArray(4));
 
     return (
       <div>
