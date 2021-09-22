@@ -34,7 +34,6 @@ export default function ModalPopup({ product, overviewCharacteristics, show }) {
     console.log('characteristicList', characteristicList, thumbnailChars, overviewCharacteristics)
 
     const reduceCompare = _.reduce(characteristicList, (memo, val, idx) => {
-      console.log('memo', memo)
       if (thumbnailChars[val] && overviewCharacteristics[val]) {
         return memo.concat(
           <div key={idx}>
@@ -59,13 +58,15 @@ export default function ModalPopup({ product, overviewCharacteristics, show }) {
     console.log(reduceCompare)
 
     return (
-      <div className='modal-window'>Comparing
-        <section>
-          <h3>{product.name}</h3>
-          <h3>product2</h3>
-        </section>
-        <div>
-          {reduceCompare}
+      <div className='modal-background'>
+        <div className='modal-window'>Comparing
+          <section>
+            <h3>{product.name}</h3>
+            <h3>product2</h3>
+          </section>
+          <div className='compare-list'>
+            {reduceCompare}
+          </div>
         </div>
       </div>
     )

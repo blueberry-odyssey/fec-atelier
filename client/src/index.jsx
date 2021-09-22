@@ -74,7 +74,7 @@ export default class App extends React.Component {
       return (
         <div className='app-body'>
           <div className='component-1'>
-            <Overview product_id={this.state['product_id']} />
+            {/* <Overview product_id={this.state['product_id']} /> */}
           </div>
           <div className='component-3'>
             <RelatedProducts
@@ -84,7 +84,7 @@ export default class App extends React.Component {
             overviewCharacteristics={this.state.characteristics}/>
           </div>
           <div className='component-2'>
-            <RatingsReviews {... this.state}/>
+            {/* <RatingsReviews {... this.state}/> */}
           </div>
         </div>
       )
@@ -92,7 +92,7 @@ export default class App extends React.Component {
       return (
         <div className='app-body'>
           <div className='component-1'>
-            <Overview product_id={this.state['product_id']} />
+            {/* <Overview product_id={this.state['product_id']} /> */}
           </div>
           <div className='component-3'>
             <RelatedProducts
@@ -102,7 +102,7 @@ export default class App extends React.Component {
             overviewCharacteristics={this.state.characteristics}/>
           </div>
           <div className='component-2'>
-            <RatingsReviews {... this.state}/>
+            {/* <RatingsReviews {... this.state}/> */}
           </div>
         </div>
       )
