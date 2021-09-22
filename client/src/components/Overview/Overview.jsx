@@ -25,14 +25,14 @@ class Overview extends React.Component {
 
   getProductDetails(productId) {
     let context = this;
-    console.log(context.props['product_id']);
+    //console.log(context.props['product_id']);
     axios({
       method: 'get',
       url: '/products/getProductDetails',
       params: { product_id: productId }
     })
       .then(function (productData) {
-        console.log('productData: ', productData.data);
+        //console.log('productData: ', productData.data);
         context.setState({ productData: productData.data });
       })
       .catch(function (err) {
@@ -58,7 +58,7 @@ class Overview extends React.Component {
 
   //invoke ProductInfo, StyleSelector, Cart, and ImageGallery Components
   render() {
-    console.log('Overview.jsx props product_id', this.props);
+    //console.log('Overview.jsx props product_id', this.props);
     return (
       <div>
         <h1 className='title'>blueberry odyssey</h1>

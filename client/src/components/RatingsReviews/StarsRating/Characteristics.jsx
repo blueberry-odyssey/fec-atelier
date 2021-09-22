@@ -1,7 +1,6 @@
 import React from 'react';
 
 const Characteristics = (props) => {
-  console.log('characteristics props:', props);
   return (
     // <div>
     //   {props.map(factor => (
@@ -10,13 +9,13 @@ const Characteristics = (props) => {
     //     </div>
     //   ))}
     // </div>
-    <ul>
-      <li>Size</li>
-      <li>Comfort</li>
-      <li>Width</li>
-      <li>Length</li>
-      <li>Quality</li>
-    </ul>
+    <div className='characteristics-block'>
+      <p>Size</p><br/>
+      <p>Comfort</p><br/>
+      <p>Width</p><br/>
+      <p>Length</p><br/>
+      <p>Quality</p><br/>
+    </div>
   )
 }
 

@@ -16,7 +16,7 @@ const Thumbnails = function (props) {
   }
   createRowsOf4(props.styles);
 
-  console.log('ROWS: ', rows);
+  //console.log('ROWS: ', rows);
   return (
     <div className='styles' >
       {rows.map(function (row, index) {

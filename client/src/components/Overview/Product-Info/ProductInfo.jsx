@@ -4,7 +4,7 @@ import StarRating from './StarRating.jsx';
 import ItemDetails from './ItemDetails.jsx';
 
 const ProductInfo = function (props) {
-  console.log('ProductInfo props product_id', props);
+  //console.log('ProductInfo props product_id', props);
   return (
     <div>
       <StarRating />

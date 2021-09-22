@@ -29,7 +29,7 @@ class StyleSelector extends React.Component {
       params: { product_id: productId }
     })
       .then(function (styles) {
-        console.log('styles array: ', styles);
+        //console.log('styles array: ', styles);
         context.setState({ styles: styles.data });
         context.setState({ selectedStyle: styles.data[0] });
       })
@@ -51,8 +51,8 @@ class StyleSelector extends React.Component {
 
   render() {
     // console.log(this.props.styles[0].name);
-    console.log('STATE: ', this.state);
-    console.log('PROPS: ', this.props);
+    //console.log('STATE: ', this.state);
+    //console.log('PROPS: ', this.props);
     return (
       <div>
         <Price original={this.state.selectedStyle['original_price']} sale={this.state.selectedStyle['sale_price']} />

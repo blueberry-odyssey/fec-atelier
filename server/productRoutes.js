@@ -13,7 +13,7 @@ productRouter.get('/getProductDetails', function (req, res) {
   // console.log('req.body: ', req.body);
   axios.get(`${basePath}/products/${req.query['product_id']}/`, params)
     .then(function (productData) {
-      console.log('productData!!: ', productData.data);
+      //console.log('productData!!: ', productData.data);
       // console.log(typeof productData.data.id);
       res.send(productData.data);
       res.end();
@@ -26,10 +26,10 @@ productRouter.get('/getProductDetails', function (req, res) {
 });
 
 productRouter.get('/getStyles', function (req, res) {
-  console.log('/getStyles reached: ', req.query['product_id']);
+  //console.log('/getStyles reached: ', req.query['product_id']);
   axios.get(`${basePath}/products/${req.query['product_id']}/styles`, params)
     .then(function (styles) {
-      console.log('styles!!: ', styles.data);
+      //console.log('styles!!: ', styles.data);
       res.send(styles.data.results);
       res.end();
     })
