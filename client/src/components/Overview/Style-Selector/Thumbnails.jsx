@@ -1,4 +1,5 @@
 import React from 'react';
+import ThumbnailRow from './ThumbnailRow.jsx';
 
 //displays 4 thumbnails in a row
 //displays checkmark on style selected
@@ -18,11 +19,22 @@ const Thumbnails = function (props) {
   console.log('ROWS: ', rows);
   return (
     <div className='styles' >
-      {props.styles.map(function (style) {
-        return <img key={style.name} src={style.photos[0]['thumbnail_url']}></img>
+      {rows.map(function (row, index) {
+        return (
+          <ThumbnailRow row={row} key={index} />
+        )
+        // return <img key={style.name} src={style.photos[0]['thumbnail_url']}></img>
       })}
     </div>
   )
+
+  // return (
+  //   <div className='styles' >
+  //     {props.styles.map(function (style) {
+  //       return <img key={style.name} src={style.photos[0]['thumbnail_url']}></img>
+  //     })}
+  //   </div>
+  // )
 }
 
 export default Thumbnails;
