@@ -10,7 +10,7 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: 47421,
+      id: 47423,
       product_id: '47423',
       relatedItems: [],
       styleData: [],
@@ -27,7 +27,7 @@ export default class App extends React.Component {
     console.log('newProd', newProductID)
     let newProductIDString = newProductID.toString();
     this.setState({
-      product_id: newProductID,
+      product_id: newProductIDString,
       id: newProductID
     })
   }
@@ -56,7 +56,7 @@ export default class App extends React.Component {
 
     axios.get('/reviews/meta/getMeta', { params: { product_id: this.state.id } })
       .then(result => {
-        console.log(result.data);
+        // console.log(result.data);
         this.setState({
           ratings: result.data.average,
           characteristics: result.data.characteristics,
@@ -77,7 +77,11 @@ export default class App extends React.Component {
             <Overview product_id={this.state['product_id']} />
           </div>
           <div className='component-3'>
-            <RelatedProducts relatedItems={this.state.relatedItems} styleData={this.state.styleData} updateOverviewProduct={this.updateOverviewProduct}/>
+            <RelatedProducts
+            relatedItems={this.state.relatedItems}
+            styleData={this.state.styleData}
+            updateOverviewProduct={this.updateOverviewProduct}
+            overviewCharacteristics={this.state.characteristics}/>
           </div>
           <div className='component-2'>
             <RatingsReviews {... this.state}/>
@@ -91,7 +95,11 @@ export default class App extends React.Component {
             <Overview product_id={this.state['product_id']} />
           </div>
           <div className='component-3'>
-            <RelatedProducts relatedItems={this.state.relatedItems} styleData={this.state.styleData} />
+            <RelatedProducts
+            relatedItems={this.state.relatedItems}
+            styleData={this.state.styleData}
+            updateOverviewProduct={this.updateOverviewProduct}
+            overviewCharacteristics={this.state.characteristics}/>
           </div>
           <div className='component-2'>
             <RatingsReviews {... this.state}/>

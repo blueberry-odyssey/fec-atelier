@@ -9,7 +9,7 @@
   align-items: center;
 }
 
-button {
+.carousel-container > button {
   cursor: pointer;
   z-index: 10;
   padding: 0;
@@ -18,14 +18,7 @@ button {
   height: 10em;
 }
 
-h1 {
-  width: 100%;
-  display: block;
-  top: 0;
-  left: 0;
-}
-
-button:hover {
+.carousel-container > button:hover {
   color: thistle;
 }
 
@@ -33,7 +26,7 @@ button:hover {
   transform: rotate(180deg)
 }
 
-i {
+button > i {
   font-weight: 100;
   font-size: 7em;
 }

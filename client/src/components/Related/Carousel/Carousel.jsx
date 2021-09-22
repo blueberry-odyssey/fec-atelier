@@ -7,7 +7,8 @@ export default class Carousel extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      translate: 0
+      translate: 0,
+      hidden: 'visible'
     }
     this.moveLeft = this.moveLeft.bind(this);
     this.moveRight = this.moveRight.bind(this);
@@ -29,17 +30,22 @@ export default class Carousel extends React.Component {
   }
 
   render() {
-    const { relatedItems, styleData, updateOverviewProduct } = this.props;
+    this.state.translate === 0 ? this.state.hidden = 'hidden' : this.state.hidden = 'visible';
+    const { relatedItems, styleData, updateOverviewProduct, overviewCharacteristics } = this.props;
     // console.log('style in carousel', updateOverviewProduct);
     if (styleData) {
       return (
         <div className='carousel-container'>
-          <button id='left-button' onClick={this.moveLeft}><i className="fas fa-chevron-right"></i></button>
+          <button
+          style={{'visibility': this.state.hidden}}
+          id='left-button'
+          onClick={this.moveLeft}><i className="fas fa-chevron-right"></i></button>
           <div className='carousel-slider'>
               <RelatedCarousel
               styleData={styleData}
               relatedItems={relatedItems}
               updateOverviewProduct={updateOverviewProduct}
+              overviewCharacteristics={overviewCharacteristics}
               translate={this.state.translate}/>
           </div>
           <button id='right-button' onClick={this.moveRight}><i className="fas fa-chevron-right"></i></button>
@@ -48,7 +54,10 @@ export default class Carousel extends React.Component {
     } else {
       return (
         <div className='carousel-container'>
-          <button id='left-button' onClick={this.moveLeft}><i className="fas fa-chevron-right"></i></button>
+          <button
+          style={{'visibility': this.state.hidden}}
+          id='left-button'
+          onClick={this.moveLeft}><i className="fas fa-chevron-right"></i></button>
           <div className='carousel-slider'>
             <div>
               <OutfitCarousel/>
