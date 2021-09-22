@@ -11,13 +11,16 @@ reviewsRouter.get('/getAllReviews', (req, res) => {
   let options = {
     headers: { Authorization: config.TOKEN },
     params: {
-      product_id: productId
+      product_id: productId,
+      count: 50
     }
   };
 
   // retrieve reviews by product id
   axios.get(basePath + '/reviews/', options)
     .then((results) => {
+      // let date = transaction.date.toISOString();
+      // transaction.date = date.slice(0, 10);
       console.log('axios GET reviews success!');
       res.status(200).send(results.data);
     })

@@ -40,7 +40,6 @@ export default class ReviewsList extends React.Component {
   sortReviews() {
     let params = {
       product_id: this.state.id,
-      count: 50,
       sort: this.state.sort
     };
 
@@ -113,13 +112,13 @@ export default class ReviewsList extends React.Component {
       return (
         <div className='reviews-column'>
           <button onClick={this.postReview}>Post Review Test</button>
-          <p>(total number) reviews, sorted by:
+          <p>{this.state.reviews.length} reviews, sorted by:
           <select>
             <option>Relevance</option>
             <option>Helpfulness</option>
             <option>Newest</option>
           </select></p><br/>
-          <ReviewBlock className='review-block' reviews={this.state.reviews} reportReview={this.reportReview} markHelpful={this.markHelpful} />
+          <ReviewBlock reviews={this.state.reviews} reportReview={this.reportReview} markHelpful={this.markHelpful} />
           <table>
             <tbody>
               <tr>

@@ -106,7 +106,6 @@
   /* flex-wrap: nowrap; */
   /* align-items: flex-start; */
   /* border: 1px solid black; */
-  /* width: 300px; */
 }
 
 .stars-block {
@@ -128,10 +127,11 @@
   flex: 2;
   /* align-items: flex-start; */
   /* border: 1px solid black; */
-  /* width: 400px; */
 }
 
 .review-block {
+  overflow: scroll;
+  height: 400px;
   background-color: thistle;
   font-family: 'Playfair Display', serif;
 }
@@ -142,6 +142,7 @@
 
 .review-summary {
   font-size: 20px;
+  font-weight: bold;
 }
 
 .review-body {
@@ -172,13 +173,9 @@
   height: 50px;
 }
 
-/* .modal-form {
-  position: fixed;
-  left: 0;
-  display: flex;
-  align-items: left;
-  justify-content: center;
-} */
+.modal-form {
+  flex-wrap: wrap;
+}
 
 .add-review-btn {
   font-family: 'Playfair Display', serif;

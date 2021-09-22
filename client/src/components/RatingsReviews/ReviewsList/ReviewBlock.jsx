@@ -4,31 +4,7 @@ const ReviewBlock = (props) => {
   //console.log('review block props', props);
 
   return (
-    <div className='review-block'>
-      <p>REVIEW BLOCK MOCK-UP</p><br/>
-      <i className="fas fa-star fa-sm"></i>
-      <i className="fas fa-star fa-sm"></i>
-      <i className="fas fa-star fa-sm"></i>
-      <i className="fas fa-star fa-sm"></i>
-      <i className="fas fa-star fa-sm"></i>
-      <p className='review-username-date'>Username1234, September 20, 2021</p><br/>
-      <p className='review-summary'>Title: Best purchase ever!</p><br/>
-      <p className='review-body'>Body: Why did you like the product or not?</p><br/>
-      <p className='review-recommend'><i className="fas fa-check fa-sm"></i> I recommend this product</p><br/>
-      <button className='review-helpful-btn' onClick={props.markHelpful}>Helpful</button>
-      <button className='review-report-btn' onClick={props.reportReview}>Report</button>
-    </div>
-  )
-}
-
-export default ReviewBlock;
-
-
-
-
-
-
-{/* <div>
+    <div className='review-block' >
       {props.reviews.map(review => (
         <div key={review.review_id} className='review-block'>
           <table>
@@ -45,7 +21,8 @@ export default ReviewBlock;
               </tr>
               <tr>
                 <td>
-                  <button className='review-helpful' onClick={props.markHelpful}>Helpful</button>
+                  <button className='review-helpful' onClick={props.markHelpful}>Helpful? </button>
+                  <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
                   <button className='review-report' onClick={props.reportReview}>Report</button>
                 </td>
               </tr>
@@ -53,4 +30,31 @@ export default ReviewBlock;
           </table>
         </div>
       ))}
-    </div> */}
+    </div>
+  )
+}
+
+export default ReviewBlock;
+
+
+
+
+
+
+
+
+
+    // <div className='review-block'>
+    //   <p>REVIEW BLOCK MOCK-UP</p><br/>
+    //   <i className="fas fa-star fa-sm"></i>
+    //   <i className="fas fa-star fa-sm"></i>
+    //   <i className="fas fa-star fa-sm"></i>
+    //   <i className="fas fa-star fa-sm"></i>
+    //   <i className="fas fa-star fa-sm"></i>
+    //   <p className='review-username-date'>Username1234, September 20, 2021</p><br/>
+    //   <p className='review-summary'>Title: Best purchase ever!</p><br/>
+    //   <p className='review-body'>Body: Why did you like the product or not?</p><br/>
+    //   <p className='review-recommend'><i className="fas fa-check fa-sm"></i> I recommend this product</p><br/>
+    //   <button className='review-helpful-btn' onClick={props.markHelpful}>Helpful</button>
+    //   <button className='review-report-btn' onClick={props.reportReview}>Report</button>
+    // </div>
