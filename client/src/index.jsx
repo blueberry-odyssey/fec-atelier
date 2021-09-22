@@ -10,8 +10,8 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: 47423,
-      product_id: '47423',
+      id: 47421,
+      product_id: '47421',
       relatedItems: [],
       styleData: [],
       ratings: 0,

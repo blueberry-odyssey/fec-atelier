@@ -9,14 +9,13 @@ class Cart extends React.Component {
       skus: {},
       quantityAvailable: 1,
       quantityArray: [],
-      sizeSelected: 'Select Size'
+      sizeSelected: 'Select Size',
+      disabled: true
     };
 
     this.handleSizeChange = this.handleSizeChange.bind(this);
     this.manipulateData = this.manipulateData.bind(this);
     this.createQuantityArray = this.createQuantityArray.bind(this);
-    // this.handleQuantityChange = this.handleQuantityChange.bind(this);
-    // this.findAvailableQuantity = this.findAvailableQuantity.bind(this);
   }
 
   static getDerivedStateFromProps(props, state) {
@@ -34,10 +33,12 @@ class Cart extends React.Component {
     let context = this;
     this.setState({ sizeSelected: event.target.value });
 
+    //if Select Size is chosen, disable quantity dropdown
     if (event.target.value === 'Select Size') {
-      this.setState({ quantityAvailable: 1, quantityArray: [] })
+      this.setState({ disabled: true })
     }
 
+    //if size is valid, create quantityAvailable and quantityArray
     this.manipulateData(this.state.skus).forEach(function ({ size, quantity }) {
       if (size === event.target.value) {
         context.setState({ quantityAvailable: quantity });
@@ -50,7 +51,7 @@ class Cart extends React.Component {
           quantityArray = context.createQuantityArray(quantity);
         }
 
-        context.setState({ quantityArray: quantityArray });
+        context.setState({ quantityArray: quantityArray, disabled: false });
       }
     });
   }
@@ -68,29 +69,8 @@ class Cart extends React.Component {
     return [...Array(quantity + 1).keys()].slice(1);
   }
 
-  // componentDidMount() {
-  //   this.setState({ skus: this.manipulateData(this.state.skus) })
-  // }
-  // handleQuantityChange(event) {
-  //   this.setState({ quantitySelected: event.target.value });
-  // }
-
-  // findAvailableQuantity(size) {
-  //   console.log('INVOKED!');
-  //   let context = this;
-  //   let itemArray = this.props.skus && Object.values(this.props.skus);
-  //   itemArray.forEach(function (item) {
-  //     if (item.size === size) {
-  //       context.setState({ quantityAvailable: item.quantity });
-  //     }
-  //   })
-  // }
-
   render() {
-    // console.log(this.state.skus && Object.values(this.state.skus));
     let result = this.manipulateData(this.state.skus);
-    // console.log('result: ', this.result);
-    console.log(this.createQuantityArray(4));
 
     return (
       <div>
@@ -98,12 +78,12 @@ class Cart extends React.Component {
         <div>
           <select value={this.state.sizeSelected} onChange={this.handleSizeChange}>
             <option>Select Size</option>
-            {result.map(function ({ size, quantity }) {
-              return (quantity > 0 && <option key={size}>{size}</option>)
+            {result.map(function ({ size, quantity }, key) {
+              return (quantity > 0 && <option key={key}>{size}</option>)
             })}
           </select>
 
-          <select defaultValue={this.state.sizeSelected === 'Select Size' ? '-----' : 1}>
+          <select defaultValue={this.state.sizeSelected === 'Select Size' ? '-----' : 1} disabled={this.state.disabled}>
             <option disabled>-----</option>
             {this.state.quantityArray.map(function (num) {
               return <option key={num}>{num}</option>
