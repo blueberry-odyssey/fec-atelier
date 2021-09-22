@@ -101,9 +101,9 @@ class Cart extends React.Component {
           </select>
 
         </div>
-        <div>
-          <button>Add To Cart</button>
-          <button>Add to Favorites</button>
+        <div className='cart-buttons'>
+          <button className='cart-button'>Add To Cart</button>
+          <button className='cart-button'>Add to Favorites</button>
         </div>
 
       </div>
