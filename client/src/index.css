@@ -5,8 +5,11 @@
 }
 
 #app {
-  margin: 5%;
+  /* display: flex; */
+  margin: auto;
   margin-top: 0%;
+  width: 1000px;
+  align-content: center;
 }
 
 .component-1 {
@@ -14,7 +17,6 @@
 }
 
 .component-2 {
-  background-color: white;
   font-family: 'Playfair Display', serif;
 }
 
@@ -83,6 +85,65 @@
   font-style: italic;
 }
 
+.styles {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.row {
+  width: 100%;
+  margin: 0%;
+  padding:0%;
+  align-content: center;
+  justify-content: center;
+}
+
+.thumbnail {
+  width: 80px;
+  height: 80px;
+  margin: 5px;
+  border-radius: 50%;
+}
+
+.sale-price {
+  color: red;
+}
+
+.dropdowns {
+  margin-top: 20px;
+  margin-left: 5px;
+}
+
+.dropdown {
+  width: 170px;
+  height: 50px;
+  text-align: center;
+  font-size: medium;
+  font-family: 'Playfair Display', serif;
+  margin: 5px;
+}
+
+.cart-button {
+  width: 170px;
+  height: 50px;
+  text-align: center;
+  font-size: medium;
+  font-family: 'Playfair Display', serif;
+  margin: 5px;
+  border:rgb(96, 30, 158) solid;
+  border-width: 1px;
+  background-color: white;
+}
+
+.cart-button:hover{
+  color:thistle;
+  cursor: pointer;
+}
+
+.cart-buttons {
+  margin-left: 5px;
+}
+
 
 /* ======== RATINGS & REVIEWS ======== */
 
@@ -108,30 +169,16 @@
   /* border: 1px solid black; */
 }
 
-.stars-block {
-  flex-wrap: nowrap;
-  font-family: 'Playfair Display', serif;
-}
 
-.stars-rating {
-  flex-wrap: nowrap;
-}
-
-.characteristics-block {
-  font-family: 'Playfair Display', serif;
-}
 
 .reviews-column {
-  /*display: inline-flex;*/
-  flex-direction: column;
+  flex-flow: column nowrap;
   flex: 2;
-  /* align-items: flex-start; */
-  /* border: 1px solid black; */
+  width: 450px;
 }
 
 .review-block {
-  overflow: scroll;
-  height: 400px;
+  width: 400px;
   background-color: thistle;
   font-family: 'Playfair Display', serif;
 }

@@ -8,16 +8,36 @@ let params = {
   headers: { Authorization: config.TOKEN },
 };
 
-productRouter.post('/getProductDetails', function (req, res) {
+productRouter.get('/getProductDetails', function (req, res) {
   // console.log('POST /getProductDetails endpoint reached!');
   // console.log('req.body: ', req.body);
-  axios.get(`${basePath}/products/${req.body['product_id']}/`, params)
+  axios.get(`${basePath}/products/${req.query['product_id']}/`, params)
     .then(function (productData) {
-      // console.log('productData!!: ', productData.data);
+      //console.log('productData!!: ', productData.data);
+      // console.log(typeof productData.data.id);
       res.send(productData.data);
       res.end();
     })
+    .catch(function (err) {
+      console.log('error in /getProductDetails: ', err);
+      res.send(err);
+      res.end();
+    })
 });
+
+productRouter.get('/getStyles', function (req, res) {
+  //console.log('/getStyles reached: ', req.query['product_id']);
+  axios.get(`${basePath}/products/${req.query['product_id']}/styles`, params)
+    .then(function (styles) {
+      //console.log('styles!!: ', styles.data);
+      res.send(styles.data.results);
+      res.end();
+    })
+    .catch(function (err) {
+      console.log('err in /getStyles productRoutes: ', err);
+      res.end();
+    })
+})
 
 //productRouter.post('/endpoint', function(req, res) {});
 

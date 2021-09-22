@@ -9,20 +9,21 @@ export default class RelatedProducts extends React.Component {
   }
 
   render() {
-    let {relatedItems, styleData, updateOverviewProduct} = this.props;
-    // console.log('style data in main', this.props);
+    let {relatedItems, styleData, updateOverviewProduct, overviewCharacteristics} = this.props;
+    // console.log('style data in main', overviewCharacteristics);
     return (
-      <>
+      <div className='related'>
         <h1>Related <span id='pink'>Products</span></h1>
         <Carousel
         relatedItems={relatedItems}
         styleData={styleData}
-        updateOverviewProduct={updateOverviewProduct}/>
+        updateOverviewProduct={updateOverviewProduct}
+        overviewCharacteristics={overviewCharacteristics}/>
         <h1>Make Your Fit</h1>
         <Carousel
         relatedItems={relatedItems}
         updateOverviewProduct={updateOverviewProduct}/>
-      </>
+      </div>
     )
   }
 }

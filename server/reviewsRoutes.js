@@ -19,10 +19,8 @@ reviewsRouter.get('/getAllReviews', (req, res) => {
   // retrieve reviews by product id
   axios.get(basePath + '/reviews/', options)
     .then((results) => {
-      // let date = transaction.date.toISOString();
-      // transaction.date = date.slice(0, 10);
-      console.log('axios GET reviews success!');
-      res.status(200).send(results.data);
+      // console.log('axios getReviews response: ', results.data);
+      res.send(results.data);
     })
     .catch((err) => {
       console.log('axios GET reviews failed');
@@ -71,8 +69,8 @@ reviewsRouter.get('/meta/getMeta', (req, res) => {
       let recommended = trueRec / falseRec;
       parsedData["recommended"] = recommended;
 
-      console.log('axios GET reviews/meta success!');
-      res.status(200).send(parsedData);
+      // console.log('reviews server parsed data:', parsedData);
+      res.send(parsedData);
     })
     .catch((err) => {
       console.log('axios GET reviews/meta failed');
@@ -83,6 +81,7 @@ reviewsRouter.get('/meta/getMeta', (req, res) => {
 
 // add a review
 reviewsRouter.post('/postReview', (req, res) => {
+  // console.log('server req:', req.body);
 
   let options = {
     headers: {
@@ -115,7 +114,7 @@ reviewsRouter.put('/report', (req, res) => {
 
   axios.put(basePath + '/reviews/' + reviewId + '/report', {}, options)
     .then((result) => {
-      console.log('axios report success');
+      // console.log('axios report success');
       res.status(204).end();
     })
     .catch((err) => {
