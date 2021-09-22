@@ -8,14 +8,12 @@ export default class RatingsReviews extends React.Component {
     //console.log('class ratings props:', props);
     this.state = {
       id: props.id,
-      characteristics: null,
-      ratings: null,
-      recommended: null
+      characteristics: props.characteristics,
+      ratings: props.ratings,
+      recommended: props.recommended,
+      reviews: props.reviews,
+      getReviews: props.getReviews
     };
-  }
-
-  componentDidMount() {
-
   }
 
   render () {
@@ -23,8 +21,8 @@ export default class RatingsReviews extends React.Component {
       <div>
         <h2 className='reviews-header'>RATINGS & REVIEWS</h2>
         <div className='reviews-container'>
-          <StarsRating {... this.state} />
-          <ReviewsList id={this.state.id} characteristics={this.state.characteristics} />
+          <StarsRating {...this.state} />
+          <ReviewsList {...this.state} />
         </div>
       </div>
     )

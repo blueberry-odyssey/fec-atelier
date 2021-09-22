@@ -18,10 +18,12 @@ reviewsRouter.get('/getAllReviews', (req, res) => {
   // retrieve reviews by product id
   axios.get(basePath + '/reviews/', options)
     .then((results) => {
-      res.send(results.data);
+      console.log('axios GET reviews success!');
+      res.status(200).send(results.data);
     })
     .catch((err) => {
-      console.log(err);
+      console.log('axios GET reviews failed');
+      res.status(400).send(err);
     });
 })
 
@@ -66,49 +68,37 @@ reviewsRouter.get('/meta/getMeta', (req, res) => {
       let recommended = trueRec / falseRec;
       parsedData["recommended"] = recommended;
 
-      res.send(parsedData);
+      console.log('axios GET reviews/meta success!');
+      res.status(200).send(parsedData);
     })
     .catch((err) => {
-      console.log(err);
+      console.log('axios GET reviews/meta failed');
+      res.status(400).send(err);
     });
 })
 
 
 // add a review
 reviewsRouter.post('/postReview', (req, res) => {
-  console.log('server req:', req.body);
 
   let options = {
     headers: {
       Authorization: config.TOKEN,
       'Content-Type': 'application/json'
     }
-
   };
 
-  let parsed = {
-    product_id: parseInt(req.body.product_id),
-    rating: parseInt(req.body.rating),
-    summary: req.body.summary,
-    body: req.body.body,
-    recommend: JSON.parse(req.body.recommend),
-    name: req.body.name,
-    email: req.body.email,
-    photos: req.body.photos,
-    characteristics: req.body.characteristics
-  };
+  let params = req.body.params;
 
-  console.log('server parsed body:', parsed);
-
-  axios.post('/reviews', parsed, options)
+  axios.post(basePath + '/reviews', params, options)
     .then((results) => {
       console.log('axios POST success');
+      res.status(201).send(results);
     })
     .catch((err) => {
       console.log('axios POST fail', err);
+      res.status(400).send(err);
     });
-
-  res.end();
 })
 
 
@@ -126,7 +116,8 @@ reviewsRouter.put('/report', (req, res) => {
       res.status(204).end();
     })
     .catch((err) => {
-      console.log('server axios error message:', err);
+      console.log('server axios error message:');
+      res.status(400).send(err);
     });
 })
 
@@ -141,11 +132,12 @@ reviewsRouter.put('/helpful', (req, res) => {
 
   axios.put(basePath + '/reviews/' + reviewId + '/helpful', {}, options)
     .then((result) => {
-      console.log('axios helpful success');
+      console.log('axios PUT reviews/helpful success');
       res.status(204).end();
     })
     .catch((err) => {
-      console.log(err);
+      console.log('axios PUT reviews/helpful failed');
+      res.status(400).send(err);
     });
 })
 

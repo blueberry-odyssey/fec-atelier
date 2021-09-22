@@ -1,8 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 import ReviewBlock from './ReviewBlock.jsx';
-import AddReview from './AddReview.jsx';
 import MoreReviews from './MoreReviews.jsx';
+import ReviewForm from './ReviewForm.jsx';
 
 export default class ReviewsList extends React.Component {
 
@@ -11,32 +11,40 @@ export default class ReviewsList extends React.Component {
     //console.log('reviews list props:', props);
     this.state = {
       id: props.id,
-      page: 0,
-      sort: '',
+      sort: null,
       count: 0,
-      reviews: [],
-      characteristics: props.characteristics
+      reviews: props.reviews,
+      characteristics: props.characteristics,
+      getReviews: props.getReviews
     };
 
-    this.getReviews = this.getReviews.bind(this);
+    this.selectSort = this.selectSort.bind(this);
+    this.sortReviews = this.sortReviews.bind(this);
     this.postReview = this.postReview.bind(this);
     this.reportReview = this.reportReview.bind(this);
     this.markHelpful = this.markHelpful.bind(this);
   }
 
   componentDidMount() {
-    this.getReviews();
+
   }
 
   componentDidUpdate() {
 
   }
 
-  getReviews() {
-    // make get request to get 2 reviews at first load
-    // try to make it as a multi-functioning request
-    // if state already has reviews, get 5 more instead of 2
-    axios.get('/reviews/getAllReviews', { params: { product_id: this.state.id } })
+  selectSort() {
+
+  }
+
+  sortReviews() {
+    let params = {
+      product_id: this.state.id,
+      count: 50,
+      sort: this.state.sort
+    };
+
+    axios.get('/reviews/getAllReviews', { params })
       .then(result => {
         this.setState({
           page: result.data.page,
@@ -47,26 +55,30 @@ export default class ReviewsList extends React.Component {
       .catch(err => {
         throw err;
       });
+
   }
 
-  postReview() {
-    // invoked when add review button is clicked
-    // should have a form page pop up to grab body params
-    // pass body params into post request
-    // add review in api, but does it need to render immediately?
-    axios.post('/reviews/postReview', {
-      params: {
-        product_id: this.state.id,
-        rating: 5,
-        summary: 'I\'m testing postReview',
-        body: 'If you see this, you did it!',
-        recommend: true,
-        name: 'bhbh1234',
-        email: 'bhbh1234@yahoo.com',
-        photos: [],
-        characteristics: this.state.characteristics
+  postReview(e) {
+    e.preventDefault();
+
+    let params = {
+      product_id: this.state.id,
+      rating: 5,
+      summary: 'I\'m testing postReview',
+      body: 'If you see this, you did it!',
+      recommend: true,
+      name: 'bhbh1234',
+      email: 'bhbh1234@yahoo.com',
+      // photos: [],
+      characteristics: {
+        '159159': 5,
+        '159160': 5,
+        '159161': 5,
+        '159162': 5
       }
-    })
+    };
+
+    axios.post('/reviews/postReview', { params })
       .then(result => {
         console.log('client post success', result);
       })
@@ -86,8 +98,6 @@ export default class ReviewsList extends React.Component {
   }
 
   markHelpful() {
-    // make put request to mark a review as helpful
-    // should change the # of 'yes' for helpful
     axios.put('/reviews/helpful')
       .then(result => {
         console.log('client markHelpful success:', result);
@@ -102,10 +112,7 @@ export default class ReviewsList extends React.Component {
     if (this.state.reviews !== null) {
       return (
         <div className='reviews-column'>
-          {/* <button onClick={this.reportReview}>Report Test</button>
-          <button onClick={this.markHelpful}>Helpful Test</button>
           <button onClick={this.postReview}>Post Review Test</button>
-          <br /> */}
           <p>(total number) reviews, sorted by:
           <select>
             <option>Relevance</option>
@@ -117,7 +124,7 @@ export default class ReviewsList extends React.Component {
             <tbody>
               <tr>
                 <td><MoreReviews id={this.state.id}/></td>
-                <td><AddReview id={this.state.id}/></td>
+                <td><ReviewForm id={this.state.id} postReview={this.postReview}/></td>
               </tr>
             </tbody>
           </table>
@@ -138,7 +145,7 @@ export default class ReviewsList extends React.Component {
           <tbody>
             <tr>
               <td><MoreReviews id={this.state.id}/></td>
-              <td><AddReview id={this.state.id}/></td>
+              <td><ReviewForm id={this.state.id} postReview={this.postReview}/></td>
             </tr>
           </tbody>
         </table>
@@ -148,3 +155,7 @@ export default class ReviewsList extends React.Component {
   }
 };
 
+{/* <button onClick={this.reportReview}>Report Test</button>
+          <button onClick={this.markHelpful}>Helpful Test</button>
+          <button onClick={this.postReview}>Post Review Test</button>
+          <br /> */}
