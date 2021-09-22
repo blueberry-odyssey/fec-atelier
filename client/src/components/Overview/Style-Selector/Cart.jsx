@@ -10,12 +10,14 @@ class Cart extends React.Component {
       quantityAvailable: 1,
       quantityArray: [],
       sizeSelected: 'Select Size',
+      quantitySelected: 1,
       disabled: true
     };
 
     this.handleSizeChange = this.handleSizeChange.bind(this);
     this.manipulateData = this.manipulateData.bind(this);
     this.createQuantityArray = this.createQuantityArray.bind(this);
+    this.handleQuantityChange = this.handleQuantityChange.bind(this);
   }
 
   static getDerivedStateFromProps(props, state) {
@@ -31,14 +33,15 @@ class Cart extends React.Component {
   handleSizeChange(event) {
     console.log(event);
     let context = this;
-    this.setState({ sizeSelected: event.target.value });
+    //at every change, set sizeSelected, and default quantitySelected to 1
+    this.setState({ sizeSelected: event.target.value, quantitySelected: 1 });
 
     //if Select Size is chosen, disable quantity dropdown
     if (event.target.value === 'Select Size') {
-      this.setState({ disabled: true })
+      this.setState({ disabled: true });
     }
 
-    //if size is valid, create quantityAvailable and quantityArray
+    //if size is valid, update quantityAvailable and quantityArray and enable quantity dropdown
     this.manipulateData(this.state.skus).forEach(function ({ size, quantity }) {
       if (size === event.target.value) {
         context.setState({ quantityAvailable: quantity });
@@ -54,6 +57,10 @@ class Cart extends React.Component {
         context.setState({ quantityArray: quantityArray, disabled: false });
       }
     });
+  }
+
+  handleQuantityChange(event) {
+    this.setState({ quantitySelected: event.target.value });
   }
 
   manipulateData(object) {
@@ -74,17 +81,20 @@ class Cart extends React.Component {
 
     return (
       <div>
-        <h2>Cart: </h2>
-        <div>
-          <select value={this.state.sizeSelected} onChange={this.handleSizeChange}>
+        <div className='dropdowns'>
+          <select className='dropdown' value={this.state.sizeSelected} onChange={this.handleSizeChange}>
             <option>Select Size</option>
             {result.map(function ({ size, quantity }, key) {
               return (quantity > 0 && <option key={key}>{size}</option>)
             })}
           </select>
 
-          <select defaultValue={this.state.sizeSelected === 'Select Size' ? '-----' : 1} disabled={this.state.disabled}>
-            <option disabled>-----</option>
+          <select
+            className='dropdown'
+            value={this.state.sizeSelected === 'Select Size' ? '-' : this.state.quantitySelected}
+            disabled={this.state.disabled}
+            onChange={this.handleQuantityChange}>
+            <option disabled>-</option>
             {this.state.quantityArray.map(function (num) {
               return <option key={num}>{num}</option>
             })}

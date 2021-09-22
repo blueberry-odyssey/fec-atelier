@@ -125,6 +125,20 @@
   color: red;
 }
 
+.dropdowns {
+  margin-top: 20px;
+  margin-left: 5px;
+}
+
+.dropdown {
+  width: 170px;
+  height: 50px;
+  text-align: center;
+  font-size: medium;
+  font-family: 'Playfair Display', serif;
+  margin: 5px;
+}
+
 /* .reviews-column {
 
 } */
