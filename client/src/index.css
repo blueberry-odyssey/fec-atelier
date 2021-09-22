@@ -136,6 +136,12 @@
   margin: 5px;
   border:rgb(96, 30, 158) solid;
   border-width: 1px;
+  background-color: white;
+}
+
+.cart-button:hover{
+  color:thistle;
+  cursor: pointer;
 }
 
 .cart-buttons {
