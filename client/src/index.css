@@ -150,7 +150,7 @@
 .reviews-container {
   display: flex;
   justify-content: space-around;
-  align-items: flex-start
+  align-items: flex-start;
 }
 
 .reviews-header {
@@ -169,16 +169,15 @@
   /* border: 1px solid black; */
 }
 
-
-
 .reviews-column {
   flex-flow: column nowrap;
-  flex: 2;
-  width: 450px;
+  flex: 3;
+  width: 600px;
 }
 
 .review-block {
-  width: 400px;
+  overflow: auto;
+  width: 500px;
   background-color: thistle;
   font-family: 'Playfair Display', serif;
 }
@@ -216,6 +215,7 @@
 .more-reviews-btn {
   font-family: 'Playfair Display', serif;
   font-size: 20px;
+  background-color: white;
   width: 150px;
   height: 50px;
 }
@@ -227,6 +227,7 @@
 .add-review-btn {
   font-family: 'Playfair Display', serif;
   font-size: 20px;
+  background-color: white;
   width: 150px;
   height: 50px;
 }
