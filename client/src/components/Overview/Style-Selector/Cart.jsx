@@ -9,7 +9,7 @@ class Cart extends React.Component {
       skus: {},
       quantityAvailable: 1,
       quantityArray: [],
-      sizeSelected: ''
+      sizeSelected: 'Select Size'
     };
 
     this.handleSizeChange = this.handleSizeChange.bind(this);
@@ -33,6 +33,10 @@ class Cart extends React.Component {
     console.log(event);
     let context = this;
     this.setState({ sizeSelected: event.target.value });
+
+    if (event.target.value === 'Select Size') {
+      this.setState({ quantityAvailable: 1, quantityArray: [] })
+    }
 
     this.manipulateData(this.state.skus).forEach(function ({ size, quantity }) {
       if (size === event.target.value) {
@@ -92,21 +96,18 @@ class Cart extends React.Component {
       <div>
         <h2>Cart: </h2>
         <div>
-          <select onChange={this.handleSizeChange}>
+          <select value={this.state.sizeSelected} onChange={this.handleSizeChange}>
             <option>Select Size</option>
             {result.map(function ({ size, quantity }) {
               return (quantity > 0 && <option key={size}>{size}</option>)
             })}
           </select>
 
-          <select>
-            <option>-</option>
-            <option>1</option>
-            {/* {this.props.skus && Object.values(this.props.skus).forEach(function (item) {
-              if (item.size === this.state.selectedStyle) {
-                available = item.quantity;
-              }
-            })} */}
+          <select defaultValue={this.state.sizeSelected === 'Select Size' ? '-----' : 1}>
+            <option disabled>-----</option>
+            {this.state.quantityArray.map(function (num) {
+              return <option key={num}>{num}</option>
+            })}
           </select>
 
         </div>
