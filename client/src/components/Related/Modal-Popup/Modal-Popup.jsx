@@ -7,8 +7,6 @@ export default function ModalPopup({ product, overviewCharacteristics, show }) {
   if (show) {
     console.log('inmodal', product)
     const [characteristicList, setCharacteristicList] = useState({});
-    // const [thumbnailCharList, setThumbnailCharList] = useState([]);
-    // const [overviewCharList, setOverviewCharList] = useState([]);
     const thumbnailID = product.id.toString();
     const getThumbnailChars = () => {
       axios.get('/reviews/meta/getMeta', { params: { product_id: thumbnailID } })

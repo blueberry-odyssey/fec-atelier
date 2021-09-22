@@ -81,7 +81,8 @@ export default class App extends React.Component {
             relatedItems={this.state.relatedItems}
             styleData={this.state.styleData}
             updateOverviewProduct={this.updateOverviewProduct}
-            overviewCharacteristics={this.state.characteristics}/>
+            overviewCharacteristics={this.state.characteristics}
+            id={this.state.id}/>
           </div>
           <div className='component-2'>
             {/* <RatingsReviews {... this.state}/> */}

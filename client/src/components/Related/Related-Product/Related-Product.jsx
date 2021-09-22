@@ -41,11 +41,6 @@ export default function RelatedProduct({ display, showModal, product, styleData,
     setDisplayOne(true);
     let overlay = document.querySelector('#app');
     overlay.addEventListener('click', modalClose);
-    // let carousel = document.querySelector('.carousel');
-    // if (carousel.style.transform === 'none') {
-    //   setDisplayOne(true);
-    // }
-
   }
 
   return (

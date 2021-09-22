@@ -60,7 +60,8 @@ export default class Carousel extends React.Component {
           onClick={this.moveLeft}><i className="fas fa-chevron-right"></i></button>
           <div className='carousel-slider'>
             <div>
-              <OutfitCarousel/>
+              <OutfitCarousel
+              id={id}/>
             </div>
           </div>
           <button id='right-button' onClick={this.moveRight}><i className="fas fa-chevron-right"></i></button>
