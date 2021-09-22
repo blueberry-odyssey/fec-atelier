@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 import ProductInfo from './Product-Info/ProductInfo.jsx';
 import StyleSelector from './Style-Selector/StyleSelector.jsx';
-import Cart from './Cart/Cart.jsx';
 import ImageGallery from './Image-Gallery/ImageGallery.jsx';
 
 class Overview extends React.Component {
@@ -72,7 +71,6 @@ class Overview extends React.Component {
           <div className='product-details'>
             <ProductInfo productData={this.state.productData} />
             <StyleSelector product_id={this.props['product_id']} />
-            <Cart />
           </div>
         </div>
       </div>

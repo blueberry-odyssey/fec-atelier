@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import Thumbnails from './Thumbnails.jsx';
 import Price from './Price.jsx';
+import Cart from './Cart.jsx';
 
 class StyleSelector extends React.Component {
   constructor(props) {
@@ -57,6 +58,7 @@ class StyleSelector extends React.Component {
         <Price original={this.state.selectedStyle['original_price']} sale={this.state.selectedStyle['sale_price']} />
         <p><b>STYLE /</b>{this.state.selectedStyle.name}</p>
         <Thumbnails styles={this.state.styles} />
+        <Cart selectedStyle={this.state.selectedStyle} />
       </div>
     )
   }
