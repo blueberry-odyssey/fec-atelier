@@ -10,7 +10,8 @@ class StyleSelector extends React.Component {
     // const selectedStyle = this.props.styles[0];
     this.state = {
       styles: [],
-      selectedStyle: {}
+      selectedStyle: {},
+      defaultStyle: {}
     };
 
     // this.setDefaultStyle = this.setDefaultStyle.bind(this);
@@ -33,6 +34,7 @@ class StyleSelector extends React.Component {
         //console.log('styles array: ', styles);
         context.setState({ styles: styles.data });
         context.setState({ selectedStyle: styles.data[0] });
+        context.setState({ defaultStyle: styles.data[0] });
       })
       .catch(function (err) {
         console.log('err in getStyles overview.jsx: ', err);
