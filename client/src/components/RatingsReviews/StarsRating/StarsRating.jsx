@@ -4,29 +4,13 @@ import Characteristics from './Characteristics.jsx';
 
 export default class StarsRating extends React.Component {
   constructor(props) {
+    console.log('STARS PROPS:', props);
     super(props);
     this.state = {
       id: props.id,
-      characteristics: {
-        "Fit": {
-            "id": 159159,
-            "value": "2.4000000000000000"
-        },
-        "Length": {
-            "id": 159160,
-            "value": "2.5000000000000000"
-        },
-        "Comfort": {
-            "id": 159161,
-            "value": "2.7000000000000000"
-        },
-        "Quality": {
-            "id": 159162,
-            "value": "3.6000000000000000"
-        }
-      },
-      ratings: 3.5,
-      recommended: 67
+      characteristics: props.characteristics,
+      ratings: props.ratings,
+      recommended: props.recommended
     };
 
   }
@@ -42,13 +26,13 @@ export default class StarsRating extends React.Component {
             <i className="fas fa-star fa-sm"></i>
             <i className="fas fa-star fa-sm"></i>
           </h2><br/>
-          <p>5 stars</p><br/>
-          <p>4 stars</p><br/>
-          <p>3 stars</p><br/>
-          <p>2 stars</p><br/>
-          <p>1 stars</p><br/>
+          <p>5 stars</p>
+          <p>4 stars</p>
+          <p>3 stars</p>
+          <p>2 stars</p>
+          <p>1 stars</p>
         </div><br />
-        <Characteristics {... this.state} />
+        <Characteristics {...this.state} />
       </div>
     )
   }

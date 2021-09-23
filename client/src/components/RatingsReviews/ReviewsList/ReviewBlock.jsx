@@ -21,9 +21,9 @@ const ReviewBlock = (props) => {
               </tr>
               <tr>
                 <td>
-                  <button className='review-helpful' onClick={props.markHelpful}>Helpful? </button>
+                  <button className='review-helpful-btn' onClick={props.markHelpful}>Helpful? </button>
                   <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
-                  <button className='review-report' onClick={props.reportReview}>Report</button>
+                  <button className='review-report-btn' onClick={props.reportReview}>Report</button>
                 </td>
               </tr>
             </tbody>

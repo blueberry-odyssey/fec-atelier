@@ -163,15 +163,34 @@
 .stars-column {
   /* display: flex; */
   flex-flow: column nowrap;
+  flex-shrink: 2;
+  flex-grow: 2;
   flex: 1;
   /* flex-wrap: nowrap; */
   /* align-items: flex-start; */
   /* border: 1px solid black; */
 }
 
+/* .characteristics-section {
+
+} */
+
+.characteristics-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 15px;
+}
+
+.characteristics-value {
+  font-family: 'Playfair Display', serif;
+  font-size: 12px;
+}
+
 .reviews-column {
   flex-flow: column nowrap;
+  flex-shrink: 2;
+  flex-grow: 2;
   flex: 3;
+  overflow: auto;
   width: 600px;
 }
 
@@ -184,6 +203,7 @@
 
 .review-username-date {
   font-size: 12px;
+  align-content: right;
 }
 
 .review-summary {
@@ -202,13 +222,17 @@
 
 .review-helpful-btn {
   font-family: 'Playfair Display', serif;
-  width: 50px;
+  background-color: thistle;
+  border: none;
+  width: 100px;
   height: 50px;
 }
 
 .review-report-btn {
   font-family: 'Playfair Display', serif;
-  width: 50px;
+  background-color: thistle;
+  border: none;
+  width: 100px;
   height: 50px;
 }
 
@@ -216,6 +240,7 @@
   font-family: 'Playfair Display', serif;
   font-size: 20px;
   background-color: white;
+  border: 1px solid thistle;
   width: 150px;
   height: 50px;
 }
@@ -228,6 +253,7 @@
   font-family: 'Playfair Display', serif;
   font-size: 20px;
   background-color: white;
+  border: 1px solid thistle;
   width: 150px;
   height: 50px;
 }
