@@ -21,7 +21,11 @@ const Thumbnails = function (props) {
     <div className='styles' >
       {rows.map(function (row, index) {
         return (
-          <ThumbnailRow row={row} key={index} setSelectedStyle={props.setSelectedStyle} />
+          <ThumbnailRow
+            row={row}
+            key={index}
+            setSelectedStyle={props.setSelectedStyle}
+            setSelectedPhotos={props.setSelectedPhotos} />
         )
         // return <img key={style.name} src={style.photos[0]['thumbnail_url']}></img>
       })}

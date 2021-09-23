@@ -12,7 +12,10 @@ const ThumbnailRow = function (props) {
           src={item.photos[0]['thumbnail_url']}
           className='thumbnail'
           key={item.name}
-          onClick={() => props.setSelectedStyle(item)}
+          onClick={() => {
+            props.setSelectedStyle(item);
+            props.setSelectedPhotos(item.photos);
+          }}
 
         ></img>
       })}

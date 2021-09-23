@@ -11,10 +11,14 @@ class Overview extends React.Component {
 
     this.state = {
       productData: {},
+      defaultStylePhotos: [],
+      selectedStylePhotos: []
       // styles: [],
       // cartData: {}
     };
     this.getProductDetails = this.getProductDetails.bind(this);
+    this.setDefaultPhotos = this.setDefaultPhotos.bind(this);
+    this.setSelectedPhotos = this.setSelectedPhotos.bind(this);
     // this.getStyles = this.getStyles.bind(this);
   }
 
@@ -41,6 +45,15 @@ class Overview extends React.Component {
       })
   }
 
+  setDefaultPhotos(photos) {
+    this.setState({ defaultStylePhotos: photos });
+  }
+
+  setSelectedPhotos(photos) {
+    this.setState({ selectedStylePhotos: photos });
+  }
+
+
   // getStyles(productId) {
   //   let context = this;
   //   axios({
@@ -66,12 +79,17 @@ class Overview extends React.Component {
         <p className='site-message'>SALE! 50% OFF SELECT ITEMS!</p>
         <div className='overview-container'>
           <div className='image-gallery'>
-            <ImageGallery />
+            {this.state.defaultStylePhotos && <ImageGallery
+              defaultPhotos={this.state.defaultStylePhotos}
+              selectedPhotos={this.state.selectedStylePhotos} />}
           </div>
 
           <div className='product-details'>
             <ProductInfo productData={this.state.productData} />
-            <StyleSelector product_id={this.props['product_id']} />
+            <StyleSelector
+              product_id={this.props['product_id']}
+              setDefaultPhotos={this.setDefaultPhotos}
+              setSelectedPhotos={this.setSelectedPhotos} />
           </div>
         </div>
       </div>

@@ -35,6 +35,7 @@ class StyleSelector extends React.Component {
         context.setState({ styles: styles.data });
         context.setState({ selectedStyle: styles.data[0] });
         context.setState({ defaultStyle: styles.data[0] });
+        context.props.setDefaultPhotos(styles.data[0].photos);
       })
       .catch(function (err) {
         console.log('err in getStyles overview.jsx: ', err);
@@ -63,7 +64,10 @@ class StyleSelector extends React.Component {
       <div>
         <Price original={this.state.selectedStyle['original_price']} sale={this.state.selectedStyle['sale_price']} />
         <p><b>STYLE /</b>{this.state.selectedStyle.name}</p>
-        <Thumbnails styles={this.state.styles} setSelectedStyle={this.setSelectedStyle} />
+        <Thumbnails
+          styles={this.state.styles}
+          setSelectedStyle={this.setSelectedStyle}
+          setSelectedPhotos={this.props.setSelectedPhotos} />
         <Cart selectedStyle={this.state.selectedStyle} />
       </div>
     )
