@@ -105,6 +105,10 @@
   border-radius: 50%;
 }
 
+.thumbnail:hover {
+  cursor: pointer;
+}
+
 .sale-price {
   color: red;
 }

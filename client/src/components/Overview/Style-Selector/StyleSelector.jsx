@@ -15,6 +15,7 @@ class StyleSelector extends React.Component {
 
     // this.setDefaultStyle = this.setDefaultStyle.bind(this);
     this.getStyles = this.getStyles.bind(this);
+    this.setSelectedStyle = this.setSelectedStyle.bind(this);
   }
 
   componentDidMount() {
@@ -38,6 +39,9 @@ class StyleSelector extends React.Component {
       })
   }
 
+  setSelectedStyle(styleItem) {
+    this.setState({ selectedStyle: styleItem });
+  }
   // componentDidUpdate() {
   //   this.setDefaultStyle();
   // }
@@ -57,7 +61,7 @@ class StyleSelector extends React.Component {
       <div>
         <Price original={this.state.selectedStyle['original_price']} sale={this.state.selectedStyle['sale_price']} />
         <p><b>STYLE /</b>{this.state.selectedStyle.name}</p>
-        <Thumbnails styles={this.state.styles} />
+        <Thumbnails styles={this.state.styles} setSelectedStyle={this.setSelectedStyle} />
         <Cart selectedStyle={this.state.selectedStyle} />
       </div>
     )
