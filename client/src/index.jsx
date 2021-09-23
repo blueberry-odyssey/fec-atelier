@@ -12,6 +12,7 @@ export default class App extends React.Component {
     this.state = {
       id: 47423,
       product_id: '47423',
+      productData: {},
       relatedItems: [],
       styleData: [],
       ratings: 0,
@@ -26,6 +27,11 @@ export default class App extends React.Component {
 
     this.updateOverviewProduct = this.updateOverviewProduct.bind(this);
     this.getReviews = this.getReviews.bind(this);
+    this.getProductData = this.getProductData.bind(this);
+  }
+
+  getProductData(productData) {
+    this.setState({ productData: productData });
   }
 
   updateOverviewProduct(newProductID) {
@@ -102,7 +108,7 @@ export default class App extends React.Component {
       return (
         <div className='app-body'>
           <div className='component-1'>
-            <Overview product_id={this.state['product_id']} />
+            <Overview product_id={this.state['product_id']} getProductData={this.getProductData} />
           </div>
           <div className='component-3'>
             <RelatedProducts
@@ -112,7 +118,7 @@ export default class App extends React.Component {
               overviewCharacteristics={this.state.characteristics} />
           </div>
           <div className='component-2'>
-            <RatingsReviews {...this.state} getReviews={this.getReviews}/>
+            <RatingsReviews {...this.state} getReviews={this.getReviews} />
           </div>
         </div >
       )
