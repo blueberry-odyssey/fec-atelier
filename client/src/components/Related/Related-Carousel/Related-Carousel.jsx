@@ -12,6 +12,7 @@ export default function RelatedCarousel({ styleData, relatedItems, updateOvervie
   return (
     <div className='carousel' style={display ? {'transform': 'none'} : { 'transform': `translateX(${translate}px)` }}>
       {relatedItems.map((product, idx) => {
+        console.log('in the real carry', product, 'and', styleData[0])
         return <RelatedProduct
           showModal={showModal}
           display={display}

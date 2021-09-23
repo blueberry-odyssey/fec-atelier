@@ -6,47 +6,54 @@ import axios from 'axios';
 export default class OutfitCarousel extends React.Component {
   constructor(props) {
     super(props)
-    const addButton = <div onClick={this.handleAddClick} key='1' id='add-button' className='each-product'>add +</div>;
     this.state = {
-      outfits: [addButton]
+      outfits: [],
+      // productData: this.props.productData,
+      styleData: null
+    }
+    this.addedOutfits = window.localStorage;
+    this.handleAddClick = this.handleAddClick.bind(this);
+  }
+
+  componentDidUpdate () {
+    if (this.props.productData.name && !this.state.styleData) {
+      axios.get('/products/relatedProductsAndStyles', { params: { productIDArray: [this.props.productData.id], styles: '/styles' } })
+      .then(styleData => {
+        this.setState({
+          styleData: styleData.data[0]
+        })
+        // console.log('stylL;KDF;LJA;', this.state.styleData)
+      })
+      .catch(err => { throw err; });
     }
   }
 
-  componentDidMount() {
-
+  showOutfits () {
+    const outfitsToAdd = [];
+    for (let i = 1; i < this.addedOutfits.length; i += 2) {
+      let styleData = JSON.parse(this.addedOutfits.getItem(i));
+      let productData = JSON.parse(this.addedOutfits.getItem(i+1));
+      console.log('styleData', styleData, 'product:', productData);
+      outfitsToAdd.push(<RelatedProduct styleData={styleData} product={productData} key={i}/>)
+    }
+    this.setState({
+      outfits: outfitsToAdd
+    })
   }
 
   handleAddClick() {
-    axios('/products/getProductDetails', { data: { product_id: id.toString()} })
-    .then((result) => {
-      console.log('get stuff for outfit', result)
-    })
-    .catch(err => {
-      throw err;
-    })
-    axios.get('/products/relatedProductsAndStyles', { params: { productIDArray, styles: '/styles' } })
-      .then(styleData => {
-        console.log('relatedStyle Data', styleData);
-        this.setState({
-          styleData: styleData.data
-        })
-      })
-      .catch(err => { throw err; });
-  }
-
-  getProductData() {
-    axios.post('/products/getProductDetails', { data: { product_id: context.props['product_id'] } })
-      .then(function (productData) {
-        console.log('productData: ', productData.data);
-      })
-      .catch(err => { throw err; })
+    this.addedOutfits.setItem('1', JSON.stringify(this.state.styleData))
+    this.addedOutfits.setItem('2', JSON.stringify(this.props.productData))
+    // console.log('my outfits', this.addedOutfits)
+    this.showOutfits();
   }
 
   render() {
-    // console.log('style in carousel', styleData);
-    let { translate } = this.props;
+    const { translate, productData } = this.props;
+    // console.log('style in carousel', productData, this.state.styleData);
     return (
       <div className='carousel' style={{ 'transform': `translateX(${translate}px)` }}>
+        <div onClick={this.handleAddClick} id='add-button' className='each-product'>add +</div>;
         {this.state.outfits}
       </div>
     )

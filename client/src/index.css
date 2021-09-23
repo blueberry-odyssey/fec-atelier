@@ -5,8 +5,11 @@
 }
 
 #app {
-  margin: 5%;
+  /* display: flex; */
+  margin: auto;
   margin-top: 0%;
+  width: 1000px;
+  align-content: center;
 }
 
 .component-1 {
@@ -14,7 +17,7 @@
 }
 
 .component-2 {
-  background-color: white;
+  font-family: 'Playfair Display', serif;
 }
 
 .title {
@@ -82,19 +85,149 @@
   font-style: italic;
 }
 
+.styles {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.row {
+  width: 100%;
+  margin: 0%;
+  padding:0%;
+  align-content: center;
+  justify-content: center;
+}
+
+.thumbnail {
+  width: 80px;
+  height: 80px;
+  margin: 5px;
+  border-radius: 50%;
+}
+
+.sale-price {
+  color: red;
+}
+
+.dropdowns {
+  margin-top: 20px;
+  margin-left: 5px;
+}
+
+.dropdown {
+  width: 170px;
+  height: 50px;
+  text-align: center;
+  font-size: medium;
+  font-family: 'Playfair Display', serif;
+  margin: 5px;
+}
+
+.cart-button {
+  width: 170px;
+  height: 50px;
+  text-align: center;
+  font-size: medium;
+  font-family: 'Playfair Display', serif;
+  margin: 5px;
+  border:rgb(96, 30, 158) solid;
+  border-width: 1px;
+  background-color: white;
+}
+
+.cart-button:hover{
+  color:thistle;
+  cursor: pointer;
+}
+
+.cart-buttons {
+  margin-left: 5px;
+}
+
+
+/* ======== RATINGS & REVIEWS ======== */
+
+.reviews-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+}
+
+.reviews-header {
+  display: flex;
+  flex-flow: row nowrap;
+  /* flex-direction: row; */
+  font-family: 'Playfair Display', serif;
+}
+
 .stars-column {
-  width: 400px;
+  /* display: flex; */
+  flex-flow: column nowrap;
+  flex: 1;
+  /* flex-wrap: nowrap; */
+  /* align-items: flex-start; */
+  /* border: 1px solid black; */
 }
 
 .reviews-column {
-
+  flex-flow: column nowrap;
+  flex: 3;
+  width: 600px;
 }
 
-#review-block {
-  width: 400px;
+.review-block {
+  overflow: auto;
+  width: 500px;
   background-color: thistle;
+  font-family: 'Playfair Display', serif;
 }
 
-#review-body {
-  width: 250px;
+.review-username-date {
+  font-size: 12px;
+}
+
+.review-summary {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.review-body {
+  /* width: 250px; */
+  font-size: 15px;
+}
+
+.review-recommend {
+  font-size: 12px;
+}
+
+.review-helpful-btn {
+  font-family: 'Playfair Display', serif;
+  width: 50px;
+  height: 50px;
+}
+
+.review-report-btn {
+  font-family: 'Playfair Display', serif;
+  width: 50px;
+  height: 50px;
+}
+
+.more-reviews-btn {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  background-color: white;
+  width: 150px;
+  height: 50px;
+}
+
+.modal-form {
+  flex-wrap: wrap;
+}
+
+.add-review-btn {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  background-color: white;
+  width: 150px;
+  height: 50px;
 }
