@@ -53,6 +53,12 @@
   margin-right: 10px;
 }
 
+.image img {
+  align-content: center;
+  width: min-content;
+  height: 550px;
+}
+
 
 .product-details {
   flex: 1;
