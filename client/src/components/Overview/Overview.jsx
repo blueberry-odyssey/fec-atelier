@@ -34,6 +34,7 @@ class Overview extends React.Component {
       .then(function (productData) {
         //console.log('productData: ', productData.data);
         context.setState({ productData: productData.data });
+        context.props.getProductData(productData.data);
       })
       .catch(function (err) {
         console.log('error in getProductDetails index.jsx: ', err);
