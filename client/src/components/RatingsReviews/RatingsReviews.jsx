@@ -12,8 +12,14 @@ export default class RatingsReviews extends React.Component {
       ratings: props.ratings,
       recommended: props.recommended,
       reviews: props.reviews,
-      getReviews: props.getReviews
+      productData: props.productData
     };
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.productData !== this.props.productData) {
+      this.setState({productData: this.props.productData});
+    }
   }
 
   render () {

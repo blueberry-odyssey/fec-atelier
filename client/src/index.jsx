@@ -10,8 +10,8 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: 47423,
-      product_id: '47423',
+      id: 47421,
+      product_id: '47421',
       productData: {},
       relatedItems: [],
       styleData: [],
@@ -131,15 +131,3 @@ export default class App extends React.Component {
 }
 
 ReactDOM.render(<App />, document.getElementById('app'));
-
-// <div className='app-body'>
-//   <div className='component-1'>
-//     <Overview product_id={this.state['product_id']} />
-//   </div>
-//   <div className='component-3'>
-//     <RelatedProducts relatedItems={this.state.relatedItems} styleData={this.state.styleData} />
-//   </div>
-//   <div className='component-2'>
-//     <RatingsReviews {... this.state}/>
-//   </div>
-// </div>

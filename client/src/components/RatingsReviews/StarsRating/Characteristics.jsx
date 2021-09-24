@@ -25,11 +25,3 @@ const Characteristics = (props) => {
 }
 
 export default Characteristics;
-
-// <div className='characteristics-block'>
-//   <p>Size</p>
-//   <p>Comfort</p>
-//   <p>Width</p>
-//   <p>Length</p>
-//   <p>Quality</p>
-// </div>

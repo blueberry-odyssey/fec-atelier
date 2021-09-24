@@ -25,7 +25,8 @@ export default class StarsRating extends React.Component {
             <i className="fas fa-star fa-sm"></i>
             <i className="fas fa-star fa-sm"></i>
             <i className="fas fa-star fa-sm"></i>
-          </h2><br/>
+          </h2>
+          <p className='stars-recommend'>{this.state.recommended}% of reviews recommended this product</p>
           <p>5 stars</p>
           <p>4 stars</p>
           <p>3 stars</p>

@@ -3,35 +3,41 @@ import React from 'react';
 const ReviewBlock = (props) => {
   //console.log('review block props', props);
 
-  return (
-    <div className='review-block' >
-      {props.reviews.map(review => (
-        <div key={review.review_id} className='review-block'>
-          <table>
-            <tbody>
-              <tr>
-                <td className='review-rating'>{review.rating} stars</td>
-                <td className='review-username-date'>{review.reviewer_name}, {review.date}</td>
-              </tr>
-              <tr>
-                <td className='review-summary'>{review.summary}</td>
-              </tr>
-              <tr>
-                <td className='review-body'>{review.body}</td>
-              </tr>
-              <tr>
-                <td>
-                  <button className='review-helpful-btn' onClick={props.markHelpful}>Helpful? </button>
-                  <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
-                  <button className='review-report-btn' onClick={props.reportReview}>Report</button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      ))}
-    </div>
-  )
+  if (props.reviews.length > 0) {
+    return (
+      <div className='review-list' >
+        {props.reviews.map(review => (
+          <div key={review.review_id} className='review-block'>
+            <table>
+              <tbody>
+                <tr>
+                  <td className='review-rating'>{review.rating} stars</td>
+                  <td className='review-username-date'>{review.reviewer_name}, {review.date}</td>
+                </tr>
+                <tr>
+                  <td className='review-summary'>{review.summary}</td>
+                </tr>
+                <tr>
+                  <td className='review-body'>{review.body}</td>
+                </tr>
+                <tr>
+                  <td>
+                    <button className='review-helpful-btn' onClick={props.markHelpful}>Helpful? </button>
+                    <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+                    <button className='review-report-btn' onClick={props.reportReview}>Report</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        ))}
+      </div>
+    )
+  } else {
+    return (
+      <div></div>
+    )
+  }
 }
 
 export default ReviewBlock;

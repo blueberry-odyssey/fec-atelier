@@ -32,7 +32,7 @@ class Overview extends React.Component {
       params: { product_id: productId }
     })
       .then(function (productData) {
-        //console.log('productData: ', productData.data);
+        console.log('productData: ', productData.data);
         context.setState({ productData: productData.data });
         context.props.getProductData(productData.data);
       })
