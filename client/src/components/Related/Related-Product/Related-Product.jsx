@@ -1,9 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import './Related-Product.css'
 import ModalPopup from '../Modal-Popup/Modal-Popup.jsx'
+import UpdatedComponent from '../../interactions.jsx'
 
-export default function RelatedProduct({ display, showModal, product, styleData, updateOverviewProduct, overviewCharacteristics }) {
+function RelatedProduct(props) {
+  const {
+    inOutfit,
+    display,
+    showModal,
+    product,
+    styleData,
+    updateOverviewProduct,
+    overviewCharacteristics
+  } = props;
+  var closeOrStar = <i onClick={handleStarClick} id="starIcon" className="far fa-star"></i>;
   const [displayOne, setDisplayOne] = useState(false);
+  if (inOutfit) {
+    closeOrStar = <i onClick={handleCloseClick} id="starIcon" className="far fa-window-close"></i>
+  }
   // useEffect(() => {
   //   let carousel = document.querySelector('.carousel');
   //   if (carousel.style.transform === 'none') {
@@ -16,6 +30,7 @@ export default function RelatedProduct({ display, showModal, product, styleData,
   let oneStyleImg, originalPrice;
   let salePrice = null;
   if (styleData) {
+    console.log(styleData)
     oneStyleImg = styleData.results[0].photos[0].thumbnail_url;
     originalPrice = styleData.results[0].original_price;
     for (let i = 0; i < styleData.results.length; i++) {
@@ -27,6 +42,7 @@ export default function RelatedProduct({ display, showModal, product, styleData,
     }
     // console.log('og price', salePrice)
   }
+
   const modalClose = () => {
     console.log('trying to close')
     setDisplayOne(false)
@@ -43,11 +59,20 @@ export default function RelatedProduct({ display, showModal, product, styleData,
     overlay.addEventListener('click', modalClose);
   }
 
+  const handleCloseClick = () => {
+    window.localStorage.removeItem(this.props.key)
+    window.localStorage.removeItem(this.props.key + 1)
+    this.props.showOutfits();
+  }
+
+  // onClick={() => { updateOverviewProduct(product.id) }}>
   return (
     <div className='each-product' onClick={() => { updateOverviewProduct(product.id) }}>
       <div>
         <img src={oneStyleImg}></img>
-        <i onClick={handleStarClick} id="starIcon" className="far fa-star"></i>
+        <div>
+          {closeOrStar}
+        </div>
         <ModalPopup
           show={display && displayOne}
           product={product}
@@ -69,3 +94,5 @@ export default function RelatedProduct({ display, showModal, product, styleData,
     </div>
   )
 };
+
+export default RelatedProduct;

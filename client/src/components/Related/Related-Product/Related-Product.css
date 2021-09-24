@@ -39,6 +39,7 @@ section > h3 {
 }
 
 #starIcon {
+  color: thistle;
   z-index: 4;
   position: absolute;
   font-size: 1em;

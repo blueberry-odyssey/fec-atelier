@@ -2,8 +2,9 @@ import React from 'react';
 import './Related-Products.css';
 import axios from 'axios';
 import Carousel from '../Carousel/Carousel.jsx';
+import UpdatedComponent from '../../interactions.jsx'
 
-export default class RelatedProducts extends React.Component {
+class RelatedProducts extends React.Component {
   constructor(props) {
     super(props)
   }
@@ -28,3 +29,5 @@ export default class RelatedProducts extends React.Component {
     )
   }
 }
+
+export default UpdatedComponent(RelatedProducts)

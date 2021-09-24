@@ -41,6 +41,7 @@ export default class App extends React.Component {
       product_id: newProductIDString,
       id: newProductID
     })
+    // console.log('prod id', this.state.product_id)
   }
 
   getReviews() {

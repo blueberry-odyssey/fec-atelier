@@ -23,6 +23,12 @@ class Overview extends React.Component {
     // this.getStyles(this.props['product_id']);
   }
 
+  componentDidUpdate(prevProps) {
+    if (prevProps['product_id'] !== this.props['product_id']) {
+      this.getProductDetails(this.props['product_id']);
+    }
+  }
+
   getProductDetails(productId) {
     let context = this;
     //console.log(context.props['product_id']);
@@ -32,7 +38,7 @@ class Overview extends React.Component {
       params: { product_id: productId }
     })
       .then(function (productData) {
-        //console.log('productData: ', productData.data);
+        // console.log('productData: ', productData.data);
         context.setState({ productData: productData.data });
         context.props.getProductData(productData.data);
       })

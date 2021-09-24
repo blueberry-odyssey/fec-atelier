@@ -5,7 +5,7 @@ import _, { reduce } from 'underscore';
 
 export default function ModalPopup({ product, overviewCharacteristics, show }) {
   if (show) {
-    console.log('inmodal', product)
+    // console.log('inmodal', product)
     const [characteristicList, setCharacteristicList] = useState({});
     const thumbnailID = product.id.toString();
     const getThumbnailChars = () => {
@@ -29,7 +29,7 @@ export default function ModalPopup({ product, overviewCharacteristics, show }) {
       characteristicList[char] = char;
       // overviewCharList.push(char);
     }
-    console.log('characteristicList', characteristicList, thumbnailChars, overviewCharacteristics)
+    // console.log('characteristicList', characteristicList, thumbnailChars, overviewCharacteristics)
 
     const reduceCompare = _.reduce(characteristicList, (memo, val, idx) => {
       if (thumbnailChars[val] && overviewCharacteristics[val]) {
@@ -52,8 +52,6 @@ export default function ModalPopup({ product, overviewCharacteristics, show }) {
         )
       }
     }, [])
-
-    console.log(reduceCompare)
 
     return (
       <div className='modal-background'>

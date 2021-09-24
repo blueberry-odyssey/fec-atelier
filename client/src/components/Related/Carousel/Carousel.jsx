@@ -61,7 +61,9 @@ export default class Carousel extends React.Component {
           <div className='carousel-slider'>
             <div>
               <OutfitCarousel
-              productData={productData}/>
+              productData={productData}
+              updateOverviewProduct={updateOverviewProduct}
+              overviewCharacteristics={overviewCharacteristics} />
             </div>
           </div>
           <button id='right-button' onClick={this.moveRight}><i className="fas fa-chevron-right"></i></button>
