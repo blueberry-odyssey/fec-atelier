@@ -13,7 +13,11 @@ export default class OutfitCarousel extends React.Component {
     }
     this.addedOutfits = window.localStorage;
     this.handleAddClick = this.handleAddClick.bind(this);
-    this.showOutfits = this.showOutfits.bind(this);
+    this.removeOutfit = this.removeOutfit.bind(this);
+  }
+
+  componentDidMount () {
+    this.showOutfits();
   }
 
   componentDidUpdate () {
@@ -30,27 +34,41 @@ export default class OutfitCarousel extends React.Component {
 
   showOutfits () {
     const outfitsToAdd = [];
-    for (let i = 1; i < this.addedOutfits.length; i += 2) {
-      let styleData = JSON.parse(this.addedOutfits.getItem(i));
-      let productData = JSON.parse(this.addedOutfits.getItem(i+1));
-      console.log('styleData', styleData, 'product:', productData);
-      outfitsToAdd.push(<RelatedProduct
-        styleData={styleData}
-        product={productData}
-        key={i}
-        inOutfit={true}
-        showOutfits={this.showOutfits}
-        updateOverviewProduct={this.props.updateOverviewProduct}/>)
+    // console.log('hizzur', this.addedOutfits);
+    if (this.addedOutfits && this.addedOutfits.length) {
+      for (let key in this.addedOutfits) {
+        if (typeof key !== 'number') {
+          continue;
+        }
+        // console.log('key', key);
+        let retrievedData = this.addedOutfits.getItem(key);
+        let outfitData = JSON.parse(retrievedData);
+        let styleData = outfitData[0];
+        let productData = outfitData[1];
+        console.log('styleData', styleData, 'product:', productData);
+        outfitsToAdd.push(<RelatedProduct
+          styleData={styleData}
+          product={productData}
+          key={key}
+          inOutfit={true}
+          removeOutfit={this.removeOutfit}
+          updateOverviewProduct={this.props.updateOverviewProduct}
+          currentProduct={key}/>)
+      }
+      this.setState({
+        outfits: outfitsToAdd
+      })
     }
-    this.setState({
-      outfits: outfitsToAdd
-    })
   }
 
   handleAddClick() {
-    this.addedOutfits.setItem(this.state.outfitIndex, JSON.stringify(this.state.styleData));
-    this.addedOutfits.setItem(this.state.outfitIndex+1, JSON.stringify(this.props.productData));
-    this.state.outfitIndex+=2;
+    let outfitData = JSON.stringify([this.state.styleData, this.props.productData]);
+    this.addedOutfits.setItem(this.props.productData.id, outfitData);
+    this.showOutfits();
+  }
+
+  removeOutfit (key) {
+    this.addedOutfits.removeItem(key)
     this.showOutfits();
   }
 

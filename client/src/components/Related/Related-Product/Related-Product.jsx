@@ -4,33 +4,28 @@ import ModalPopup from '../Modal-Popup/Modal-Popup.jsx'
 import UpdatedComponent from '../../interactions.jsx'
 
 function RelatedProduct(props) {
+  const [displayOne, setDisplayOne] = useState(false);
   const {
+    currentProduct,
     inOutfit,
     display,
     showModal,
     product,
     styleData,
     updateOverviewProduct,
-    overviewCharacteristics
+    overviewCharacteristics,
+    removeOutfit
   } = props;
-  var closeOrStar = <i onClick={handleStarClick} id="starIcon" className="far fa-star"></i>;
-  const [displayOne, setDisplayOne] = useState(false);
-  if (inOutfit) {
-    closeOrStar = <i onClick={handleCloseClick} id="starIcon" className="far fa-window-close"></i>
-  }
   // useEffect(() => {
   //   let carousel = document.querySelector('.carousel');
   //   if (carousel.style.transform === 'none') {
   //     setDisplayOne(true);
   //   }
-  //   let overlay = document.querySelector('#app');
-  //   overlay.addEventListener('click', modalClose);
   // }, [display])
 
   let oneStyleImg, originalPrice;
   let salePrice = null;
   if (styleData) {
-    console.log(styleData)
     oneStyleImg = styleData.results[0].photos[0].thumbnail_url;
     originalPrice = styleData.results[0].original_price;
     for (let i = 0; i < styleData.results.length; i++) {
@@ -60,12 +55,14 @@ function RelatedProduct(props) {
   }
 
   const handleCloseClick = () => {
-    window.localStorage.removeItem(this.props.key)
-    window.localStorage.removeItem(this.props.key + 1)
-    this.props.showOutfits();
+    removeOutfit(currentProduct)
   }
 
-  // onClick={() => { updateOverviewProduct(product.id) }}>
+  var closeOrStar = <i onClick={handleStarClick} id="starIcon" className="far fa-star"></i>;
+  if (inOutfit) {
+    closeOrStar = <i onClick={handleCloseClick} id="starIcon" className="far fa-window-close"></i>
+  }
+
   return (
     <div className='each-product' onClick={() => { updateOverviewProduct(product.id) }}>
       <div>
