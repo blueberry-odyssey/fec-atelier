@@ -22,16 +22,30 @@ export default class App extends React.Component {
       count: 2,
       reviews: [],
       sort: null,
-      updated: false
+      updated: false,
+      addOutfit: false
     };
 
     this.updateOverviewProduct = this.updateOverviewProduct.bind(this);
     this.getReviews = this.getReviews.bind(this);
     this.getProductData = this.getProductData.bind(this);
+    this.invokeAddToOutfits = this.invokeAddToOutfits.bind(this);
   }
 
   getProductData(productData) {
     this.setState({ productData: productData });
+  }
+
+  invokeAddToOutfits (trueOrFalse) {
+    if (trueOrFalse) {
+      this.setState({
+        addOutfit: true
+      })
+    } else {
+      this.setState({
+        addOutfit: false
+      })
+    }
   }
 
   updateOverviewProduct(newProductID) {
@@ -110,7 +124,7 @@ export default class App extends React.Component {
       return (
         <div className='app-body'>
           <div className='component-1'>
-            <Overview product_id={this.state['product_id']} getProductData={this.getProductData} widgetName='Overview' />
+            <Overview product_id={this.state['product_id']} getProductData={this.getProductData} widgetName='Overview' invokeAddToOutfits={this.invokeAddToOutfits}/>
           </div>
           <div className='component-3'>
             <RelatedProducts
@@ -118,7 +132,10 @@ export default class App extends React.Component {
               styleData={this.state.styleData}
               updateOverviewProduct={this.updateOverviewProduct}
               overviewCharacteristics={this.state.characteristics}
-              widgetName='RelatedProducts' />
+              widgetName='RelatedProducts'
+              productData={this.state.productData}
+              invokeAddToOutfits={this.invokeAddToOutfits}
+              addOutfit={this.state.addOutfit}/>
           </div>
           <div className='component-2'>
             <RatingsReviews {...this.state} getReviews={this.getReviews} widgetName='RatingsReviews' />

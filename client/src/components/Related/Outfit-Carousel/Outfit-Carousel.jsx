@@ -9,30 +9,35 @@ export default class OutfitCarousel extends React.Component {
     this.state = {
       outfits: [],
       outfitIndex: 1,
-      styleData: null
+      styleData: null,
+      invokeHandleClick: false
     }
     this.addedOutfits = window.localStorage;
     this.handleAddClick = this.handleAddClick.bind(this);
     this.removeOutfit = this.removeOutfit.bind(this);
   }
 
-  componentDidMount () {
+  componentDidMount() {
     this.showOutfits();
   }
 
-  componentDidUpdate () {
+  componentDidUpdate() {
     if (this.props.productData && !this.state.styleData) {
       axios.get('/products/relatedProductsAndStyles', { params: { productIDArray: [this.props.productData.id], styles: '/styles' } })
-      .then(styleData => {
-        this.setState({
-          styleData: styleData.data[0]
+        .then(styleData => {
+          this.setState({
+            styleData: styleData.data[0]
+          })
         })
-      })
-      .catch(err => { throw err; });
+        .catch(err => { throw err; });
+    }
+    if (this.props.addOutfit) {
+      this.handleAddClick();
+      this.props.invokeAddToOutfits(false);
     }
   }
 
-  showOutfits () {
+  showOutfits() {
     const outfitsToAdd = [];
     console.log('hizzur', this.addedOutfits);
     if (this.addedOutfits && this.addedOutfits.length) {
@@ -52,7 +57,7 @@ export default class OutfitCarousel extends React.Component {
           inOutfit={true}
           removeOutfit={this.removeOutfit}
           updateOverviewProduct={this.props.updateOverviewProduct}
-          currentProduct={key}/>)
+          currentProduct={key} />)
       }
     }
     this.setState({
@@ -66,7 +71,7 @@ export default class OutfitCarousel extends React.Component {
     this.showOutfits();
   }
 
-  removeOutfit (key) {
+  removeOutfit(key) {
     this.addedOutfits.removeItem(key)
     console.log('we gotta remove')
     this.showOutfits();
