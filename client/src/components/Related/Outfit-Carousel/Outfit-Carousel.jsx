@@ -34,18 +34,17 @@ export default class OutfitCarousel extends React.Component {
 
   showOutfits () {
     const outfitsToAdd = [];
-    // console.log('hizzur', this.addedOutfits);
+    console.log('hizzur', this.addedOutfits);
     if (this.addedOutfits && this.addedOutfits.length) {
       for (let key in this.addedOutfits) {
-        if (typeof key !== 'number') {
+        if (isNaN(Number(key))) {
           continue;
         }
-        // console.log('key', key);
         let retrievedData = this.addedOutfits.getItem(key);
         let outfitData = JSON.parse(retrievedData);
         let styleData = outfitData[0];
         let productData = outfitData[1];
-        console.log('styleData', styleData, 'product:', productData);
+        // console.log('styleData', styleData, 'product:', productData);
         outfitsToAdd.push(<RelatedProduct
           styleData={styleData}
           product={productData}
@@ -55,10 +54,10 @@ export default class OutfitCarousel extends React.Component {
           updateOverviewProduct={this.props.updateOverviewProduct}
           currentProduct={key}/>)
       }
-      this.setState({
-        outfits: outfitsToAdd
-      })
     }
+    this.setState({
+      outfits: outfitsToAdd
+    })
   }
 
   handleAddClick() {
@@ -69,6 +68,7 @@ export default class OutfitCarousel extends React.Component {
 
   removeOutfit (key) {
     this.addedOutfits.removeItem(key)
+    console.log('we gotta remove')
     this.showOutfits();
   }
 
