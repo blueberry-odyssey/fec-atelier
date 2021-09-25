@@ -126,17 +126,6 @@ export default class App extends React.Component {
     } else {
       return (
         <></>
-        // <div className='app-body'>
-        //   <div className='component-1'>
-        //     <Overview product_id={this.state['product_id']} />
-        //   </div>
-        //   <div className='component-3'>
-        //     <RelatedProducts relatedItems={this.state.relatedItems} styleData={this.state.styleData} />
-        //   </div>
-        //   <div className='component-2'>
-        //     <RatingsReviews {... this.state}/>
-        //   </div>
-        // </div>
       )
     }
   }

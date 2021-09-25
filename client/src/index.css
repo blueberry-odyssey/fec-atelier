@@ -174,27 +174,69 @@
 .stars-column {
   /* display: flex; */
   flex-flow: column nowrap;
-  flex: 1;
+  flex-shrink: 2;
+  flex-grow: 2;
+  flex: 2;
+  /* width: 400px; */
+  padding: 10px;
   /* flex-wrap: nowrap; */
   /* align-items: flex-start; */
   /* border: 1px solid black; */
 }
 
+.stars-recommend {
+  font-family: 'Playfair Display', serif;
+  font-size: 13px;
+  font-style: italic;
+}
+
+/* .characteristics-section {
+
+} */
+
+.characteristics-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 15px;
+}
+
+.characteristics-value {
+  font-family: 'Playfair Display', serif;
+  font-size: 12px;
+}
+
 .reviews-column {
   flex-flow: column nowrap;
+  flex-shrink: 2;
+  flex-grow: 2;
   flex: 3;
+  /* overflow-y: auto; */
   width: 600px;
+  height: 600px;
+}
+
+.sort-dropdown {
+  font-family: 'Playfair Display', serif;
+  font-size: 15px;
+}
+
+.review-list {
+  overflow-y: auto;
+  width: 590px;
+  height: 540px;
 }
 
 .review-block {
-  overflow: auto;
-  width: 500px;
+  overflow-y: auto;
+  padding: 10px;
+  border-bottom: 1px solid rgb(156, 96, 156);
+  width: 550px;
   background-color: thistle;
   font-family: 'Playfair Display', serif;
 }
 
 .review-username-date {
   font-size: 12px;
+  align-content: right;
 }
 
 .review-summary {
@@ -213,20 +255,97 @@
 
 .review-helpful-btn {
   font-family: 'Playfair Display', serif;
-  width: 50px;
+  background-color: thistle;
+  border: none;
+  width: 100px;
   height: 50px;
 }
 
 .review-report-btn {
   font-family: 'Playfair Display', serif;
-  width: 50px;
+  background-color: thistle;
+  border: none;
+  width: 100px;
   height: 50px;
+}
+
+.form-mandatory {
+  color: rgb(189, 5, 5);
+  font-family: 'Playfair Display', serif;
+}
+
+.form-disclaimer {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 12px;
+}
+
+.form-headline {
+  font-family: 'Playfair Display', serif;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.form-rating {
+  font-family: 'Playfair Display', serif;
+}
+
+.form-recommend {
+  font-family: 'Playfair Display', serif;
+}
+
+.form-characteristics {
+  font-family: 'Playfair Display', serif;
+}
+
+.form-characteristics-header {
+  font-family: 'Playfair Display', serif;
+  font-size: 11px;
+}
+
+.form-trait {
+  font-family: 'Playfair Display', serif;
+  font-size: 14px;
+}
+
+.form-trait-radio {
+  text-align: center;
+}
+
+.form-summary {
+  font-family: 'Playfair Display', serif;
+}
+
+.form-body {
+  font-family: 'Playfair Display', serif;
+}
+
+.form-photos {
+  font-family: 'Playfair Display', serif;
+}
+
+.form-nickname {
+  font-family: 'Playfair Display', serif;
+}
+
+.form-email {
+  font-family: 'Playfair Display', serif;
+}
+
+.form-submit-btn {
+  font-family: 'Playfair Display', serif;
+  font-size: 15px;
+  background-color: white;
+  border: 1px solid thistle;
+  width: 75px;
+  height: 30px;
 }
 
 .more-reviews-btn {
   font-family: 'Playfair Display', serif;
   font-size: 20px;
   background-color: white;
+  border: 1px solid thistle;
   width: 150px;
   height: 50px;
 }
@@ -239,6 +358,7 @@
   font-family: 'Playfair Display', serif;
   font-size: 20px;
   background-color: white;
+  border: 1px solid thistle;
   width: 150px;
   height: 50px;
 }

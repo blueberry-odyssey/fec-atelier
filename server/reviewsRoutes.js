@@ -81,7 +81,7 @@ reviewsRouter.get('/meta/getMeta', (req, res) => {
 
 // add a review
 reviewsRouter.post('/postReview', (req, res) => {
-  // console.log('server req:', req.body);
+  console.log('server req:', req.body.params);
 
   let options = {
     headers: {
@@ -95,10 +95,10 @@ reviewsRouter.post('/postReview', (req, res) => {
   axios.post(basePath + '/reviews', params, options)
     .then((results) => {
       console.log('axios POST success');
-      res.status(201).send(results);
+      res.status(201).send(results.data);
     })
     .catch((err) => {
-      console.log('axios POST fail', err);
+      console.log('axios POST fail');
       res.status(400).send(err);
     });
 })

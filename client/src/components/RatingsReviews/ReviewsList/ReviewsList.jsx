@@ -15,75 +15,22 @@ export default class ReviewsList extends React.Component {
       count: 0,
       reviews: props.reviews,
       characteristics: props.characteristics,
-      getReviews: props.getReviews
+      productData: props.productData
     };
 
-    this.selectSort = this.selectSort.bind(this);
-    this.sortReviews = this.sortReviews.bind(this);
-    this.postReview = this.postReview.bind(this);
+    //this.sortReviews = this.sortReviews.bind(this);
+    //this.postReview = this.postReview.bind(this);
     this.reportReview = this.reportReview.bind(this);
     this.markHelpful = this.markHelpful.bind(this);
   }
 
-  componentDidMount() {
+  // sortReviews() {
+  // }
 
-  }
-
-  componentDidUpdate() {
-
-  }
-
-  selectSort() {
-
-  }
-
-  sortReviews() {
-    let params = {
-      product_id: this.state.id,
-      sort: this.state.sort
-    };
-
-    axios.get('/reviews/getAllReviews', { params })
-      .then(result => {
-        this.setState({
-          page: result.data.page,
-          count: result.data.count,
-          reviews: result.data.results
-        });
-      })
-      .catch(err => {
-        throw err;
-      });
-
-  }
-
-  postReview(e) {
-    e.preventDefault();
-
-    let params = {
-      product_id: this.state.id,
-      rating: 5,
-      summary: 'I\'m testing postReview',
-      body: 'If you see this, you did it!',
-      recommend: true,
-      name: 'bhbh1234',
-      email: 'bhbh1234@yahoo.com',
-      // photos: [],
-      characteristics: {
-        '159159': 5,
-        '159160': 5,
-        '159161': 5,
-        '159162': 5
-      }
-    };
-
-    axios.post('/reviews/postReview', { params })
-      .then(result => {
-        console.log('client post success', result);
-      })
-      .catch(err => {
-        throw err;
-      });
+  componentDidUpdate(prevProps) {
+    if(prevProps.productData !== this.props.productData) {
+      this.setState({productData: this.props.productData});
+    }
   }
 
   reportReview() {
@@ -111,9 +58,9 @@ export default class ReviewsList extends React.Component {
     if (this.state.reviews !== null) {
       return (
         <div className='reviews-column'>
-          <button onClick={this.postReview}>Post Review Test</button>
-          <p>{this.state.reviews.length} reviews, sorted by:
-          <select>
+
+          <p>{this.state.reviews.length} reviews, sorted by: &nbsp;
+          <select className='sort-dropdown'>
             <option>Relevance</option>
             <option>Helpfulness</option>
             <option>Newest</option>
@@ -123,7 +70,7 @@ export default class ReviewsList extends React.Component {
             <tbody>
               <tr>
                 <td><MoreReviews id={this.state.id}/></td>
-                <td><ReviewForm id={this.state.id} postReview={this.postReview}/></td>
+                <td><ReviewForm id={this.state.id} characteristics={this.state.characteristics} productData={this.state.productData}/></td>
               </tr>
             </tbody>
           </table>
@@ -144,7 +91,7 @@ export default class ReviewsList extends React.Component {
           <tbody>
             <tr>
               <td><MoreReviews id={this.state.id}/></td>
-              <td><ReviewForm id={this.state.id} postReview={this.postReview}/></td>
+              <td><ReviewForm id={this.state.id} characteristics={this.state.characteristics} productData={this.state.productData}/></td>
             </tr>
           </tbody>
         </table>
@@ -154,7 +101,9 @@ export default class ReviewsList extends React.Component {
   }
 };
 
-{/* <button onClick={this.reportReview}>Report Test</button>
-          <button onClick={this.markHelpful}>Helpful Test</button>
-          <button onClick={this.postReview}>Post Review Test</button>
-          <br /> */}
+{/*
+  <button onClick={this.reportReview}>Report Test</button>
+  <button onClick={this.markHelpful}>Helpful Test</button>
+  <button onClick={this.postReview}>Post Review Test</button>
+  <br />
+*/}
