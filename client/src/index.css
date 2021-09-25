@@ -287,6 +287,20 @@
   font-family: 'Playfair Display', serif;
 }
 
+.form-characteristics-header {
+  font-family: 'Playfair Display', serif;
+  font-size: 11px;
+}
+
+.form-trait {
+  font-family: 'Playfair Display', serif;
+  font-size: 14px;
+}
+
+.form-trait-radio {
+  text-align: center;
+}
+
 .form-summary {
   font-family: 'Playfair Display', serif;
 }

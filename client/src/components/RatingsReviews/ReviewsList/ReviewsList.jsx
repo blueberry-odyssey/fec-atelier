@@ -8,7 +8,7 @@ export default class ReviewsList extends React.Component {
 
   constructor(props) {
     super(props);
-    console.log('reviews list props:', props);
+    //console.log('reviews list props:', props);
     this.state = {
       id: props.id,
       sort: null,
@@ -58,7 +58,7 @@ export default class ReviewsList extends React.Component {
     if (this.state.reviews !== null) {
       return (
         <div className='reviews-column'>
-          {/* <button onClick={this.postReview}>Post Review Test</button> */}
+
           <p>{this.state.reviews.length} reviews, sorted by: &nbsp;
           <select className='sort-dropdown'>
             <option>Relevance</option>

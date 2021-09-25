@@ -5,7 +5,7 @@ import StarsRating from './StarsRating/StarsRating.jsx';
 export default class RatingsReviews extends React.Component {
   constructor(props) {
     super(props);
-    console.log('class ratings props:', props);
+    //console.log('class ratings props:', props);
     this.state = {
       id: props.id,
       characteristics: props.characteristics,

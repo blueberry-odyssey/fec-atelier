@@ -4,7 +4,7 @@ import Characteristics from './Characteristics.jsx';
 
 export default class StarsRating extends React.Component {
   constructor(props) {
-    console.log('STARS PROPS:', props);
+    //console.log('STARS PROPS:', props);
     super(props);
     this.state = {
       id: props.id,
