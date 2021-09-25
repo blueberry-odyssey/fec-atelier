@@ -53,6 +53,13 @@
   margin-right: 10px;
 }
 
+.image img {
+  flex: 1.5;
+  align-content: center;
+  width: min-content;
+  height: 550px;
+}
+
 
 .product-details {
   flex: 1;
@@ -103,6 +110,10 @@
   height: 80px;
   margin: 5px;
   border-radius: 50%;
+}
+
+.thumbnail:hover {
+  cursor: pointer;
 }
 
 .sale-price {
