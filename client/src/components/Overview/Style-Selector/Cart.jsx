@@ -23,7 +23,7 @@ class Cart extends React.Component {
   static getDerivedStateFromProps(props, state) {
     return {
       selectedStyle: props.selectedStyle,
-      skus: state.selectedStyle.skus
+      skus: props.selectedStyle.skus
     };
     // Return null to indicate no change to state.
     return null;
@@ -31,7 +31,7 @@ class Cart extends React.Component {
 
 
   handleSizeChange(event) {
-    console.log(event);
+    // console.log(event);
     let context = this;
     //at every change, set sizeSelected, and default quantitySelected to 1
     this.setState({ sizeSelected: event.target.value, quantitySelected: 1 });
@@ -64,7 +64,7 @@ class Cart extends React.Component {
   }
 
   manipulateData(object) {
-    console.log(object);
+    // console.log(object);
     let array = [];
     for (let key in object) {
       array.push(object[key]);

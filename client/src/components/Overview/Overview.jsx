@@ -4,6 +4,7 @@ import axios from 'axios';
 import ProductInfo from './Product-Info/ProductInfo.jsx';
 import StyleSelector from './Style-Selector/StyleSelector.jsx';
 import ImageGallery from './Image-Gallery/ImageGallery.jsx';
+import UpdatedComponent from '../interactions.jsx';
 
 class Overview extends React.Component {
   constructor(props) {
@@ -11,16 +12,26 @@ class Overview extends React.Component {
 
     this.state = {
       productData: {},
+      defaultStylePhotos: [],
+      selectedStylePhotos: []
       // styles: [],
       // cartData: {}
     };
     this.getProductDetails = this.getProductDetails.bind(this);
+    this.setDefaultPhotos = this.setDefaultPhotos.bind(this);
+    this.setSelectedPhotos = this.setSelectedPhotos.bind(this);
     // this.getStyles = this.getStyles.bind(this);
   }
 
   componentDidMount() {
     this.getProductDetails(this.props['product_id']);
     // this.getStyles(this.props['product_id']);
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps['product_id'] !== this.props['product_id']) {
+      this.getProductDetails(this.props['product_id']);
+    }
   }
 
   getProductDetails(productId) {
@@ -40,6 +51,15 @@ class Overview extends React.Component {
         console.log('error in getProductDetails index.jsx: ', err);
       })
   }
+
+  setDefaultPhotos(photos) {
+    this.setState({ defaultStylePhotos: photos });
+  }
+
+  setSelectedPhotos(photos) {
+    this.setState({ selectedStylePhotos: photos });
+  }
+
 
   // getStyles(productId) {
   //   let context = this;
@@ -66,12 +86,17 @@ class Overview extends React.Component {
         <p className='site-message'>SALE! 50% OFF SELECT ITEMS!</p>
         <div className='overview-container'>
           <div className='image-gallery'>
-            <ImageGallery />
+            {this.state.defaultStylePhotos && <ImageGallery
+              defaultPhotos={this.state.defaultStylePhotos}
+              selectedPhotos={this.state.selectedStylePhotos} />}
           </div>
 
           <div className='product-details'>
             <ProductInfo productData={this.state.productData} />
-            <StyleSelector product_id={this.props['product_id']} />
+            <StyleSelector
+              product_id={this.props['product_id']}
+              setDefaultPhotos={this.setDefaultPhotos}
+              setSelectedPhotos={this.setSelectedPhotos} />
           </div>
         </div>
       </div>
@@ -83,4 +108,4 @@ class Overview extends React.Component {
 //   product_id: PropTypes.string.isRequired
 // };
 
-export default Overview;
+export default UpdatedComponent(Overview);

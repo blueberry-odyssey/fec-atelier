@@ -10,11 +10,13 @@ class StyleSelector extends React.Component {
     // const selectedStyle = this.props.styles[0];
     this.state = {
       styles: [],
-      selectedStyle: {}
+      selectedStyle: {},
+      defaultStyle: {}
     };
 
     // this.setDefaultStyle = this.setDefaultStyle.bind(this);
     this.getStyles = this.getStyles.bind(this);
+    this.setSelectedStyle = this.setSelectedStyle.bind(this);
   }
 
   componentDidMount() {
@@ -32,12 +34,17 @@ class StyleSelector extends React.Component {
         //console.log('styles array: ', styles);
         context.setState({ styles: styles.data });
         context.setState({ selectedStyle: styles.data[0] });
+        context.setState({ defaultStyle: styles.data[0] });
+        context.props.setDefaultPhotos(styles.data[0].photos);
       })
       .catch(function (err) {
         console.log('err in getStyles overview.jsx: ', err);
       })
   }
 
+  setSelectedStyle(styleItem) {
+    this.setState({ selectedStyle: styleItem });
+  }
   // componentDidUpdate() {
   //   this.setDefaultStyle();
   // }
@@ -57,7 +64,10 @@ class StyleSelector extends React.Component {
       <div>
         <Price original={this.state.selectedStyle['original_price']} sale={this.state.selectedStyle['sale_price']} />
         <p><b>STYLE /</b>{this.state.selectedStyle.name}</p>
-        <Thumbnails styles={this.state.styles} />
+        <Thumbnails
+          styles={this.state.styles}
+          setSelectedStyle={this.setSelectedStyle}
+          setSelectedPhotos={this.props.setSelectedPhotos} />
         <Cart selectedStyle={this.state.selectedStyle} />
       </div>
     )
