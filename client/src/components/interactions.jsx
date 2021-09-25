@@ -1,47 +1,49 @@
 import React from 'react';
 import axios from 'axios';
-import config from '../../../config.js';
-const basePath = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp';
-
-let options = {
-  headers: { Authorization: config.TOKEN },
-};
-
-let params = {
-  element: '',
-  widget: '',
-  time: ''
-}
 
 const UpdatedComponent = (OriginalComponent) => {
   class NewComponent extends React.Component {
     constructor(props) {
       super(props);
-
-      //do we set the params as state
-      // this.state={}
-
       this.makeRequest = this.makeRequest.bind(this);
     }
-
     //add axios request
-    makeRequest() {
-      axios.post('/interactions', params, options)
-        .then(result => {
+    makeRequest(e) {
+      // let element = e.target;
+      // console.log('interaction request wtih:', e);
+      // console.log('className: ', e.target.className);
+      console.log('outerHTML string element: ', e.target.outerHTML);
+      console.log('widgetName: ', this.props.widgetName);
+      let time = Date();
+      console.log('TIME: ', time, typeof time);
 
+      let data = {
+        element: e.target.outerHTML,
+        widget: this.props.widgetName,
+        time: time
+      }
+
+      axios({
+        method: 'post',
+        url: '/interactions',
+        data: data
+      })
+        .then(result => {
+          console.log('success! ', result.data);
         })
         .catch(err => {
-
+          console.log('we did not success!', err);
         });
     }
 
     render() {
-      //pass in state and makeRequest as props
-      return <OriginalComponent />
+      return (
+        <div onClick={this.makeRequest}>
+          <OriginalComponent {...this.props} />
+        </div>
+      )
     }
   }
-
   return NewComponent;
 }
-
 export default UpdatedComponent;

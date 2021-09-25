@@ -4,6 +4,7 @@ import axios from 'axios';
 import ProductInfo from './Product-Info/ProductInfo.jsx';
 import StyleSelector from './Style-Selector/StyleSelector.jsx';
 import ImageGallery from './Image-Gallery/ImageGallery.jsx';
+import UpdatedComponent from '../interactions.jsx';
 
 class Overview extends React.Component {
   constructor(props) {
@@ -25,6 +26,12 @@ class Overview extends React.Component {
   componentDidMount() {
     this.getProductDetails(this.props['product_id']);
     // this.getStyles(this.props['product_id']);
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps['product_id'] !== this.props['product_id']) {
+      this.getProductDetails(this.props['product_id']);
+    }
   }
 
   getProductDetails(productId) {
@@ -101,4 +108,4 @@ class Overview extends React.Component {
 //   product_id: PropTypes.string.isRequired
 // };
 
-export default Overview;
+export default UpdatedComponent(Overview);

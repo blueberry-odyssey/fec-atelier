@@ -19,7 +19,7 @@ class ImageGallery extends React.Component {
   }
 
   render() {
-    console.log(this.state.defaultPhotos[0]);
+    // console.log(this.state.defaultPhotos[0]);
     return (
       <div className='image'>
         {this.state.selectedPhotos.length > 0 ?
