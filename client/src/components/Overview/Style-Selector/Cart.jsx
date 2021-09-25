@@ -23,7 +23,7 @@ class Cart extends React.Component {
   static getDerivedStateFromProps(props, state) {
     return {
       selectedStyle: props.selectedStyle,
-      skus: state.selectedStyle.skus
+      skus: props.selectedStyle.skus
     };
     // Return null to indicate no change to state.
     return null;

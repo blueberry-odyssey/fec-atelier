@@ -22,15 +22,27 @@ let params = {
 };
 
 app.use(express.json());
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
+//app.use(bodyParser.json());
+app.use(express.urlencoded({
   extended: true
 }));
-
 app.use(express.static('client/dist'));
-app.use('/products', productRouter);
 
+app.use('/products', productRouter);
 app.use('/reviews', reviewsRouter);
+
+app.post('/interactions', function (req, res) {
+  console.log(req.body);
+  axios.post(basePath + '/interactions', req.body, params)
+    .then((results) => {
+      console.log('axios Interaction success: ', results.status);
+      res.status(201).send(results.data);
+    })
+    .catch((err) => {
+      console.log('axios Interaction fail', err);
+      res.status(422).send(err);
+    });
+})
 
 
 app.listen(port, () => {

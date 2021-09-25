@@ -1,8 +1,9 @@
 import React from 'react';
 import ReviewsList from './ReviewsList/ReviewsList.jsx';
 import StarsRating from './StarsRating/StarsRating.jsx';
+import UpdatedComponent from '../interactions.jsx';
 
-export default class RatingsReviews extends React.Component {
+class RatingsReviews extends React.Component {
   constructor(props) {
     super(props);
     //console.log('class ratings props:', props);
@@ -12,11 +13,17 @@ export default class RatingsReviews extends React.Component {
       ratings: props.ratings,
       recommended: props.recommended,
       reviews: props.reviews,
-      getReviews: props.getReviews
+      productData: props.productData
     };
   }
 
-  render () {
+  componentDidUpdate(prevProps) {
+    if (prevProps.productData !== this.props.productData) {
+      this.setState({productData: this.props.productData});
+    }
+  }
+
+  render() {
     return (
       <div>
         <h2 className='reviews-header'>RATINGS & REVIEWS</h2>
@@ -27,5 +34,6 @@ export default class RatingsReviews extends React.Component {
       </div>
     )
   }
-
 };
+
+export default UpdatedComponent(RatingsReviews);
