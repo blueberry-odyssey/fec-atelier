@@ -22,14 +22,14 @@ export default class OutfitCarousel extends React.Component {
   }
 
   componentDidUpdate() {
-    if (this.props.productData && !this.state.styleData) {
+    if (this.props.productData.id && !this.state.styleData) {
       axios.get('/products/relatedProductsAndStyles', { params: { productIDArray: [this.props.productData.id], styles: '/styles' } })
         .then(styleData => {
           this.setState({
             styleData: styleData.data[0]
           })
         })
-        .catch(err => { throw err; });
+        .catch(err => { console.log(err) });
     }
     if (this.props.addOutfit) {
       this.handleAddClick();

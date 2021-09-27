@@ -18,7 +18,7 @@ export default function ModalPopup({ product, overviewCharacteristics, show }) {
             characteristicList[char] = char;
           }
         })
-        .catch(err => { throw err })
+        .catch(err => { console.log(err) })
     }
     useEffect(() => {
       getThumbnailChars();
