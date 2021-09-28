@@ -7,7 +7,7 @@ Modal.setAppElement('#app');
 export default class ReviewForm extends React.Component {
 
   constructor(props) {
-    console.log('REVIEW FORM PROPS: ', props);
+    //console.log('REVIEW FORM PROPS: ', props);
     super(props);
     this.state = {
       id: props.id,
@@ -92,7 +92,7 @@ export default class ReviewForm extends React.Component {
         }
       }
     }
-    console.log('CHARS RESULT: ', this.state.charsRating);
+    //console.log('CHARS RESULT: ', this.state.charsRating);
   }
 
 
@@ -117,7 +117,9 @@ export default class ReviewForm extends React.Component {
       .then(result => {
         console.log('client post success', result);
       })
-      .catch(err => { throw err; });
+      .catch(err => {
+        console.log(err);
+      });
   }
 
 
@@ -126,7 +128,7 @@ export default class ReviewForm extends React.Component {
       [e.target.name] : e.target.value
     });
 
-    console.log('HANDLE INPUT CHANGE:', e.target.value);
+    //console.log('HANDLE INPUT CHANGE:', e.target.value);
   }
 
 
@@ -159,15 +161,15 @@ export default class ReviewForm extends React.Component {
       bool = false;
     }
 
-    console.log('checking for values:', {
-      rating: parseInt(this.state.rating),
-      recommend: bool,
-      summary: summ,
-      body: e.target[28].value,
-      photos: photosArr,
-      name: e.target[34].value,
-      email: e.target[35].value
-    })
+    // console.log('checking for values:', {
+    //   rating: parseInt(this.state.rating),
+    //   recommend: bool,
+    //   summary: summ,
+    //   body: e.target[28].value,
+    //   photos: photosArr,
+    //   name: e.target[34].value,
+    //   email: e.target[35].value
+    // })
 
     this.setState({
       modalIsOpen: false,

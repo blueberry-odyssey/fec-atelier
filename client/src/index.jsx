@@ -74,7 +74,7 @@ export default class App extends React.Component {
         });
       })
       .catch(err => {
-        throw err;
+        console.log(err);
       });
   }
 
@@ -114,7 +114,7 @@ export default class App extends React.Component {
         });
       })
       .catch(err => {
-        throw err;
+        console.log(err);
       });
   }
 
