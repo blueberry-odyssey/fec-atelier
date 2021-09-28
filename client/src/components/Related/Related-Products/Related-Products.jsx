@@ -10,7 +10,14 @@ class RelatedProducts extends React.Component {
   }
 
   render() {
-    let { relatedItems, styleData, updateOverviewProduct, overviewCharacteristics } = this.props;
+    const {
+      addOutfit,
+      productData,
+      relatedItems,
+      styleData,
+      updateOverviewProduct,
+      overviewCharacteristics,
+      invokeAddToOutfits } = this.props;
     // console.log('style data in main', overviewCharacteristics);
     return (
       <div className='related'>
@@ -22,8 +29,11 @@ class RelatedProducts extends React.Component {
           overviewCharacteristics={overviewCharacteristics} />
         <h1>Make Your Fit</h1>
         <Carousel
+          productData={productData}
           relatedItems={relatedItems}
-          updateOverviewProduct={updateOverviewProduct} />
+          updateOverviewProduct={updateOverviewProduct}
+          invokeAddToOutfits={invokeAddToOutfits}
+          addOutfit={addOutfit}/>
       </div>
     )
   }

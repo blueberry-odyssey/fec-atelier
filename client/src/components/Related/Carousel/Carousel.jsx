@@ -31,7 +31,14 @@ export default class Carousel extends React.Component {
 
   render() {
     this.state.translate === 0 ? this.state.hidden = 'hidden' : this.state.hidden = 'visible';
-    const { relatedItems, styleData, updateOverviewProduct, overviewCharacteristics } = this.props;
+    const {
+      addOutfit,
+      invokeAddToOutfits,
+      productData,
+      relatedItems,
+      styleData,
+      updateOverviewProduct,
+      overviewCharacteristics } = this.props;
     // console.log('style in carousel', updateOverviewProduct);
     if (styleData) {
       return (
@@ -60,7 +67,12 @@ export default class Carousel extends React.Component {
           onClick={this.moveLeft}><i className="fas fa-chevron-right"></i></button>
           <div className='carousel-slider'>
             <div>
-              <OutfitCarousel/>
+              <OutfitCarousel
+              addOutfit={addOutfit}
+              invokeAddToOutfits={invokeAddToOutfits}
+              productData={productData}
+              updateOverviewProduct={updateOverviewProduct}
+              overviewCharacteristics={overviewCharacteristics} />
             </div>
           </div>
           <button id='right-button' onClick={this.moveRight}><i className="fas fa-chevron-right"></i></button>
