@@ -4,9 +4,12 @@ import { shallow, render, mount } from 'enzyme';
 import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
 Enzyme.configure({ adapter: new Adapter() });
 
-import App from '../../../client/src/index.jsx';
+// import App from '../../../client/src/index.jsx';
 import RelatedProducts from '../../../client/src/components/Related/Related-Products/Related-Products.jsx';
 import Carousel from '../../../client/src/components/Related/Carousel/Carousel.jsx';
+import OutfitCarousel from '../../../client/src/components/Related/Outfit-Carousel/Outfit-Carousel.jsx';
+import RelatedCarousel from '../../../client/src/components/Related/Related-Carousel/Related-Carousel.jsx';
+import ModalPopup from '../../../client/src/components/Related/Modal-Popup/Modal-Popup.jsx';
 // import HTML from '../../../client/dist/index.html';
 // const { document } = (new JSDOM(HTML)).window;
 // const appWrapper = shallow(<App/>)
@@ -26,10 +29,26 @@ describe('Related Products', () => {
 const carouselWrapper = shallow(<Carousel/>);
 describe('Carousel', () => {
   it('has all necessary props passed', () => {
-    console.log('my debugger:', carouselWrapper.props());
+    // console.log('my debugger:', carouselWrapper);
     // expect(carouselWrapper.props())
   })
+  it('contains Outfit carousel', () => {
+    expect(carouselWrapper.contains([<OutfitCarousel/>])).toEqual(true);
+  })
+  it('receives button clicks', () => {
+    expect(carouselWrapper.state('translate')).toEqual(0);
+    expect(carouselWrapper.find('#right-button').simulate('click'));
+    expect(carouselWrapper.state('translate')).toEqual(-500);
+  })
 })
+
+// const modalWrapper = shallow(<ModalPopup show={true}/>);
+// describe('Modal Popup', () => {
+//   it('has comparing window', () => {
+//     console.log(modalWrapper.debug());
+//     expect(modalWrapper.find('.modal-window').text()).toEqual('Comparing');
+//   })
+// })
 // describe('A single related product gets all necessary props', () => {
 //   test('currentProduct, inOutfit, display, showModal, product,\
 //   styleData, updateOverviewProduct, overviewCharacteristics, removeOutfit', () => {
