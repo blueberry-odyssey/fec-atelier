@@ -1,58 +1,70 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1632001253995" clover="3.2.0">
-  <project timestamp="1632001253995" name="All files">
-    <metrics statements="69" coveredstatements="39" conditionals="2" coveredconditionals="1" methods="39" coveredmethods="12" elements="110" coveredelements="52" complexity="0" loc="69" ncloc="69" packages="10" files="18" classes="18"/>
-    <package name="client.src.components.Overview">
-      <metrics statements="12" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="2"/>
-      <file name="Overview.jsx" path="/Users/michellekim/rpp30/fec-atelier/client/src/components/Overview/Overview.jsx">
-        <metrics statements="12" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="2"/>
-        <line num="11" count="3" type="stmt"/>
-        <line num="13" count="3" type="stmt"/>
-        <line num="14" count="3" type="stmt"/>
+<coverage generated="1632801652728" clover="3.2.0">
+  <project timestamp="1632801652728" name="All files">
+    <metrics statements="111" coveredstatements="20" conditionals="22" coveredconditionals="0" methods="50" coveredmethods="8" elements="183" coveredelements="28" complexity="0" loc="111" ncloc="111" packages="8" files="15" classes="15"/>
+    <package name="client.src.components">
+      <metrics statements="13" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="3"/>
+      <file name="interactions.jsx" path="/Users/michellekim/rpp30/fec-atelier/client/src/components/interactions.jsx">
+        <metrics statements="13" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="3"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="7" count="3" type="stmt"/>
+        <line num="8" count="3" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="16" count="0" type="stmt"/>
+        <line num="17" count="0" type="stmt"/>
         <line num="18" count="0" type="stmt"/>
-        <line num="22" count="0" type="stmt"/>
-        <line num="23" count="0" type="stmt"/>
-        <line num="24" count="0" type="stmt"/>
-        <line num="30" count="0" type="stmt"/>
-        <line num="31" count="0" type="stmt"/>
-        <line num="34" count="0" type="stmt"/>
+        <line num="20" count="0" type="stmt"/>
+        <line num="26" count="0" type="stmt"/>
+        <line num="32" count="0" type="stmt"/>
+        <line num="35" count="0" type="stmt"/>
         <line num="40" count="4" type="stmt"/>
-        <line num="41" count="4" type="stmt"/>
+        <line num="47" count="1" type="stmt"/>
       </file>
     </package>
-    <package name="client.src.components.Overview.Cart">
-      <metrics statements="2" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
-      <file name="Cart.jsx" path="/Users/michellekim/rpp30/fec-atelier/client/src/components/Overview/Cart/Cart.jsx">
-        <metrics statements="2" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="3" count="1" type="stmt"/>
-        <line num="4" count="0" type="stmt"/>
+    <package name="client.src.components.Overview">
+      <metrics statements="16" coveredstatements="0" conditionals="4" coveredconditionals="0" methods="9" coveredmethods="0"/>
+      <file name="Overview.jsx" path="/Users/michellekim/rpp30/fec-atelier/client/src/components/Overview/Overview.jsx">
+        <metrics statements="16" coveredstatements="0" conditionals="4" coveredconditionals="0" methods="9" coveredmethods="0"/>
+        <line num="11" count="0" type="stmt"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="20" count="0" type="stmt"/>
+        <line num="21" count="0" type="stmt"/>
+        <line num="22" count="0" type="stmt"/>
+        <line num="27" count="0" type="stmt"/>
+        <line num="32" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="33" count="0" type="stmt"/>
+        <line num="38" count="0" type="stmt"/>
+        <line num="40" count="0" type="stmt"/>
+        <line num="47" count="0" type="stmt"/>
+        <line num="48" count="0" type="stmt"/>
+        <line num="51" count="0" type="stmt"/>
+        <line num="56" count="0" type="stmt"/>
+        <line num="60" count="0" type="stmt"/>
+        <line num="83" count="0" type="stmt"/>
       </file>
     </package>
     <package name="client.src.components.Overview.Image-Gallery">
-      <metrics statements="2" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+      <metrics statements="5" coveredstatements="0" conditionals="4" coveredconditionals="0" methods="3" coveredmethods="0"/>
       <file name="ImageGallery.jsx" path="/Users/michellekim/rpp30/fec-atelier/client/src/components/Overview/Image-Gallery/ImageGallery.jsx">
-        <metrics statements="2" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="3" count="1" type="stmt"/>
-        <line num="4" count="0" type="stmt"/>
+        <metrics statements="5" coveredstatements="0" conditionals="4" coveredconditionals="0" methods="3" coveredmethods="0"/>
+        <line num="5" count="0" type="stmt"/>
+        <line num="6" count="0" type="stmt"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="23" count="0" type="stmt"/>
       </file>
     </package>
     <package name="client.src.components.Overview.Product-Info">
-      <metrics statements="9" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="3"/>
+      <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
       <file name="ItemDetails.jsx" path="/Users/michellekim/rpp30/fec-atelier/client/src/components/Overview/Product-Info/ItemDetails.jsx">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="5" count="3" type="stmt"/>
         <line num="6" count="1" type="stmt"/>
       </file>
-      <file name="Price.jsx" path="/Users/michellekim/rpp30/fec-atelier/client/src/components/Overview/Product-Info/Price.jsx">
-        <metrics statements="2" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="3" count="2" type="stmt"/>
-        <line num="4" count="0" type="stmt"/>
-      </file>
       <file name="ProductInfo.jsx" path="/Users/michellekim/rpp30/fec-atelier/client/src/components/Overview/Product-Info/ProductInfo.jsx">
-        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <line num="7" count="2" type="stmt"/>
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="6" count="2" type="stmt"/>
         <line num="8" count="1" type="stmt"/>
-        <line num="9" count="1" type="stmt"/>
       </file>
       <file name="StarRating.jsx" path="/Users/michellekim/rpp30/fec-atelier/client/src/components/Overview/Product-Info/StarRating.jsx">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
@@ -61,84 +73,99 @@
       </file>
     </package>
     <package name="client.src.components.Overview.Style-Selector">
-      <metrics statements="4" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
-      <file name="StyleSelector.jsx" path="/Users/michellekim/rpp30/fec-atelier/client/src/components/Overview/Style-Selector/StyleSelector.jsx">
-        <metrics statements="2" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="4" count="1" type="stmt"/>
-        <line num="5" count="0" type="stmt"/>
-      </file>
-      <file name="Thumbnails.jsx" path="/Users/michellekim/rpp30/fec-atelier/client/src/components/Overview/Style-Selector/Thumbnails.jsx">
-        <metrics statements="2" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="6" count="1" type="stmt"/>
+      <metrics statements="59" coveredstatements="3" conditionals="12" coveredconditionals="0" methods="24" coveredmethods="0"/>
+      <file name="Cart.jsx" path="/Users/michellekim/rpp30/fec-atelier/client/src/components/Overview/Style-Selector/Cart.jsx">
+        <metrics statements="29" coveredstatements="0" conditionals="10" coveredconditionals="0" methods="10" coveredmethods="0"/>
+        <line num="6" count="0" type="stmt"/>
         <line num="7" count="0" type="stmt"/>
+        <line num="17" count="0" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="19" count="0" type="stmt"/>
+        <line num="20" count="0" type="stmt"/>
+        <line num="24" count="0" type="stmt"/>
+        <line num="29" count="0" type="stmt"/>
+        <line num="35" count="0" type="stmt"/>
+        <line num="37" count="0" type="stmt"/>
+        <line num="40" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="41" count="0" type="stmt"/>
+        <line num="45" count="0" type="stmt"/>
+        <line num="46" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="47" count="0" type="stmt"/>
+        <line num="51" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="52" count="0" type="stmt"/>
+        <line num="54" count="0" type="stmt"/>
+        <line num="57" count="0" type="stmt"/>
+        <line num="63" count="0" type="stmt"/>
+        <line num="68" count="0" type="stmt"/>
+        <line num="69" count="0" type="stmt"/>
+        <line num="70" count="0" type="stmt"/>
+        <line num="72" count="0" type="stmt"/>
+        <line num="76" count="0" type="stmt"/>
+        <line num="80" count="0" type="stmt"/>
+        <line num="82" count="0" type="stmt"/>
+        <line num="88" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="99" count="0" type="stmt"/>
       </file>
-    </package>
-    <package name="client.src.components.RatingsReviews">
-      <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="2"/>
-      <file name="RatingsReviews.jsx" path="/Users/michellekim/rpp30/fec-atelier/client/src/components/RatingsReviews/RatingsReviews.jsx">
-        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="2"/>
-        <line num="7" count="1" type="stmt"/>
-        <line num="9" count="1" type="stmt"/>
-        <line num="22" count="1" type="stmt"/>
-      </file>
-    </package>
-    <package name="client.src.components.RatingsReviews.ReviewsList">
-      <metrics statements="28" coveredstatements="12" conditionals="2" coveredconditionals="1" methods="19" coveredmethods="3"/>
-      <file name="AddReview.jsx" path="/Users/michellekim/rpp30/fec-atelier/client/src/components/RatingsReviews/ReviewsList/AddReview.jsx">
-        <metrics statements="2" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="3" count="2" type="stmt"/>
+      <file name="Price.jsx" path="/Users/michellekim/rpp30/fec-atelier/client/src/components/Overview/Style-Selector/Price.jsx">
+        <metrics statements="2" coveredstatements="1" conditionals="2" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="3" count="1" type="stmt"/>
         <line num="4" count="0" type="stmt"/>
       </file>
-      <file name="MoreReviews.jsx" path="/Users/michellekim/rpp30/fec-atelier/client/src/components/RatingsReviews/ReviewsList/MoreReviews.jsx">
-        <metrics statements="2" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="3" count="2" type="stmt"/>
-        <line num="5" count="0" type="stmt"/>
-      </file>
-      <file name="ReviewBlock.jsx" path="/Users/michellekim/rpp30/fec-atelier/client/src/components/RatingsReviews/ReviewsList/ReviewBlock.jsx">
-        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <line num="3" count="3" type="stmt"/>
-        <line num="6" count="1" type="stmt"/>
-      </file>
-      <file name="ReviewsList.jsx" path="/Users/michellekim/rpp30/fec-atelier/client/src/components/RatingsReviews/ReviewsList/ReviewsList.jsx">
-        <metrics statements="22" coveredstatements="8" conditionals="2" coveredconditionals="1" methods="16" coveredmethods="2"/>
-        <line num="10" count="1" type="stmt"/>
-        <line num="12" count="1" type="stmt"/>
-        <line num="21" count="1" type="stmt"/>
-        <line num="22" count="1" type="stmt"/>
-        <line num="23" count="1" type="stmt"/>
-        <line num="24" count="1" type="stmt"/>
+      <file name="StyleSelector.jsx" path="/Users/michellekim/rpp30/fec-atelier/client/src/components/Overview/Style-Selector/StyleSelector.jsx">
+        <metrics statements="14" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="7" coveredmethods="0"/>
+        <line num="9" count="0" type="stmt"/>
+        <line num="11" count="0" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="19" count="0" type="stmt"/>
+        <line num="23" count="0" type="stmt"/>
+        <line num="27" count="0" type="stmt"/>
         <line num="28" count="0" type="stmt"/>
-        <line num="39" count="0" type="stmt"/>
+        <line num="35" count="0" type="stmt"/>
+        <line num="36" count="0" type="stmt"/>
+        <line num="37" count="0" type="stmt"/>
+        <line num="38" count="0" type="stmt"/>
         <line num="41" count="0" type="stmt"/>
-        <line num="48" count="0" type="stmt"/>
-        <line num="57" count="0" type="stmt"/>
-        <line num="71" count="0" type="stmt"/>
-        <line num="74" count="0" type="stmt"/>
-        <line num="79" count="0" type="stmt"/>
-        <line num="81" count="0" type="stmt"/>
-        <line num="84" count="0" type="stmt"/>
-        <line num="91" count="0" type="stmt"/>
-        <line num="93" count="0" type="stmt"/>
-        <line num="96" count="0" type="stmt"/>
-        <line num="102" count="1" type="cond" truecount="1" falsecount="1"/>
-        <line num="103" count="1" type="stmt"/>
-        <line num="122" count="0" type="stmt"/>
+        <line num="46" count="0" type="stmt"/>
+        <line num="63" count="0" type="stmt"/>
+      </file>
+      <file name="ThumbnailRow.jsx" path="/Users/michellekim/rpp30/fec-atelier/client/src/components/Overview/Style-Selector/ThumbnailRow.jsx">
+        <metrics statements="5" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="0"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="8" count="0" type="stmt"/>
+        <line num="11" count="0" type="stmt"/>
+        <line num="16" count="0" type="stmt"/>
+        <line num="17" count="0" type="stmt"/>
+      </file>
+      <file name="Thumbnails.jsx" path="/Users/michellekim/rpp30/fec-atelier/client/src/components/Overview/Style-Selector/Thumbnails.jsx">
+        <metrics statements="9" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="0"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="10" count="0" type="stmt"/>
+        <line num="11" count="0" type="stmt"/>
+        <line num="12" count="0" type="stmt"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="17" count="0" type="stmt"/>
+        <line num="20" count="0" type="stmt"/>
+        <line num="23" count="0" type="stmt"/>
       </file>
     </package>
     <package name="client.src.components.RatingsReviews.StarsRating">
-      <metrics statements="7" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="2"/>
+      <metrics statements="10" coveredstatements="4" conditionals="2" coveredconditionals="0" methods="5" coveredmethods="2"/>
       <file name="Characteristics.jsx" path="/Users/michellekim/rpp30/fec-atelier/client/src/components/RatingsReviews/StarsRating/Characteristics.jsx">
-        <metrics statements="3" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="3" count="2" type="stmt"/>
-        <line num="4" count="0" type="stmt"/>
+        <metrics statements="7" coveredstatements="1" conditionals="2" coveredconditionals="0" methods="3" coveredmethods="0"/>
+        <line num="3" count="1" type="stmt"/>
         <line num="5" count="0" type="stmt"/>
+        <line num="6" count="0" type="stmt"/>
+        <line num="7" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="8" count="0" type="stmt"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="17" count="0" type="stmt"/>
       </file>
       <file name="StarsRating.jsx" path="/Users/michellekim/rpp30/fec-atelier/client/src/components/RatingsReviews/StarsRating/StarsRating.jsx">
-        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
-        <line num="7" count="1" type="stmt"/>
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
         <line num="8" count="1" type="stmt"/>
         <line num="9" count="1" type="stmt"/>
-        <line num="36" count="1" type="stmt"/>
+        <line num="19" count="1" type="stmt"/>
       </file>
     </package>
     <package name="tests.components.Overview">
@@ -152,7 +179,7 @@
       <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="fixtures.js" path="/Users/michellekim/rpp30/fec-atelier/tests/components/RatingsReviews/fixtures.js">
         <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="1" count="3" type="stmt"/>
+        <line num="1" count="1" type="stmt"/>
       </file>
     </package>
   </project>

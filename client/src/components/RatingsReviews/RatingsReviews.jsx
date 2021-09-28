@@ -36,4 +36,5 @@ class RatingsReviews extends React.Component {
   }
 };
 
-export default UpdatedComponent(RatingsReviews);
+//export default UpdatedComponent(RatingsReviews);
+export default RatingsReviews;

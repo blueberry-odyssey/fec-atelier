@@ -7,13 +7,14 @@ Modal.setAppElement('#app');
 export default class ReviewForm extends React.Component {
 
   constructor(props) {
-    //console.log('REVIEW FORM PROPS: ', props);
+    console.log('REVIEW FORM PROPS: ', props);
     super(props);
     this.state = {
+      id: props.id,
       modalIsOpen: false,
       characteristics: props.characteristics,
       productData: props.productData,
-      chars: [],
+      charsRating: [],
       rating: 0,
       summary: null,
       body: '',
@@ -29,7 +30,7 @@ export default class ReviewForm extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    if(prevProps.productData !== this.props.productData) {
+    if (prevProps.productData !== this.props.productData) {
       this.setState({productData: this.props.productData});
     }
   }
@@ -87,32 +88,29 @@ export default class ReviewForm extends React.Component {
       for (var key in charsChart) {
         if (current[0] === key) {
           let trait = [current[1].id, key, Object.entries(charsChart[key])];
-          this.state.chars.push(trait);
+          this.state.charsRating.push(trait);
         }
       }
     }
-    console.log('CHARS RESULT: ', this.state.chars);
+    console.log('CHARS RESULT: ', this.state.charsRating);
   }
 
 
   postReview(e) {
     e.preventDefault();
 
+    let chars = {};
+
     let params = {
-      product_id: 47421,
-      rating: 5,
-      summary: 'I\'m testing once again',
-      body: 'If you see this, you did it!',
-      recommend: true,
-      name: 'bhbh12',
-      email: 'bhbh123@yahoo.com',
-      photos: [],
-      characteristics: {
-        '159159': 5,
-        '159160': 5,
-        '159161': 5,
-        '159162': 5
-      }
+      product_id: this.state.id,
+      rating: this.state.rating,
+      summary: this.state.summary,
+      body: this.state.body,
+      recommend: this.state.recommend,
+      name: this.state.nickname,
+      email: this.state.email,
+      photos: this.state.photos,
+      characteristics: chars
     };
 
     axios.post('/reviews/postReview', { params })
@@ -128,7 +126,7 @@ export default class ReviewForm extends React.Component {
       [e.target.name] : e.target.value
     });
 
-    console.log('HANDLE INPUT CHANGE:', e.target);
+    console.log('HANDLE INPUT CHANGE:', e.target.value);
   }
 
 
@@ -136,15 +134,15 @@ export default class ReviewForm extends React.Component {
     e.preventDefault();
 
     let summ = '';
-    if (e.target[16].value.length > 0) {
-      summ = e.target[16].value
+    if (e.target[27].value.length > 0) {
+      summ = e.target[27].value
     } else {
       summ = null;
     }
 
     let photosArr = [];
     let photoVal = 1;
-    for (var i = 18; i <= 22; i++) {
+    for (var i = 29; i <= 33; i++) {
       if (e.target[i].value.length > 0) {
         photosArr.push({
           id: photoVal,
@@ -165,10 +163,10 @@ export default class ReviewForm extends React.Component {
       rating: parseInt(this.state.rating),
       recommend: bool,
       summary: summ,
-      body: e.target[17].value,
+      body: e.target[28].value,
       photos: photosArr,
-      name: e.target[23].value,
-      email: e.target[24].value
+      name: e.target[34].value,
+      email: e.target[35].value
     })
 
     this.setState({
@@ -176,11 +174,11 @@ export default class ReviewForm extends React.Component {
       // characteristics: props.characteristics,
       rating: this.state.rating,
       summary: summ,
-      body: e.target[17].value,
+      body: e.target[28].value,
       recommend: this.state.recommend,
       photos: photosArr,
-      nickname: e.target[23].value,
-      email: e.target[24].value
+      nickname: e.target[34].value,
+      email: e.target[35].value
     });
   }
 
@@ -217,7 +215,7 @@ export default class ReviewForm extends React.Component {
             {/* characteristics */}
             <label className='form-characteristics' htmlFor='characteristics'>Characteristics <span className='form-mandatory'>*</span> </label><br/><br/>
 
-              {this.state.chars.map(trait => (
+              {this.state.charsRating.map(trait => (
                 <table style={{width: '100%'}} key={trait[0]}>
                   <thead>
                     <tr>

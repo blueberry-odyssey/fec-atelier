@@ -81,7 +81,10 @@ module.exports = {
         "helpfulness": 0,
         "photos": []
     }
-  ]
+  ],
+  productData: {
+    name: 'Camo Onesie'
+  }
 
 }
 

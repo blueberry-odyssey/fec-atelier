@@ -8,9 +8,12 @@ import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
 configure({ adapter: new Adapter() });
 
 describe('component has state', () => {
-  let wrapper = shallow(<ReviewsList id={ fixtures.id }/>, { disableLifecycleMethods: true });
+  let wrapper = shallow(<ReviewsList id={ fixtures.id }/>);
 
   test('component has state', () => {
     expect(wrapper.state('id')).toBe(47421);
+
   });
 })
+
+// , { disableLifecycleMethods: true }

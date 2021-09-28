@@ -18,14 +18,9 @@ export default class ReviewsList extends React.Component {
       productData: props.productData
     };
 
-    //this.sortReviews = this.sortReviews.bind(this);
-    //this.postReview = this.postReview.bind(this);
     this.reportReview = this.reportReview.bind(this);
     this.markHelpful = this.markHelpful.bind(this);
   }
-
-  // sortReviews() {
-  // }
 
   componentDidUpdate(prevProps) {
     if(prevProps.productData !== this.props.productData) {
@@ -58,14 +53,34 @@ export default class ReviewsList extends React.Component {
     if (this.state.reviews !== null) {
       return (
         <div className='reviews-column'>
-
           <p>{this.state.reviews.length} reviews, sorted by: &nbsp;
           <select className='sort-dropdown'>
             <option>Relevance</option>
             <option>Helpfulness</option>
             <option>Newest</option>
           </select></p><br/>
-          <ReviewBlock reviews={this.state.reviews} reportReview={this.reportReview} markHelpful={this.markHelpful} />
+          <ReviewBlock reviews={this.state.reviews} />
+          <table>
+            <tbody>
+              <tr>
+                <td><MoreReviews id={this.state.id} /></td>
+                <td><ReviewForm id={this.state.id} characteristics={this.state.characteristics} productData={this.state.productData}/></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      )
+    } else {
+      return (
+        <div className='reviews-column'>
+          <p>(total number) reviews, sorted by:
+          <select>
+            <option>Relevance</option>
+            <option>Helpfulness</option>
+            <option>Newest</option>
+          </select></p>
+          <br/>
+          <ReviewBlock reviews={this.state.reviews} />
           <table>
             <tbody>
               <tr>
@@ -75,27 +90,6 @@ export default class ReviewsList extends React.Component {
             </tbody>
           </table>
         </div>
-      )
-    } else {
-      return (
-      <div className='reviews-column'>
-        <p>(total number) reviews, sorted by:
-        <select>
-          <option>Relevance</option>
-          <option>Helpfulness</option>
-          <option>Newest</option>
-        </select></p>
-        <br/>
-        <ReviewBlock reviews={this.state.reviews} reportReview={this.reportReview} markHelpful={this.markHelpful} />
-        <table>
-          <tbody>
-            <tr>
-              <td><MoreReviews id={this.state.id}/></td>
-              <td><ReviewForm id={this.state.id} characteristics={this.state.characteristics} productData={this.state.productData}/></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
       )
     }
   }

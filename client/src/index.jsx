@@ -119,7 +119,7 @@ export default class App extends React.Component {
               widgetName='RelatedProducts' />
           </div>
           <div className='component-2'>
-            <RatingsReviews {...this.state} getReviews={this.getReviews} widgetName='RatingsReviews' />
+            <RatingsReviews {...this.state} widgetName='RatingsReviews' />
           </div>
         </div >
       )
