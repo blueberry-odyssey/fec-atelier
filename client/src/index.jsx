@@ -22,16 +22,30 @@ export default class App extends React.Component {
       count: 2,
       reviews: [],
       sort: null,
-      updated: false
+      updated: false,
+      addOutfit: false
     };
 
     this.updateOverviewProduct = this.updateOverviewProduct.bind(this);
     this.getReviews = this.getReviews.bind(this);
     this.getProductData = this.getProductData.bind(this);
+    this.invokeAddToOutfits = this.invokeAddToOutfits.bind(this);
   }
 
   getProductData(productData) {
     this.setState({ productData: productData });
+  }
+
+  invokeAddToOutfits (trueOrFalse) {
+    if (trueOrFalse) {
+      this.setState({
+        addOutfit: true
+      })
+    } else {
+      this.setState({
+        addOutfit: false
+      })
+    }
   }
 
   updateOverviewProduct(newProductID) {
@@ -41,6 +55,7 @@ export default class App extends React.Component {
       product_id: newProductIDString,
       id: newProductID
     })
+    // console.log('prod id', this.state.product_id)
   }
 
   getReviews() {
@@ -71,10 +86,10 @@ export default class App extends React.Component {
       .then(result => {
         let productIDArray = result.data;
         axios.get('/products/relatedProductsAndStyles', { params: { productIDArray, styles: '' } })
-          .then(data => {
-            this.setState({
-              relatedItems: data.data
-            })
+        .then(data => {
+          this.setState({
+            relatedItems: data.data
+          })
             axios.get('/products/relatedProductsAndStyles', { params: { productIDArray, styles: '/styles' } })
               .then(styleData => {
                 //console.log('relatedStyle Data', styleData);
@@ -104,11 +119,12 @@ export default class App extends React.Component {
   }
 
   render() {
+    // console.log(this.state.productData)
     if (this.state.updated === true) {
       return (
         <div className='app-body'>
           <div className='component-1'>
-            <Overview product_id={this.state['product_id']} getProductData={this.getProductData} widgetName='Overview' />
+            <Overview product_id={this.state['product_id']} getProductData={this.getProductData} widgetName='Overview' invokeAddToOutfits={this.invokeAddToOutfits}/>
           </div>
           <div className='component-3'>
             <RelatedProducts
@@ -116,7 +132,10 @@ export default class App extends React.Component {
               styleData={this.state.styleData}
               updateOverviewProduct={this.updateOverviewProduct}
               overviewCharacteristics={this.state.characteristics}
-              widgetName='RelatedProducts' />
+              widgetName='RelatedProducts'
+              productData={this.state.productData}
+              invokeAddToOutfits={this.invokeAddToOutfits}
+              addOutfit={this.state.addOutfit}/>
           </div>
           <div className='component-2'>
             <RatingsReviews {...this.state} widgetName='RatingsReviews' />
