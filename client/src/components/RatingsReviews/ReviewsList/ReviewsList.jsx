@@ -28,20 +28,24 @@ export default class ReviewsList extends React.Component {
     }
   }
 
-  reportReview() {
-    axios.put('/reviews/report')
+  reportReview(reviewId) {
+    let params = { reviewId };
+
+    axios.put('/reviews/report', { params })
       .then(result => {
-        console.log('client reportReview success', result);
+        console.log('client reportReview success', result.status);
       })
       .catch(err => {
         console.log(err);
       });
   }
 
-  markHelpful() {
-    axios.put('/reviews/helpful')
+  markHelpful(reviewId) {
+    let params = { reviewId }
+
+    axios.put('/reviews/helpful', { params })
       .then(result => {
-        console.log('client markHelpful success:', result);
+        console.log('client markHelpful success:', result.status);
       })
       .catch(err => {
         console.log(err);
@@ -59,7 +63,7 @@ export default class ReviewsList extends React.Component {
             <option>Helpfulness</option>
             <option>Newest</option>
           </select></p><br/>
-          <ReviewBlock reviews={this.props.reviews} />
+          <ReviewBlock reviews={this.props.reviews} markHelpful={this.markHelpful} reportReview={this.reportReview}/>
           <table>
             <tbody>
               <tr>

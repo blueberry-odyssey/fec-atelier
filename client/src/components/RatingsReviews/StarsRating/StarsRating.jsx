@@ -1,5 +1,4 @@
 import React from 'react';
-import $ from 'jquery';
 import Characteristics from './Characteristics.jsx';
 
 export default class StarsRating extends React.Component {

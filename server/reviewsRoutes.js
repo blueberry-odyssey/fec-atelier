@@ -106,7 +106,9 @@ reviewsRouter.post('/postReview', (req, res) => {
 
 // to report a review
 reviewsRouter.put('/report', (req, res) => {
-  let reviewId = 800941;
+
+  //console.log('checking server req.body.params: ', req.body.params);
+  let reviewId = req.body.params.reviewId;
 
   let options = {
     headers: { Authorization: config.TOKEN },
@@ -126,7 +128,7 @@ reviewsRouter.put('/report', (req, res) => {
 
 // to mark reviews as helpful
 reviewsRouter.put('/helpful', (req, res) => {
-  let reviewId = 781037;
+  let reviewId = req.body.params.reviewId;
 
   let options = {
     headers: { Authorization: config.TOKEN }

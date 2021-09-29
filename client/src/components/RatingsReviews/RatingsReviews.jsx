@@ -8,11 +8,11 @@ class RatingsReviews extends React.Component {
     super(props);
     //console.log('class ratings props:', props);
     this.state = {
-      id: props.id,
-      characteristics: props.characteristics,
-      ratings: props.ratings,
-      recommended: props.recommended,
-      reviews: props.reviews,
+      // id: props.id,
+      // characteristics: props.characteristics,
+      // ratings: props.ratings,
+      // recommended: props.recommended,
+      // reviews: props.reviews,
       productData: props.productData
     };
   }
@@ -36,5 +36,5 @@ class RatingsReviews extends React.Component {
   }
 };
 
-//export default UpdatedComponent(RatingsReviews);
-export default RatingsReviews;
+export default UpdatedComponent(RatingsReviews);
+//export default RatingsReviews;

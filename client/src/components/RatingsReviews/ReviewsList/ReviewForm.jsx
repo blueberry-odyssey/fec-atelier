@@ -30,7 +30,6 @@ export default class ReviewForm extends React.Component {
       Length: 0
     };
 
-    this.postReview = this.postReview.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -98,13 +97,7 @@ export default class ReviewForm extends React.Component {
         }
       }
     }
-    console.log('CHARS RESULT: ', this.state.charsRating);
-  }
-
-
-  postReview(e) {
-    e.preventDefault();
-
+    //console.log('CHARS RESULT: ', this.state.charsRating);
   }
 
 
@@ -112,8 +105,8 @@ export default class ReviewForm extends React.Component {
     this.setState({
       [e.target.name] : e.target.value
     });
-    console.log('HANDLE INPUT CHANGE:', e.target.name);
-    console.log('HANDLE INPUT CHANGE:', e.target.value);
+    // console.log('HANDLE INPUT CHANGE:', e.target.name);
+    // console.log('HANDLE INPUT CHANGE:', e.target.value);
 
   }
 
@@ -121,17 +114,7 @@ export default class ReviewForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
 
-    // let summ = '';
-    // if (e.target[27].value.length > 0) {
-    //   summ = e.target[27].value
-    // } else {
-    //   summ = null;
-    // }
-
-    console.log('this is what state is after submit:', this.state);
-
-    //console.log('checking for photos:', this.inputPhotos.current);
-
+    //console.log('this is what state is after submit:', this.state);
     let photosArr = [];
     for (var i = 29; i <= 33; i++) {
       if (e.target[i].value.length > 0) {
@@ -146,8 +129,6 @@ export default class ReviewForm extends React.Component {
       bool = false;
     }
 
-    // will have to construct characteristics obj then pass into setState
-    // loop and compare matching ones
     let charsObj = {};
     let relevant = Object.keys(this.state);
     for (var i = 0; i < this.state.charsRating.length; i++) {
@@ -157,13 +138,7 @@ export default class ReviewForm extends React.Component {
         }
       }
     }
-
-    console.log('CHECK CHARS OBJ:', charsObj);
-    // {
-    //   '159159': 4,
-    //   '159160': 4
-    // }
-
+    //console.log('CHECK CHARS OBJ:', charsObj);
 
     let params = {
       product_id: this.state.id,
@@ -176,7 +151,6 @@ export default class ReviewForm extends React.Component {
       photos: photosArr,
       characteristics: charsObj
     };
-
     console.log('checking params:', params);
 
     this.setState({
@@ -210,17 +184,17 @@ export default class ReviewForm extends React.Component {
             {/* rating */}
             <label className='form-rating' htmlFor='rating'>Overall rating <span className='form-mandatory'>*</span> </label>
             {}
-            <input type='radio' name='rating' value='1' onChange={this.handleInputChange}></input>
-            <input type='radio' name='rating' value='2' onChange={this.handleInputChange}></input>
-            <input type='radio' name='rating' value='3' onChange={this.handleInputChange}></input>
-            <input type='radio' name='rating' value='4' onChange={this.handleInputChange}></input>
-            <input type='radio' name='rating' value='5' onChange={this.handleInputChange}></input>
+            <input type='radio' name='rating' value='1' onChange={this.handleInputChange} required></input>
+            <input type='radio' name='rating' value='2' onChange={this.handleInputChange} required></input>
+            <input type='radio' name='rating' value='3' onChange={this.handleInputChange} required></input>
+            <input type='radio' name='rating' value='4' onChange={this.handleInputChange} required></input>
+            <input type='radio' name='rating' value='5' onChange={this.handleInputChange} required></input>
             <br/><br/>
 
             {/* recommend */}
             <label className='form-recommend' htmlFor='recommend'>Do you recommend this product? <span className='form-mandatory'>*</span> </label>
-            <input type='radio' name='recommend' value='true' onChange={this.handleInputChange}></input><label>Yes</label>
-            <input type='radio' name='recommend' value='false' onChange={this.handleInputChange}></input><label>No</label><br/><br/>
+            <input type='radio' name='recommend' value='true' onChange={this.handleInputChange} required></input><label>Yes</label>
+            <input type='radio' name='recommend' value='false' onChange={this.handleInputChange} required></input><label>No</label><br/><br/>
 
             {/* characteristics */}
             <label className='form-characteristics' htmlFor='characteristics'>Characteristics <span className='form-mandatory'>*</span> </label><br/><br/>
@@ -240,11 +214,11 @@ export default class ReviewForm extends React.Component {
                   <tbody>
                     <tr>
                       <td><label className='form-trait' name={trait[1]} >{trait[1]}</label></td>
-                      <td className='form-trait-radio'><input type='radio' name={trait[1]} value={trait[2][0][0]} onChange={this.handleInputChange}></input></td>
-                      <td className='form-trait-radio'><input type='radio' name={trait[1]} value={trait[2][1][0]} onChange={this.handleInputChange}></input></td>
-                      <td className='form-trait-radio'><input type='radio' name={trait[1]} value={trait[2][2][0]} onChange={this.handleInputChange}></input></td>
-                      <td className='form-trait-radio'><input type='radio' name={trait[1]} value={trait[2][3][0]} onChange={this.handleInputChange}></input></td>
-                      <td className='form-trait-radio'><input type='radio' name={trait[1]} value={trait[2][4][0]} onChange={this.handleInputChange}></input></td>
+                      <td className='form-trait-radio'><input type='radio' name={trait[1]} value={trait[2][0][0]} onChange={this.handleInputChange} required></input></td>
+                      <td className='form-trait-radio'><input type='radio' name={trait[1]} value={trait[2][1][0]} onChange={this.handleInputChange} required></input></td>
+                      <td className='form-trait-radio'><input type='radio' name={trait[1]} value={trait[2][2][0]} onChange={this.handleInputChange} required></input></td>
+                      <td className='form-trait-radio'><input type='radio' name={trait[1]} value={trait[2][3][0]} onChange={this.handleInputChange} required></input></td>
+                      <td className='form-trait-radio'><input type='radio' name={trait[1]} value={trait[2][4][0]} onChange={this.handleInputChange} required></input></td>
                     </tr>
                   </tbody>
                 </table>
@@ -257,7 +231,7 @@ export default class ReviewForm extends React.Component {
 
             {/* body */}
             <label className='form-body' htmlFor='body'>Body <span className='form-mandatory'>*</span> </label><br/>
-            <textarea name='body' cols='60' rows='5' minLength='50' maxLength='1000' placeholder='Why did you like the product or not?' onChange={this.handleInputChange}></textarea><br/><br/>
+            <textarea name='body' cols='60' rows='5' minLength='50' maxLength='1000' placeholder='Why did you like the product or not?' onChange={this.handleInputChange} required></textarea><br/><br/>
 
             {/* photos -- change to accept url instead */}
             <label className='form-photos' htmlFor='photos'>Photos: </label><br/>
@@ -272,12 +246,12 @@ export default class ReviewForm extends React.Component {
             {/* name */}
             <label className='form-nickname' htmlFor='nickname'>Nickname <span className='form-mandatory'>*</span> </label>
             <p className='form-disclaimer'>For privacy reasons, do not use your full name</p>
-            <input type='text' name='nickname' size='40' maxLength='60' placeholder='i.e. jackson11' onChange={this.handleInputChange}></input><br/><br/>
+            <input type='text' name='nickname' size='40' maxLength='60' placeholder='i.e. jackson11' onChange={this.handleInputChange} required></input><br/><br/>
 
             {/* email */}
             <label className='form-email' htmlFor='email'>Email <span className='form-mandatory'>*</span> </label>
             <p className='form-disclaimer'>For authentication reasons, you will not be emailed</p>
-            <input type='email' name='email' size='40' placeholder='i.e. jackson11@email.com' onChange={this.handleInputChange}></input><br/><br/><br/><br/>
+            <input type='email' name='email' size='40' placeholder='i.e. jackson11@email.com' onChange={this.handleInputChange} required></input><br/><br/><br/><br/>
 
             {/* submit button */}
             <input className='form-submit-btn' type='submit' value='Submit' ></input>
