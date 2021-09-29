@@ -17,16 +17,8 @@ export default function RelatedCarousel(
     // console.log('trying to close')
     setDisplay(false)
     // let overlay = document.querySelector('#app');
-    // overlay.style.backgroundColor = 'rgb(0, 0, 0, 0)';
-    // overlay.removeEventListener('click', modalClose);
+    // overlay.removeEventListener('click', modalClose)
   }
-
-  // handleStarClick () {
-  //   showModal();
-  //   setDisplayOne(true);
-  //   let overlay = document.querySelector('#app');
-  //   overlay.addEventListener('click', modalClose);
-  // }
 
   const popupModal = (modalProduct) => {
     console.log('modal popup')

@@ -39,7 +39,6 @@ export default class OutfitCarousel extends React.Component {
 
   showOutfits() {
     const outfitsToAdd = [];
-    console.log('hizzur', this.addedOutfits);
     if (this.addedOutfits && this.addedOutfits.length) {
       for (let key in this.addedOutfits) {
         if (isNaN(Number(key))) {

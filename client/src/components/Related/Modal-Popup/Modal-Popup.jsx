@@ -4,15 +4,16 @@ import axios from 'axios';
 import _, { reduce } from 'underscore';
 
 export default function ModalPopup({ product, overviewCharacteristics, productData }) {
-  const [characteristicList, setCharacteristicList] = useState({});
+  // console.log('modals', JSON.stringify([product, overviewCharacteristics, productData]))
   const thumbnailID = product.id.toString();
+  const [characteristicList, setCharacteristicList] = useState({});
+  const [thumbnailChars, setThumbnailChars] = useState({});
   const getThumbnailChars = () => {
     axios.get('/reviews/meta/getMeta', { params: { product_id: thumbnailID } })
       .then(results => {
         console.log('received chars in Modal', results.data);
         setThumbnailChars(results.data.characteristics)
         for (let char in results.data.characteristics) {
-          // thumbnailCharList.push(char);
           characteristicList[char] = char;
         }
       })
@@ -21,21 +22,19 @@ export default function ModalPopup({ product, overviewCharacteristics, productDa
   useEffect(() => {
     getThumbnailChars();
   }, [])
-  const [thumbnailChars, setThumbnailChars] = useState({});
 
   for (let char in overviewCharacteristics) {
     characteristicList[char] = char;
-    // overviewCharList.push(char);
   }
   // console.log('thumbsList', thumbnailChars,'overviewList', overviewCharacteristics)
 
   const reduceCompare = _.reduce(characteristicList, (memo, val, idx) => {
     if (thumbnailChars[val] && overviewCharacteristics[val]) {
-      let overviewProd = overviewCharacteristics[val].value || 0;
-      let thumbProd = thumbnailChars[val].value || 0;
-      console.log('thumbs', typeof overviewProd)
+      var overviewProd = overviewCharacteristics[val].value || 0;
+      var thumbProd = thumbnailChars[val].value || 0;
+      console.log('thumbs', thumbnailChars)
       overviewProd = overviewProd.toString().substring(0,4);
-      // thumbProd = thumbProd.toString().subString(0,4);
+      thumbProd = thumbProd.toString().substring(0,4);
       return memo.concat(
         <div key={idx}>
           <p>{thumbProd}</p><p>{val}</p><p>{overviewProd}</p>
@@ -44,13 +43,13 @@ export default function ModalPopup({ product, overviewCharacteristics, productDa
     } else if (thumbnailChars[val]) {
       return memo.concat(
         <div key={idx}>
-          <p>v</p><p>{val}</p><p></p>
+          <p>{thumbProd}</p><p>{val}</p><p>X</p>
         </div>
       )
     } else {
       return memo.concat(
         <div key={idx}>
-          <p></p><p>{val}</p><p>v</p>
+          <p>X</p><p>{val}</p><p>{overviewProd}</p>
         </div>
       )
     }
