@@ -11,10 +11,10 @@ export default class ReviewsList extends React.Component {
     //console.log('reviews list props:', props);
     this.state = {
       id: props.id,
-      sort: null,
-      count: 0,
-      reviews: props.reviews,
-      characteristics: props.characteristics,
+      // sort: null,
+      // count: 0,
+      // reviews: props.reviews,
+      // characteristics: props.characteristics,
       productData: props.productData
     };
 
@@ -50,48 +50,48 @@ export default class ReviewsList extends React.Component {
 
   render() {
     //console.log('reviews list props:', props);
-    if (this.state.reviews !== null) {
+    // if (this.props.reviews !== null) {
       return (
         <div className='reviews-column'>
-          <p>{this.state.reviews.length} reviews, sorted by: &nbsp;
+          <p>{this.props.reviews.length} reviews, sorted by: &nbsp;
           <select className='sort-dropdown'>
             <option>Relevance</option>
             <option>Helpfulness</option>
             <option>Newest</option>
           </select></p><br/>
-          <ReviewBlock reviews={this.state.reviews} />
+          <ReviewBlock reviews={this.props.reviews} />
           <table>
             <tbody>
               <tr>
-                <td><MoreReviews id={this.state.id} /></td>
-                <td><ReviewForm id={this.state.id} characteristics={this.state.characteristics} productData={this.state.productData}/></td>
+                <td><MoreReviews id={this.props.id} /></td>
+                <td><ReviewForm id={this.props.id} characteristics={this.props.characteristics} productData={this.props.productData}/></td>
               </tr>
             </tbody>
           </table>
         </div>
       )
-    } else {
-      return (
-        <div className='reviews-column'>
-          <p>(total number) reviews, sorted by:
-          <select>
-            <option>Relevance</option>
-            <option>Helpfulness</option>
-            <option>Newest</option>
-          </select></p>
-          <br/>
-          <ReviewBlock reviews={this.state.reviews} />
-          <table>
-            <tbody>
-              <tr>
-                <td><MoreReviews id={this.state.id}/></td>
-                <td><ReviewForm id={this.state.id} characteristics={this.state.characteristics} productData={this.state.productData}/></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      )
-    }
+    // } else {
+    //   return (
+    //     <div className='reviews-column'>
+    //       <p>(total number) reviews, sorted by:
+    //       <select>
+    //         <option>Relevance</option>
+    //         <option>Helpfulness</option>
+    //         <option>Newest</option>
+    //       </select></p>
+    //       <br/>
+    //       <ReviewBlock reviews={this.props.reviews} />
+    //       <table>
+    //         <tbody>
+    //           <tr>
+    //             <td><MoreReviews id={this.props.id}/></td>
+    //             <td><ReviewForm id={this.props.id} characteristics={this.props.characteristics} productData={this.props.productData}/></td>
+    //           </tr>
+    //         </tbody>
+    //       </table>
+    //     </div>
+    //   )
+    // }
   }
 };
 

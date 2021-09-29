@@ -98,7 +98,7 @@ reviewsRouter.post('/postReview', (req, res) => {
       res.status(201).send(results.data);
     })
     .catch((err) => {
-      console.log('axios POST fail');
+      console.log('axios POST fail', err);
       res.status(400).send(err);
     });
 })

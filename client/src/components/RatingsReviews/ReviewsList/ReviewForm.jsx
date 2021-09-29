@@ -16,13 +16,21 @@ export default class ReviewForm extends React.Component {
       productData: props.productData,
       charsRating: [],
       rating: 0,
-      summary: null,
-      body: '',
       recommend: null,
+      summary: '',
+      body: '',
       photos: [],
       nickname: '',
-      email: ''
+      email: '',
+      Fit: 0,
+      Size: 0,
+      Width: 0,
+      Comfort: 0,
+      Quality: 0,
+      Length: 0
     };
+
+    this.inputPhotos = React.createRef();
 
     this.postReview = this.postReview.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -92,34 +100,13 @@ export default class ReviewForm extends React.Component {
         }
       }
     }
-    //console.log('CHARS RESULT: ', this.state.charsRating);
+    console.log('CHARS RESULT: ', this.state.charsRating);
   }
 
 
   postReview(e) {
     e.preventDefault();
 
-    let chars = {};
-
-    let params = {
-      product_id: this.state.id,
-      rating: this.state.rating,
-      summary: this.state.summary,
-      body: this.state.body,
-      recommend: this.state.recommend,
-      name: this.state.nickname,
-      email: this.state.email,
-      photos: this.state.photos,
-      characteristics: chars
-    };
-
-    axios.post('/reviews/postReview', { params })
-      .then(result => {
-        console.log('client post success', result);
-      })
-      .catch(err => {
-        console.log(err);
-      });
   }
 
 
@@ -127,20 +114,25 @@ export default class ReviewForm extends React.Component {
     this.setState({
       [e.target.name] : e.target.value
     });
+    console.log('HANDLE INPUT CHANGE:', e.target.name);
+    console.log('HANDLE INPUT CHANGE:', e.target.value);
 
-    //console.log('HANDLE INPUT CHANGE:', e.target.value);
   }
 
 
   handleSubmit(e) {
     e.preventDefault();
 
-    let summ = '';
-    if (e.target[27].value.length > 0) {
-      summ = e.target[27].value
-    } else {
-      summ = null;
-    }
+    // let summ = '';
+    // if (e.target[27].value.length > 0) {
+    //   summ = e.target[27].value
+    // } else {
+    //   summ = null;
+    // }
+
+    console.log('this is what state is after submit:', this.state);
+
+    console.log('checking for photos:', this.inputPhotos.current);
 
     let photosArr = [];
     let photoVal = 1;
@@ -161,27 +153,50 @@ export default class ReviewForm extends React.Component {
       bool = false;
     }
 
-    // console.log('checking for values:', {
-    //   rating: parseInt(this.state.rating),
-    //   recommend: bool,
-    //   summary: summ,
-    //   body: e.target[28].value,
-    //   photos: photosArr,
-    //   name: e.target[34].value,
-    //   email: e.target[35].value
-    // })
+    // will have to construct characteristics obj then pass into setState
+    // loop and compare matching ones
+    let charsObj = {};
+    let relevant = Object.keys(this.state);
+    for (var i = 0; i < this.state.charsRating.length; i++) {
+      for (var j = 0; j < relevant.length; j++) {
+        if (this.state.charsRating[i][1] === relevant[j]) {
+          charsObj[this.state.charsRating[i][0]] = Number(this.state[relevant[j]]);
+        }
+      }
+    }
+
+    console.log('CHECK CHARS OBJ:', charsObj);
+    // {
+    //   '159159': 4,
+    //   '159160': 4
+    // }
+
+
+    let params = {
+      product_id: this.state.id,
+      rating: Number(this.state.rating),
+      summary: this.state.summary,
+      body: this.state.body,
+      recommend: bool,
+      name: this.state.nickname,
+      email: this.state.email,
+      photos: photosArr,
+      characteristics: charsObj
+    };
+
+    console.log('checking params:', params);
 
     this.setState({
-      modalIsOpen: false,
-      // characteristics: props.characteristics,
-      rating: this.state.rating,
-      summary: summ,
-      body: e.target[28].value,
-      recommend: this.state.recommend,
-      photos: photosArr,
-      nickname: e.target[34].value,
-      email: e.target[35].value
+      modalIsOpen: false
     });
+
+    axios.post('/reviews/postReview', { params })
+      .then(result => {
+        console.log('client post success', result);
+      })
+      .catch(err => {
+        console.log(err);
+      });
   }
 
 
@@ -245,11 +260,11 @@ export default class ReviewForm extends React.Component {
 
             {/* summary */}
             <label className='form-summary' htmlFor='summary'>Summary </label><br/>
-            <input type='text' name='summary' size='50' maxLength='60' placeholder='i.e. Best purchase ever!'></input><br/><br/>
+            <input type='text' name='summary' size='50' maxLength='60' placeholder='i.e. Best purchase ever!' onChange={this.handleInputChange}></input><br/><br/>
 
             {/* body */}
             <label className='form-body' htmlFor='body'>Body <span className='form-mandatory'>*</span> </label><br/>
-            <textarea name='body' cols='60' rows='5' minLength='50' maxLength='1000' placeholder='Why did you like the product or not?' ></textarea><br/><br/>
+            <textarea name='body' cols='60' rows='5' minLength='50' maxLength='1000' placeholder='Why did you like the product or not?' onChange={this.handleInputChange}></textarea><br/><br/>
 
             {/* photos -- change to accept url instead */}
             <label className='form-photos' htmlFor='photos'>Photos: </label><br/>
@@ -264,12 +279,12 @@ export default class ReviewForm extends React.Component {
             {/* name */}
             <label className='form-nickname' htmlFor='nickname'>Nickname <span className='form-mandatory'>*</span> </label>
             <p className='form-disclaimer'>For privacy reasons, do not use your full name</p>
-            <input type='text' name='nickname' size='40' maxLength='60' placeholder='i.e. jackson11' ></input><br/><br/>
+            <input type='text' name='nickname' size='40' maxLength='60' placeholder='i.e. jackson11' onChange={this.handleInputChange}></input><br/><br/>
 
             {/* email */}
             <label className='form-email' htmlFor='email'>Email <span className='form-mandatory'>*</span> </label>
             <p className='form-disclaimer'>For authentication reasons, you will not be emailed</p>
-            <input type='email' name='email' size='40' placeholder='i.e. jackson11@email.com' ></input><br/><br/><br/><br/>
+            <input type='email' name='email' size='40' placeholder='i.e. jackson11@email.com' onChange={this.handleInputChange}></input><br/><br/><br/><br/>
 
             {/* submit button */}
             <input className='form-submit-btn' type='submit' value='Submit' ></input>

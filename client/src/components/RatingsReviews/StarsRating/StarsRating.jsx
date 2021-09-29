@@ -7,10 +7,10 @@ export default class StarsRating extends React.Component {
     //console.log('STARS PROPS:', props);
     super(props);
     this.state = {
-      id: props.id,
-      characteristics: props.characteristics,
-      ratings: props.ratings,
-      recommended: props.recommended
+      // id: props.id,
+      // characteristics: props.characteristics,
+      // ratings: props.ratings,
+      // recommended: props.recommended
     };
 
   }
@@ -26,14 +26,14 @@ export default class StarsRating extends React.Component {
             <i className="fas fa-star fa-sm"></i>
             <i className="fas fa-star fa-sm"></i>
           </h2>
-          <p className='stars-recommend'>{this.state.recommended}% of reviews recommended this product</p>
+          <p className='stars-recommend'>{this.props.recommended}% of reviews recommended this product</p>
           <p>5 stars</p>
           <p>4 stars</p>
           <p>3 stars</p>
           <p>2 stars</p>
           <p>1 stars</p>
         </div><br />
-        <Characteristics {...this.state} />
+        <Characteristics {...this.props} />
       </div>
     )
   }
