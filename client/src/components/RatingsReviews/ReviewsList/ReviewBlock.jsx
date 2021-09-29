@@ -1,7 +1,7 @@
 import React from 'react';
 
 const ReviewBlock = (props) => {
-  console.log('review block props', props);
+  //console.log('review block props', props);
 
   if (props.reviews.length > 0) {
     return (
