@@ -5,10 +5,8 @@ import _, { reduce } from 'underscore';
 
 export default function ModalPopup({ product, overviewCharacteristics, show }) {
   if (show) {
-    console.log('inmodal', product)
+    // console.log('inmodal', product)
     const [characteristicList, setCharacteristicList] = useState({});
-    // const [thumbnailCharList, setThumbnailCharList] = useState([]);
-    // const [overviewCharList, setOverviewCharList] = useState([]);
     const thumbnailID = product.id.toString();
     const getThumbnailChars = () => {
       axios.get('/reviews/meta/getMeta', { params: { product_id: thumbnailID } })
@@ -31,10 +29,9 @@ export default function ModalPopup({ product, overviewCharacteristics, show }) {
       characteristicList[char] = char;
       // overviewCharList.push(char);
     }
-    console.log('characteristicList', characteristicList, thumbnailChars, overviewCharacteristics)
+    // console.log('characteristicList', characteristicList, thumbnailChars, overviewCharacteristics)
 
     const reduceCompare = _.reduce(characteristicList, (memo, val, idx) => {
-      console.log('memo', memo)
       if (thumbnailChars[val] && overviewCharacteristics[val]) {
         return memo.concat(
           <div key={idx}>
@@ -56,16 +53,16 @@ export default function ModalPopup({ product, overviewCharacteristics, show }) {
       }
     }, [])
 
-    console.log(reduceCompare)
-
     return (
-      <div className='modal-window'>Comparing
-        <section>
-          <h3>{product.name}</h3>
-          <h3>product2</h3>
-        </section>
-        <div>
-          {reduceCompare}
+      <div className='modal-background'>
+        <div className='modal-window'>Comparing
+          <section>
+            <h3>{product.name}</h3>
+            <h3>product2</h3>
+          </section>
+          <div className='compare-list'>
+            {reduceCompare}
+          </div>
         </div>
       </div>
     )

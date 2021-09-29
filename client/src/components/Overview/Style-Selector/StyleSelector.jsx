@@ -29,7 +29,7 @@ class StyleSelector extends React.Component {
     }
   }
 
-  getStyles(productId) {
+  getStyles(productId = '47421') {
     let context = this;
     axios({
       method: 'get',
