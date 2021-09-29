@@ -30,8 +30,6 @@ export default class ReviewForm extends React.Component {
       Length: 0
     };
 
-    this.inputPhotos = React.createRef();
-
     this.postReview = this.postReview.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -132,17 +130,12 @@ export default class ReviewForm extends React.Component {
 
     console.log('this is what state is after submit:', this.state);
 
-    console.log('checking for photos:', this.inputPhotos.current);
+    //console.log('checking for photos:', this.inputPhotos.current);
 
     let photosArr = [];
-    let photoVal = 1;
     for (var i = 29; i <= 33; i++) {
       if (e.target[i].value.length > 0) {
-        photosArr.push({
-          id: photoVal,
-          url: e.target[i].value
-        });
-        photoVal++;
+        photosArr.push(e.target[i].value);
       }
     }
 
@@ -269,11 +262,11 @@ export default class ReviewForm extends React.Component {
             {/* photos -- change to accept url instead */}
             <label className='form-photos' htmlFor='photos'>Photos: </label><br/>
             <p className='form-disclaimer'>Can upload up to 5 photos</p>
-            <input type='file' name='photos' size='50'></input><br/>
-            <input type='file' name='photos' size='50'></input><br/>
-            <input type='file' name='photos' size='50'></input><br/>
-            <input type='file' name='photos' size='50'></input><br/>
-            <input type='file' name='photos' size='50'></input>
+            <input type='text' name='photos' size='50' placeholder='Paste URL here'></input><br/>
+            <input type='text' name='photos' size='50' placeholder='Paste URL here'></input><br/>
+            <input type='text' name='photos' size='50' placeholder='Paste URL here'></input><br/>
+            <input type='text' name='photos' size='50' placeholder='Paste URL here'></input><br/>
+            <input type='text' name='photos' size='50' placeholder='Paste URL here'></input>
             <br/><br/>
 
             {/* name */}

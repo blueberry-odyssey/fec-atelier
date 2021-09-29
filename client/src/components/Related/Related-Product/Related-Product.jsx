@@ -16,7 +16,7 @@ function RelatedProduct(props) {
     overviewCharacteristics,
     removeOutfit
   } = props;
-  console.log('need style', styleData)
+  //console.log('need style', styleData)
   // useEffect(() => {
   //   let carousel = document.querySelector('.carousel');
   //   if (carousel.style.transform === 'none') {

@@ -25,13 +25,13 @@ class RatingsReviews extends React.Component {
 
   render() {
     return (
-      <div>
+      <>
         <h2 className='reviews-header'>RATINGS & REVIEWS</h2>
         <div className='reviews-container'>
           <StarsRating {...this.props} />
           <ReviewsList {...this.props} />
         </div>
-      </div>
+      </>
     )
   }
 };

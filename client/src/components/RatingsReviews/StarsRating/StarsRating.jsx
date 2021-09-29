@@ -19,7 +19,7 @@ export default class StarsRating extends React.Component {
     return (
       <div className='stars-column'>
         <div className='stars-block'>
-          <h2 className='stars-rating'>5 Stars&nbsp;&nbsp;
+          <h2 className='stars-rating'>{this.props.ratings} Stars&nbsp;&nbsp;
             <i className="fas fa-star fa-sm"></i>
             <i className="fas fa-star fa-sm"></i>
             <i className="fas fa-star fa-sm"></i>
