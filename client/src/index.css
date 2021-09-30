@@ -169,6 +169,7 @@
   flex-flow: row nowrap;
   /* flex-direction: row; */
   font-family: 'Playfair Display', serif;
+  font-size: 30px;
 }
 
 .stars-column {

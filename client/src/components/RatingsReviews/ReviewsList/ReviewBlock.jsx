@@ -1,7 +1,13 @@
 import React from 'react';
 
 const ReviewBlock = (props) => {
-  //console.log('review block props', props);
+  // console.log('review block props', props);
+  // console.log('review date check', typeof(props.reviews[0].date));
+  // let reviews = props.reviews;
+  // reviews.map(review => {
+  //   //let date = review.date.toISOString();
+  //   review.date = date.slice(0, 10);
+  // });
 
   if (props.reviews.length > 0) {
     return (

@@ -6,6 +6,10 @@ const Characteristics = (props) => {
   charsArray.map(arr => {
     if (arr[1].value === null) {
       arr[1].value = 0;
+    } else {
+      let unrounded = Number(arr[1].value);
+      let rounded = unrounded.toFixed(2);
+      arr[1].value = rounded;
     }
   });
 
