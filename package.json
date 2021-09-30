@@ -6,10 +6,10 @@
   "jest": {
     "moduleNameMapper": {
       "\\.(css|less)$": "<rootDir>/__mocks__/styleMock.js",
-      "modulePathIgnorePatterns": [
-        "tests/components/Overview",
-        "tests/components/RelatedSpec"
-      ]
+        "modulePathIgnorePatterns": [
+          "tests/components/Overview",
+          "tests/components/RelatedSpec"
+        ]
     }
   },
   "scripts": {

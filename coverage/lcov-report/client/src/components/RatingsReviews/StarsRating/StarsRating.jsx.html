@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>3/3</span>
+                <span class='fraction'>0/5</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>2/2</span>
+                <span class='fraction'>0/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>3/3</span>
+                <span class='fraction'>0/5</span>
             </div>
         
             
@@ -55,7 +55,7 @@
             Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
         </p>
     </div>
-    <div class='status-line high'></div>
+    <div class='status-line low'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -95,27 +95,23 @@
 <a name='L36'></a><a href='#L36'>36</a>
 <a name='L37'></a><a href='#L37'>37</a>
 <a name='L38'></a><a href='#L38'>38</a>
-<a name='L39'></a><a href='#L39'>39</a>
-<a name='L40'></a><a href='#L40'>40</a>
-<a name='L41'></a><a href='#L41'>41</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L39'></a><a href='#L39'>39</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -138,27 +134,25 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React from 'react';
-import $ from 'jquery';
 import Characteristics from './Characteristics.jsx';
 &nbsp;
 export default class StarsRating extends React.Component {
-  constructor(props) {
+<span class="fstat-no" title="function not covered" >  co</span>nstructor(props) {
     //console.log('STARS PROPS:', props);
-    super(props);
-    this.state = {
-      id: props.id,
-      characteristics: props.characteristics,
-      ratings: props.ratings,
-      recommended: props.recommended
+    let recommend = <span class="cstat-no" title="statement not covered" >props.recommended;</span>
+    let rounded = <span class="cstat-no" title="statement not covered" >recommend.toFixed(2);</span>
+<span class="cstat-no" title="statement not covered" >    super(props);</span>
+<span class="cstat-no" title="statement not covered" >    this.state = {</span>
+      recommended: rounded
     };
 &nbsp;
   }
 &nbsp;
-  render() {
-    return (
+<span class="fstat-no" title="function not covered" >  re</span>nder() {
+<span class="cstat-no" title="statement not covered" >    return (</span>
       &lt;div className='stars-column'&gt;
         &lt;div className='stars-block'&gt;
-          &lt;h2 className='stars-rating'&gt;5 Stars&amp;nbsp;&amp;nbsp;
+          &lt;h2 className='stars-rating'&gt;{this.props.ratings} Stars&amp;nbsp;&amp;nbsp;
             &lt;i className="fas fa-star fa-sm"&gt;&lt;/i&gt;
             &lt;i className="fas fa-star fa-sm"&gt;&lt;/i&gt;
             &lt;i className="fas fa-star fa-sm"&gt;&lt;/i&gt;
@@ -172,7 +166,7 @@ export default class StarsRating extends React.Component {
           &lt;p&gt;2 stars&lt;/p&gt;
           &lt;p&gt;1 stars&lt;/p&gt;
         &lt;/div&gt;&lt;br /&gt;
-        &lt;Characteristics {...this.state} /&gt;
+        &lt;Characteristics {...this.props} /&gt;
       &lt;/div&gt;
     )
   }
@@ -184,7 +178,7 @@ export default class StarsRating extends React.Component {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Tue Sep 28 2021 16:39:23 GMT-0700 (Pacific Daylight Time)
+                at Thu Sep 30 2021 13:30:10 GMT-0700 (Pacific Daylight Time)
             </div>
         </div>
         <script src="../../../../../prettify.js"></script>

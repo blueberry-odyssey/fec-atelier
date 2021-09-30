@@ -236,11 +236,11 @@ export default class ReviewForm extends React.Component {
             {/* photos -- change to accept url instead */}
             <label className='form-photos' htmlFor='photos'>Photos: </label><br/>
             <p className='form-disclaimer'>Can upload up to 5 photos</p>
-            <input type='text' name='photos' size='50' placeholder='Paste URL here'></input><br/>
-            <input type='text' name='photos' size='50' placeholder='Paste URL here'></input><br/>
-            <input type='text' name='photos' size='50' placeholder='Paste URL here'></input><br/>
-            <input type='text' name='photos' size='50' placeholder='Paste URL here'></input><br/>
-            <input type='text' name='photos' size='50' placeholder='Paste URL here'></input>
+            <input type='text' name='photos' size='35' placeholder='Paste URL here'></input><br/>
+            <input type='text' name='photos' size='35' placeholder='Paste URL here'></input><br/>
+            <input type='text' name='photos' size='35' placeholder='Paste URL here'></input><br/>
+            <input type='text' name='photos' size='35' placeholder='Paste URL here'></input><br/>
+            <input type='text' name='photos' size='35' placeholder='Paste URL here'></input>
             <br/><br/>
 
             {/* name */}
