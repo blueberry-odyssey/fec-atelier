@@ -42,6 +42,7 @@ class StyleSelector extends React.Component {
         context.setState({ selectedStyle: styles.data[0] });
         context.setState({ defaultStyle: styles.data[0] });
         context.props.setDefaultPhotos(styles.data[0].photos);
+        context.props.setSelectedPhotos([]);
       })
       .catch(function (err) {
         console.log('err in getStyles overview.jsx: ', err);

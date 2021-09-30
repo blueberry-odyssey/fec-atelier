@@ -22,9 +22,9 @@ class ImageGallery extends React.Component {
     // console.log(this.state.defaultPhotos[0]);
     return (
       <div className='image'> image goes here
-        {/* {this.state.selectedPhotos.length > 0 ?
+        {this.state.selectedPhotos.length > 0 ?
           <img src={this.state.selectedPhotos[0].url}></img> :
-          this.state.defaultPhotos.length > 0 && <img src={this.state.defaultPhotos[0].url}></img>} */}
+          this.state.defaultPhotos.length > 0 && <img src={this.state.defaultPhotos[0].url}></img>}
       </div>
     )
   }
