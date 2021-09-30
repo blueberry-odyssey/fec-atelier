@@ -9,7 +9,7 @@ const ImageSlider = function ({ images }) {
       <FaArrowAltCircleLeft className='gallery-leftBtn' />
       <FaArrowAltCircleRight className='gallery-rightBtn' />
       {images.map(function (image, index) {
-        return (<img src={image.url} key={index}></img>)
+        return (<img src={image.url} key={index} className='image'></img>)
       })}
     </div>
   )

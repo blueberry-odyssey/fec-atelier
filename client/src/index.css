@@ -53,9 +53,9 @@
   margin-right: 10px;
 }
 
-.image img {
-  flex: 1.5;
-  align-content: center;
+.image {
+  /* flex: 1.5; */
+  /* align-content: center; */
   width: min-content;
   height: 550px;
 }
