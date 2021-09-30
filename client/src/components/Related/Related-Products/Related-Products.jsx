@@ -23,6 +23,7 @@ class RelatedProducts extends React.Component {
       <div className='related'>
         <h1>Related <span id='pink'>Products</span></h1>
         <Carousel
+          productData={productData}
           relatedItems={relatedItems}
           styleData={styleData}
           updateOverviewProduct={updateOverviewProduct}
@@ -38,5 +39,12 @@ class RelatedProducts extends React.Component {
     )
   }
 }
-
-export default UpdatedComponent(RelatedProducts);
+// const testing = process.env.TEST || false;
+// if (testing) {
+//   console.log('we are in test without HOC')
+//   var isItTest = RelatedProducts;
+// } else {
+//   var isItTest = UpdatedComponent(RelatedProducts);
+// }
+// export default UpdatedComponent(RelatedProducts)
+export default RelatedProducts

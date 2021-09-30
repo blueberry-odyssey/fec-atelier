@@ -1,7 +1,9 @@
-.carousel {
+.related-carousel {
   display: flex;
   justify-content: space-between;
   max-width: 100vw;
   transition: transform 1s;
+  /* border: solid black; */
+  /* padding-left: 2em; */
 }
 

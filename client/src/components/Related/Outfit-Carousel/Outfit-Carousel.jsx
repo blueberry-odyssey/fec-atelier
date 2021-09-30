@@ -22,14 +22,14 @@ export default class OutfitCarousel extends React.Component {
   }
 
   componentDidUpdate() {
-    if (this.props.productData && !this.state.styleData) {
+    if (this.props.productData.id && !this.state.styleData) {
       axios.get('/products/relatedProductsAndStyles', { params: { productIDArray: [this.props.productData.id], styles: '/styles' } })
         .then(styleData => {
           this.setState({
             styleData: styleData.data[0]
           })
         })
-        .catch(err => { throw err; });
+        .catch(err => { console.log(err) });
     }
     if (this.props.addOutfit) {
       this.handleAddClick();
@@ -39,7 +39,6 @@ export default class OutfitCarousel extends React.Component {
 
   showOutfits() {
     const outfitsToAdd = [];
-    //console.log('hizzur', this.addedOutfits);
     if (this.addedOutfits && this.addedOutfits.length) {
       for (let key in this.addedOutfits) {
         if (isNaN(Number(key))) {
@@ -81,8 +80,11 @@ export default class OutfitCarousel extends React.Component {
     const { translate, productData } = this.props;
     // console.log('style in carousel', productData, this.state.styleData);
     return (
-      <div className='carousel' style={{ 'transform': `translateX(${translate}px)` }}>
-        <div onClick={this.handleAddClick} id='add-button' className='each-product'>add +</div>
+      <div className='outfit-carousel' style={{ 'transform': `translateX(${translate}px)` }}>
+        <div className='each-product' onClick={this.handleAddClick}>
+          <p id='add-button'>+</p>
+          <p className='favorites'> favorites</p>
+        </div>
         {this.state.outfits}
       </div>
     )

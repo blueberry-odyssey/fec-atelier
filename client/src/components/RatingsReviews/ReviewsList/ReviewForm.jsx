@@ -101,6 +101,34 @@ export default class ReviewForm extends React.Component {
   }
 
 
+  postReview(e) {
+    e.preventDefault();
+
+    let params = {
+      product_id: 47421,
+      rating: 5,
+      summary: 'I\'m testing once again',
+      body: 'If you see this, you did it!',
+      recommend: true,
+      name: 'bhbh12',
+      email: 'bhbh123@yahoo.com',
+      photos: [],
+      characteristics: {
+        '159159': 5,
+        '159160': 5,
+        '159161': 5,
+        '159162': 5
+      }
+    };
+
+    axios.post('/reviews/postReview', { params })
+      .then(result => {
+        console.log('client post success', result);
+      })
+      .catch(err => { console.log(err) });
+  }
+
+
   handleInputChange(e) {
     this.setState({
       [e.target.name] : e.target.value

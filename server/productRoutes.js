@@ -10,7 +10,6 @@ let params = {
 
 productRouter.get('/getProductDetails', function (req, res) {
   // console.log('POST /getProductDetails endpoint reached!');
-  // console.log('req.body: ', req.body);
   axios.get(`${basePath}/products/${req.query['product_id']}/`, params)
     .then(function (productData) {
       //console.log('productData!!: ', productData.data);
@@ -48,7 +47,10 @@ productRouter.get('/findRelatedItems', (req, res) => {
       // console.log('incoming data', result.data);
       res.send(result.data);
     })
-    .catch(err => { throw err; })
+    .catch(err => {
+      console.log(err)
+      res.end(err);
+    })
 })
 
 // ***This 'relatedProductsAndStyles' route handles 2 different API requests***
@@ -59,13 +61,17 @@ productRouter.get('/findRelatedItems', (req, res) => {
 productRouter.get('/relatedProductsAndStyles', (req, res) => {
   let styles = req.query.styles;
   let productIDs = req.query.productIDArray;
-  // console.log('req styles present?', req.query, 'styllles:', styles);
+  console.log('req styles present?', req.query);
   let relatedProductData = [];
   productIDs.forEach(item => {
     relatedProductData.push(
       axios.get(basePath + `/products/${item + styles}`, params)
         .then(result => {
           return result.data
+        })
+        .catch(err => {
+          console.log(err)
+          res.end(err);
         })
     )
   })
@@ -76,7 +82,10 @@ productRouter.get('/relatedProductsAndStyles', (req, res) => {
       // console.log('incoming data', results);
       res.send(results);
     }))
-    .catch(err => { throw err; })
+    .catch(err => {
+      console.log(err)
+      res.end(err);
+    })
 })
 
 module.exports = productRouter;
