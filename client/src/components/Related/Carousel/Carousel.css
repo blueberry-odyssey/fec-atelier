@@ -7,6 +7,10 @@
   grid-template-columns: 0.5fr 10fr 0.5fr;
   justify-content: space-between;
   align-items: center;
+  border-radius: 4%;
+  border: solid black;
+  border-right: none;
+  border-left: none;
 }
 
 .carousel-container > button {

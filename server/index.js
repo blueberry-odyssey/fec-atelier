@@ -8,21 +8,11 @@ const basePath = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp';
 const productRouter = require('./productRoutes.js');
 const reviewsRouter = require('./reviewsRoutes.js');
 
-//FOR AXIOS REQUEST OPTIONS
-// let options = {
-//   url: basePath,
-//   method: 'GET',
-//   headers: {
-//     'Authorization': config.TOKEN
-//   }
-// };
-
 let params = {
   headers: { Authorization: config.TOKEN },
 };
 
 app.use(express.json());
-//app.use(bodyParser.json());
 app.use(express.urlencoded({
   extended: true
 }));

@@ -39,7 +39,7 @@ export default class ReviewsList extends React.Component {
         console.log('client reportReview success', result);
       })
       .catch(err => {
-        throw err;
+        console.log(err)
       });
   }
 
@@ -49,7 +49,7 @@ export default class ReviewsList extends React.Component {
         console.log('client markHelpful success:', result);
       })
       .catch(err => {
-        throw err;
+        console.log(err)
       });
   }
 
