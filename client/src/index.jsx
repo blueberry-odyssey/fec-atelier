@@ -6,6 +6,8 @@ import './index.css';
 import Overview from './components/Overview/Overview.jsx';
 import RatingsReviews from './components/RatingsReviews/RatingsReviews.jsx';
 
+//when page first loads check url and set state
+
 export default class App extends React.Component {
   constructor(props) {
     super(props);
@@ -36,7 +38,7 @@ export default class App extends React.Component {
     this.setState({ productData: productData });
   }
 
-  invokeAddToOutfits (trueOrFalse) {
+  invokeAddToOutfits(trueOrFalse) {
     if (trueOrFalse) {
       this.setState({
         addOutfit: true
@@ -79,6 +81,15 @@ export default class App extends React.Component {
   }
 
   componentDidMount() {
+    console.log('loook here!!: ', window.location.href);
+
+    //get path
+    //if exists setState
+
+    //change state then update path?
+    //or change path, index.jsx listening, and then update state
+
+    //related item sets a new path, and index.jsx should be listening for path change (componentDidUpdate)
 
     this.getReviews();
 
@@ -86,10 +97,10 @@ export default class App extends React.Component {
       .then(result => {
         let productIDArray = result.data;
         axios.get('/products/relatedProductsAndStyles', { params: { productIDArray, styles: '' } })
-        .then(data => {
-          this.setState({
-            relatedItems: data.data
-          })
+          .then(data => {
+            this.setState({
+              relatedItems: data.data
+            })
             axios.get('/products/relatedProductsAndStyles', { params: { productIDArray, styles: '/styles' } })
               .then(styleData => {
                 //console.log('relatedStyle Data', styleData);
@@ -119,12 +130,14 @@ export default class App extends React.Component {
   }
 
   render() {
+    console.log(window.location.pathname);
+
     // console.log(this.state.productData)
     if (this.state.updated === true) {
       return (
         <div className='app-body'>
           <div className='component-1'>
-            <Overview product_id={this.state['product_id']} getProductData={this.getProductData} widgetName='Overview' invokeAddToOutfits={this.invokeAddToOutfits}/>
+            <Overview product_id={this.state['product_id']} getProductData={this.getProductData} widgetName='Overview' invokeAddToOutfits={this.invokeAddToOutfits} />
           </div>
           <div className='component-3'>
             <RelatedProducts
@@ -135,7 +148,7 @@ export default class App extends React.Component {
               widgetName='RelatedProducts'
               productData={this.state.productData}
               invokeAddToOutfits={this.invokeAddToOutfits}
-              addOutfit={this.state.addOutfit}/>
+              addOutfit={this.state.addOutfit} />
           </div>
           <div className='component-2'>
             <RatingsReviews {...this.state} getReviews={this.getReviews} widgetName='RatingsReviews' />

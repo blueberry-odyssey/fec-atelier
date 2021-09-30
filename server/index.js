@@ -31,6 +31,8 @@ app.use(express.static('client/dist'));
 app.use('/products', productRouter);
 app.use('/reviews', reviewsRouter);
 
+app.use('/:id/', express.static('client/dist'));
+
 app.post('/interactions', function (req, res) {
   console.log(req.body);
   axios.post(basePath + '/interactions', req.body, params)
