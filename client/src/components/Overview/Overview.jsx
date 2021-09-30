@@ -109,3 +109,4 @@ class Overview extends React.Component {
 // };
 
 export default UpdatedComponent(Overview);
+// export default Overview;
