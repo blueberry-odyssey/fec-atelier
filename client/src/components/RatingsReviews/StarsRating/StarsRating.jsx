@@ -3,15 +3,11 @@ import Characteristics from './Characteristics.jsx';
 
 export default class StarsRating extends React.Component {
   constructor(props) {
-    console.log('STARS PROPS:', props);
+    //console.log('STARS PROPS:', props);
     let recommend = props.recommended;
     let rounded = recommend.toFixed(2);
-    console.log('ROUNDED RECOMMENDED:', rounded);
     super(props);
     this.state = {
-      // id: props.id,
-      // characteristics: props.characteristics,
-      // ratings: props.ratings,
       recommended: rounded
     };
 

@@ -13,11 +13,13 @@ export default class ReviewsList extends React.Component {
       id: props.id,
       // sort: null,
       // count: 0,
+      // page: 1,
       // reviews: props.reviews,
       // characteristics: props.characteristics,
       productData: props.productData
     };
 
+    this.loadMoreReviews = this.loadMoreReviews.bind(this);
     this.reportReview = this.reportReview.bind(this);
     this.markHelpful = this.markHelpful.bind(this);
   }
@@ -26,6 +28,12 @@ export default class ReviewsList extends React.Component {
     if(prevProps.productData !== this.props.productData) {
       this.setState({productData: this.props.productData});
     }
+  }
+
+  loadMoreReviews() {
+    // should probaby invoke get Reviews based on state
+    // maybe each time reviews load, it should setstate count and page
+    // decide if it should be passed down from index.jsx or duplicated here
   }
 
   reportReview(reviewId) {
@@ -59,9 +67,9 @@ export default class ReviewsList extends React.Component {
         <div className='reviews-column'>
           <p>{this.props.reviews.length} reviews, sorted by: &nbsp;
           <select className='sort-dropdown'>
-            <option>Relevance</option>
-            <option>Helpfulness</option>
-            <option>Newest</option>
+            <option value='relevant'>Relevance</option>
+            <option value='helpful'>Helpfulness</option>
+            <option value='newest'>Newest</option>
           </select></p><br/>
           <ReviewBlock reviews={this.props.reviews} markHelpful={this.markHelpful} reportReview={this.reportReview}/>
           <table>

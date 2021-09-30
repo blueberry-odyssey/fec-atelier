@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Characteristics = (props) => {
-  //console.log('CHARACTERISTICS PROPS:', props);
+  // console.log('CHARACTERISTICS PROPS:', props);
   let charsArray = Object.entries(props.characteristics);
   charsArray.map(arr => {
     if (arr[1].value === null) {
@@ -9,7 +9,7 @@ const Characteristics = (props) => {
     }
   });
 
-  //console.log('CHARS ARRAY:', charsArray);
+  // console.log('CHARS ARRAY:', charsArray);
 
   return (
     <div className='characteristics-section'>
