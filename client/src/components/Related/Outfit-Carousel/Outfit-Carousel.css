@@ -1,11 +1,32 @@
-/* .each-product {
-  font-family: 'Cantarell', sans-serif;
-  height: 24em;
-  width: 15em;
-  margin: 1em;
-} */
+.outfit-carousel {
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  /* max-width: 100vw; */
+  transition: transform 1s;
+}
 
 #add-button {
+  color: thistle;
+  font-size: 7em;
+  height: 100%;
+  line-height: 3em;
+  vertical-align: middle;
   text-align: center;
-  background-color: thistle;
+  background-color: darkgrey;
+  margin: 0;
+}
+
+#add-button:hover {
+  color: black;
+}
+
+.favorites {
+  color: grey;
+  position: absolute;
+  font-size: 3em;
+  left: 0.5em;
+  top: 50%;
+  text-align: center;
+  margin: 0;
 }

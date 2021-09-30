@@ -119,7 +119,7 @@ export default class ReviewForm extends React.Component {
       .then(result => {
         console.log('client post success', result);
       })
-      .catch(err => { throw err; });
+      .catch(err => { console.log(err) });
   }
 
 

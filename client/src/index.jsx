@@ -74,7 +74,7 @@ export default class App extends React.Component {
         });
       })
       .catch(err => {
-        throw err;
+        console.log(err)
       });
   }
 
@@ -84,7 +84,7 @@ export default class App extends React.Component {
 
     axios.get('/products/findRelatedItems', { params: { id: this.state.product_id } })
       .then(result => {
-        let productIDArray = result.data;
+        var productIDArray = result.data;
         axios.get('/products/relatedProductsAndStyles', { params: { productIDArray, styles: '' } })
         .then(data => {
           this.setState({
@@ -101,7 +101,7 @@ export default class App extends React.Component {
           })
           .catch(err => { throw err; });
       })
-      .catch(err => { throw err; });
+      .catch(err => { console.log(err) });
 
     axios.get('/reviews/meta/getMeta', { params: { product_id: this.state.id } })
       .then(result => {
@@ -114,7 +114,7 @@ export default class App extends React.Component {
         });
       })
       .catch(err => {
-        throw err;
+        console.log(err)
       });
   }
 
