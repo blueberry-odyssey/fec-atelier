@@ -21,7 +21,7 @@ class RelatedProducts extends React.Component {
     // console.log('style data in main', overviewCharacteristics);
     return (
       <div className='related'>
-        <h1>Related <span id='pink'>Products</span></h1>
+        <h1>related <span className='pink'>products</span></h1>
         <Carousel
           productData={productData}
           relatedItems={relatedItems}

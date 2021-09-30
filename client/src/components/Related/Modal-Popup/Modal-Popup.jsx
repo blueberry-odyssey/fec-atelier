@@ -11,7 +11,7 @@ export default function ModalPopup({ product, overviewCharacteristics, productDa
   const getThumbnailChars = () => {
     axios.get('/reviews/meta/getMeta', { params: { product_id: thumbnailID } })
       .then(results => {
-        console.log('received chars in Modal', results.data);
+        // console.log('received chars in Modal', results.data);
         setThumbnailChars(results.data.characteristics)
         for (let char in results.data.characteristics) {
           characteristicList[char] = char;

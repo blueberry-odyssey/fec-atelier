@@ -31,36 +31,23 @@ function RelatedProduct(props) {
     // console.log('og price', salePrice)
   }
 
-  // const modalClose = () => {
-  //   console.log('trying to close')
-  //   setDisplayOne(false)
-  //   let overlay = document.querySelector('#app');
-  //   overlay.style.backgroundColor = 'rgb(0, 0, 0, 0)';
-  //   overlay.removeEventListener('click', modalClose);
-  //   showModal();
-  // }
-
-  // const handleStarClick = () => {
-  //   showModal();
-  //   setDisplayOne(true);
-  //   let overlay = document.querySelector('#app');
-  //   overlay.addEventListener('click', modalClose);
-  // }
-
   const handleCloseClick = () => {
     removeOutfit(currentProduct)
   }
 
-  var closeOrStar = <i onClick={()=> popupModal(product)} id="starIcon" className="far fa-star"></i>;
-  if (inOutfit) {
-    closeOrStar = <i onClick={handleCloseClick} id="starIcon" className="far fa-window-close"></i>
-  }
+  // var closeOrStar = <i onClick={()=> popupModal(product)} className="far fa-star starIcon"></i>;
+  // if (inOutfit) {
+  //   closeOrStar = <i onClick={handleCloseClick} className="far fa-window-close starIcon"></i>
+
+  // }
   return (
-    <div className='each-product' >
+    <div className='each-product' id={inOutfit ? 'outfit-product' : null}>
       <div>
-        <img src={oneStyleImg} onClick={() => { updateOverviewProduct(product.id) }}></img>
+        <img alt={product.name} src={oneStyleImg} onClick={() => { updateOverviewProduct(product.id) }}></img>
         <div>
-          {closeOrStar}
+          {inOutfit
+          ? <i onClick={handleCloseClick} className="far fa-window-close starIcon"></i>
+          : <i onClick={()=> popupModal(product)} className="far fa-star starIcon"></i>}
         </div>
       </div>
       <section>
@@ -68,7 +55,7 @@ function RelatedProduct(props) {
         <h3>{product.name}</h3>
         {salePrice ?
           <div>
-            <div id='red'>{salePrice}</div>
+            <div className='red'>{salePrice}</div>
             <div style={{ 'text-decoration': 'line-through' }}>$ {originalPrice}</div>
           </div>
           :

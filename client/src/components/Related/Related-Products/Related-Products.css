@@ -1,8 +1,10 @@
 .related > h1 {
-  font-family: 'Cantarell', sans-serif;
+  font-family: 'Playfair Display', serif;
+  margin-bottom: 0;
+  background: linear-gradient(90deg, rgb(96, 30, 158,1) 25%, white 50%);
+  color: white;
 }
 
-#pink {
-  color: thistle;
-  background-color: gray;
+.pink {
+  font-weight: 700;
 }

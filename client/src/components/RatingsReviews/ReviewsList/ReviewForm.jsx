@@ -91,7 +91,7 @@ export default class ReviewForm extends React.Component {
         }
       }
     }
-    console.log('CHARS RESULT: ', this.state.chars);
+    // console.log('CHARS RESULT: ', this.state.chars);
   }
 
 

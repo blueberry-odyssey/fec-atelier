@@ -49,7 +49,7 @@ export default class App extends React.Component {
   }
 
   updateOverviewProduct(newProductID) {
-    //console.log('newProd', newProductID)
+    console.log('newProd', newProductID)
     let newProductIDString = newProductID.toString();
     this.setState({
       product_id: newProductIDString,
@@ -78,8 +78,11 @@ export default class App extends React.Component {
       });
   }
 
-  componentDidMount() {
+  componentDidUpdate () {
 
+  }
+
+  componentDidMount () {
     this.getReviews();
 
     axios.get('/products/findRelatedItems', { params: { id: this.state.product_id } })
