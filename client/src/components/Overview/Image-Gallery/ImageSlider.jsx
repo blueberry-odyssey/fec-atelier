@@ -43,8 +43,10 @@ class ImageSlider extends React.Component {
       <div>
         <FaArrowAltCircleLeft className='gallery-leftBtn' onClick={this.prevImage} />
         <FaArrowAltCircleRight className='gallery-rightBtn' onClick={this.nextImage} />
-        {this.props.images.map(function (image, index) {
-          return (<img src={image.url} key={index} className='image'></img>)
+        {this.props.images.map((image, index) => {
+          if (index === this.state.currentIndex) {
+            return (<img src={image.url} key={index} className='image'></img>);
+          }
         })}
       </div>
     )
