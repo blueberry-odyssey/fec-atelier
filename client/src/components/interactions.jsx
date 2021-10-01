@@ -28,10 +28,10 @@ const UpdatedComponent = (OriginalComponent) => {
         data: data
       })
         .then(result => {
-          console.log('success! ', result.data);
+          // console.log('success! ', result.data);
         })
         .catch(err => {
-          console.log('we did not success!', err);
+          // console.log('we did not success!', err);
         });
     }
     render() {

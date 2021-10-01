@@ -1,4 +1,5 @@
 import React from 'react';
+import ImageSlider from './ImageSlider.jsx';
 
 class ImageGallery extends React.Component {
   constructor(props) {
@@ -21,10 +22,10 @@ class ImageGallery extends React.Component {
   render() {
     // console.log(this.state.defaultPhotos[0]);
     return (
-      <div className='image'> image goes here
-        {/* {this.state.selectedPhotos.length > 0 ?
-          <img src={this.state.selectedPhotos[0].url}></img> :
-          this.state.defaultPhotos.length > 0 && <img src={this.state.defaultPhotos[0].url}></img>} */}
+      <div className='image-container'>
+        {this.state.selectedPhotos.length > 0 ?
+          <ImageSlider images={this.state.selectedPhotos} /> :
+          this.state.defaultPhotos.length > 0 && <ImageSlider images={this.state.defaultPhotos} />}
       </div>
     )
   }

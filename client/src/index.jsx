@@ -150,7 +150,7 @@ export default class App extends React.Component {
               invokeAddToOutfits={this.invokeAddToOutfits}
               addOutfit={this.state.addOutfit} />
           </div>
-          <div className='component-2'>
+          <div className='component-2' id='reviews'>
             <RatingsReviews {...this.state} getReviews={this.getReviews} widgetName='RatingsReviews' />
           </div>
         </div >

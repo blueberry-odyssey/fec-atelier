@@ -14,7 +14,6 @@ class StyleSelector extends React.Component {
       defaultStyle: {}
     };
 
-    // this.setDefaultStyle = this.setDefaultStyle.bind(this);
     this.getStyles = this.getStyles.bind(this);
     this.setSelectedStyle = this.setSelectedStyle.bind(this);
   }
@@ -42,6 +41,7 @@ class StyleSelector extends React.Component {
         context.setState({ selectedStyle: styles.data[0] });
         context.setState({ defaultStyle: styles.data[0] });
         context.props.setDefaultPhotos(styles.data[0].photos);
+        context.props.setSelectedPhotos([]);
       })
       .catch(function (err) {
         console.log('err in getStyles overview.jsx: ', err);
@@ -51,15 +51,6 @@ class StyleSelector extends React.Component {
   setSelectedStyle(styleItem) {
     this.setState({ selectedStyle: styleItem });
   }
-  // componentDidUpdate() {
-  //   this.setDefaultStyle();
-  // }
-
-  // setDefaultStyle() {
-  //   console.log('setDefaultStyle invoked!');
-  //   // let firstStyle = this.props.styles[0];
-  //   this.setState({ selectedStyle: this.props.styles });
-  // }
 
 
   render() {
