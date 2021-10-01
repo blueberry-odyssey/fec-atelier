@@ -124,21 +124,26 @@ html {
 .thumbnail-carousel-img {
   min-width: 30px;
   max-width: 30px;
-  padding: 10px;
+  margin: 10px;
+  border: solid white;
 }
 
 .active-thumbnail-carousel-img {
   min-width: 40px;
   max-width: 40px;
-  padding: 10px;
+  margin: 10px;
+  border: solid rgb(96, 30, 158);
 }
 
 .thumbnail-carousel {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* position: relative;
-  bottom: 10px; */
+  position: relative;
+  bottom: 90px;
+  /* border: solid thistle 1px;
+  border-radius: 10px; */
+  background-color: transparent;
 
 }
 
@@ -146,7 +151,7 @@ html {
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px thistle solid;
+  /* border: 1px thistle solid; */
 }
 
 
