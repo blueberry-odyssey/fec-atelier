@@ -82,8 +82,9 @@ class Overview extends React.Component {
     //console.log('Overview.jsx props product_id', this.props);
     return (
       <div>
-        <h1 className='title'>blueberry odyssey</h1>
+        <h1 className='title'>Blueberry <img src="./blueberry.svg" className='blueberry' /></h1>
         <p className='site-message'>SALE! 50% OFF SELECT ITEMS!</p>
+
         <div className='overview-container'>
           <div className='image-gallery'>
             {this.state.defaultStylePhotos && <ImageGallery

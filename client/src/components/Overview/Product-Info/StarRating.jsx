@@ -14,7 +14,7 @@ const StarRating = function (props) {
         <span className="fa fa-star"></span>
       </div>
 
-      <div className='overview-rating-link'>Read all reviews</div>
+      <div className='overview-rating-link'><a href="#reviews">Read all reviews</a></div>
 
     </div>
   )
