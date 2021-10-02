@@ -11,21 +11,18 @@ export default class ReviewsList extends React.Component {
     //console.log('reviews list props:', props);
     this.state = {
       id: props.id,
-      sort: null,
-      count: 0,
-      reviews: props.reviews,
-      characteristics: props.characteristics,
+      // sort: null,
+      // count: 0,
+      // page: 1,
+      // reviews: props.reviews,
+      // characteristics: props.characteristics,
       productData: props.productData
     };
 
-    //this.sortReviews = this.sortReviews.bind(this);
-    //this.postReview = this.postReview.bind(this);
+    this.loadMoreReviews = this.loadMoreReviews.bind(this);
     this.reportReview = this.reportReview.bind(this);
     this.markHelpful = this.markHelpful.bind(this);
   }
-
-  // sortReviews() {
-  // }
 
   componentDidUpdate(prevProps) {
     if(prevProps.productData !== this.props.productData) {
@@ -33,71 +30,80 @@ export default class ReviewsList extends React.Component {
     }
   }
 
-  reportReview() {
-    axios.put('/reviews/report')
+  loadMoreReviews() {
+    // should probaby invoke get Reviews based on state
+    // maybe each time reviews load, it should setstate count and page
+    // decide if it should be passed down from index.jsx or duplicated here
+  }
+
+  reportReview(reviewId) {
+    let params = { reviewId };
+
+    axios.put('/reviews/report', { params })
       .then(result => {
-        console.log('client reportReview success', result);
+        console.log('client reportReview success', result.status);
       })
       .catch(err => {
-        console.log(err)
+        console.log(err);
       });
   }
 
-  markHelpful() {
-    axios.put('/reviews/helpful')
+  markHelpful(reviewId) {
+    let params = { reviewId }
+
+    axios.put('/reviews/helpful', { params })
       .then(result => {
-        console.log('client markHelpful success:', result);
+        console.log('client markHelpful success:', result.status);
       })
       .catch(err => {
-        console.log(err)
+        console.log(err);
       });
   }
 
   render() {
     //console.log('reviews list props:', props);
-    if (this.state.reviews !== null) {
+    // if (this.props.reviews !== null) {
       return (
         <div className='reviews-column'>
-
-          <p>{this.state.reviews.length} reviews, sorted by: &nbsp;
+          <p>{this.props.reviews.length} reviews, sorted by: &nbsp;
           <select className='sort-dropdown'>
-            <option>Relevance</option>
-            <option>Helpfulness</option>
-            <option>Newest</option>
+            <option value='relevant'>Relevance</option>
+            <option value='helpful'>Helpfulness</option>
+            <option value='newest'>Newest</option>
           </select></p><br/>
-          <ReviewBlock reviews={this.state.reviews} reportReview={this.reportReview} markHelpful={this.markHelpful} />
+          <ReviewBlock reviews={this.props.reviews} markHelpful={this.markHelpful} reportReview={this.reportReview}/>
           <table>
             <tbody>
               <tr>
-                <td><MoreReviews id={this.state.id}/></td>
-                <td><ReviewForm id={this.state.id} characteristics={this.state.characteristics} productData={this.state.productData}/></td>
+                <td><MoreReviews id={this.props.id} /></td>
+                <td><ReviewForm id={this.props.id} characteristics={this.props.characteristics} productData={this.props.productData}/></td>
               </tr>
             </tbody>
           </table>
         </div>
       )
-    } else {
-      return (
-      <div className='reviews-column'>
-        <p>(total number) reviews, sorted by:
-        <select>
-          <option>Relevance</option>
-          <option>Helpfulness</option>
-          <option>Newest</option>
-        </select></p>
-        <br/>
-        <ReviewBlock reviews={this.state.reviews} reportReview={this.reportReview} markHelpful={this.markHelpful} />
-        <table>
-          <tbody>
-            <tr>
-              <td><MoreReviews id={this.state.id}/></td>
-              <td><ReviewForm id={this.state.id} characteristics={this.state.characteristics} productData={this.state.productData}/></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      )
-    }
+    // } else {
+    //   return (
+    //     <div className='reviews-column'>
+    //       <p>(total number) reviews, sorted by:
+    //       <select>
+    //         <option>Relevance</option>
+    //         <option>Helpfulness</option>
+    //         <option>Newest</option>
+    //       </select></p>
+    //       <br/>
+    //       <ReviewBlock reviews={this.props.reviews} />
+    //       <table>
+    //         <tbody>
+    //           <tr>
+    //             <td><MoreReviews id={this.props.id}/></td>
+    //             <td><ReviewForm id={this.props.id} characteristics={this.props.characteristics} productData={this.props.productData}/></td>
+    //           </tr>
+    //         </tbody>
+    //       </table>
+    //     </div>
+    //   )
+    // }
   }
 };
 

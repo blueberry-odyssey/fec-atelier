@@ -1,5 +1,7 @@
 module.exports = {
   id: 47421,
+  ratings: 3.5,
+  recommended: 67,
   characteristics: {
     "Fit": {
         "id": 159159,
@@ -18,8 +20,6 @@ module.exports = {
         "value": "3.6000000000000000"
     }
   },
-  ratings: 3.5,
-  recommended: 67,
   reviews: [
     {
         "review_id": 781037,
@@ -81,7 +81,10 @@ module.exports = {
         "helpfulness": 0,
         "photos": []
     }
-  ]
+  ],
+  productData: {
+    name: 'Camo Onesie'
+  }
 
 }
 

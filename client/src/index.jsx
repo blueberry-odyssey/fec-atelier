@@ -30,8 +30,16 @@ export default class App extends React.Component {
 
     this.updateOverviewProduct = this.updateOverviewProduct.bind(this);
     this.getReviews = this.getReviews.bind(this);
+    this.getMetadata = this.getMetadata.bind(this);
     this.getProductData = this.getProductData.bind(this);
     this.invokeAddToOutfits = this.invokeAddToOutfits.bind(this);
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.id !== this.state.id) {
+      this.getReviews();
+      this.getMetadata();
+    }
   }
 
   getProductData(productData) {
@@ -76,9 +84,28 @@ export default class App extends React.Component {
         });
       })
       .catch(err => {
-        console.log(err)
+        console.log(err);
       });
   }
+
+  getMetadata() {
+    axios.get('/reviews/meta/getMeta', { params: { product_id: this.state.id } })
+      .then(result => {
+        // console.log(result.data);
+        let recommend = result.data.recommended;
+        let rounded = recommend.toFixed(2);
+
+        this.setState({
+          ratings: result.data.average,
+          characteristics: result.data.characteristics,
+          recommended: rounded,
+          updated: true
+        });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+    }
 
   componentDidMount() {
     console.log('loook here!!: ', window.location.href);
@@ -92,6 +119,7 @@ export default class App extends React.Component {
     //related item sets a new path, and index.jsx should be listening for path change (componentDidUpdate)
 
     this.getReviews();
+    this.getMetadata();
 
     axios.get('/products/findRelatedItems', { params: { id: this.state.product_id } })
       .then(result => {
@@ -114,19 +142,6 @@ export default class App extends React.Component {
       })
       .catch(err => { console.log(err) });
 
-    axios.get('/reviews/meta/getMeta', { params: { product_id: this.state.id } })
-      .then(result => {
-        // console.log(result.data);
-        this.setState({
-          ratings: result.data.average,
-          characteristics: result.data.characteristics,
-          recommended: result.data.recommended,
-          updated: true
-        });
-      })
-      .catch(err => {
-        console.log(err)
-      });
   }
 
   render() {
@@ -150,8 +165,8 @@ export default class App extends React.Component {
               invokeAddToOutfits={this.invokeAddToOutfits}
               addOutfit={this.state.addOutfit} />
           </div>
-          <div className='component-2' id='reviews'>
-            <RatingsReviews {...this.state} getReviews={this.getReviews} widgetName='RatingsReviews' />
+          <div className='component-2'>
+            <RatingsReviews {...this.state} widgetName='RatingsReviews' />
           </div>
         </div >
       )
