@@ -17,12 +17,13 @@ export default class StarsRating extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps.recommended !== this.props.recommended) {
+    if (prevProps !== this.props) {
       this.setState({
         recommended: this.props.recommended
       });
     }
     //console.log('STARS UPDATE', this.props);
+
   }
 
   componentDidMount() {
@@ -47,7 +48,6 @@ export default class StarsRating extends React.Component {
         this.state.one += 1;
       }
     });
-    console.log('number of reviews', length);
 
     this.setState({
       five: (this.state.five / length).toFixed(2),

@@ -19,7 +19,7 @@ reviewsRouter.get('/getAllReviews', (req, res) => {
   // retrieve reviews by product id
   axios.get(basePath + '/reviews/', options)
     .then((results) => {
-      console.log('axios getReviews response: ', results.data);
+      //console.log('axios getReviews response: ', results.data);
       res.send(results.data);
     })
     .catch((err) => {
