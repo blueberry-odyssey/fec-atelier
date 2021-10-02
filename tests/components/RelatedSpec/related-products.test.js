@@ -28,7 +28,7 @@ describe('Related Products', () => {
   })
 
   it('Related Product appears on App', () => {
-    expect(relatedWrapper.find('h1').first().text()).toContain('Related Products');
+    expect(relatedWrapper.find('h1').first().text()).toContain('related products');
   })
 })
 
@@ -36,19 +36,18 @@ const carouselWrapper = shallow(<Carousel relatedItems={relatedItems}/>);
 describe('Carousel', () => {
   it('has all necessary props passed', () => {
     // console.log('my debugger:', carouselWrapper);
-    // expect(carouselWrapper.props())
+    expect(carouselWrapper.props()).toHaveProperty('children')
   })
   it('contains Outfit carousel', () => {
     expect(carouselWrapper.contains([<OutfitCarousel/>])).toEqual(true);
   })
   it('receives button clicks', () => {
     expect(carouselWrapper.state('translate')).toEqual(0);
-    expect(carouselWrapper.find('#right-button').simulate('click'));
+    expect(carouselWrapper.find('.right-button').simulate('click'));
     expect(carouselWrapper.state('translate')).toEqual(-300);
   })
 })
 
-console.log(modalProps[1]);
 const modalWrapper = shallow(<ModalPopup product={modalProps[0]} overviewCharacteristics={modalProps[1]} productData={modalProps[2]}/>);
 describe('Modal Popup', () => {
   it('has comparing window', () => {
@@ -61,12 +60,11 @@ const relatedCarouselWrapper = shallow(<RelatedCarousel relatedItems={relatedIte
 describe('Related Products', () => {
   // console.log('my debugger:', relatedWrapper.debug());
   it('finds related product on Related Products carousel', () => {
-    console.log(relatedCarouselWrapper.debug())
     expect(relatedCarouselWrapper.find('.related-carousel').children()).toHaveLength(4);
   })
 
   it('Related Product appears on App', () => {
-    
+
   })
 })
 

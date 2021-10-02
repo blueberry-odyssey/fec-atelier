@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1632938492664" clover="3.2.0">
-  <project timestamp="1632938492665" name="All files">
-    <metrics statements="115" coveredstatements="32" conditionals="40" coveredconditionals="8" methods="35" coveredmethods="9" elements="190" coveredelements="49" complexity="0" loc="115" ncloc="115" packages="7" files="7" classes="7"/>
+<coverage generated="1633102300430" clover="3.2.0">
+  <project timestamp="1633102300430" name="All files">
+    <metrics statements="112" coveredstatements="32" conditionals="42" coveredconditionals="8" methods="35" coveredmethods="9" elements="189" coveredelements="49" complexity="0" loc="112" ncloc="112" packages="7" files="7" classes="7"/>
     <package name="components">
       <metrics statements="10" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="0"/>
       <file name="interactions.jsx" path="/Users/Jeremiah/Desktop/TractorReactor/fec-atelier/client/src/components/interactions.jsx">
@@ -39,15 +39,14 @@
       </file>
     </package>
     <package name="components.Related.Modal-Popup">
-      <metrics statements="26" coveredstatements="12" conditionals="10" coveredconditionals="3" methods="6" coveredmethods="2"/>
+      <metrics statements="25" coveredstatements="12" conditionals="10" coveredconditionals="3" methods="6" coveredmethods="2"/>
       <file name="Modal-Popup.jsx" path="/Users/Jeremiah/Desktop/TractorReactor/fec-atelier/client/src/components/Related/Modal-Popup/Modal-Popup.jsx">
-        <metrics statements="26" coveredstatements="12" conditionals="10" coveredconditionals="3" methods="6" coveredmethods="2"/>
+        <metrics statements="25" coveredstatements="12" conditionals="10" coveredconditionals="3" methods="6" coveredmethods="2"/>
         <line num="8" count="1" type="stmt"/>
         <line num="9" count="1" type="stmt"/>
         <line num="10" count="1" type="stmt"/>
         <line num="11" count="1" type="stmt"/>
         <line num="12" count="0" type="stmt"/>
-        <line num="14" count="0" type="stmt"/>
         <line num="15" count="0" type="stmt"/>
         <line num="16" count="0" type="stmt"/>
         <line num="17" count="0" type="stmt"/>
@@ -127,9 +126,9 @@
       </file>
     </package>
     <package name="components.Related.Related-Product">
-      <metrics statements="18" coveredstatements="0" conditionals="8" coveredconditionals="0" methods="4" coveredmethods="0"/>
+      <metrics statements="16" coveredstatements="0" conditionals="10" coveredconditionals="0" methods="4" coveredmethods="0"/>
       <file name="Related-Product.jsx" path="/Users/Jeremiah/Desktop/TractorReactor/fec-atelier/client/src/components/Related/Related-Product/Related-Product.jsx">
-        <metrics statements="18" coveredstatements="0" conditionals="8" coveredconditionals="0" methods="4" coveredmethods="0"/>
+        <metrics statements="16" coveredstatements="0" conditionals="10" coveredconditionals="0" methods="4" coveredmethods="0"/>
         <line num="7" count="0" type="stmt"/>
         <line num="17" count="0" type="stmt"/>
         <line num="20" count="0" type="stmt"/>
@@ -141,13 +140,11 @@
         <line num="26" count="0" type="stmt"/>
         <line num="27" count="0" type="stmt"/>
         <line num="28" count="0" type="stmt"/>
+        <line num="34" count="0" type="stmt"/>
+        <line num="35" count="0" type="stmt"/>
+        <line num="43" count="0" type="stmt"/>
+        <line num="46" count="0" type="stmt"/>
         <line num="50" count="0" type="stmt"/>
-        <line num="51" count="0" type="stmt"/>
-        <line num="54" count="0" type="stmt"/>
-        <line num="55" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="56" count="0" type="stmt"/>
-        <line num="58" count="0" type="stmt"/>
-        <line num="61" count="0" type="stmt"/>
       </file>
     </package>
     <package name="components.Related.Related-Products">
