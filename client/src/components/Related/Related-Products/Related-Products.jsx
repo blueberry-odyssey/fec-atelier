@@ -28,7 +28,7 @@ class RelatedProducts extends React.Component {
           styleData={styleData}
           updateOverviewProduct={updateOverviewProduct}
           overviewCharacteristics={overviewCharacteristics} />
-        <h1>Make Your Fit</h1>
+        <h1>make your fit</h1>
         <Carousel
           productData={productData}
           relatedItems={relatedItems}

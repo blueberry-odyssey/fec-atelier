@@ -1,4 +1,6 @@
 import React from 'react';
+import { FaShoppingBag } from 'react-icons/fa';
+import { FaRegHeart } from 'react-icons/fa';
 
 class Cart extends React.Component {
 
@@ -102,8 +104,8 @@ class Cart extends React.Component {
 
         </div>
         <div className='cart-buttons'>
-          <button className='cart-button'>Add To Cart</button>
-          <button className='cart-button'>Add to Favorites</button>
+          <button className='cart-button'><FaShoppingBag className='bag-icon' />     Add To Cart</button>
+          <button className='cart-button'><FaRegHeart className='heart-icon' /></button>
         </div>
 
       </div>

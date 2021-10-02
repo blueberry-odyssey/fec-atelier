@@ -15,6 +15,6 @@ describe('ProductInfo Testing', () => {
     let wrapper = shallow(<ProductInfo productData={fixtures} />);
     expect(wrapper.find('StarRating').exists()).toBe(true);
     expect(wrapper.find('ItemDetails').exists()).toBe(true);
-    expect(wrapper.find('Price').exists()).toBe(true);
+    // expect(wrapper.find('Price').exists()).toBe(true);
   })
 })
