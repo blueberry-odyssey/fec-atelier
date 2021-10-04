@@ -10,7 +10,8 @@
     "modulePathIgnorePatterns": [
       "tests/components/Overview",
       "tests/components/RatingsReviews"
-    ]
+    ],
+    "testEnvironment": "jsdom"
   },
   "scripts": {
     "test": "TEST=true jest --coverage",

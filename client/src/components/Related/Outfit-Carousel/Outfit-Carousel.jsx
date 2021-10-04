@@ -8,21 +8,21 @@ export default class OutfitCarousel extends React.Component {
     super(props)
     this.state = {
       outfits: [],
-      outfitIndex: 1,
       styleData: null,
       invokeHandleClick: false
     }
     this.addedOutfits = window.localStorage;
     this.handleAddClick = this.handleAddClick.bind(this);
     this.removeOutfit = this.removeOutfit.bind(this);
+    // console.log('proppys', this.props)
   }
 
   componentDidMount() {
     this.showOutfits();
   }
 
-  componentDidUpdate() {
-    if (this.props.productData.id && !this.state.styleData) {
+  componentDidUpdate(prevProps) {
+    if (this.props.productData.id && prevProps.productData !== this.props.productData) {
       axios.get('/products/relatedProductsAndStyles', { params: { productIDArray: [this.props.productData.id], styles: '/styles' } })
         .then(styleData => {
           this.setState({
@@ -65,6 +65,7 @@ export default class OutfitCarousel extends React.Component {
   }
 
   handleAddClick() {
+    console.log('style data', this.state.styleData)
     let outfitData = JSON.stringify([this.state.styleData, this.props.productData]);
     this.addedOutfits.setItem(this.props.productData.id, outfitData);
     this.showOutfits();

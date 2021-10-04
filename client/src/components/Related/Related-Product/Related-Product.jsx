@@ -35,11 +35,6 @@ function RelatedProduct(props) {
     removeOutfit(currentProduct)
   }
 
-  // var closeOrStar = <i onClick={()=> popupModal(product)} className="far fa-star starIcon"></i>;
-  // if (inOutfit) {
-  //   closeOrStar = <i onClick={handleCloseClick} className="far fa-window-close starIcon"></i>
-
-  // }
   return (
     <div className='each-product' id={inOutfit ? 'outfit-product' : null}>
       <div>
@@ -53,13 +48,12 @@ function RelatedProduct(props) {
       <section>
         <p>{product.category}</p>
         <h3>{product.name}</h3>
-        {salePrice ?
-          <div>
+        {salePrice
+          ? <div>
             <div className='red'>{salePrice}</div>
             <div style={{ 'text-decoration': 'line-through' }}>$ {originalPrice}</div>
           </div>
-          :
-          <div>$ {originalPrice}</div>
+          : <div>$ {originalPrice}</div>
         }
         <div>Star Rating</div>
       </section>

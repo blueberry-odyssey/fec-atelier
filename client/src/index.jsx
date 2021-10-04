@@ -51,12 +51,12 @@ export default class App extends React.Component {
   }
 
   updateOverviewProduct(newProductID) {
-    console.log('newProd', newProductID)
     let newProductIDString = newProductID.toString();
     this.setState({
       product_id: newProductIDString,
       id: newProductID
     })
+    window.location.hash = this.state.id;
     // console.log('prod id', this.state.product_id)
   }
 
@@ -80,20 +80,23 @@ export default class App extends React.Component {
       });
   }
 
-  componentDidMount() {
-    console.log('loook here!!: ', window.location.href);
-
+  componentDidMount () {
     //get path
+    console.log('loook here!!: ', window.location.href);
+    const lookupURL = window.location.href;
     //if exists setState
-
     //change state then update path?
     //or change path, index.jsx listening, and then update state
-
+    const urlProductID = window.location.href.substring(lookupURL.length - 5)
+    console.log('loook there!!: ', urlProductID);
+    let productIDString = urlProductID.toString();
+    this.setState({
+      product_id: productIDString,
+      id: urlProductID
+    })
+    window.location.hash = this.state.id;
     //related item sets a new path, and index.jsx should be listening for path change (componentDidUpdate)
 
-  }
-
-  componentDidMount () {
     this.getReviews();
 
     axios.get('/products/findRelatedItems', { params: { id: this.state.product_id } })
@@ -133,9 +136,8 @@ export default class App extends React.Component {
   }
 
   render() {
-    console.log(window.location.pathname);
+    // console.log(window.location.pathname);
 
-    // console.log(this.state.productData)
     if (this.state.updated === true) {
       return (
         <div className='app-body'>

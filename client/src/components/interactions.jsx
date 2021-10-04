@@ -9,19 +9,13 @@ const UpdatedComponent = (OriginalComponent) => {
     }
     //add axios request
     makeRequest(e) {
-      // console.log('interaction request wtih:', e);
-      // console.log('className: ', e.target.className);
-      // console.log('outerHTML string element: ', e.target.outerHTML);
-      // console.log('widgetName: ', this.props.widgetName);
       let time = Date();
       // console.log('TIME: ', time, typeof time);
-
       let data = {
         element: e.target.outerHTML,
         widget: this.props.widgetName,
         time: time
       }
-
       axios({
         method: 'post',
         url: '/interactions',
