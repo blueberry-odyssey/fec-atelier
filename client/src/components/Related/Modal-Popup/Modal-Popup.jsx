@@ -21,6 +21,10 @@ export default function ModalPopup({ product, overviewCharacteristics, productDa
   }
   useEffect(() => {
     getThumbnailChars();
+    return () => {
+      setCharacteristicList({});
+      setThumbnailChars({});
+    }
   }, [])
 
   for (let char in overviewCharacteristics) {
@@ -32,7 +36,7 @@ export default function ModalPopup({ product, overviewCharacteristics, productDa
     if (thumbnailChars[val] && overviewCharacteristics[val]) {
       var overviewProd = overviewCharacteristics[val].value || 0;
       var thumbProd = thumbnailChars[val].value || 0;
-      console.log('thumbs', thumbnailChars)
+      // console.log('thumbs', thumbnailChars)
       overviewProd = overviewProd.toString().substring(0,4);
       thumbProd = thumbProd.toString().substring(0,4);
       return memo.concat(

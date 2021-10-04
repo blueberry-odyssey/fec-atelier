@@ -80,7 +80,7 @@ export default class App extends React.Component {
       });
   }
 
-  componentDidMount () {
+  componentDidMount() {
     //get path
     console.log('loook here!!: ', window.location.href);
     const lookupURL = window.location.href;
@@ -98,28 +98,6 @@ export default class App extends React.Component {
     //related item sets a new path, and index.jsx should be listening for path change (componentDidUpdate)
 
     this.getReviews();
-
-    axios.get('/products/findRelatedItems', { params: { id: this.state.product_id } })
-      .then(result => {
-        var productIDArray = result.data;
-        axios.get('/products/relatedProductsAndStyles', { params: { productIDArray, styles: '' } })
-          .then(data => {
-            this.setState({
-              relatedItems: data.data
-            })
-            axios.get('/products/relatedProductsAndStyles', { params: { productIDArray, styles: '/styles' } })
-              .then(styleData => {
-                //console.log('relatedStyle Data', styleData);
-                this.setState({
-                  styleData: styleData.data
-                })
-              })
-              .catch(err => { throw err; });
-          })
-          .catch(err => { throw err; });
-      })
-      .catch(err => { console.log(err) });
-
     axios.get('/reviews/meta/getMeta', { params: { product_id: this.state.id } })
       .then(result => {
         // console.log(result.data);
@@ -133,6 +111,31 @@ export default class App extends React.Component {
       .catch(err => {
         console.log(err)
       });
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.product_id !== this.state.product_id) {
+      axios.get('/products/findRelatedItems', { params: { id: this.state.product_id } })
+      .then(result => {
+        var productIDArray = result.data;
+        axios.get('/products/relatedProductsAndStyles', { params: { productIDArray, styles: '' } })
+        .then(data => {
+          this.setState({
+            relatedItems: data.data
+          })
+          axios.get('/products/relatedProductsAndStyles', { params: { productIDArray, styles: '/styles' } })
+          .then(styleData => {
+            //console.log('relatedStyle Data', styleData);
+            this.setState({
+              styleData: styleData.data
+            })
+          })
+          .catch(err => { throw err; });
+        })
+        .catch(err => { throw err; });
+      })
+      .catch(err => { console.log(err) });
+    }
   }
 
   render() {

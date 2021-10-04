@@ -22,6 +22,7 @@ export default class OutfitCarousel extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
+    // console.log('our style data', this.state.styleData)
     if (this.props.productData.id && prevProps.productData !== this.props.productData) {
       axios.get('/products/relatedProductsAndStyles', { params: { productIDArray: [this.props.productData.id], styles: '/styles' } })
         .then(styleData => {
@@ -65,7 +66,6 @@ export default class OutfitCarousel extends React.Component {
   }
 
   handleAddClick() {
-    console.log('style data', this.state.styleData)
     let outfitData = JSON.stringify([this.state.styleData, this.props.productData]);
     this.addedOutfits.setItem(this.props.productData.id, outfitData);
     this.showOutfits();
@@ -73,7 +73,6 @@ export default class OutfitCarousel extends React.Component {
 
   removeOutfit(key) {
     this.addedOutfits.removeItem(key)
-    console.log('we gotta remove')
     this.showOutfits();
   }
 

@@ -2,9 +2,8 @@
   font-family: 'Cantarell', sans-serif;
   height: 24em;
   width: 14em;
-  margin: 0.3em;
+  margin: 5px 5px 15px 5px;
   border-radius: 10px;
-  z-index: 6;
 }
 
 #outfit-product {

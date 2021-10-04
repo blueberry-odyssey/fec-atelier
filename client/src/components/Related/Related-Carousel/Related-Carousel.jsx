@@ -13,18 +13,20 @@ export default function RelatedCarousel(
   const [display, setDisplay] = useState(false);
   const [modalProduct, setModalProduct] = useState({});
 
+  useEffect(() => {
+  }, [display])
+
+  let overlay = document.querySelector('#app');
   const modalClose = () => {
     // console.log('trying to close')
     setDisplay(false)
-    // let overlay = document.querySelector('#app');
-    // overlay.removeEventListener('click', modalClose)
+    overlay.removeEventListener('click', modalClose)
   }
 
   const popupModal = (modalProduct) => {
     console.log('modal popup')
     setModalProduct(modalProduct);
     setDisplay(true);
-    let overlay = document.querySelector('#app');
     overlay.addEventListener('click', modalClose);
   }
 
