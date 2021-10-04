@@ -278,7 +278,8 @@ html {
   flex-flow: row nowrap;
   /* flex-direction: row; */
   font-family: 'Playfair Display', serif;
-  font-size: 30px;
+  font-size: 35px;
+  font-weight: bold;
 }
 
 .stars-column {
@@ -364,7 +365,13 @@ html {
   font-size: 15px;
 }
 
+.review-block-photo {
+  width: 50px;
+  height: 50px;
+}
+
 .review-recommend {
+  display: inline-block;
   padding: 5px;
   font-size: 12px;
 }

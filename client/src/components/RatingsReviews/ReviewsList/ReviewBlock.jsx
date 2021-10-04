@@ -1,4 +1,6 @@
 import React from 'react';
+import ImageThumbnails from './ImageThumbnails.jsx';
+import Recommend from './Recommend.jsx';
 
 const ReviewBlock = (props) => {
   //console.log('review block props', props);
@@ -25,6 +27,12 @@ const ReviewBlock = (props) => {
                 </tr>
                 <tr>
                   <td className='review-body'>{review.body}</td>
+                </tr>
+                <tr>
+                  <td><ImageThumbnails photos={review.photos}/></td>
+                </tr>
+                <tr>
+                  <td><Recommend recomm={review.recommend}/></td>
                 </tr>
                 <tr>
                   <td>
