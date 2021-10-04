@@ -270,6 +270,7 @@ html {
   display: flex;
   justify-content: space-around;
   align-items: flex-start;
+  margin-bottom: 100px;
 }
 
 .reviews-header {
@@ -324,20 +325,23 @@ html {
 }
 
 .sort-dropdown {
+  display: inline-block;
   font-family: 'Playfair Display', serif;
   font-size: 15px;
+  border: 1px solid rgb(161, 6, 161);
 }
 
 .review-list {
   overflow-y: auto;
   width: 590px;
-  height: 540px;
+  height: auto;
+  max-height: 540px;
 }
 
 .review-block {
   overflow-y: auto;
   padding: 10px;
-  border-bottom: 1px solid rgb(156, 96, 156);
+  border-bottom: 1px solid rgb(161, 6, 161);
   width: 550px;
   background-color: thistle;
   font-family: 'Playfair Display', serif;
@@ -371,20 +375,33 @@ html {
   background-color: rgb(236, 221, 236);
 }
 
-.review-helpful-btn {
-  font-family: 'Playfair Display', serif;
-  background-color: thistle;
-  border: none;
-  width: 100px;
-  height: 30px;
+a:link {
+  color:rgb(96, 30, 158);
 }
 
-.review-report-btn {
+a:hover {
+  color:rgb(252, 175, 252);
+  cursor: pointer;
+}
+
+.review-helpful-link {
   font-family: 'Playfair Display', serif;
-  background-color: thistle;
+  display: inline-block;
+  font-size: 11px;
+  /* background-color: thistle;
   border: none;
   width: 100px;
-  height: 30px;
+  height: 30px; */
+}
+
+.review-report-link {
+  font-family: 'Playfair Display', serif;
+  display: inline-block;
+  font-size: 11px;
+  /* background-color: thistle;
+  border: none;
+  width: 100px;
+  height: 30px; */
 }
 
 .form-mandatory {
@@ -460,6 +477,7 @@ html {
 }
 
 .more-reviews-btn {
+  display: inline;
   font-family: 'Playfair Display', serif;
   font-size: 20px;
   background-color: white;
@@ -470,9 +488,11 @@ html {
 
 .modal-form {
   flex-wrap: wrap;
+  display: inline-block;
 }
 
 .add-review-btn {
+  display: inline;
   font-family: 'Playfair Display', serif;
   font-size: 20px;
   background-color: white;

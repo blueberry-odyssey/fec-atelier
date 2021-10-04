@@ -8,11 +8,15 @@ const basePath = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp';
 reviewsRouter.get('/getAllReviews', (req, res) => {
   let productId = parseInt(req.query.product_id);
 
+  //console.log('server req.query', req.query);
+
   let options = {
     headers: { Authorization: config.TOKEN },
     params: {
       product_id: productId,
-      count: 50
+      count: req.query.count,
+      sort: req.query.sort,
+      page: req.query.page
     }
   };
 

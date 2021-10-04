@@ -3,6 +3,7 @@ import axios from 'axios';
 import ReviewBlock from './ReviewBlock.jsx';
 import MoreReviews from './MoreReviews.jsx';
 import ReviewForm from './ReviewForm.jsx';
+import SortDropdown from './SortDropdown.jsx';
 
 export default class ReviewsList extends React.Component {
 
@@ -11,105 +12,52 @@ export default class ReviewsList extends React.Component {
     //console.log('reviews list props:', props);
     this.state = {
       id: props.id,
-      // sort: null,
-      // count: 0,
-      // page: 1,
-      // reviews: props.reviews,
-      // characteristics: props.characteristics,
+      sort: null,
       productData: props.productData
     };
 
-    this.loadMoreReviews = this.loadMoreReviews.bind(this);
+    this.sortReviews = this.sortReviews.bind(this);
     this.reportReview = this.reportReview.bind(this);
     this.markHelpful = this.markHelpful.bind(this);
   }
 
   componentDidUpdate(prevProps) {
-    if(prevProps.productData !== this.props.productData) {
-      this.setState({productData: this.props.productData});
+    if (prevProps.productData !== this.props.productData) {
+      this.setState({ productData: this.props.productData });
     }
   }
 
-  loadMoreReviews() {
-    // should probaby invoke get Reviews based on state
-    // maybe each time reviews load, it should setstate count and page
-    // decide if it should be passed down from index.jsx or duplicated here
+  sortReviews(e) {
+    e.preventDefault();
+    this.setState({ sort: e.target.value });
+    this.props.getReviews(this.state.sort);
   }
 
   reportReview(reviewId) {
     let params = { reviewId };
 
     axios.put('/reviews/report', { params })
-      .then(result => {
-        console.log('client reportReview success', result.status);
-      })
-      .catch(err => {
-        console.log(err);
-      });
+      .then(result => { console.log('client reportReview success', result.status); })
+      .catch(err => { console.log(err); });
   }
 
   markHelpful(reviewId) {
     let params = { reviewId }
 
     axios.put('/reviews/helpful', { params })
-      .then(result => {
-        console.log('client markHelpful success:', result.status);
-      })
-      .catch(err => {
-        console.log(err);
-      });
+      .then(result => { console.log('client markHelpful success:', result.status); })
+      .catch(err => { console.log(err); });
   }
 
   render() {
     //console.log('reviews list props:', props);
-    // if (this.props.reviews !== null) {
-      return (
-        <div className='reviews-column'>
-          <p>{this.props.reviews.length} reviews, sorted by: &nbsp;
-          <select className='sort-dropdown'>
-            <option value='relevant'>Relevance</option>
-            <option value='helpful'>Helpfulness</option>
-            <option value='newest'>Newest</option>
-          </select></p><br/>
-          <ReviewBlock reviews={this.props.reviews} markHelpful={this.markHelpful} reportReview={this.reportReview}/>
-          <table>
-            <tbody>
-              <tr>
-                <td><MoreReviews id={this.props.id} /></td>
-                <td><ReviewForm id={this.props.id} characteristics={this.props.characteristics} productData={this.props.productData}/></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      )
-    // } else {
-    //   return (
-    //     <div className='reviews-column'>
-    //       <p>(total number) reviews, sorted by:
-    //       <select>
-    //         <option>Relevance</option>
-    //         <option>Helpfulness</option>
-    //         <option>Newest</option>
-    //       </select></p>
-    //       <br/>
-    //       <ReviewBlock reviews={this.props.reviews} />
-    //       <table>
-    //         <tbody>
-    //           <tr>
-    //             <td><MoreReviews id={this.props.id}/></td>
-    //             <td><ReviewForm id={this.props.id} characteristics={this.props.characteristics} productData={this.props.productData}/></td>
-    //           </tr>
-    //         </tbody>
-    //       </table>
-    //     </div>
-    //   )
-    // }
+    return (
+      <div className='reviews-column'>
+        <p>{this.props.reviews.length} reviews, sorted by: &nbsp;<SortDropdown sortReviews={this.sortReviews}/></p>
+        <ReviewBlock reviews={this.props.reviews} markHelpful={this.markHelpful} reportReview={this.reportReview}/>
+        <MoreReviews id={this.props.id} getReviews={this.props.getReviews}/>
+        <ReviewForm id={this.props.id} characteristics={this.props.characteristics} productData={this.props.productData}/>
+      </div>
+    )
   }
 };
-
-{/*
-  <button onClick={this.reportReview}>Report Test</button>
-  <button onClick={this.markHelpful}>Helpful Test</button>
-  <button onClick={this.postReview}>Post Review Test</button>
-  <br />
-*/}

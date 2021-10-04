@@ -1,7 +1,7 @@
 import React from 'react';
 
 const ReviewBlock = (props) => {
-  // console.log('review block props', props);
+  //console.log('review block props', props);
   // console.log('review date check', typeof(props.reviews[0].date));
   // let reviews = props.reviews;
   // reviews.map(review => {
@@ -28,9 +28,9 @@ const ReviewBlock = (props) => {
                 </tr>
                 <tr>
                   <td>
-                    <button className='review-helpful-btn' onClick={()=>{props.markHelpful(review.review_id)}}>Helpful? </button>
+                    <p className='review-helpful-link'>Helpful?&nbsp;<a onClick={()=>props.markHelpful(review.review_id)}>Yes</a> ({review.helpfulness})</p>
                     <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
-                    <button className='review-report-btn' onClick={()=>{props.reportReview(review.review_id)}}>Report</button>
+                    <p className='review-report-link'><a onClick={()=>props.reportReview(review.review_id)}>Report</a></p>
                   </td>
                 </tr>
               </tbody>
@@ -47,27 +47,3 @@ const ReviewBlock = (props) => {
 }
 
 export default ReviewBlock;
-
-
-
-
-
-
-
-
-
-
-    // <div className='review-block'>
-    //   <p>REVIEW BLOCK MOCK-UP</p><br/>
-    //   <i className="fas fa-star fa-sm"></i>
-    //   <i className="fas fa-star fa-sm"></i>
-    //   <i className="fas fa-star fa-sm"></i>
-    //   <i className="fas fa-star fa-sm"></i>
-    //   <i className="fas fa-star fa-sm"></i>
-    //   <p className='review-username-date'>Username1234, September 20, 2021</p><br/>
-    //   <p className='review-summary'>Title: Best purchase ever!</p><br/>
-    //   <p className='review-body'>Body: Why did you like the product or not?</p><br/>
-    //   <p className='review-recommend'><i className="fas fa-check fa-sm"></i> I recommend this product</p><br/>
-    //   <button className='review-helpful-btn' onClick={props.markHelpful}>Helpful</button>
-    //   <button className='review-report-btn' onClick={props.reportReview}>Report</button>
-    // </div>

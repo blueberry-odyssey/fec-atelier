@@ -20,7 +20,7 @@ export default class App extends React.Component {
       ratings: 0,
       characteristics: null,
       recommended: 0,
-      page: 0,
+      page: 1,
       count: 2,
       reviews: [],
       sort: null,
@@ -63,42 +63,53 @@ export default class App extends React.Component {
     let newProductIDString = newProductID.toString();
     this.setState({
       product_id: newProductIDString,
-      id: newProductID
+      id: newProductID,
+      count: 2
     })
     // console.log('prod id', this.state.product_id)
   }
 
-  getReviews() {
-    let params = {
-      product_id: this.state.id,
-      count: 50,
-      sort: this.state.sort
-    };
+  getReviews(sortValue) {
+    let params;
+    if (sortValue !== undefined) {
+      params = {
+        product_id: this.state.id,
+        count: this.state.count - 2,
+        sort: sortValue
+      };
+    } else if (sortValue === undefined) {
+      params = {
+        product_id: this.state.id,
+        count: this.state.count,
+        sort: this.state.sort
+      };
+    }
 
     axios.get('/reviews/getAllReviews', { params })
       .then(result => {
-        this.setState({
-          page: result.data.page,
-          count: result.data.count,
-          reviews: result.data.results
-        });
+        // if More Reviews button is clicked
+        //console.log('client', result.data);
+        if (sortValue === undefined) {
+          this.setState({
+            count: this.state.count + 2,
+            reviews: result.data.results
+          });
+        // if Sort option is selected
+        } else if (sortValue !== undefined) {
+          this.setState({ reviews: result.data.results });
+        }
       })
-      .catch(err => {
-        console.log(err);
-      });
+      .catch(err => { console.log(err); });
   }
 
   getMetadata() {
     axios.get('/reviews/meta/getMeta', { params: { product_id: this.state.id } })
       .then(result => {
-        // console.log(result.data);
-        let recommend = result.data.recommended;
-        let rounded = recommend.toFixed(2);
-
+        let recommend = (result.data.recommended !== null) ? (result.data.recommended).toFixed(2) : null;
         this.setState({
           ratings: result.data.average,
           characteristics: result.data.characteristics,
-          recommended: rounded,
+          recommended: recommend,
           updated: true
         });
       })
@@ -108,7 +119,7 @@ export default class App extends React.Component {
     }
 
   componentDidMount() {
-    console.log('loook here!!: ', window.location.href);
+    //console.log('loook here!!: ', window.location.href);
 
     //get path
     //if exists setState
@@ -145,7 +156,7 @@ export default class App extends React.Component {
   }
 
   render() {
-    console.log(window.location.pathname);
+    //console.log(window.location.pathname);
 
     // console.log(this.state.productData)
     if (this.state.updated === true) {
@@ -166,7 +177,7 @@ export default class App extends React.Component {
               addOutfit={this.state.addOutfit} />
           </div>
           <div className='component-2'>
-            <RatingsReviews {...this.state} widgetName='RatingsReviews' />
+            <RatingsReviews {...this.state} getReviews={this.getReviews} widgetName='RatingsReviews' />
           </div>
         </div >
       )
