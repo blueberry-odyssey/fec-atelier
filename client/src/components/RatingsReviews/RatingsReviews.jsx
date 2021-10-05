@@ -8,13 +8,9 @@ class RatingsReviews extends React.Component {
     super(props);
     //console.log('class ratings props:', props);
     this.state = {
-      // id: props.id,
-      // characteristics: props.characteristics,
-      // ratings: props.ratings,
-      // recommended: props.recommended,
-      // reviews: props.reviews,
       productData: props.productData
     };
+
     this.filterReviews = this.filterReviews.bind(this);
     this.unfilterReviews = this.unfilterReviews.bind(this);
   }

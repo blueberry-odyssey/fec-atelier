@@ -40,7 +40,7 @@ const ReviewBlock = (props) => {
                     <p className='review-helpful'>Helpful?
                     <Helpful markHelpful={props.markHelpful} reviewId={review.review_id} helpfulness={review.helpfulness}/></p>
                     <span> | &nbsp;</span>
-                    <button className='review-report-btn' onClick={()=>props.reportReview(review.review_id)}>Report</button>
+                    <button className='review-report-btn' disabled={props.reportDisabled} onClick={()=>props.reportReview(review.review_id)}>Report</button>
                   </td>
                 </tr>
               </tbody>

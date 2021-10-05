@@ -381,13 +381,22 @@ html {
 }
 
 .review-block-photo {
+  display: inline-block;
   width: 50px;
   height: 50px;
 }
 
 .review-recommend {
-  display: inline-block;
+  display: inline;
   padding: 5px;
+  font-size: 12px;
+}
+
+.review-response-header {
+  font-style: italic;
+  font-size: 12px;
+  background-color: rgb(236, 221, 236);
+  font-family: 'Playfair Display', serif;
   font-size: 12px;
 }
 
@@ -398,15 +407,6 @@ html {
   font-family: 'Playfair Display', serif;
   font-size: 12px;
 }
-
-/* a:link {
-  color:rgb(96, 30, 158);
-}
-
-a:hover {
-  color:rgb(252, 175, 252);
-  cursor: pointer;
-} */
 
 .review-helpful {
   font-family: 'Playfair Display', serif;
@@ -465,8 +465,8 @@ button:hover {
   font-family: 'Playfair Display', serif;
 
 }
-/*
-.star-rating:not(old) {
+
+/* .star-rating:not(old) {
   display: inline-block;
   width: 7.5em;
   height: 1.5em;
@@ -483,7 +483,7 @@ button:hover {
   display: block;
   float: right;
   position: relative;
-  background: url('empty-star.svg');
+  background: url('./components/RatingsReviews/ReviewsList/svg-stars/empty-star.svg');
   background-size: contain;
 }
 
@@ -491,7 +491,7 @@ button:hover {
   display: block;
   float: right;
   position: relative;
-  background: url('empty-star.svg');
+  background: url('./components/RatingsReviews/ReviewsList/svg-stars/empty-star.svg');
   background-size: contain;
 }
 
@@ -500,7 +500,7 @@ button:hover {
   display: block;
   width: 1.5em;
   height: 1.5em;
-  background: url('full-star.svg');
+  background: url('./components/RatingsReviews/ReviewsList/svg-stars/full-star.svg');
   background-size: contain;
   opacity: 0;
   transition: opacity 0.2s linear;

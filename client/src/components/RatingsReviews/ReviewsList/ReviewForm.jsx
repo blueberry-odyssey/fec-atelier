@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import Modal from 'react-modal';
-//import fullStar from './svg stars/full-star.svg';
-//import emptyStar from './svg stars/empty-star.svg';
+import CharsRatings from './CharsRatings.jsx';
+// import fullStar from './svg-stars/full-star.svg';
+// import emptyStar from './svg-stars/empty-star.svg';
+// import index from '../../index.css';
 
 Modal.setAppElement('#app');
 
@@ -49,12 +51,10 @@ export default class ReviewForm extends React.Component {
         productData: this.props.productData,
         id: this.props.id,
         characteristics: this.props.characteristics,
-        //charsRating: []
-      });
+        charsRating: []
+      }, () => {this.calculateChars()});
       //console.log('review updated state', this.state);
-      //this.calculateChars();
     }
-
   }
 
   componentDidMount() {
@@ -219,6 +219,7 @@ export default class ReviewForm extends React.Component {
             <input type='radio' name='recommend' value='false' onChange={this.handleInputChange} required></input><label>No</label><br/><br/>
 
             {/* characteristics */}
+            <CharsRatings chars={this.props.characteristics}/>
             <label className='form-characteristics' htmlFor='characteristics'>Characteristics <span className='form-mandatory'>*</span> </label><br/><br/>
 
               {this.state.charsRating.map(trait => (
