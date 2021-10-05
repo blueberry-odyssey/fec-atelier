@@ -19,7 +19,7 @@ reviewsRouter.get('/getAllReviews', (req, res) => {
   // retrieve reviews by product id
   axios.get(basePath + '/reviews/', options)
     .then((results) => {
-      // console.log('axios getReviews response: ', results.data);
+      //console.log('axios getReviews response: ', results.data);
       res.send(results.data);
     })
     .catch((err) => {
@@ -98,7 +98,7 @@ reviewsRouter.post('/postReview', (req, res) => {
       res.status(201).send(results.data);
     })
     .catch((err) => {
-      console.log('axios POST fail');
+      console.log('axios POST fail', err);
       res.status(400).send(err);
     });
 })
@@ -106,7 +106,9 @@ reviewsRouter.post('/postReview', (req, res) => {
 
 // to report a review
 reviewsRouter.put('/report', (req, res) => {
-  let reviewId = 800941;
+
+  //console.log('checking server req.body.params: ', req.body.params);
+  let reviewId = req.body.params.reviewId;
 
   let options = {
     headers: { Authorization: config.TOKEN },
@@ -126,7 +128,7 @@ reviewsRouter.put('/report', (req, res) => {
 
 // to mark reviews as helpful
 reviewsRouter.put('/helpful', (req, res) => {
-  let reviewId = 781037;
+  let reviewId = req.body.params.reviewId;
 
   let options = {
     headers: { Authorization: config.TOKEN }

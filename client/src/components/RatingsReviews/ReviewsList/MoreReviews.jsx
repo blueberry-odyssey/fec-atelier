@@ -3,7 +3,7 @@ import React from 'react';
 const MoreReviews = (props) => {
   //console.log('more reviews props:', props);
   return (
-    <button className='more-reviews-btn' onClick={props.getReviews}>More Reviews</button>
+    <button className='more-reviews-btn' >More Reviews</button>
   )
 }
 
