@@ -11,7 +11,11 @@ const ThumbnailSlider = function (props) {
           return <img
             className={index === props.currentIndex ? 'active-thumbnail-carousel-img' : 'thumbnail-carousel-img'}
             src={image['thumbnail_url']}
-            key={index}>
+            key={index}
+            onClick={() => {
+              props.showImageAtIndex(index);
+            }}
+          >
           </img>
         })}
       </div>

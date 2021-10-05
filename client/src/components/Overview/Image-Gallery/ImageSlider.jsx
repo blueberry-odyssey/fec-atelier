@@ -15,6 +15,7 @@ class ImageSlider extends React.Component {
 
     this.prevImage = this.prevImage.bind(this);
     this.nextImage = this.nextImage.bind(this);
+    this.showImageAtIndex = this.showImageAtIndex.bind(this);
   }
 
   static getDerivedStateFromProps(props, state) {
@@ -39,6 +40,9 @@ class ImageSlider extends React.Component {
   }
 
   //function that changes the current index, pass down to thumbnail slider
+  showImageAtIndex(selectedIndex) {
+    this.setState({ currentIndex: selectedIndex });
+  }
 
   render() {
     console.log(this.state.currentIndex);
@@ -54,7 +58,11 @@ class ImageSlider extends React.Component {
           })}
         </div>
 
-        <ThumbnailSlider images={this.props.images} currentIndex={this.state.currentIndex} />
+        <ThumbnailSlider
+          images={this.props.images}
+          currentIndex={this.state.currentIndex}
+          showImageAtIndex={this.showImageAtIndex}
+        />
 
       </>
     )
