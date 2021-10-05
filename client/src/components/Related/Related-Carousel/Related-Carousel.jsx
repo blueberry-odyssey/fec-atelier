@@ -10,15 +10,15 @@ export default function RelatedCarousel(
     translate,
     overviewCharacteristics,
     productData }) {
-  const [display, setDisplay] = useState(false);
+      // console.log('trying to close', styleData)
+  const [displayModal, setDisplay] = useState(false);
   const [modalProduct, setModalProduct] = useState({});
 
   useEffect(() => {
-  }, [display])
+  }, [displayModal])
 
   let overlay = document.querySelector('#app');
   const modalClose = () => {
-    // console.log('trying to close')
     setDisplay(false)
     overlay.removeEventListener('click', modalClose)
   }
@@ -36,14 +36,14 @@ export default function RelatedCarousel(
         {relatedItems.map((product, idx) => {
           return <RelatedProduct
             popupModal={popupModal}
-            key={product.id}
+            key={idx}
             product={product}
             styleData={styleData[idx]}
             updateOverviewProduct={updateOverviewProduct}
             overviewCharacteristics={overviewCharacteristics} />
         })}
       </div>
-      {display && <ModalPopup
+      {displayModal && <ModalPopup
         product={modalProduct}
         overviewCharacteristics={overviewCharacteristics}
         productData={productData} />}

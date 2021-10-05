@@ -4,7 +4,6 @@ import ModalPopup from '../Modal-Popup/Modal-Popup.jsx'
 import UpdatedComponent from '../../interactions.jsx'
 
 function RelatedProduct(props) {
-  const [displayOne, setDisplayOne] = useState(false);
   const {
     currentProduct,
     inOutfit,

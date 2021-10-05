@@ -30,8 +30,23 @@ export default class App extends React.Component {
 
     this.updateOverviewProduct = this.updateOverviewProduct.bind(this);
     this.getReviews = this.getReviews.bind(this);
+    this.getMetadata = this.getMetadata.bind(this);
     this.getProductData = this.getProductData.bind(this);
     this.invokeAddToOutfits = this.invokeAddToOutfits.bind(this);
+  }
+
+
+  componentDidMount() {
+    this.getReviews();
+    this.getMetadata();
+    this.setPathname();
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.id !== this.state.id) {
+      this.getReviews();
+      this.getMetadata();
+    }
   }
 
   getProductData(productData) {
@@ -52,12 +67,13 @@ export default class App extends React.Component {
 
   updateOverviewProduct(newProductID) {
     let newProductIDString = newProductID.toString();
+    window.location.pathname = newProductIDString;
     this.setState({
       product_id: newProductIDString,
       id: newProductID
     })
-    window.location.hash = this.state.id;
-    // console.log('prod id', this.state.product_id)
+    console.log('prod id', newProductID)
+    //sets a new url product when clicking on related item
   }
 
   getReviews() {
@@ -76,71 +92,41 @@ export default class App extends React.Component {
         });
       })
       .catch(err => {
-        console.log(err)
+        console.log(err);
       });
   }
 
-  componentDidMount() {
-    //get path
-    console.log('loook here!!: ', window.location.href);
-    const lookupURL = window.location.href;
-    //if exists setState
-    //change state then update path?
-    //or change path, index.jsx listening, and then update state
-    const urlProductID = window.location.href.substring(lookupURL.length - 5)
-    console.log('loook there!!: ', urlProductID);
-    let productIDString = urlProductID.toString();
+  setPathname() {
+    //redirects to the product in the url, invoked in componentDidMount
+    let pathname = window.location.pathname.split('/')[1] || '47421';
+    console.log('url pathname', pathname);
     this.setState({
-      product_id: productIDString,
-      id: urlProductID
+      product_id: pathname,
+      id: Number(pathname)
     })
-    window.location.hash = this.state.id;
-    //related item sets a new path, and index.jsx should be listening for path change (componentDidUpdate)
+  }
 
-    this.getReviews();
+  getMetadata() {
     axios.get('/reviews/meta/getMeta', { params: { product_id: this.state.id } })
       .then(result => {
         // console.log(result.data);
+        let recommend = result.data.recommended;
+        let rounded = recommend.toFixed(2);
+
         this.setState({
           ratings: result.data.average,
           characteristics: result.data.characteristics,
-          recommended: result.data.recommended,
+          recommended: rounded,
           updated: true
         });
       })
       .catch(err => {
-        console.log(err)
+        console.log(err);
       });
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    if (prevState.product_id !== this.state.product_id) {
-      axios.get('/products/findRelatedItems', { params: { id: this.state.product_id } })
-      .then(result => {
-        var productIDArray = result.data;
-        axios.get('/products/relatedProductsAndStyles', { params: { productIDArray, styles: '' } })
-        .then(data => {
-          this.setState({
-            relatedItems: data.data
-          })
-          axios.get('/products/relatedProductsAndStyles', { params: { productIDArray, styles: '/styles' } })
-          .then(styleData => {
-            //console.log('relatedStyle Data', styleData);
-            this.setState({
-              styleData: styleData.data
-            })
-          })
-          .catch(err => { throw err; });
-        })
-        .catch(err => { throw err; });
-      })
-      .catch(err => { console.log(err) });
-    }
-  }
-
   render() {
-    // console.log(window.location.pathname);
-
+    // console.log(this.state.addOutfit)
     if (this.state.updated === true) {
       return (
         <div className='app-body'>
@@ -156,10 +142,11 @@ export default class App extends React.Component {
               widgetName='RelatedProducts'
               productData={this.state.productData}
               invokeAddToOutfits={this.invokeAddToOutfits}
-              addOutfit={this.state.addOutfit} />
+              addOutfit={this.state.addOutfit}
+              product_id={this.state.product_id} />
           </div>
-          <div className='component-2' id='reviews'>
-            <RatingsReviews {...this.state} getReviews={this.getReviews} widgetName='RatingsReviews' />
+          <div className='component-2'>
+            <RatingsReviews {...this.state} widgetName='RatingsReviews' />
           </div>
         </div >
       )
