@@ -39,7 +39,6 @@ export default class App extends React.Component {
     this.setPathname();
     this.getReviews();
     this.getMetadata();
-    this.getRelatedProductsAndStyles();
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -70,7 +69,6 @@ export default class App extends React.Component {
   }
 
   updateOverviewProduct(newProductID) {
-    console.log('productID')
     let newProductIDString = newProductID.toString();
     this.setState({
       relatedItems: [],
@@ -133,17 +131,14 @@ export default class App extends React.Component {
   getRelatedProductsAndStyles () {
     axios.get('/products/findRelatedItems', { params: { id: this.state.product_id } })
     .then(result => {
-      console.log('number 1')
       var productIDArray = result.data;
       axios.get('/products/relatedProductsAndStyles', { params: { productIDArray, styles: '' } })
       .then(data => {
-        console.log('itemsss 2', data.data)
         this.setState({
           relatedItems: data.data
         })
         axios.get('/products/relatedProductsAndStyles', { params: { productIDArray, styles: '/styles' } })
         .then(styleData => {
-          console.log('number 3')
           //console.log('relatedStyle Data', styleData);
           this.setState({
             styleData: styleData.data

@@ -55,7 +55,7 @@ class StyleSelector extends React.Component {
 
   render() {
     // console.log(this.props.styles[0].name);
-    console.log('STATE: ', this.state.selectedStyle);
+    // console.log('STATE: ', this.state.selectedStyle);
     //console.log('PROPS: ', this.props);
     let originalPrice = this.state.selectedStyle.original_price || 0;
     return (
