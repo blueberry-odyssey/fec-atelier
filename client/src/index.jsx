@@ -97,6 +97,7 @@ export default class App extends React.Component {
         // if Sort option is selected
         } else if (sortValue !== undefined) {
           this.setState({ reviews: result.data.results });
+          console.log('sort success', sortValue);
         }
       })
       .catch(err => { console.log(err); });

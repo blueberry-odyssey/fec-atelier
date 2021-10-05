@@ -15,6 +15,8 @@ class RatingsReviews extends React.Component {
       // reviews: props.reviews,
       productData: props.productData
     };
+    this.filterReviews = this.filterReviews.bind(this);
+    this.unfilterReviews = this.unfilterReviews.bind(this);
   }
 
   componentDidUpdate(prevProps) {
@@ -23,12 +25,34 @@ class RatingsReviews extends React.Component {
     }
   }
 
+  filterReviews(rating) {
+    let reviews = this.props.reviews;
+    let filteredReviews = [];
+    reviews.map(review => {
+      if (review.rating === rating) {
+        this.state.filteredReviews.push(review);
+      }
+    });
+    console.log('RnR state:', this.state.filteredReviews);
+  }
+
+  unfilterReviews(rating) {
+    if (this.state.filteredReviews.length > 0) {
+      let reviews = this.state.filteredReviews;
+      reviews.map(review => {
+        if (review.rating === rating) {
+          this.state.filteredReviews.slice(review, 1);
+        }
+      })
+    }
+  }
+
   render() {
     return (
       <>
         <p className='reviews-header'>Ratings & Reviews</p>
         <div className='reviews-container'>
-          <StarsRating {...this.props} />
+          <StarsRating {...this.props} filterReviews={this.filterReviews} unfilterReviews={this.unfilterReviews}/>
           <ReviewsList {...this.props} />
         </div>
       </>

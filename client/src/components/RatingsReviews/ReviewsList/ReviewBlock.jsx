@@ -2,15 +2,12 @@ import React from 'react';
 import Date from './Date.jsx';
 import ImageThumbnails from './ImageThumbnails.jsx';
 import Recommend from './Recommend.jsx';
+import Response from './Response.jsx';
+import Body from './Body.jsx';
+import Helpful from './Helpful.jsx';
 
 const ReviewBlock = (props) => {
   //console.log('review block props', props);
-  // console.log('review date check', typeof(props.reviews[0].date));
-  // let reviews = props.reviews;
-  // reviews.map(review => {
-  //   //let date = review.date.toISOString();
-  //   review.date = date.slice(0, 10);
-  // });
 
   if (props.reviews.length > 0) {
     return (
@@ -27,7 +24,10 @@ const ReviewBlock = (props) => {
                   <td className='review-summary'>{review.summary}</td>
                 </tr>
                 <tr>
-                  <td className='review-body'>{review.body}</td>
+                  <td><Body body={review.body} /></td>
+                </tr>
+                <tr>
+                  <td><Response response={review.response}/></td>
                 </tr>
                 <tr>
                   <td><ImageThumbnails photos={review.photos}/></td>
@@ -37,9 +37,10 @@ const ReviewBlock = (props) => {
                 </tr>
                 <tr>
                   <td>
-                    <p className='review-helpful-link'>Helpful?&nbsp;<a onClick={()=>props.markHelpful(review.review_id)}>Yes</a> ({review.helpfulness})</p>
-                    <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
-                    <p className='review-report-link'><a onClick={()=>props.reportReview(review.review_id)}>Report</a></p>
+                    <p className='review-helpful'>Helpful?
+                    <Helpful markHelpful={props.markHelpful} reviewId={review.review_id} helpfulness={review.helpfulness}/></p>
+                    <span> | &nbsp;</span>
+                    <button className='review-report-btn' onClick={()=>props.reportReview(review.review_id)}>Report</button>
                   </td>
                 </tr>
               </tbody>

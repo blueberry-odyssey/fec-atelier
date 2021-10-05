@@ -370,6 +370,14 @@ html {
   /* width: 250px; */
   padding: 5px;
   font-size: 15px;
+  display: inline-block;
+}
+
+.review-show-more {
+  display: inline-block;
+  font-family: 'Playfair Display', serif;
+  font-size: 12px;
+  font-style: italic;
 }
 
 .review-block-photo {
@@ -387,35 +395,53 @@ html {
   padding: 5px;
   font-size: 12px;
   background-color: rgb(236, 221, 236);
+  font-family: 'Playfair Display', serif;
+  font-size: 12px;
 }
 
-a:link {
+/* a:link {
   color:rgb(96, 30, 158);
 }
 
 a:hover {
   color:rgb(252, 175, 252);
   cursor: pointer;
-}
+} */
 
-.review-helpful-link {
+.review-helpful {
   font-family: 'Playfair Display', serif;
   display: inline-block;
   font-size: 11px;
-  /* background-color: thistle;
-  border: none;
-  width: 100px;
-  height: 30px; */
+  background-color: thistle;
 }
 
-.review-report-link {
+.review-helpful-btn {
   font-family: 'Playfair Display', serif;
   display: inline-block;
   font-size: 11px;
-  /* background-color: thistle;
+  background-color: thistle;
   border: none;
-  width: 100px;
-  height: 30px; */
+  width: 25px;
+  height: 20px;
+}
+
+.review-report-btn {
+  font-family: 'Playfair Display', serif;
+  display: inline-block;
+  font-size: 11px;
+  background-color: thistle;
+  border: none;
+  width: 45px;
+  height: 20px;
+}
+
+button {
+  transition-duration: 0.4s;
+}
+
+button:hover {
+  background-color: white;
+  color: thistle;
 }
 
 .form-mandatory {
@@ -437,7 +463,54 @@ a:hover {
 
 .form-rating {
   font-family: 'Playfair Display', serif;
+
 }
+/*
+.star-rating:not(old) {
+  display: inline-block;
+  width: 7.5em;
+  height: 1.5em;
+  overflow: hidden;
+  vertical-align: bottom;
+}
+
+.star-rating:not(old) > input{
+  margin-right: -100%;
+  opacity: 0;
+}
+
+.star-rating:not(old) > label{
+  display: block;
+  float: right;
+  position: relative;
+  background: url('empty-star.svg');
+  background-size: contain;
+}
+
+.star-rating:not(old) > label{
+  display: block;
+  float: right;
+  position: relative;
+  background: url('empty-star.svg');
+  background-size: contain;
+}
+
+.star-rating:not(old) > label:before{
+  content: '';
+  display: block;
+  width: 1.5em;
+  height: 1.5em;
+  background: url('full-star.svg');
+  background-size: contain;
+  opacity: 0;
+  transition: opacity 0.2s linear;
+}
+
+.star-rating:not(old) > label:hover:before,
+.star-rating:not(old) > label:hover ~ label:before,
+.star-rating:not(:hover) > :checked ~ label:before{
+  opacity : 1;
+} */
 
 .form-recommend {
   font-family: 'Playfair Display', serif;
@@ -467,6 +540,11 @@ a:hover {
 
 .form-body {
   font-family: 'Playfair Display', serif;
+}
+
+.form-char-count {
+  font-family: 'Playfair Display', serif;
+  font-size: 11px;
 }
 
 .form-photos {
@@ -503,10 +581,12 @@ a:hover {
 .modal-form {
   flex-wrap: wrap;
   display: inline-block;
+  margin: 10px;
 }
 
 .add-review-btn {
   display: inline;
+  margin: 10px;
   font-family: 'Playfair Display', serif;
   font-size: 20px;
   background-color: white;

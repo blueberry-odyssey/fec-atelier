@@ -12,8 +12,8 @@ export default class ReviewsList extends React.Component {
     //console.log('reviews list props:', props);
     this.state = {
       id: props.id,
-      sort: null,
-      productData: props.productData
+      productData: props.productData,
+      reportDisabled: false,
     };
 
     this.sortReviews = this.sortReviews.bind(this);
@@ -28,13 +28,15 @@ export default class ReviewsList extends React.Component {
   }
 
   sortReviews(e) {
-    e.preventDefault();
-    this.setState({ sort: e.target.value });
-    this.props.getReviews(this.state.sort);
+    this.props.getReviews(e.target.value);
   }
 
   reportReview(reviewId) {
     let params = { reviewId };
+
+    this.setState({
+      reportDisabled: true
+    })
 
     axios.put('/reviews/report', { params })
       .then(result => { console.log('client reportReview success', result.status); })
@@ -42,7 +44,7 @@ export default class ReviewsList extends React.Component {
   }
 
   markHelpful(reviewId) {
-    let params = { reviewId }
+    let params = { reviewId };
 
     axios.put('/reviews/helpful', { params })
       .then(result => { console.log('client markHelpful success:', result.status); })
@@ -54,7 +56,12 @@ export default class ReviewsList extends React.Component {
     return (
       <div className='reviews-column'>
         <p>{this.props.reviews.length} reviews, sorted by: &nbsp;<SortDropdown sortReviews={this.sortReviews}/></p>
-        <ReviewBlock reviews={this.props.reviews} markHelpful={this.markHelpful} reportReview={this.reportReview}/>
+        <ReviewBlock
+          reviews={this.props.reviews}
+          helpDisabled={this.state.helpDisabled}
+          reportDisabled={this.state.reportDisabled}
+          markHelpful={this.markHelpful}
+          reportReview={this.reportReview}/>
         <MoreReviews id={this.props.id} getReviews={this.props.getReviews}/>
         <ReviewForm id={this.props.id} characteristics={this.props.characteristics} productData={this.props.productData}/>
       </div>
