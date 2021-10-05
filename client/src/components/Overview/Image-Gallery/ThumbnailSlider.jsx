@@ -17,8 +17,6 @@ const ThumbnailSlider = function (props) {
       </div>
 
 
-
-
     </div>
   )
 }

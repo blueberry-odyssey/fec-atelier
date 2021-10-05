@@ -33,6 +33,7 @@ export default class OutfitCarousel extends React.Component {
         .catch(err => { console.log(err) });
     }
     if (this.props.addOutfit) {
+      console.log('we dont wanna be ehre', this.props.addOutfit);
       this.handleAddClick();
       this.props.invokeAddToOutfits(false);
     }
@@ -79,14 +80,15 @@ export default class OutfitCarousel extends React.Component {
   render() {
     const { translate, productData } = this.props;
     // console.log('style in carousel', productData, this.state.styleData);
-    return (
-      <div className='outfit-carousel' style={{ 'transform': `translateX(${translate}px)` }}>
-        <div className='button-card' onClick={this.handleAddClick}>
-          <p id='add-button'>+</p>
-          <p className='favorites'> favorites</p>
+    return (productData
+      ?  <div className='outfit-carousel' style={{ 'transform': `translateX(${translate}px)` }}>
+          <div className='button-card' onClick={this.handleAddClick}>
+            <p id='add-button'>+</p>
+            <p className='favorites'> favorites</p>
+          </div>
+          {this.state.outfits}
         </div>
-        {this.state.outfits}
-      </div>
+      : <></>
     )
   }
 };
