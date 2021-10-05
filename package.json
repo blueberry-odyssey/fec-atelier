@@ -9,7 +9,7 @@
     },
     "modulePathIgnorePatterns": [
       "tests/components/Overview",
-      "tests/components/RatingsReviews"
+      "tests/components/RelatedSpec"
     ]
   },
   "scripts": {

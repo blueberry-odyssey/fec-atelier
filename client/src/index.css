@@ -277,6 +277,7 @@ html {
   flex-flow: row nowrap;
   /* flex-direction: row; */
   font-family: 'Playfair Display', serif;
+  font-size: 30px;
 }
 
 .stars-column {
@@ -348,17 +349,26 @@ html {
 }
 
 .review-summary {
+  padding: 5px;
   font-size: 20px;
   font-weight: bold;
 }
 
 .review-body {
   /* width: 250px; */
+  padding: 5px;
   font-size: 15px;
 }
 
 .review-recommend {
+  padding: 5px;
   font-size: 12px;
+}
+
+.review-response {
+  padding: 5px;
+  font-size: 12px;
+  background-color: rgb(236, 221, 236);
 }
 
 .review-helpful-btn {
@@ -366,7 +376,7 @@ html {
   background-color: thistle;
   border: none;
   width: 100px;
-  height: 50px;
+  height: 30px;
 }
 
 .review-report-btn {
@@ -374,7 +384,7 @@ html {
   background-color: thistle;
   border: none;
   width: 100px;
-  height: 50px;
+  height: 30px;
 }
 
 .form-mandatory {

@@ -1,7 +1,13 @@
 import React from 'react';
 
 const ReviewBlock = (props) => {
-  //console.log('review block props', props);
+  // console.log('review block props', props);
+  // console.log('review date check', typeof(props.reviews[0].date));
+  // let reviews = props.reviews;
+  // reviews.map(review => {
+  //   //let date = review.date.toISOString();
+  //   review.date = date.slice(0, 10);
+  // });
 
   if (props.reviews.length > 0) {
     return (
@@ -22,9 +28,9 @@ const ReviewBlock = (props) => {
                 </tr>
                 <tr>
                   <td>
-                    <button className='review-helpful-btn' onClick={props.markHelpful}>Helpful? </button>
+                    <button className='review-helpful-btn' onClick={()=>{props.markHelpful(review.review_id)}}>Helpful? </button>
                     <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
-                    <button className='review-report-btn' onClick={props.reportReview}>Report</button>
+                    <button className='review-report-btn' onClick={()=>{props.reportReview(review.review_id)}}>Report</button>
                   </td>
                 </tr>
               </tbody>
@@ -41,6 +47,7 @@ const ReviewBlock = (props) => {
 }
 
 export default ReviewBlock;
+
 
 
 

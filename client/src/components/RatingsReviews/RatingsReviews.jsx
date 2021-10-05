@@ -8,11 +8,11 @@ class RatingsReviews extends React.Component {
     super(props);
     //console.log('class ratings props:', props);
     this.state = {
-      id: props.id,
-      characteristics: props.characteristics,
-      ratings: props.ratings,
-      recommended: props.recommended,
-      reviews: props.reviews,
+      // id: props.id,
+      // characteristics: props.characteristics,
+      // ratings: props.ratings,
+      // recommended: props.recommended,
+      // reviews: props.reviews,
       productData: props.productData
     };
   }
@@ -25,15 +25,16 @@ class RatingsReviews extends React.Component {
 
   render() {
     return (
-      <div>
-        <h2 className='reviews-header'>RATINGS & REVIEWS</h2>
+      <>
+        <p className='reviews-header'>Ratings & Reviews</p>
         <div className='reviews-container'>
-          <StarsRating {...this.state} />
-          <ReviewsList {...this.state} />
+          <StarsRating {...this.props} />
+          <ReviewsList {...this.props} />
         </div>
-      </div>
+      </>
     )
   }
 };
 
 export default UpdatedComponent(RatingsReviews);
+//export default RatingsReviews;
