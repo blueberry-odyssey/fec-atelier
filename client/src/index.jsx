@@ -35,11 +35,22 @@ export default class App extends React.Component {
     this.invokeAddToOutfits = this.invokeAddToOutfits.bind(this);
   }
 
+  componentDidMount() {
+    this.setPathname();
+    this.getReviews();
+    this.getMetadata();
+    this.getRelatedProductsAndStyles();
+  }
+
   componentDidUpdate(prevProps, prevState) {
     if (prevState.id !== this.state.id) {
       this.getReviews();
       this.getMetadata();
     }
+    if ((prevState.product_id !== this.state.product_id) && this.state.relatedItems.length === 0) {
+      this.getRelatedProductsAndStyles();
+    }
+    // || this.state.product_id === '47421'
   }
 
   getProductData(productData) {
@@ -59,14 +70,16 @@ export default class App extends React.Component {
   }
 
   updateOverviewProduct(newProductID) {
+    console.log('productID')
     let newProductIDString = newProductID.toString();
     this.setState({
       relatedItems: [],
       product_id: newProductIDString,
       id: newProductID
     })
-    window.location.href = 'http://localhost:3000/' + this.state.product_id;
     // console.log('prod id', this.state.product_id)
+    //sets a new url product when clicking on related item
+    window.location.pathname = newProductIDString;
   }
 
   getReviews() {
@@ -77,100 +90,75 @@ export default class App extends React.Component {
     };
 
     axios.get('/reviews/getAllReviews', { params })
-      .then(result => {
-        this.setState({
-          page: result.data.page,
-          count: result.data.count,
-          reviews: result.data.results
-        });
-      })
-      .catch(err => {
-        console.log(err);
+    .then(result => {
+      this.setState({
+        page: result.data.page,
+        count: result.data.count,
+        reviews: result.data.results
       });
+    })
+    .catch(err => {
+      console.log(err);
+    });
+  }
+
+  setPathname() {
+    //redirects to the product in the url, invoked in componentDidMount
+    let pathname = window.location.pathname.split('/')[1];
+    let pathnameNumber = Number(pathname);
+    this.setState({
+      product_id: pathname,
+      id: pathnameNumber
+    })
   }
 
   getMetadata() {
     axios.get('/reviews/meta/getMeta', { params: { product_id: this.state.id } })
-      .then(result => {
-        // console.log(result.data);
-        let recommend = result.data.recommended;
-        let rounded = recommend.toFixed(2);
-
-        this.setState({
-          ratings: result.data.average,
-          characteristics: result.data.characteristics,
-          recommended: rounded,
-          updated: true
-        });
-      })
-      .catch(err => {
-        console.log(err);
+    .then(result => {
+      // console.log(result.data);
+      let recommend = result.data.recommended;
+      let rounded = recommend.toFixed(2);
+      this.setState({
+        ratings: result.data.average,
+        characteristics: result.data.characteristics,
+        recommended: rounded,
+        updated: true
       });
+    })
+    .catch(err => {
+      console.log(err);
+    });
   }
 
-  componentDidMount() {
-    // get path
-    // console.log('loook here!!: ', window.location.href);
-    // const lookupURL = window.location.href;
-    // //if exists setState
-    // //change state then update path?
-    // //or change path, index.jsx listening, and then update state
-    // const urlProductID = window.location.href.substring(lookupURL.length - 5)
-    // console.log('loook there!!: ', urlProductID);
-    // let productIDString = urlProductID.toString();
-    // this.setState({
-    //   product_id: productIDString,
-    //   id: urlProductID
-    // })
-
-    // related item sets a new path, and index.jsx should be listening for path change (componentDidUpdate)
-
-    this.getReviews();
-    this.getMetadata();
-    axios.get('/reviews/meta/getMeta', { params: { product_id: this.state.id } })
-      .then(result => {
-        // console.log(result.data);
+  getRelatedProductsAndStyles () {
+    axios.get('/products/findRelatedItems', { params: { id: this.state.product_id } })
+    .then(result => {
+      console.log('number 1')
+      var productIDArray = result.data;
+      axios.get('/products/relatedProductsAndStyles', { params: { productIDArray, styles: '' } })
+      .then(data => {
+        console.log('itemsss 2', data.data)
         this.setState({
-          ratings: result.data.average,
-          characteristics: result.data.characteristics,
-          recommended: result.data.recommended,
-          updated: true
-        });
-      })
-      .catch(err => {
-        console.log(err)
-      });
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    console.log('itemsss', this.state.relatedItems)
-    if (prevState.product_id !== this.state.product_id || !this.state.relatedItems.length) {
-      axios.get('/products/findRelatedItems', { params: { id: this.state.product_id } })
-        .then(result => {
-          var productIDArray = result.data;
-          axios.get('/products/relatedProductsAndStyles', { params: { productIDArray, styles: '' } })
-            .then(data => {
-              this.setState({
-                relatedItems: data.data
-              })
-              axios.get('/products/relatedProductsAndStyles', { params: { productIDArray, styles: '/styles' } })
-                .then(styleData => {
-                  //console.log('relatedStyle Data', styleData);
-                  this.setState({
-                    styleData: styleData.data
-                  })
-                })
-                .catch(err => { throw err; });
-            })
-            .catch(err => { throw err; });
+          relatedItems: data.data
         })
-        .catch(err => { console.log(err) });
-    }
+        axios.get('/products/relatedProductsAndStyles', { params: { productIDArray, styles: '/styles' } })
+        .then(styleData => {
+          console.log('number 3')
+          //console.log('relatedStyle Data', styleData);
+          this.setState({
+            styleData: styleData.data
+          })
+        })
+        .catch(err => { throw err; });
+      })
+      .catch(err => { throw err; });
+    })
+    .catch(err => { console.log(err) });
+    // console.log('statey', this.state.relatedItems);
   }
 
   render() {
-    // console.log(window.location.pathname);
-
+    // console.log(this.state.productData)
     if (this.state.updated === true) {
       return (
         <div className='app-body'>
