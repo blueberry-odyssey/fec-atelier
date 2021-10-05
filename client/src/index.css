@@ -348,9 +348,16 @@ html {
   font-family: 'Playfair Display', serif;
 }
 
-.review-username-date {
+.review-username {
   font-size: 12px;
   align-content: right;
+  display: inline-block;
+}
+
+.review-date {
+  font-size: 12px;
+  align-content: right;
+  display: inline-block;
 }
 
 .review-summary {

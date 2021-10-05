@@ -1,11 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Modal from 'react-modal';
+
+Modal.setAppElement('#app');
 
 const ImageThumbnails = (props) => {
+
+  const [expanded, imageExpanded] = useState(false);
+
   if (props.photos.length > 0) {
     return (
       <div className='review-block-images'>
         {props.photos.map(image => (
-          <img className='review-block-photo' key={image.id} src={image.url}></img>
+          <div key={image.id}>
+          <img className='review-block-photo' key={image.id} src={image.url} onClick={()=>{imageExpanded(true)}}></img>
+          <Modal isOpen={expanded}>
+            <img key={image.id} src={image.url} onClick={()=>{imageExpanded(false)}}></img>
+          </Modal>
+          </div>
         ))}
       </div>
     )

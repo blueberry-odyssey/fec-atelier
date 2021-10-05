@@ -88,7 +88,7 @@ export default class App extends React.Component {
     axios.get('/reviews/getAllReviews', { params })
       .then(result => {
         // if More Reviews button is clicked
-        //console.log('client', result.data);
+        //console.log('client', result);
         if (sortValue === undefined) {
           this.setState({
             count: this.state.count + 2,

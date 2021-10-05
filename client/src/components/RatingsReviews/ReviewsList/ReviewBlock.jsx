@@ -1,4 +1,5 @@
 import React from 'react';
+import Date from './Date.jsx';
 import ImageThumbnails from './ImageThumbnails.jsx';
 import Recommend from './Recommend.jsx';
 
@@ -20,7 +21,7 @@ const ReviewBlock = (props) => {
               <tbody>
                 <tr>
                   <td className='review-rating'>{review.rating} stars</td>
-                  <td className='review-username-date'>{review.reviewer_name}, {review.date}</td>
+                  <td className='review-username'>{review.reviewer_name}, <Date reviewDate={review.date}/></td>
                 </tr>
                 <tr>
                   <td className='review-summary'>{review.summary}</td>
