@@ -45,7 +45,7 @@ class ImageSlider extends React.Component {
   }
 
   render() {
-    console.log(this.state.currentIndex);
+    // console.log(this.state.currentIndex);
     return (
       <>
         <div>
