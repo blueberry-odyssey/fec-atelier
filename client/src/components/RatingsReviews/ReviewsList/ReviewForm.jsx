@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import Modal from 'react-modal';
 import CharsRatings from './CharsRatings.jsx';
+import ImageUpload from './ImageUpload.jsx';
 // import fullStar from './svg-stars/full-star.svg';
 // import emptyStar from './svg-stars/empty-star.svg';
 // import index from '../../index.css';
@@ -27,6 +28,7 @@ export default class ReviewForm extends React.Component {
       countStmt: '',
       charCount: 0,
       photos: [],
+      images: null,
       nickname: '',
       email: '',
       Fit: 0,
@@ -39,8 +41,10 @@ export default class ReviewForm extends React.Component {
 
     this.countChars = this.countChars.bind(this);
     this.calculateChars = this.calculateChars.bind(this);
+    this.getPhotos = this.getPhotos.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+
   }
 
 
@@ -141,6 +145,11 @@ export default class ReviewForm extends React.Component {
   }
 
 
+  getPhotos(photoArray) {
+    this.setState({ photos: photoArray });
+  }
+
+
   handleInputChange(e) {
     this.setState({ [e.target.name] : e.target.value });
   }
@@ -148,13 +157,6 @@ export default class ReviewForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-
-    let photosArr = [];
-    for (var i = 29; i <= 33; i++) {
-      if (e.target[i].value.length > 0) {
-        photosArr.push(e.target[i].value);
-      }
-    }
 
     let bool = (this.state.recommend === 'true') ? true : false;
 
@@ -176,7 +178,7 @@ export default class ReviewForm extends React.Component {
       recommend: bool,
       name: this.state.nickname,
       email: this.state.email,
-      photos: photosArr,
+      photos: this.state.photos,
       characteristics: charsObj
     };
 
@@ -258,13 +260,7 @@ export default class ReviewForm extends React.Component {
             <p className='form-char-count'>{this.state.countStmt}{this.state.currentCount >= 50 ? null : this.state.charCount}</p><br/>
 
             {/* photos -- change to accept url instead */}
-            <label className='form-photos' htmlFor='photos'>Photos: </label><br/>
-            <p className='form-disclaimer'>Can upload up to 5 photos</p>
-            <input type='text' name='photos' size='35' placeholder='Paste URL here'></input><br/>
-            <input type='text' name='photos' size='35' placeholder='Paste URL here'></input><br/>
-            <input type='text' name='photos' size='35' placeholder='Paste URL here'></input><br/>
-            <input type='text' name='photos' size='35' placeholder='Paste URL here'></input><br/>
-            <input type='text' name='photos' size='35' placeholder='Paste URL here'></input>
+            <ImageUpload getPhotos={this.getPhotos} />
             <br/><br/>
 
             {/* name */}

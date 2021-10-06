@@ -5,6 +5,7 @@ import Recommend from './Recommend.jsx';
 import Response from './Response.jsx';
 import Body from './Body.jsx';
 import Helpful from './Helpful.jsx';
+import Report from './Report.jsx';
 
 const ReviewBlock = (props) => {
   //console.log('review block props', props);
@@ -40,7 +41,7 @@ const ReviewBlock = (props) => {
                     <p className='review-helpful'>Helpful?
                     <Helpful markHelpful={props.markHelpful} reviewId={review.review_id} helpfulness={review.helpfulness}/></p>
                     <span> | &nbsp;</span>
-                    <button className='review-report-btn' disabled={props.reportDisabled} onClick={()=>props.reportReview(review.review_id)}>Report</button>
+                    <Report reportReview={props.reportReview} reviewId={review.review_id}/>
                   </td>
                 </tr>
               </tbody>

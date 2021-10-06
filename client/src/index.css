@@ -551,6 +551,34 @@ button:hover {
   font-family: 'Playfair Display', serif;
 }
 
+.image-uploader {
+  font-family: 'Playfair Display', serif;
+  font-size: 12px;
+}
+
+.image-select {
+  font-family: 'Playfair Display', serif;
+  font-size: 12px;
+  background-color: white;
+  border: 1px solid thistle;
+  width: 250px;
+  height: 20px;
+}
+
+.image-upload-btn {
+  font-family: 'Playfair Display', serif;
+  font-size: 12px;
+  background-color: white;
+  border: 1px solid thistle;
+  width: 50px;
+  height: 20px;
+}
+
+.form-image {
+  width: 45px;
+  height: 45px;
+}
+
 .form-nickname {
   font-family: 'Playfair Display', serif;
 }

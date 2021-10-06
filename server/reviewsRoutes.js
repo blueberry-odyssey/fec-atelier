@@ -1,7 +1,71 @@
 const reviewsRouter = require('express').Router();
 const axios = require('axios');
+const $ = require('jquery');
 const config = require('../config.js');
 const basePath = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp';
+const AWS = require('aws-sdk');
+const fileType = require('file-type');
+const fs = require('fs');
+const multer  = require('multer');
+const util = require('util');
+const unlinkFile = util.promisify(fs.unlink);
+const upload = multer({ dest: 'uploads/' });
+
+const region = config.AWS_REGION;
+const id = config.AWS_ID;
+const key = config.AWS_KEY;
+
+// connect to AWS-S3 bucket
+const s3 = new AWS.S3({
+  region: region,
+  accessKeyId: id,
+  secretAccessKey: key
+});
+
+// to upload image to s3 bucket
+function uploadImage(file) {
+  let fileStream = fs.createReadStream(file.path)
+  let params = {
+    Body: fileStream,
+    Bucket: config.AWS_BUCKET,
+    Key: file.filename,
+  };
+  return s3.upload(params).promise()
+}
+
+// to get file path of image from s3 bucket
+function getFileStream(fileKey) {
+  let params = {
+    Key: fileKey,
+    Bucket: config.AWS_BUCKET
+  }
+  return s3.getObject(params).createReadStream();
+}
+
+// SERVER get request for file path from s3 bucket
+reviewsRouter.get('/images/:key', (req, res) => {
+  let key = req.params.key;
+  let readStream = getFileStream(key);
+
+  readStream.pipe(res);
+})
+
+// SERVER post request to upload image to s3 bucket
+reviewsRouter.post('/images', upload.single('image'), async (req, res) => {
+  let file = req.file;
+  console.log('server req.file', req.file);
+  // upload image to s3 bucket
+  let result = await uploadImage(file);
+  // remove image from server/local host
+  await unlinkFile(file.path);
+
+  console.log('s3 response', result);
+  res.send({
+    imagePath: `/images/${result.Key}`
+  });
+  console.log('success upload');
+});
+
 
 
 // grab reviews, sort reviews
