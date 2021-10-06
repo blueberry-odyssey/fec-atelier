@@ -1,7 +1,7 @@
 import React from 'react';
 
 const ThumbnailSlider = function (props) {
-  //console.log(props.images, props.currentIndex);
+  // console.log(props.images, props.currentIndex);
 
   return (
     <div className='thumbnail-carousel'>
@@ -15,8 +15,6 @@ const ThumbnailSlider = function (props) {
           </img>
         })}
       </div>
-
-
 
 
     </div>

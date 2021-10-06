@@ -33,7 +33,13 @@ export default class App extends React.Component {
     this.getMetadata = this.getMetadata.bind(this);
     this.getProductData = this.getProductData.bind(this);
     this.invokeAddToOutfits = this.invokeAddToOutfits.bind(this);
-    this.setPathname = this.setPathname.bind(this);
+  }
+
+
+  componentDidMount() {
+    this.getReviews();
+    this.getMetadata();
+    this.setPathname();
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -41,6 +47,7 @@ export default class App extends React.Component {
       this.getReviews();
       this.getMetadata();
     }
+    // || this.state.product_id === '47421'
   }
 
   getProductData(productData) {
@@ -60,16 +67,16 @@ export default class App extends React.Component {
   }
 
   updateOverviewProduct(newProductID) {
-    //console.log('newProd', newProductID)
     let newProductIDString = newProductID.toString();
+    window.location.pathname = newProductIDString;
     this.setState({
+      relatedItems: [],
       product_id: newProductIDString,
       id: newProductID,
       count: 2
     })
     // console.log('prod id', this.state.product_id)
     //sets a new url product when clicking on related item
-    window.location.pathname = newProductIDString;
   }
 
   getReviews(sortValue) {
@@ -91,7 +98,6 @@ export default class App extends React.Component {
     axios.get('/reviews/getAllReviews', { params })
       .then(result => {
         // if More Reviews button is clicked
-        //console.log('client', result);
         if (sortValue === undefined) {
           this.setState({
             count: this.state.count + 2,
@@ -109,9 +115,10 @@ export default class App extends React.Component {
   setPathname() {
     //redirects to the product in the url, invoked in componentDidMount
     let pathname = window.location.pathname.split('/')[1] || '47421';
+    let pathnameNumber = Number(pathname);
     this.setState({
       product_id: pathname,
-      id: Number(pathname)
+      id: pathnameNumber
     })
   }
 
@@ -126,44 +133,11 @@ export default class App extends React.Component {
           updated: true
         });
       })
-      .catch(err => {
-        console.log(err);
-      });
-  }
-
-  componentDidMount() {
-    console.log('loook here!!: ', window.location.href);
-    this.setPathname();
-
-    this.getReviews();
-    this.getMetadata();
-
-    axios.get('/products/findRelatedItems', { params: { id: this.state.product_id } })
-      .then(result => {
-        var productIDArray = result.data;
-        axios.get('/products/relatedProductsAndStyles', { params: { productIDArray, styles: '' } })
-          .then(data => {
-            this.setState({
-              relatedItems: data.data
-            })
-            axios.get('/products/relatedProductsAndStyles', { params: { productIDArray, styles: '/styles' } })
-              .then(styleData => {
-                //console.log('relatedStyle Data', styleData);
-                this.setState({
-                  styleData: styleData.data
-                })
-              })
-              .catch(err => { throw err; });
-          })
-          .catch(err => { throw err; });
-      })
-      .catch(err => { console.log(err) });
-
+      .catch(err => { console.log(err); });
   }
 
   render() {
-    console.log(window.location.pathname.split('/')[1]);
-    // console.log(this.state.productData)
+    // console.log(this.state.addOutfit)
     if (this.state.updated === true) {
       return (
         <div className='app-body'>
@@ -179,7 +153,8 @@ export default class App extends React.Component {
               widgetName='RelatedProducts'
               productData={this.state.productData}
               invokeAddToOutfits={this.invokeAddToOutfits}
-              addOutfit={this.state.addOutfit} />
+              addOutfit={this.state.addOutfit}
+              product_id={this.state.product_id} />
           </div>
           <div className='component-2'>
             <RatingsReviews {...this.state} getReviews={this.getReviews} widgetName='RatingsReviews' />

@@ -8,21 +8,22 @@ export default class OutfitCarousel extends React.Component {
     super(props)
     this.state = {
       outfits: [],
-      outfitIndex: 1,
       styleData: null,
       invokeHandleClick: false
     }
     this.addedOutfits = window.localStorage;
     this.handleAddClick = this.handleAddClick.bind(this);
     this.removeOutfit = this.removeOutfit.bind(this);
+    // console.log('proppys', this.props)
   }
 
   componentDidMount() {
     this.showOutfits();
   }
 
-  componentDidUpdate() {
-    if (this.props.productData.id && !this.state.styleData) {
+  componentDidUpdate(prevProps) {
+    // console.log('our style data', this.state.styleData)
+    if (this.props.productData.id && prevProps.productData !== this.props.productData) {
       axios.get('/products/relatedProductsAndStyles', { params: { productIDArray: [this.props.productData.id], styles: '/styles' } })
         .then(styleData => {
           this.setState({
@@ -32,6 +33,7 @@ export default class OutfitCarousel extends React.Component {
         .catch(err => { console.log(err) });
     }
     if (this.props.addOutfit) {
+      console.log('we dont wanna be ehre', this.props.addOutfit);
       this.handleAddClick();
       this.props.invokeAddToOutfits(false);
     }
@@ -72,21 +74,21 @@ export default class OutfitCarousel extends React.Component {
 
   removeOutfit(key) {
     this.addedOutfits.removeItem(key)
-    console.log('we gotta remove')
     this.showOutfits();
   }
 
   render() {
     const { translate, productData } = this.props;
     // console.log('style in carousel', productData, this.state.styleData);
-    return (
-      <div className='outfit-carousel' style={{ 'transform': `translateX(${translate}px)` }}>
-        <div className='each-product' onClick={this.handleAddClick}>
-          <p id='add-button'>+</p>
-          <p className='favorites'> favorites</p>
+    return (productData
+      ?  <div className='outfit-carousel' style={{ 'transform': `translateX(${translate}px)` }}>
+          <div className='button-card' onClick={this.handleAddClick}>
+            <p id='add-button'>+</p>
+            <p className='favorites'> favorites</p>
+          </div>
+          {this.state.outfits}
         </div>
-        {this.state.outfits}
-      </div>
+      : <></>
     )
   }
 };

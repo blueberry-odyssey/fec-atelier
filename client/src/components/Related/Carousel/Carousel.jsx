@@ -47,8 +47,9 @@ export default class Carousel extends React.Component {
     return (
       <div className='carousel-container'>
         <button
+          name='scroll-left'
           style={{ 'visibility': this.state.hidden }}
-          id='left-button'
+          className='left-button'
           onClick={this.moveLeft}>
           <i className="fas fa-chevron-right"></i>
         </button>
@@ -71,7 +72,8 @@ export default class Carousel extends React.Component {
           }
         </div>
         <button
-          id='right-button'
+          name='scroll-right'
+          className='right-button'
           onClick={this.moveRight}>
           <i className="fas fa-chevron-right"></i>
         </button>
