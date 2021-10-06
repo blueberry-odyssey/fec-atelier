@@ -41,7 +41,7 @@ class ImageSlider extends React.Component {
   //function that changes the current index, pass down to thumbnail slider
 
   render() {
-    console.log(this.state.currentIndex);
+    // console.log(this.state.currentIndex);
     return (
       <>
         <div>

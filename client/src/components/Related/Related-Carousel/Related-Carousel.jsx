@@ -10,21 +10,23 @@ export default function RelatedCarousel(
     translate,
     overviewCharacteristics,
     productData }) {
-  const [display, setDisplay] = useState(false);
+      // console.log('trying to close', styleData)
+  const [displayModal, setDisplay] = useState(false);
   const [modalProduct, setModalProduct] = useState({});
 
+  useEffect(() => {
+  }, [displayModal])
+
+  let overlay = document.querySelector('#app');
   const modalClose = () => {
-    // console.log('trying to close')
     setDisplay(false)
-    // let overlay = document.querySelector('#app');
-    // overlay.removeEventListener('click', modalClose)
+    overlay.removeEventListener('click', modalClose)
   }
 
   const popupModal = (modalProduct) => {
     console.log('modal popup')
     setModalProduct(modalProduct);
     setDisplay(true);
-    let overlay = document.querySelector('#app');
     overlay.addEventListener('click', modalClose);
   }
 
@@ -32,16 +34,18 @@ export default function RelatedCarousel(
     <div>
       <div className='related-carousel' style={{ 'transform': `translateX(${translate}px)` }}>
         {relatedItems.map((product, idx) => {
+          // console.log('we have 2 many keys', product.id)
+          //remove any products that match current product, or if it's a duplicate
           return <RelatedProduct
             popupModal={popupModal}
-            key={product.id}
+            key={idx}
             product={product}
             styleData={styleData[idx]}
             updateOverviewProduct={updateOverviewProduct}
             overviewCharacteristics={overviewCharacteristics} />
         })}
       </div>
-      {display && <ModalPopup
+      {displayModal && <ModalPopup
         product={modalProduct}
         overviewCharacteristics={overviewCharacteristics}
         productData={productData} />}

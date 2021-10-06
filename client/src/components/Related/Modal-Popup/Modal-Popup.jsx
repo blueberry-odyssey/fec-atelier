@@ -11,7 +11,7 @@ export default function ModalPopup({ product, overviewCharacteristics, productDa
   const getThumbnailChars = () => {
     axios.get('/reviews/meta/getMeta', { params: { product_id: thumbnailID } })
       .then(results => {
-        console.log('received chars in Modal', results.data);
+        // console.log('received chars in Modal', results.data);
         setThumbnailChars(results.data.characteristics)
         for (let char in results.data.characteristics) {
           characteristicList[char] = char;
@@ -21,6 +21,10 @@ export default function ModalPopup({ product, overviewCharacteristics, productDa
   }
   useEffect(() => {
     getThumbnailChars();
+    return () => {
+      setCharacteristicList({});
+      setThumbnailChars({});
+    }
   }, [])
 
   for (let char in overviewCharacteristics) {
@@ -32,7 +36,7 @@ export default function ModalPopup({ product, overviewCharacteristics, productDa
     if (thumbnailChars[val] && overviewCharacteristics[val]) {
       var overviewProd = overviewCharacteristics[val].value || 0;
       var thumbProd = thumbnailChars[val].value || 0;
-      console.log('thumbs', thumbnailChars)
+      // console.log('thumbs', thumbnailChars)
       overviewProd = overviewProd.toString().substring(0,4);
       thumbProd = thumbProd.toString().substring(0,4);
       return memo.concat(
