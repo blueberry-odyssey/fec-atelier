@@ -133,7 +133,12 @@ export default class App extends React.Component {
       return (
         <div className='app-body'>
           <div className='component-1'>
-            <Overview product_id={this.state['product_id']} getProductData={this.getProductData} widgetName='Overview' invokeAddToOutfits={this.invokeAddToOutfits} />
+            <Overview
+              product_id={this.state['product_id']}
+              getProductData={this.getProductData}
+              widgetName='Overview'
+              invokeAddToOutfits={this.invokeAddToOutfits}
+            />
           </div>
           <div className='component-3'>
             <RelatedProducts
