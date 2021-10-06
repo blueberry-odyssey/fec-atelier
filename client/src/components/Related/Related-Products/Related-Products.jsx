@@ -18,6 +18,7 @@ const RelatedProducts = function (
 
   useEffect(() => {
     getRelatedProductsAndStyles();
+    return setRelatedItems([]);
   }, [product_id])
 
   const getRelatedProductsAndStyles = () => {
