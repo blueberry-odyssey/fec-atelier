@@ -70,19 +70,26 @@ html {
 
 .image-gallery {
   display: flex;
+  flex-direction: column;
   position: relative;
   flex: 1.5;
   padding-top: 20px;
   /* border: solid thistle; */
   background-color: rgb(250, 251, 253);
-  border-width: 1px;
+  /* border-width: 1px; */
   margin-right: 10px;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   height: auto;
   width: auto;
   max-width: 600px;
   max-height: 600px;
+}
+
+.image-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .image {
@@ -93,6 +100,10 @@ html {
   max-width: 550px;
   max-height: 550px;
   border-radius: 10px;
+}
+
+.image:hover {
+  cursor: zoom-in;
 }
 
 .gallery-leftBtn {

@@ -53,7 +53,16 @@ class ImageSlider extends React.Component {
           <FaArrowAltCircleRight className='gallery-rightBtn' onClick={this.nextImage} />
           {this.props.images.map((image, index) => {
             if (index === this.state.currentIndex) {
-              return (<img src={image.url} key={index} className='image'></img>);
+              return (
+                <img
+                  src={image.url}
+                  key={index}
+                  className='image'
+                  onClick={() => {
+                    //clicking the image should expand the image gallery component over the product-info component
+                  }}>
+                </img>
+              );
             }
           })}
         </div>

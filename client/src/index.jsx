@@ -68,7 +68,8 @@ export default class App extends React.Component {
     })
     // console.log('prod id', this.state.product_id)
     //sets a new url product when clicking on related item
-    window.location.pathname = newProductIDString;
+    // window.location.pathname = newProductIDString;
+    window.history.pushState(null, null, `/${this.state.id}`);
   }
 
   getReviews() {
