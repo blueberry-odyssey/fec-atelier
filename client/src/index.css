@@ -24,6 +24,10 @@ html {
   font-family: 'Playfair Display', serif;
 }
 
+.component-3 {
+  margin-top: 110px;
+}
+
 .title {
   display: flex;
   align-items: center;
@@ -65,7 +69,7 @@ html {
 
 .image-gallery {
   /* display: flex; */
-  /* flex-direction: column; */
+  flex-direction: column;
   position: relative;
   flex: 1.5;
   padding-top: 20px;
@@ -73,18 +77,29 @@ html {
   background-color: rgb(250, 251, 253);
   /* border-width: 1px; */
   margin-right: 10px;
-  /* justify-content: flex-start; */
-  /* align-items: center; */
-  /* height: auto; */
-  /* width: auto; */
-  /* max-width: 600px; */
-  /* max-height: 600px; */
+  justify-content: center;
+  align-items: center;
+  height: auto;
+  width: auto;
+  max-width: 600px;
+  max-height: 600px;
 }
 
-.slider-container {
+.image-container {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.image-container-expanded {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  width: 1000px;
+  height: 700px;
+  background-color: rgb(250, 251, 253);
 }
 
 .image {
@@ -95,6 +110,13 @@ html {
   max-width: 550px;
   max-height: 550px;
   border-radius: 10px;
+}
+
+.image-expanded {
+  height: auto;
+  width: auto;
+  max-width: 550px;
+  max-height: 550px;
 }
 
 .image:hover {
@@ -150,7 +172,7 @@ html {
   justify-content: center;
   align-items: center;
   position: relative;
-  bottom: 90px;
+  /* bottom: 90px; */
   /* border: solid thistle 1px;
   border-radius: 10px; */
   background-color: transparent;
