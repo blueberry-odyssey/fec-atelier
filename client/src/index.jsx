@@ -68,10 +68,6 @@ export default class App extends React.Component {
 
   updateOverviewProduct(newProductID) {
     let newProductIDString = newProductID.toString();
-<<<<<<< HEAD
-    window.history.pushState(null, null, `/${this.state.id}`);
-=======
->>>>>>> 6f87d9f55f8f664acc43169c55e73ac9c5a1f19a
     this.setState({
       relatedItems: [],
       product_id: newProductIDString,
