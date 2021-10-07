@@ -3,3 +3,4 @@ client/dist/bundle.js
 config.js
 coverage
 exproj.pem
+bundle.js.LICENSE.txt
