@@ -15,7 +15,7 @@
   },
   "scripts": {
     "test": "TEST=true jest --coverage",
-    "build": "webpack --mode development --watch",
+    "build": "webpack --mode production --watch",
     "start": "nodemon server/index.js"
   },
   "repository": {
