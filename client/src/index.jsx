@@ -68,7 +68,6 @@ export default class App extends React.Component {
 
   updateOverviewProduct(newProductID) {
     let newProductIDString = newProductID.toString();
-    window.location.pathname = newProductIDString;
     this.setState({
       relatedItems: [],
       product_id: newProductIDString,
@@ -77,6 +76,8 @@ export default class App extends React.Component {
     })
     // console.log('prod id', this.state.product_id)
     //sets a new url product when clicking on related item
+    // window.location.pathname = newProductIDString;
+    window.history.pushState(null, null, `/${newProductID}`);
   }
 
   getReviews(sortValue) {
@@ -103,7 +104,7 @@ export default class App extends React.Component {
             count: this.state.count + 2,
             reviews: result.data.results
           });
-        // if Sort option is selected
+          // if Sort option is selected
         } else if (sortValue !== undefined) {
           this.setState({ reviews: result.data.results });
           console.log('sort success', sortValue);
@@ -142,7 +143,12 @@ export default class App extends React.Component {
       return (
         <div className='app-body'>
           <div className='component-1'>
-            <Overview product_id={this.state['product_id']} getProductData={this.getProductData} widgetName='Overview' invokeAddToOutfits={this.invokeAddToOutfits} />
+            <Overview
+              product_id={this.state['product_id']}
+              getProductData={this.getProductData}
+              widgetName='Overview'
+              invokeAddToOutfits={this.invokeAddToOutfits}
+            />
           </div>
           <div className='component-3'>
             <RelatedProducts
