@@ -24,7 +24,7 @@ export default class Carousel extends React.Component {
   }
 
   moveRight() {
-    let maxSlide = (this.props.relatedItems.length) * -300 + 900;
+    let maxSlide = (this.props.relatedItems.length) * -300 + 1100;
     if (this.state.translate <= maxSlide) {
       return;
     }
@@ -43,11 +43,10 @@ export default class Carousel extends React.Component {
       updateOverviewProduct,
       overviewCharacteristics } = this.props;
     this.state.translate === 0 ? this.state.hidden = 'hidden' : this.state.hidden = 'visible';
-    // console.log('style in carousel', JSON.stringify(relatedItems));
     return (
       <div className='carousel-container'>
         <button
-          name='scroll-left'
+          aria-label='scroll-left'
           style={{ 'visibility': this.state.hidden }}
           className='left-button'
           onClick={this.moveLeft}>
@@ -72,7 +71,7 @@ export default class Carousel extends React.Component {
           }
         </div>
         <button
-          name='scroll-right'
+          aria-label='scroll-right'
           className='right-button'
           onClick={this.moveRight}>
           <i className="fas fa-chevron-right"></i>
