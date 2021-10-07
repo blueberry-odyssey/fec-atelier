@@ -126,7 +126,7 @@ export default class App extends React.Component {
   getMetadata() {
     axios.get('/reviews/meta/getMeta', { params: { product_id: this.state.id } })
       .then(result => {
-        console.log('RESULT DATA', result.data);
+        //console.log('RESULT DATA', result.data);
         //let recommend = (result.data.recommended !== null) ? (result.data.recommended).toFixed(2) : null;
 
         this.setState({

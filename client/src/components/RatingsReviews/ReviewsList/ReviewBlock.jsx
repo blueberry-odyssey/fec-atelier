@@ -6,6 +6,7 @@ import Response from './Response.jsx';
 import Body from './Body.jsx';
 import Helpful from './Helpful.jsx';
 import Report from './Report.jsx';
+import StarsRating from '../StarsRating/StarsRating.jsx';
 
 const ReviewBlock = (props) => {
   //console.log('review block props', props);
@@ -18,7 +19,7 @@ const ReviewBlock = (props) => {
             <table>
               <tbody>
                 <tr>
-                  <td className='review-rating'>{review.rating} stars</td>
+                  <td className='review-rating'><StarsRating ratings={review.rating}/></td>
                   <td className='review-username'>{review.reviewer_name}, <Date reviewDate={review.date}/></td>
                 </tr>
                 <tr>

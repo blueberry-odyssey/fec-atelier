@@ -1,6 +1,6 @@
 import React from 'react';
 import ReviewsList from './ReviewsList/ReviewsList.jsx';
-import StarsRating from './StarsRating/StarsRating.jsx';
+import RatingsBreakdown from './StarsRating/RatingsBreakdown.jsx';
 import UpdatedComponent from '../interactions.jsx';
 
 class RatingsReviews extends React.Component {
@@ -48,7 +48,7 @@ class RatingsReviews extends React.Component {
       <>
         <p className='reviews-header'>Ratings & Reviews</p>
         <div className='reviews-container'>
-          <StarsRating {...this.props} filterReviews={this.filterReviews} unfilterReviews={this.unfilterReviews}/>
+          <RatingsBreakdown {...this.props} />
           <ReviewsList {...this.props} />
         </div>
       </>
