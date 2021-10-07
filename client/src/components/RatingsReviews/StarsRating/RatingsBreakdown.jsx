@@ -13,54 +13,29 @@ export default class RatingsBreakdown extends React.Component {
       two: 0,
       one: 0
     };
-    //console.log('Ratings props:', props);
-    this.calculateRatings = this.calculateRatings.bind(this);
+    console.log('Ratings props:', props);
   }
 
-  componentDidUpdate(prevProps) {
-    if (prevProps !== this.props) {
-      this.setState({ recommended: this.props.recommended });
-    }
-  }
-
-  componentDidMount() {
-    if (this.props.reviews.length > 0) {
-      this.calculateRatings();
-    }
-  }
-
-  calculateRatings() {
-    let reviews = this.props.reviews;
-    let length = this.props.reviews.length;
-    reviews.map(review => {
-      if (review.rating === 5) {
-        this.state.five += 1;
-      } else if (review.rating === 4) {
-        this.state.four += 1;
-      } else if (review.rating === 3) {
-        this.state.three += 1;
-      } else if (review.rating === 2) {
-        this.state.two += 1;
-      } else if (review.rating === 1) {
-        this.state.one += 1;
-      }
-    });
-
-    this.setState({
-      five: (this.state.five / length).toFixed(2),
-      four: (this.state.four / length).toFixed(2),
-      three: (this.state.three / length).toFixed(2),
-      two: (this.state.two / length).toFixed(2),
-      one: (this.state.one / length).toFixed(2)
-    });
+  static getDerivedStateFromProps(props, state) {
+    return {
+      recommended: props.recommended,
+      five: Number(props.totalRatings['5']),
+      four: Number(props.totalRatings['4']),
+      three: Number(props.totalRatings['3']),
+      two: Number(props.totalRatings['2']),
+      one: Number(props.totalRatings['1'])
+    };
+    return null;
   }
 
   render() {
+    console.log(this.state);
+
     return (
       <div className='stars-column'>
         <p className='stars-rating'>{this.props.ratings}&nbsp;</p>
         <StarsRating ratings={this.props.ratings} />
-        <p className='stars-recommend'>{this.state.recommended}% of reviews recommended this product</p>
+        <p className='stars-recommend'>{this.state.recommended}% of reviews recommend this product</p>
         <p onClick={()=>this.props.filterReviews(5)}>5 stars &nbsp; {this.state.five}</p>
         <p onClick={()=>this.props.filterReviews(4)}>4 stars &nbsp; {this.state.four}</p>
         <p onClick={()=>this.props.filterReviews(3)}>3 stars &nbsp; {this.state.three}</p>

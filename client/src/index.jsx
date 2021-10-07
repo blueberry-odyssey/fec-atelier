@@ -143,9 +143,10 @@ export default class App extends React.Component {
     axios.get('/reviews/meta/getMeta', { params: { product_id: this.state.id } })
       .then(result => {
         this.setState({
-          ratings: result.data.average,
+          ratings: Number(result.data.average),
+          totalRatings: result.data.totalRatings,
           characteristics: result.data.characteristics,
-          recommended: result.data.recommend,
+          recommended: Number(result.data.recommended),
           updated: true
         });
       })

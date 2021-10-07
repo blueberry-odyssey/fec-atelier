@@ -108,10 +108,9 @@ reviewsRouter.get('/meta/getMeta', (req, res) => {
 
   axios.get(basePath + '/reviews/meta/', options)
     .then((results) => {
-
-      console.log('SERVER RESULTS', results.data);
       let parsedData = {
-        characteristics: results.data.characteristics
+        characteristics: results.data.characteristics,
+        totalRatings: results.data.ratings
       };
 
       //parse ratings average here
@@ -119,25 +118,21 @@ reviewsRouter.get('/meta/getMeta', (req, res) => {
       let totalVotes = 0;
       let totalScore = 0;
       let votes = Object.values(results.data.ratings);
-
       votes.forEach(vote => {
         totalVotes += parseInt(vote);
       });
-
       for (var key in results.data.ratings) {
         totalScore += parseInt(key) * parseInt(results.data.ratings[key]);
       }
-
       average = totalScore / totalVotes;
-      parsedData["average"] = parseInt(average.toFixed(2));
+      parsedData["average"] = average.toFixed(1);
 
       //parse recommended percentage here
-      // let falseRec = results.data.recommended.false;
-      // let trueRec = results.data.recommended.true;
-      // let recommended = trueRec / falseRec;
-      parsedData["recommended"] = results.data.recommended;
-
-      // console.log('reviews server parsed data:', parsedData);
+      let trueRec = Number(results.data.recommended.true);
+      let total = Number(results.data.recommended.false) + trueRec;
+      let recommended = (trueRec / total) * 100;
+      parsedData["recommended"] = recommended.toFixed(2);
+      console.log(parsedData);
       res.send(parsedData);
     })
     .catch((err) => {
