@@ -79,16 +79,14 @@ export default class OutfitCarousel extends React.Component {
 
   render() {
     const { translate, productData } = this.props;
-    // console.log('style in carousel', productData, this.state.styleData);
-    return (productData
-      ?  <div className='outfit-carousel' style={{ 'transform': `translateX(${translate}px)` }}>
-          <div className='button-card' onClick={this.handleAddClick}>
-            <p id='add-button'>+</p>
-            <p className='favorites'> favorites</p>
-          </div>
-          {this.state.outfits}
+    return (
+      <div className='outfit-carousel' style={{ 'transform': `translateX(${translate}px)` }}>
+        <div className='button-card' onClick={this.handleAddClick}>
+          <p id='add-button'>+</p>
+          <p className='favorites'> favorites</p>
         </div>
-      : <></>
+        {this.state.outfits}
+      </div>
     )
   }
 };

@@ -19,7 +19,7 @@ const RelatedProducts = function (
   useEffect(() => {
     getRelatedProductsAndStyles();
     return setRelatedItems([]);
-  }, [product_id])
+  }, [])
 
   const getRelatedProductsAndStyles = () => {
     axios.get('/products/findRelatedItems', { params: { id: product_id } })
@@ -30,7 +30,6 @@ const RelatedProducts = function (
             setRelatedItems(relatedData.data);
             axios.get('/products/relatedProductsAndStyles', { params: { productIDArray, styles: '/styles' } })
               .then(styleData => {
-                //console.log('relatedStyle Data', styleData);
                 setStyleData(styleData.data);
               })
               .catch(err => { throw err; });
@@ -39,8 +38,6 @@ const RelatedProducts = function (
       })
       .catch(err => { console.log(err) });
   }
-
-  // console.log('style data in main', overviewCharacteristics);
   return (
     <div className='related'>
       <h1>related <span className='pink'>products</span></h1>
