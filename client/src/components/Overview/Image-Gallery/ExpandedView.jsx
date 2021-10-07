@@ -3,10 +3,10 @@ import ThumbnailSlider from './ThumbnailSlider.jsx';
 import { FaArrowAltCircleRight } from 'react-icons/fa';
 import { FaArrowAltCircleLeft } from 'react-icons/fa';
 
-//props.images is an array of object with url and thumbnail url
-const ImageSlider = function (props) {
+const ExpandedView = function (props) {
   return (
     <>
+      <button onClick={props.closeView}>X</button>
       <div>
         <FaArrowAltCircleLeft className='gallery-leftBtn' onClick={props.prevImage} />
         <FaArrowAltCircleRight className='gallery-rightBtn' onClick={props.nextImage} />
@@ -16,10 +16,8 @@ const ImageSlider = function (props) {
               <img
                 src={image.url}
                 key={index}
-                className='image'
-                onClick={() => {
-                  props.openView();
-                }}>
+                className='image-expanded'
+              >
               </img>
             );
           }
@@ -34,6 +32,9 @@ const ImageSlider = function (props) {
 
     </>
   )
+
+
 }
 
-export default ImageSlider;
+
+export default ExpandedView;
