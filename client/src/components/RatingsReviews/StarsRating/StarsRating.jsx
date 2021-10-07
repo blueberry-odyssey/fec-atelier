@@ -18,12 +18,8 @@ export default class StarsRating extends React.Component {
 
   componentDidUpdate(prevProps) {
     if (prevProps !== this.props) {
-      this.setState({
-        recommended: this.props.recommended
-      });
+      this.setState({ recommended: this.props.recommended });
     }
-    //console.log('STARS UPDATE', this.props);
-
   }
 
   componentDidMount() {
@@ -70,11 +66,11 @@ export default class StarsRating extends React.Component {
             <i className="fas fa-star fa-sm"></i>
           </h2>
           <p className='stars-recommend'>{this.state.recommended}% of reviews recommended this product</p>
-          <p>5 stars &nbsp; {this.state.five}</p>
-          <p>4 stars &nbsp; {this.state.four}</p>
-          <p>3 stars &nbsp; {this.state.three}</p>
-          <p>2 stars &nbsp; {this.state.two}</p>
-          <p>1 stars &nbsp; {this.state.one}</p>
+          <p onClick={()=>this.props.filterReviews(5)}>5 stars &nbsp; {this.state.five}</p>
+          <p onClick={()=>this.props.filterReviews(4)}>4 stars &nbsp; {this.state.four}</p>
+          <p onClick={()=>this.props.filterReviews(3)}>3 stars &nbsp; {this.state.three}</p>
+          <p onClick={()=>this.props.filterReviews(2)}>2 stars &nbsp; {this.state.two}</p>
+          <p onClick={()=>this.props.filterReviews(1)}>1 stars &nbsp; {this.state.one}</p>
         </div><br />
         <Characteristics {...this.props} />
       </div>

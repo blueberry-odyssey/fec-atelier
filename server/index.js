@@ -27,7 +27,7 @@ app.use('/:id/', express.static('client/dist'));
 //tell express the second slash is optional
 
 app.post('/interactions', function (req, res) {
-  console.log(req.body);
+  //console.log(req.body);
   axios.post(basePath + '/interactions', req.body, params)
     .then((results) => {
       console.log('axios Interaction success: ', results.status);
