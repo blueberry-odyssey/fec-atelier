@@ -20,7 +20,7 @@ export default class App extends React.Component {
       ratings: 0,
       characteristics: null,
       recommended: 0,
-      page: 0,
+      page: 1,
       count: 2,
       reviews: [],
       sort: null,
@@ -72,30 +72,44 @@ export default class App extends React.Component {
     this.setState({
       relatedItems: [],
       product_id: newProductIDString,
-      id: newProductID
+      id: newProductID,
+      count: 2
     })
     // console.log('prod id', this.state.product_id)
     //sets a new url product when clicking on related item
   }
 
-  getReviews() {
-    let params = {
-      product_id: this.state.id,
-      count: 50,
-      sort: this.state.sort
-    };
+  getReviews(sortValue) {
+    let params;
+    if (sortValue !== undefined) {
+      params = {
+        product_id: this.state.id,
+        count: this.state.count - 2,
+        sort: sortValue
+      };
+    } else if (sortValue === undefined) {
+      params = {
+        product_id: this.state.id,
+        count: this.state.count,
+        sort: this.state.sort
+      };
+    }
 
     axios.get('/reviews/getAllReviews', { params })
-    .then(result => {
-      this.setState({
-        page: result.data.page,
-        count: result.data.count,
-        reviews: result.data.results
-      });
-    })
-    .catch(err => {
-      console.log(err);
-    });
+      .then(result => {
+        // if More Reviews button is clicked
+        if (sortValue === undefined) {
+          this.setState({
+            count: this.state.count + 2,
+            reviews: result.data.results
+          });
+        // if Sort option is selected
+        } else if (sortValue !== undefined) {
+          this.setState({ reviews: result.data.results });
+          console.log('sort success', sortValue);
+        }
+      })
+      .catch(err => { console.log(err); });
   }
 
   setPathname() {
@@ -110,20 +124,16 @@ export default class App extends React.Component {
 
   getMetadata() {
     axios.get('/reviews/meta/getMeta', { params: { product_id: this.state.id } })
-    .then(result => {
-      // console.log(result.data);
-      let recommend = result.data.recommended;
-      let rounded = recommend.toFixed(2);
-      this.setState({
-        ratings: result.data.average,
-        characteristics: result.data.characteristics,
-        recommended: rounded,
-        updated: true
-      });
-    })
-    .catch(err => {
-      console.log(err);
-    });
+      .then(result => {
+        let recommend = (result.data.recommended !== null) ? (result.data.recommended).toFixed(2) : null;
+        this.setState({
+          ratings: result.data.average,
+          characteristics: result.data.characteristics,
+          recommended: recommend,
+          updated: true
+        });
+      })
+      .catch(err => { console.log(err); });
   }
 
   render() {
@@ -147,7 +157,7 @@ export default class App extends React.Component {
               product_id={this.state.product_id} />
           </div>
           <div className='component-2'>
-            <RatingsReviews {...this.state} widgetName='RatingsReviews' />
+            <RatingsReviews {...this.state} getReviews={this.getReviews} widgetName='RatingsReviews' />
           </div>
         </div >
       )

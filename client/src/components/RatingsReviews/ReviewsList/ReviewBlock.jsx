@@ -1,13 +1,14 @@
 import React from 'react';
+import Date from './Date.jsx';
+import ImageThumbnails from './ImageThumbnails.jsx';
+import Recommend from './Recommend.jsx';
+import Response from './Response.jsx';
+import Body from './Body.jsx';
+import Helpful from './Helpful.jsx';
+import Report from './Report.jsx';
 
 const ReviewBlock = (props) => {
-  // console.log('review block props', props);
-  // console.log('review date check', typeof(props.reviews[0].date));
-  // let reviews = props.reviews;
-  // reviews.map(review => {
-  //   //let date = review.date.toISOString();
-  //   review.date = date.slice(0, 10);
-  // });
+  //console.log('review block props', props);
 
   if (props.reviews.length > 0) {
     return (
@@ -18,19 +19,29 @@ const ReviewBlock = (props) => {
               <tbody>
                 <tr>
                   <td className='review-rating'>{review.rating} stars</td>
-                  <td className='review-username-date'>{review.reviewer_name}, {review.date}</td>
+                  <td className='review-username'>{review.reviewer_name}, <Date reviewDate={review.date}/></td>
                 </tr>
                 <tr>
                   <td className='review-summary'>{review.summary}</td>
                 </tr>
                 <tr>
-                  <td className='review-body'>{review.body}</td>
+                  <td><Body body={review.body} /></td>
+                </tr>
+                <tr>
+                  <td><Response response={review.response}/></td>
+                </tr>
+                <tr>
+                  <td><ImageThumbnails photos={review.photos}/></td>
+                </tr>
+                <tr>
+                  <td><Recommend recomm={review.recommend}/></td>
                 </tr>
                 <tr>
                   <td>
-                    <button className='review-helpful-btn' onClick={()=>{props.markHelpful(review.review_id)}}>Helpful? </button>
-                    <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
-                    <button className='review-report-btn' onClick={()=>{props.reportReview(review.review_id)}}>Report</button>
+                    <p className='review-helpful'>Helpful?
+                    <Helpful markHelpful={props.markHelpful} reviewId={review.review_id} helpfulness={review.helpfulness}/></p>
+                    <span> | &nbsp;</span>
+                    <Report reportReview={props.reportReview} reviewId={review.review_id}/>
                   </td>
                 </tr>
               </tbody>
@@ -47,27 +58,3 @@ const ReviewBlock = (props) => {
 }
 
 export default ReviewBlock;
-
-
-
-
-
-
-
-
-
-
-    // <div className='review-block'>
-    //   <p>REVIEW BLOCK MOCK-UP</p><br/>
-    //   <i className="fas fa-star fa-sm"></i>
-    //   <i className="fas fa-star fa-sm"></i>
-    //   <i className="fas fa-star fa-sm"></i>
-    //   <i className="fas fa-star fa-sm"></i>
-    //   <i className="fas fa-star fa-sm"></i>
-    //   <p className='review-username-date'>Username1234, September 20, 2021</p><br/>
-    //   <p className='review-summary'>Title: Best purchase ever!</p><br/>
-    //   <p className='review-body'>Body: Why did you like the product or not?</p><br/>
-    //   <p className='review-recommend'><i className="fas fa-check fa-sm"></i> I recommend this product</p><br/>
-    //   <button className='review-helpful-btn' onClick={props.markHelpful}>Helpful</button>
-    //   <button className='review-report-btn' onClick={props.reportReview}>Report</button>
-    // </div>

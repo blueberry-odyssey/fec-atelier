@@ -61,7 +61,7 @@ productRouter.get('/findRelatedItems', (req, res) => {
 productRouter.get('/relatedProductsAndStyles', (req, res) => {
   let styles = req.query.styles;
   let productIDs = req.query.productIDArray;
-  console.log('req styles present?', req.query);
+  //console.log('req styles present?', req.query);
   let relatedProductData = [];
   productIDs.forEach(item => {
     relatedProductData.push(
