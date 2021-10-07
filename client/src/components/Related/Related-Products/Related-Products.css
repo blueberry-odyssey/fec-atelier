@@ -1,7 +1,7 @@
 .related > h1 {
   font-family: 'Playfair Display', serif;
   margin-bottom: 0;
-  background: linear-gradient(90deg, rgb(96, 30, 158,1) 25%, white 50%);
+  background-color: rgb(96, 30, 158,1);
   color: white;
   border-radius: 10px;
   padding: 5px;
