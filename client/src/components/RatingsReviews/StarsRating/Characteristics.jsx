@@ -1,4 +1,5 @@
 import React from 'react';
+import Size from './Size.jsx';
 
 const Characteristics = (props) => {
   //console.log('CHARACTERISTICS PROPS:', props);
@@ -15,6 +16,7 @@ const Characteristics = (props) => {
 
   return (
     <div className='characteristics-section'>
+      <Size />
       {charsArray.map(factor => (
         <div key={factor[1].id}>
           <p className='characteristics-name'>{factor[0]}</p>

@@ -108,6 +108,8 @@ reviewsRouter.get('/meta/getMeta', (req, res) => {
 
   axios.get(basePath + '/reviews/meta/', options)
     .then((results) => {
+
+      console.log('SERVER RESULTS', results.data);
       let parsedData = {
         characteristics: results.data.characteristics
       };
@@ -130,10 +132,10 @@ reviewsRouter.get('/meta/getMeta', (req, res) => {
       parsedData["average"] = parseInt(average.toFixed(2));
 
       //parse recommended percentage here
-      let falseRec = results.data.recommended.false;
-      let trueRec = results.data.recommended.true;
-      let recommended = trueRec / falseRec;
-      parsedData["recommended"] = recommended;
+      // let falseRec = results.data.recommended.false;
+      // let trueRec = results.data.recommended.true;
+      // let recommended = trueRec / falseRec;
+      parsedData["recommended"] = results.data.recommended;
 
       // console.log('reviews server parsed data:', parsedData);
       res.send(parsedData);

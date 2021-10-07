@@ -277,6 +277,12 @@ html {
   flex-flow: row nowrap;
   /* flex-direction: row; */
   font-family: 'Playfair Display', serif;
+  /* background: linear-gradient(90deg, rgb(96, 30, 158,1) 25%, white 50%); */
+  border-radius: 10px;
+  color: black;
+  width: 1000px;
+  height: 55px;
+  padding: 5px;
   font-size: 35px;
   font-weight: bold;
 }
@@ -312,6 +318,21 @@ html {
 .characteristics-value {
   font-family: 'Playfair Display', serif;
   font-size: 12px;
+}
+
+.rating-bar {
+  width: 50%;
+  height: 12px;
+  background-color: rgb(207, 198, 198);
+  text-align: center;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  display: flex;
+}
+
+.rating-size {
+  font-family: 'Playfair Display', serif;
+  font-size: 15px;
 }
 
 .reviews-column {

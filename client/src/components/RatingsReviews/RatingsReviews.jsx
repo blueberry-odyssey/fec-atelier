@@ -11,8 +11,8 @@ class RatingsReviews extends React.Component {
       productData: props.productData
     };
 
-    this.filterReviews = this.filterReviews.bind(this);
-    this.unfilterReviews = this.unfilterReviews.bind(this);
+    // this.filterReviews = this.filterReviews.bind(this);
+    // this.unfilterReviews = this.unfilterReviews.bind(this);
   }
 
   componentDidUpdate(prevProps) {
@@ -21,27 +21,27 @@ class RatingsReviews extends React.Component {
     }
   }
 
-  filterReviews(rating) {
-    let reviews = this.props.reviews;
-    let filteredReviews = [];
-    reviews.map(review => {
-      if (review.rating === rating) {
-        this.state.filteredReviews.push(review);
-      }
-    });
-    console.log('RnR state:', this.state.filteredReviews);
-  }
+  // filterReviews(rating) {
+  //   let reviews = this.props.reviews;
+  //   let filteredReviews = [];
+  //   reviews.map(review => {
+  //     if (review.rating === rating) {
+  //       this.state.filteredReviews.push(review);
+  //     }
+  //   });
+  //   console.log('RnR state:', this.state.filteredReviews);
+  // }
 
-  unfilterReviews(rating) {
-    if (this.state.filteredReviews.length > 0) {
-      let reviews = this.state.filteredReviews;
-      reviews.map(review => {
-        if (review.rating === rating) {
-          this.state.filteredReviews.slice(review, 1);
-        }
-      })
-    }
-  }
+  // unfilterReviews(rating) {
+  //   if (this.state.filteredReviews.length > 0) {
+  //     let reviews = this.state.filteredReviews;
+  //     reviews.map(review => {
+  //       if (review.rating === rating) {
+  //         this.state.filteredReviews.slice(review, 1);
+  //       }
+  //     })
+  //   }
+  // }
 
   render() {
     return (
