@@ -13,7 +13,7 @@ export default class RatingsBreakdown extends React.Component {
       two: 0,
       one: 0
     };
-    console.log('Ratings props:', props);
+    //console.log('Ratings props:', props);
     this.calculateRatings = this.calculateRatings.bind(this);
   }
 

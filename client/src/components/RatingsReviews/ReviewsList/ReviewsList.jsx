@@ -60,7 +60,7 @@ export default class ReviewsList extends React.Component {
           reviews={this.props.reviews}
           markHelpful={this.markHelpful}
           reportReview={this.reportReview}/>
-        <MoreReviews id={this.props.id} getReviews={this.props.getReviews}/>
+        <MoreReviews id={this.props.id} reviews={this.props.reviews} totalReviews={this.props.totalReviews} getReviews={this.props.getReviews}/>
         <ReviewForm id={this.props.id} characteristics={this.props.characteristics} productData={this.props.productData}/>
       </div>
     )

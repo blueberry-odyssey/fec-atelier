@@ -321,7 +321,7 @@ html {
 }
 
 .stars-column {
-  display: inline-block;
+  /* display: inline-block; */
   flex-flow: column nowrap;
   flex-shrink: 2;
   flex-grow: 2;
@@ -355,25 +355,8 @@ html {
   height: 15px;
 }
 
-.one-quarter-star-svg {
-  display: inline-block;
-}
-
-.half-star-svg {
-  display: inline-block;
-}
-
-.three-quarter-star-svg {
-  display: inline-block;
-}
-
-.full-star-svg {
-  display: inline-block;
-  width: 22px;
-  height: 22px;
-}
-
 .stars-recommend {
+  margin-top: -30px;
   font-family: 'Playfair Display', serif;
   font-size: 13px;
   font-style: italic;

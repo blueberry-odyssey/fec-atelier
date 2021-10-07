@@ -9,11 +9,7 @@ import fullStar from '../ReviewsList/svg-stars/fullStar.svg';
 
 export default class StarsRating extends React.Component {
   constructor(props) {
-    console.log('stars props', props);
     super(props);
-    this.state = {
-
-    }
   }
 
   render() {

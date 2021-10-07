@@ -23,6 +23,7 @@ export default class App extends React.Component {
       page: 1,
       count: 2,
       reviews: [],
+      totalReviews: [],
       sort: null,
       updated: false,
       addOutfit: false
@@ -30,6 +31,7 @@ export default class App extends React.Component {
 
     this.updateOverviewProduct = this.updateOverviewProduct.bind(this);
     this.getReviews = this.getReviews.bind(this);
+    this.getAllReviews = this.getAllReviews.bind(this);
     this.getMetadata = this.getMetadata.bind(this);
     this.getProductData = this.getProductData.bind(this);
     this.invokeAddToOutfits = this.invokeAddToOutfits.bind(this);
@@ -38,6 +40,7 @@ export default class App extends React.Component {
 
   componentDidMount() {
     this.getReviews();
+    this.getAllReviews();
     this.getMetadata();
     this.setPathname();
   }
@@ -46,6 +49,7 @@ export default class App extends React.Component {
     if (prevState.id !== this.state.id) {
       this.getReviews();
       this.getMetadata();
+      this.getAllReviews();
     }
     // || this.state.product_id === '47421'
   }
@@ -98,17 +102,29 @@ export default class App extends React.Component {
 
     axios.get('/reviews/getAllReviews', { params })
       .then(result => {
-        // if More Reviews button is clicked
         if (sortValue === undefined) {
           this.setState({
             count: this.state.count + 2,
             reviews: result.data.results
           });
-          // if Sort option is selected
         } else if (sortValue !== undefined) {
           this.setState({ reviews: result.data.results });
           console.log('sort success', sortValue);
         }
+      })
+      .catch(err => { console.log(err); });
+  }
+
+  getAllReviews() {
+    let params = {
+      product_id: this.state.id,
+      count: 50
+    };
+    axios.get('/reviews/getAllReviews', { params })
+      .then(result => {
+        this.setState({
+          totalReviews: result.data.results
+        });
       })
       .catch(err => { console.log(err); });
   }
@@ -126,9 +142,6 @@ export default class App extends React.Component {
   getMetadata() {
     axios.get('/reviews/meta/getMeta', { params: { product_id: this.state.id } })
       .then(result => {
-        //console.log('RESULT DATA', result.data);
-        //let recommend = (result.data.recommended !== null) ? (result.data.recommended).toFixed(2) : null;
-
         this.setState({
           ratings: result.data.average,
           characteristics: result.data.characteristics,
