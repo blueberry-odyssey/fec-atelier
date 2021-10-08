@@ -315,7 +315,7 @@ html {
   color: black;
   width: 1000px;
   height: 55px;
-  padding: 5px;
+  padding: 10px;
   font-size: 35px;
   font-weight: bold;
 }
@@ -327,7 +327,7 @@ html {
   flex-grow: 2;
   flex: 2;
   /* width: 400px; */
-  padding: 10px;
+  padding: 50px;
   margin-left: 15px;
 
   /* flex-wrap: nowrap; */
@@ -353,9 +353,6 @@ html {
   display: inline-block;
   margin-top: -30px;
   margin: 0;
-
-  /* width: 20px;
-  height: 15px; */
 }
 
 .stars-recommend {
@@ -368,6 +365,27 @@ html {
 /* .characteristics-section {
 
 } */
+
+.rating-breakdown-header {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+}
+
+.rating-filters-applied {
+  display: inline-block;
+  font-family: 'Playfair Display', serif;
+  font-size: 14px;
+}
+
+.remove-rating-filters-btn {
+  display: inline-block;
+  font-family: 'Playfair Display', serif;
+  font-size: 14px;
+  background-color: white;
+  width: 150px;
+  height: 20px;
+  border: none;
+}
 
 .characteristics-name {
   font-family: 'Playfair Display', serif;

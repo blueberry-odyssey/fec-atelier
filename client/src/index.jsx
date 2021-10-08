@@ -155,6 +155,7 @@ export default class App extends React.Component {
 
   render() {
     // console.log(this.state.addOutfit)
+    //console.log('index state', this.state);
     if (this.state.updated === true) {
       return (
         <div className='app-body'>
@@ -179,7 +180,11 @@ export default class App extends React.Component {
               product_id={this.state.product_id} />
           </div>
           <div className='component-2'>
-            <RatingsReviews {...this.state} getReviews={this.getReviews} widgetName='RatingsReviews' />
+            <RatingsReviews
+              {...this.state}
+              getReviews={this.getReviews}
+              getAllReviews={this.getAllReviews}
+              widgetName='RatingsReviews' />
           </div>
         </div >
       )

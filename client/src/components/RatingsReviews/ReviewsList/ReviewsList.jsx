@@ -10,7 +10,7 @@ export default class ReviewsList extends React.Component {
 
   constructor(props) {
     super(props);
-    //console.log('reviews list props:', props);
+    console.log('reviews list props:', props);
     this.state = {
       id: props.id,
       productData: props.productData
@@ -60,8 +60,16 @@ export default class ReviewsList extends React.Component {
           reviews={this.props.reviews}
           markHelpful={this.markHelpful}
           reportReview={this.reportReview}/>
-        <MoreReviews id={this.props.id} reviews={this.props.reviews} totalReviews={this.props.totalReviews} getReviews={this.props.getReviews}/>
-        <ReviewForm id={this.props.id} characteristics={this.props.characteristics} productData={this.props.productData}/>
+        <MoreReviews
+          id={this.props.id}
+          reviews={this.props.reviews}
+          totalReviews={this.props.totalReviews}
+          getReviews={this.props.getReviews}/>
+        <ReviewForm
+          id={this.props.id}
+          characteristics={this.props.characteristics}
+          productData={this.props.productData}
+          getAllReviews={this.props.getAllReviews}/>
       </div>
     )
   }

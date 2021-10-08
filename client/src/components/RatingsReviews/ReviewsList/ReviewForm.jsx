@@ -12,7 +12,7 @@ Modal.setAppElement('#app');
 export default class ReviewForm extends React.Component {
 
   constructor(props) {
-    //console.log('REVIEW FORM PROPS: ', props);
+    console.log('REVIEW FORM PROPS: ', props);
     super(props);
     this.state = {
       id: props.id,
@@ -173,8 +173,8 @@ export default class ReviewForm extends React.Component {
     let params = {
       product_id: this.state.id,
       rating: Number(this.state.rating),
-      summary: e.target[28].value,
-      body: this.state.body,
+      summary: e.target[27].value,
+      body: e.target[28].value,
       recommend: bool,
       name: this.state.nickname,
       email: this.state.email,
@@ -189,7 +189,10 @@ export default class ReviewForm extends React.Component {
     //console.log('post params:', params);
 
     axios.post('/reviews/postReview', { params })
-      .then(result => { console.log('client post success', result); })
+      .then(result => {
+        console.log('client post success', result);
+        this.props.getAllReviews();
+      })
       .catch(err => { console.log(err); });
   }
 
