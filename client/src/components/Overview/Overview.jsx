@@ -94,7 +94,10 @@ class Overview extends React.Component {
           </div>
 
           <div className='product-details'>
-            <ProductInfo productData={this.state.productData} />
+            <ProductInfo
+              productData={this.state.productData}
+              totalReviews={this.props.totalReviews}
+              ratings={this.props.ratings} />
             <StyleSelector
               product_id={this.props['product_id']}
               setDefaultPhotos={this.setDefaultPhotos}

@@ -165,6 +165,8 @@ export default class App extends React.Component {
               getProductData={this.getProductData}
               widgetName='Overview'
               invokeAddToOutfits={this.invokeAddToOutfits}
+              totalReviews={this.state.totalReviews}
+              ratings={this.state.ratings}
             />
           </div>
           <div className='component-3'>
