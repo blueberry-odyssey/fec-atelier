@@ -3,7 +3,7 @@ import React from 'react';
 export default class CharsRatings extends React.Component {
   constructor(props) {
     super(props);
-    console.log('form chars props', props);
+    // console.log('form chars props', props);
     this.state = {
       charsRating: []
     }

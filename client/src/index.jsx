@@ -109,7 +109,7 @@ export default class App extends React.Component {
           });
         } else if (sortValue !== undefined) {
           this.setState({ reviews: result.data.results });
-          console.log('sort success', sortValue);
+          // console.log('sort success', sortValue);
         }
       })
       .catch(err => { console.log(err); });
@@ -154,7 +154,7 @@ export default class App extends React.Component {
   }
 
   render() {
-    // console.log(this.state.addOutfit)
+    // console.log('thasss', this.state.ratings)
     //console.log('index state', this.state);
     if (this.state.updated === true) {
       return (
@@ -169,6 +169,7 @@ export default class App extends React.Component {
           </div>
           <div className='component-3'>
             <RelatedProducts
+              ratings={this.state.ratings}
               relatedItems={this.state.relatedItems}
               styleData={this.state.styleData}
               updateOverviewProduct={this.updateOverviewProduct}

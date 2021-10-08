@@ -6,20 +6,18 @@ import UpdatedComponent from '../../interactions.jsx';
 
 
 const RelatedProducts = function (
-  {product_id,
-  addOutfit,
-  productData,
-  updateOverviewProduct,
-  overviewCharacteristics,
-  invokeAddToOutfits}) {
+  { product_id,
+    addOutfit,
+    productData,
+    updateOverviewProduct,
+    overviewCharacteristics,
+    invokeAddToOutfits }) {
 
   const [relatedItems, setRelatedItems] = useState([]);
   const [styleData, setStyleData] = useState([]);
 
   useEffect(() => {
-    console.log('need to update relateds')
     getRelatedProductsAndStyles();
-    // return setRelatedItems([]);
   }, [product_id])
 
   const getRelatedProductsAndStyles = () => {

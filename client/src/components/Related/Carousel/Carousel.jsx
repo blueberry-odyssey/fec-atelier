@@ -14,11 +14,9 @@ export default class Carousel extends React.Component {
     }
     this.moveLeft = this.moveLeft.bind(this);
     this.moveRight = this.moveRight.bind(this);
-    // this.state.translate === 0 ? this.state.leftHidden = 'hidden' : this.state.leftHidden = 'visible';
   }
 
   componentDidUpdate(prevProps, prevState) {
-    console.log('translateright:', Math.abs(this.state.translate), 'slideright', this.state.maxSlide)
     if (this.props.relatedItems !== prevProps.relatedItems) {
       this.setState({
         maxSlide: this.props.relatedItems.length * 240 - 900,
@@ -45,7 +43,6 @@ export default class Carousel extends React.Component {
         rightHidden: 'visible'
       })
     }
-    // console.log('translate:', this.state.translate, 'slide', this.state.maxSlide)
     if (this.state.translate == 0) {
       this.setState({
         leftHidden: 'hidden'

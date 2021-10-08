@@ -28,7 +28,7 @@ class RatingsReviews extends React.Component {
 
   removeFilters() {
     this.setState({ ratingFilters: [] });
-    console.log('remove filters success');
+    // console.log('remove filters success');
   }
 
   render() {

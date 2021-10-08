@@ -10,7 +10,7 @@ export default function RelatedCarousel(
     translate,
     overviewCharacteristics,
     productData }) {
-    // console.log('related items', relatedItems)
+
   const [displayModal, setDisplay] = useState(false);
   const [modalProduct, setModalProduct] = useState({});
 
@@ -34,14 +34,12 @@ export default function RelatedCarousel(
     <div>
       <div className='related-carousel' style={{ 'transform': `translateX(${translate}px)` }}>
         {relatedItems.map((product, idx) => {
-          // console.log('we have 2 many keys', product.id)
           return <RelatedProduct
             popupModal={popupModal}
             key={idx}
             product={product}
             styleData={styleData[idx]}
-            updateOverviewProduct={updateOverviewProduct}
-            overviewCharacteristics={overviewCharacteristics} />
+            updateOverviewProduct={updateOverviewProduct}/>
         })}
       </div>
       {displayModal && <ModalPopup
