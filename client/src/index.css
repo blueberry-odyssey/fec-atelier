@@ -257,6 +257,10 @@ html {
   margin-bottom: 0%;
 }
 
+div.stars-svg {
+  margin-top: 0%;
+}
+
 .product-name {
   font-size: 30px;
   font-weight: bold;
