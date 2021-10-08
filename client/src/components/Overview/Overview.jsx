@@ -97,7 +97,8 @@ class Overview extends React.Component {
             <StyleSelector
               product_id={this.props['product_id']}
               setDefaultPhotos={this.setDefaultPhotos}
-              setSelectedPhotos={this.setSelectedPhotos} />
+              setSelectedPhotos={this.setSelectedPhotos}
+              invokeAddToOutfits={this.props.invokeAddToOutfits} />
           </div>
         </div>
       </div>

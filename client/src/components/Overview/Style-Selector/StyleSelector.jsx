@@ -68,7 +68,7 @@ class StyleSelector extends React.Component {
           setSelectedPhotos={this.props.setSelectedPhotos}
           selectedStyle={this.state.selectedStyle} />
 
-        <Cart selectedStyle={this.state.selectedStyle} />
+        <Cart selectedStyle={this.state.selectedStyle} invokeAddToOutfits={this.props.invokeAddToOutfits} />
       </div>
     )
   }
