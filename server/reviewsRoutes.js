@@ -53,13 +53,13 @@ reviewsRouter.get('/images/:key', (req, res) => {
 // SERVER post request to upload image to s3 bucket
 reviewsRouter.post('/images', upload.single('image'), async (req, res) => {
   let file = req.file;
-  console.log('server req.file', req.file);
+  //console.log('server req.file', req.file);
   // upload image to s3 bucket
   let result = await uploadImage(file);
   // remove image from server/local host
   await unlinkFile(file.path);
 
-  console.log('s3 response', result);
+  //console.log('s3 response', result);
   res.send({
     imagePath: `/images/${result.Key}`
   });
@@ -132,7 +132,7 @@ reviewsRouter.get('/meta/getMeta', (req, res) => {
       let total = Number(results.data.recommended.false) + trueRec;
       let recommended = (trueRec / total) * 100;
       parsedData["recommended"] = recommended.toFixed(2);
-      console.log(parsedData);
+      //console.log(parsedData);
       res.send(parsedData);
     })
     .catch((err) => {
