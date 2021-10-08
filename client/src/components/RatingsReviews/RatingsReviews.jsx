@@ -1,18 +1,19 @@
 import React from 'react';
 import ReviewsList from './ReviewsList/ReviewsList.jsx';
-import StarsRating from './StarsRating/StarsRating.jsx';
+import RatingsBreakdown from './StarsRating/RatingsBreakdown.jsx';
 import UpdatedComponent from '../interactions.jsx';
 
 class RatingsReviews extends React.Component {
   constructor(props) {
     super(props);
-    //console.log('class ratings props:', props);
+    // console.log('class ratings props:', props);
     this.state = {
-      productData: props.productData
+      productData: props.productData,
+      ratingFilters: []
     };
 
-    this.filterReviews = this.filterReviews.bind(this);
-    this.unfilterReviews = this.unfilterReviews.bind(this);
+    this.addFilters = this.addFilters.bind(this);
+    this.removeFilters = this.removeFilters.bind(this);
   }
 
   componentDidUpdate(prevProps) {
@@ -21,26 +22,13 @@ class RatingsReviews extends React.Component {
     }
   }
 
-  filterReviews(rating) {
-    let reviews = this.props.reviews;
-    let filteredReviews = [];
-    reviews.map(review => {
-      if (review.rating === rating) {
-        this.state.filteredReviews.push(review);
-      }
-    });
-    console.log('RnR state:', this.state.filteredReviews);
+  addFilters(array) {
+    this.setState({ ratingFilters: array });
   }
 
-  unfilterReviews(rating) {
-    if (this.state.filteredReviews.length > 0) {
-      let reviews = this.state.filteredReviews;
-      reviews.map(review => {
-        if (review.rating === rating) {
-          this.state.filteredReviews.slice(review, 1);
-        }
-      })
-    }
+  removeFilters() {
+    this.setState({ ratingFilters: [] });
+    console.log('remove filters success');
   }
 
   render() {
@@ -48,8 +36,14 @@ class RatingsReviews extends React.Component {
       <>
         <p className='reviews-header'>Ratings & Reviews</p>
         <div className='reviews-container'>
-          <StarsRating {...this.props} filterReviews={this.filterReviews} unfilterReviews={this.unfilterReviews}/>
-          <ReviewsList {...this.props} />
+          <RatingsBreakdown
+            {...this.props}
+            ratingFilters={this.state.ratingFilters}
+            addFilters={this.addFilters}
+            removeFilters={this.removeFilters}/>
+          <ReviewsList
+            {...this.props}
+            ratingFilters={this.state.ratingFilters}/>
         </div>
       </>
     )

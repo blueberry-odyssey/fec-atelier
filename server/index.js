@@ -4,6 +4,7 @@ const port = 3000;
 const config = require('../config.js');
 const bodyParser = require('body-parser');
 const axios = require('axios');
+const compression = require('compression');
 const basePath = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp';
 const productRouter = require('./productRoutes.js');
 const reviewsRouter = require('./reviewsRoutes.js');
@@ -12,6 +13,7 @@ let params = {
   headers: { Authorization: config.TOKEN },
 };
 
+app.use(compression({ level: 6 }))
 app.use(express.json());
 app.use(express.urlencoded({
   extended: true
