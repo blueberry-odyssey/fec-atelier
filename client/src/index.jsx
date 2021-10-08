@@ -162,7 +162,7 @@ export default class App extends React.Component {
               addOutfit={this.state.addOutfit}
               product_id={this.state.product_id} />
           </div>
-          <div className='component-2'>
+          <div className='component-2' id='reviews'>
             <RatingsReviews {...this.state} getReviews={this.getReviews} widgetName='RatingsReviews' />
           </div>
         </div >

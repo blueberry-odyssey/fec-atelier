@@ -119,8 +119,33 @@ html {
   max-height: 550px;
 }
 
+.image-expanded:hover {
+  cursor: crosshair;
+}
+
 .image:hover {
   cursor: zoom-in;
+}
+
+.zoom-image {
+  height: auto;
+  width: auto;
+  max-width: 700px;
+  max-height: 700px;
+}
+
+.zoom-image:hover {
+  cursor: none;
+}
+
+.magnifier-lens {
+  position: absolute;
+  pointer-events: none;
+  opacity: 1;
+  border: 1px solid thistle;
+  border-radius: 50%;
+  background-color: rgb(250, 251, 254);
+  background-repeat: no-repeat;
 }
 
 .gallery-leftBtn {
