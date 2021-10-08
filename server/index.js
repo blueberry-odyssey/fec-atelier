@@ -13,7 +13,7 @@ let params = {
   headers: { Authorization: config.TOKEN },
 };
 
-app.use(compression({level: 6}))
+app.use(compression({ level: 6 }))
 app.use(express.json());
 app.use(express.urlencoded({
   extended: true

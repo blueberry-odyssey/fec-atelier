@@ -10,7 +10,7 @@ export default function RelatedCarousel(
     translate,
     overviewCharacteristics,
     productData }) {
-      // console.log('trying to close', styleData)
+    // console.log('related items', relatedItems)
   const [displayModal, setDisplay] = useState(false);
   const [modalProduct, setModalProduct] = useState({});
 

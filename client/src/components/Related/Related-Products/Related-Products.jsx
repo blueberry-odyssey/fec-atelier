@@ -17,9 +17,10 @@ const RelatedProducts = function (
   const [styleData, setStyleData] = useState([]);
 
   useEffect(() => {
+    console.log('need to update relateds')
     getRelatedProductsAndStyles();
-    return setRelatedItems([]);
-  }, [])
+    // return setRelatedItems([]);
+  }, [product_id])
 
   const getRelatedProductsAndStyles = () => {
     axios.get('/products/findRelatedItems', { params: { id: product_id } })
@@ -40,7 +41,7 @@ const RelatedProducts = function (
   }
   return (
     <div className='related'>
-      <h1>related <span className='pink'>products</span></h1>
+      <h1>related products</h1>
       <Carousel
         productData={productData}
         relatedItems={relatedItems}

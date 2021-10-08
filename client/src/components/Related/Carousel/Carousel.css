@@ -8,7 +8,7 @@
 .carousel-container {
   margin: 10px;
   display: grid;
-  grid-template-columns: 0.5fr 10fr 0.5fr;
+  grid-template-columns: 0.5fr 12fr 0.5fr;
   justify-content: space-between;
   align-items: center;
 }

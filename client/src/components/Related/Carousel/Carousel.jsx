@@ -8,29 +8,63 @@ export default class Carousel extends React.Component {
     super(props)
     this.state = {
       translate: 0,
-      hidden: 'visible'
+      leftHidden: 'hidden',
+      rightHidden: 'visible',
+      maxSlide: 0,
     }
     this.moveLeft = this.moveLeft.bind(this);
     this.moveRight = this.moveRight.bind(this);
+    // this.state.translate === 0 ? this.state.leftHidden = 'hidden' : this.state.leftHidden = 'visible';
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    console.log('translateright:', Math.abs(this.state.translate), 'slideright', this.state.maxSlide)
+    if (this.props.relatedItems !== prevProps.relatedItems) {
+      this.setState({
+        maxSlide: this.props.relatedItems.length * 240 - 900,
+        translate: 0
+      })
+    }
+    if (this.state.translate !== prevState.translate && Math.abs(this.state.translate) >= this.state.maxSlide) {
+      this.setState({
+        rightHidden: 'hidden'
+      })
+    }
   }
 
   moveLeft() {
-    if (this.state.translate === 0) {
-      return;
+    if (this.state.translate >= -120) {
+      this.setState({
+        translate: 0,
+        rightHidden: 'visible',
+        leftHidden: 'hidden'
+      })
+    } else {
+      this.setState({
+        translate: this.state.translate + 240,
+        rightHidden: 'visible'
+      })
     }
-    this.setState({
-      translate: this.state.translate + 300
-    })
+    // console.log('translate:', this.state.translate, 'slide', this.state.maxSlide)
+    if (this.state.translate == 0) {
+      this.setState({
+        leftHidden: 'hidden'
+      })
+    }
   }
 
   moveRight() {
-    let maxSlide = (this.props.relatedItems.length) * -300 + 1100;
-    if (this.state.translate <= maxSlide) {
-      return;
+    if (this.state.translate < 0) {
+      this.setState({
+        translate: this.state.translate - 240,
+        leftHidden: 'visible'
+      })
+    } else {
+      this.setState({
+        translate: this.state.translate - 120,
+        leftHidden: 'visible'
+      })
     }
-    this.setState({
-      translate: this.state.translate - 300
-    })
   }
 
   render() {
@@ -42,12 +76,11 @@ export default class Carousel extends React.Component {
       styleData,
       updateOverviewProduct,
       overviewCharacteristics } = this.props;
-    this.state.translate === 0 ? this.state.hidden = 'hidden' : this.state.hidden = 'visible';
     return (
       <div className='carousel-container'>
         <button
           aria-label='scroll-left'
-          style={{ 'visibility': this.state.hidden }}
+          style={{ 'visibility': this.state.leftHidden }}
           className='left-button'
           onClick={this.moveLeft}>
           <i className="fas fa-chevron-right"></i>
@@ -73,6 +106,7 @@ export default class Carousel extends React.Component {
         <button
           aria-label='scroll-right'
           className='right-button'
+          style={{ 'visibility': this.state.rightHidden }}
           onClick={this.moveRight}>
           <i className="fas fa-chevron-right"></i>
         </button>
