@@ -10,7 +10,7 @@ export default class ReviewsList extends React.Component {
 
   constructor(props) {
     super(props);
-    console.log('reviews list props:', props);
+    // console.log('reviews list props:', props);
     this.state = {
       id: props.id,
       productData: props.productData
@@ -21,10 +21,18 @@ export default class ReviewsList extends React.Component {
     this.markHelpful = this.markHelpful.bind(this);
   }
 
-  componentDidUpdate(prevProps) {
-    if (prevProps.productData !== this.props.productData) {
-      this.setState({ productData: this.props.productData });
-    }
+  // componentDidUpdate(prevProps) {
+  //   if (prevProps.productData !== this.props.productData) {
+  //     this.setState({ productData: this.props.productData });
+  //   }
+  // }
+
+  static getDerivedStateFromProps(props, state) {
+    return {
+      productData: props.productData,
+      id: props.id
+    };
+    return null;
   }
 
   sortReviews(e) {

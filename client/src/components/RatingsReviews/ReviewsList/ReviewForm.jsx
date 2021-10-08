@@ -12,7 +12,6 @@ Modal.setAppElement('#app');
 export default class ReviewForm extends React.Component {
 
   constructor(props) {
-    console.log('REVIEW FORM PROPS: ', props);
     super(props);
     this.state = {
       id: props.id,
@@ -38,26 +37,25 @@ export default class ReviewForm extends React.Component {
       Quality: 0,
       Length: 0
     };
-
     this.countChars = this.countChars.bind(this);
     this.calculateChars = this.calculateChars.bind(this);
     this.getPhotos = this.getPhotos.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-
   }
 
+  static getDerivedStateFromProps(props, state) {
+    return {
+      characteristics: props.characteristics,
+      productData: props.productData,
+      id: props.id
+    }
+    return null;
+  }
 
   componentDidUpdate(prevProps) {
-    //console.log('review props updated', this.props);
-    if (prevProps.productData !== this.props.productData) {
-      this.setState({
-        productData: this.props.productData,
-        id: this.props.id,
-        characteristics: this.props.characteristics,
-        charsRating: []
-      }, () => {this.calculateChars()});
-      //console.log('review updated state', this.state);
+    if (prevProps.characteristics !== this.props.characteristics) {
+      this.setState({ charsRating: [] }, () => { this.calculateChars(); });
     }
   }
 
@@ -70,7 +68,8 @@ export default class ReviewForm extends React.Component {
 
     this.setState({
       currentCount: count,
-      charCount: 50 - count
+      charCount: 50 - count,
+      body: e.target.value
     });
 
     if (count < 50) {
@@ -144,16 +143,13 @@ export default class ReviewForm extends React.Component {
     //console.log('checking for charsrating', this.state.charsRating);
   }
 
-
   getPhotos(photoArray) {
     this.setState({ photos: photoArray });
   }
 
-
   handleInputChange(e) {
     this.setState({ [e.target.name] : e.target.value });
   }
-
 
   handleSubmit(e) {
     e.preventDefault();
@@ -173,8 +169,8 @@ export default class ReviewForm extends React.Component {
     let params = {
       product_id: this.state.id,
       rating: Number(this.state.rating),
-      summary: e.target[27].value,
-      body: e.target[28].value,
+      summary: this.state.summary,
+      body: this.state.body,
       recommend: bool,
       name: this.state.nickname,
       email: this.state.email,
@@ -186,8 +182,6 @@ export default class ReviewForm extends React.Component {
       modalIsOpen: false,
     });
 
-    //console.log('post params:', params);
-
     axios.post('/reviews/postReview', { params })
       .then(result => {
         console.log('client post success', result);
@@ -195,7 +189,6 @@ export default class ReviewForm extends React.Component {
       })
       .catch(err => { console.log(err); });
   }
-
 
   render() {
     return (

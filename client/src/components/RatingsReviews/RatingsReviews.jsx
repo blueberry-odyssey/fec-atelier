@@ -6,13 +6,13 @@ import UpdatedComponent from '../interactions.jsx';
 class RatingsReviews extends React.Component {
   constructor(props) {
     super(props);
-    console.log('class ratings props:', props);
+    // console.log('class ratings props:', props);
     this.state = {
       productData: props.productData,
       ratingFilters: []
     };
 
-    this.addRatingFilters = this.addRatingFilters.bind(this);
+    this.addFilters = this.addFilters.bind(this);
     this.removeFilters = this.removeFilters.bind(this);
   }
 
@@ -22,17 +22,8 @@ class RatingsReviews extends React.Component {
     }
   }
 
-  addRatingFilters(val) {
-    let filters = this.state.ratingFilters;
-    if (!filters.includes(val) || filters.length === 0) {
-      this.state.ratingFilters.push(val);
-      console.log('UPDATED FILTERS', this.state.ratingFilters);
-    } else if (filters.includes(val)) {
-      let index = filters.indexOf(val);
-      let updatedFilters = filters.slice(index, 1);
-
-      this.setState({ ratingFilters: updatedFilters });
-    }
+  addFilters(array) {
+    this.setState({ ratingFilters: array });
   }
 
   removeFilters() {
@@ -45,8 +36,14 @@ class RatingsReviews extends React.Component {
       <>
         <p className='reviews-header'>Ratings & Reviews</p>
         <div className='reviews-container'>
-          <RatingsBreakdown {...this.props} ratingFilters={this.state.ratingFilters} addRatingFilters={this.addRatingFilters} removeFilters={this.removeFilters}/>
-          <ReviewsList {...this.props} />
+          <RatingsBreakdown
+            {...this.props}
+            ratingFilters={this.state.ratingFilters}
+            addFilters={this.addFilters}
+            removeFilters={this.removeFilters}/>
+          <ReviewsList
+            {...this.props}
+            ratingFilters={this.state.ratingFilters}/>
         </div>
       </>
     )
