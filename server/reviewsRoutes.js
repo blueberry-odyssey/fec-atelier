@@ -53,13 +53,13 @@ reviewsRouter.get('/images/:key', (req, res) => {
 // SERVER post request to upload image to s3 bucket
 reviewsRouter.post('/images', upload.single('image'), async (req, res) => {
   let file = req.file;
-  console.log('server req.file', req.file);
+  //console.log('server req.file', req.file);
   // upload image to s3 bucket
   let result = await uploadImage(file);
   // remove image from server/local host
   await unlinkFile(file.path);
 
-  console.log('s3 response', result);
+  //console.log('s3 response', result);
   res.send({
     imagePath: `/images/${result.Key}`
   });
@@ -109,7 +109,8 @@ reviewsRouter.get('/meta/getMeta', (req, res) => {
   axios.get(basePath + '/reviews/meta/', options)
     .then((results) => {
       let parsedData = {
-        characteristics: results.data.characteristics
+        characteristics: results.data.characteristics,
+        totalRatings: results.data.ratings
       };
 
       //parse ratings average here
@@ -117,25 +118,21 @@ reviewsRouter.get('/meta/getMeta', (req, res) => {
       let totalVotes = 0;
       let totalScore = 0;
       let votes = Object.values(results.data.ratings);
-
       votes.forEach(vote => {
         totalVotes += parseInt(vote);
       });
-
       for (var key in results.data.ratings) {
         totalScore += parseInt(key) * parseInt(results.data.ratings[key]);
       }
-
       average = totalScore / totalVotes;
-      parsedData["average"] = parseInt(average.toFixed(2));
+      parsedData["average"] = average.toFixed(1);
 
       //parse recommended percentage here
-      let falseRec = results.data.recommended.false;
-      let trueRec = results.data.recommended.true;
-      let recommended = trueRec / falseRec;
-      parsedData["recommended"] = recommended;
-
-      // console.log('reviews server parsed data:', parsedData);
+      let trueRec = Number(results.data.recommended.true);
+      let total = Number(results.data.recommended.false) + trueRec;
+      let recommended = (trueRec / total) * 100;
+      parsedData["recommended"] = recommended.toFixed(2);
+      //console.log(parsedData);
       res.send(parsedData);
     })
     .catch((err) => {

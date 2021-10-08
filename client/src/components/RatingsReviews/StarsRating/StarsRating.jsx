@@ -1,78 +1,47 @@
 import React from 'react';
 import Characteristics from './Characteristics.jsx';
+import emptyStar from '../ReviewsList/svg-stars/emptyStar.svg';
+import oneQuarterStar from '../ReviewsList/svg-stars/oneQuarterStar.svg';
+import halfStar from '../ReviewsList/svg-stars/halfStar.svg';
+import threeQuarterStar from '../ReviewsList/svg-stars/threeQuarterStar.svg';
+import fullStar from '../ReviewsList/svg-stars/fullStar.svg';
+
 
 export default class StarsRating extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      recommended: props.recommended,
-      five: 0,
-      four: 0,
-      three: 0,
-      two: 0,
-      one: 0
-    };
-    //console.log('STARS Reviews:', props.reviews);
-    this.calculateRatings = this.calculateRatings.bind(this);
-  }
-
-  componentDidUpdate(prevProps) {
-    if (prevProps !== this.props) {
-      this.setState({ recommended: this.props.recommended });
-    }
-  }
-
-  componentDidMount() {
-    if (this.props.reviews.length > 0) {
-      this.calculateRatings();
-    }
-  }
-
-  calculateRatings() {
-    let reviews = this.props.reviews;
-    let length = this.props.reviews.length;
-    reviews.map(review => {
-      if (review.rating === 5) {
-        this.state.five += 1;
-      } else if (review.rating === 4) {
-        this.state.four += 1;
-      } else if (review.rating === 3) {
-        this.state.three += 1;
-      } else if (review.rating === 2) {
-        this.state.two += 1;
-      } else if (review.rating === 1) {
-        this.state.one += 1;
-      }
-    });
-
-    this.setState({
-      five: (this.state.five / length).toFixed(2),
-      four: (this.state.four / length).toFixed(2),
-      three: (this.state.three / length).toFixed(2),
-      two: (this.state.two / length).toFixed(2),
-      one: (this.state.one / length).toFixed(2)
-    });
   }
 
   render() {
+    let ratings = this.props.ratings;
+    let starRating = [];
+    if (ratings === 0) { starRating = [emptyStar, emptyStar, emptyStar, emptyStar, emptyStar]; }
+    if (ratings > 0 && ratings <= 0.25) { starRating = [oneQuarterStar, emptyStar, emptyStar, emptyStar, emptyStar]; }
+    if (ratings > 0.25 && ratings <= 0.5) { starRating = [halfStar, emptyStar, emptyStar, emptyStar, emptyStar]; }
+    if (ratings > 0.5 && ratings <= 0.75) { starRating = [threeQuarterStar, emptyStar, emptyStar, emptyStar, emptyStar]; }
+    if (ratings > 0.75 && ratings <= 1) { starRating = [fullStar, emptyStar, emptyStar, emptyStar, emptyStar]; }
+    if (ratings > 1 && ratings <= 1.25) { starRating = [fullStar, oneQuarterStar, emptyStar, emptyStar, emptyStar]; }
+    if (ratings > 1.25 && ratings <= 1.5) { starRating = [fullStar, halfStar, emptyStar, emptyStar, emptyStar]; }
+    if (ratings > 1.5 && ratings <= 1.75) { starRating = [fullStar, threeQuarterStar, emptyStar, emptyStar, emptyStar]; }
+    if (ratings > 1.75 && ratings <= 2) { starRating = [fullStar, fullStar, emptyStar, emptyStar, emptyStar]; }
+    if (ratings > 2 && ratings <= 2.25) { starRating = [fullStar, fullStar, oneQuarterStar, emptyStar, emptyStar]; }
+    if (ratings > 2.25 && ratings <= 2.5) { starRating = [fullStar, fullStar, halfStar, emptyStar, emptyStar]; }
+    if (ratings > 2.5 && ratings <= 2.75) { starRating = [fullStar, fullStar, threeQuarterStar, emptyStar, emptyStar]; }
+    if (ratings > 2.75 && ratings <= 3) { starRating = [fullStar, fullStar, fullStar, emptyStar, emptyStar]; }
+    if (ratings > 3 && ratings <= 3.25) { starRating = [fullStar, fullStar, fullStar, oneQuarterStar, emptyStar]; }
+    if (ratings > 3.25 && ratings <= 3.5) { starRating = [fullStar, fullStar, fullStar, halfStar, emptyStar]; }
+    if (ratings > 3.5 && ratings <= 3.75) { starRating = [fullStar, fullStar, fullStar, threeQuarterStar, emptyStar]; }
+    if (ratings > 3.75 && ratings <= 4) { starRating = [fullStar, fullStar, fullStar, fullStar, emptyStar]; }
+    if (ratings > 4 && ratings <= 4.25) { starRating = [fullStar, fullStar, fullStar, fullStar, oneQuarterStar]; }
+    if (ratings > 4.25 && ratings <= 4.5) { starRating = [fullStar, fullStar, fullStar, fullStar, halfStar]; }
+    if (ratings > 4.5 && ratings <= 4.75) { starRating = [fullStar, fullStar, fullStar, fullStar, threeQuarterStar]; }
+    if (ratings > 4.75 && ratings <= 5) { starRating = [fullStar, fullStar, fullStar, fullStar, fullStar]; }
+
     return (
-      <div className='stars-column'>
-        <div className='stars-block'>
-          <h2 className='stars-rating'>{this.props.ratings} Stars&nbsp;&nbsp;
-            <i className="fas fa-star fa-sm"></i>
-            <i className="fas fa-star fa-sm"></i>
-            <i className="fas fa-star fa-sm"></i>
-            <i className="fas fa-star fa-sm"></i>
-            <i className="fas fa-star fa-sm"></i>
-          </h2>
-          <p className='stars-recommend'>{this.state.recommended}% of reviews recommended this product</p>
-          <p onClick={()=>this.props.filterReviews(5)}>5 stars &nbsp; {this.state.five}</p>
-          <p onClick={()=>this.props.filterReviews(4)}>4 stars &nbsp; {this.state.four}</p>
-          <p onClick={()=>this.props.filterReviews(3)}>3 stars &nbsp; {this.state.three}</p>
-          <p onClick={()=>this.props.filterReviews(2)}>2 stars &nbsp; {this.state.two}</p>
-          <p onClick={()=>this.props.filterReviews(1)}>1 stars &nbsp; {this.state.one}</p>
-        </div><br />
-        <Characteristics {...this.props} />
+      <div className='stars-svg'>
+        {starRating.map((star, index) => (
+          <img className='star-svg' key={index} src={star}/>
+        ))}
       </div>
     )
   }

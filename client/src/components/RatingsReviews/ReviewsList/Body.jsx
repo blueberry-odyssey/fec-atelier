@@ -15,7 +15,7 @@ export default class Body extends React.Component {
 
     if (length < 250 || this.state.more === true) {
       return (
-        <p className='review-body'>{this.props.body}</p>
+        <p className='review-body' >{this.props.body}</p>
       )
     } else {
       return (
