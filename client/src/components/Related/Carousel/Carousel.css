@@ -2,16 +2,8 @@
   position: relative;
   overflow-x: hidden;
   background: linear-gradient(90deg, rgb(186 186 186 / 0%) 75%, rgb(174 174 174) 100%);
-  z-index: 99;
   border-radius: 10px;
 }
-/* .carousel-slider:after {
-  position: absolute;
-  top: 0;
-  left: 0;
-  content: '';
-  background: linear-gradient(90deg, rgb(186 186 186 / 0%) 75%, rgb(174 174 174) 100%);
-} */
 
 .carousel-container {
   margin: 10px;
@@ -19,8 +11,6 @@
   grid-template-columns: 0.5fr 10fr 0.5fr;
   justify-content: space-between;
   align-items: center;
-  /* border-radius: 2%; */
-  /* border-top: solid rgb(96, 30, 158) 0.5px; */
 }
 
 .carousel-container > button {

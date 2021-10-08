@@ -34,8 +34,8 @@ export default function ModalPopup({ product, overviewCharacteristics, productDa
 
   const reduceCompare = _.reduce(characteristicList, (memo, val, idx) => {
     if (thumbnailChars[val] && overviewCharacteristics[val]) {
-      var overviewProd = overviewCharacteristics[val].value || 0;
-      var thumbProd = thumbnailChars[val].value || 0;
+      var overviewProd = overviewCharacteristics[val].value || 'X';
+      var thumbProd = thumbnailChars[val].value || 'X';
       // console.log('thumbs', thumbnailChars)
       overviewProd = overviewProd.toString().substring(0,4);
       thumbProd = thumbProd.toString().substring(0,4);

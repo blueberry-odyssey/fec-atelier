@@ -18,7 +18,7 @@ app.use(express.json());
 app.use(express.urlencoded({
   extended: true
 }));
-// app.use(express.static('client/dist'));
+app.use(express.static('client/dist'));
 
 app.use('/products', productRouter);
 app.use('/reviews', reviewsRouter);
