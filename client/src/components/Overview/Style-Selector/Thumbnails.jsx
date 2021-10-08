@@ -25,7 +25,8 @@ const Thumbnails = function (props) {
             row={row}
             key={index}
             setSelectedStyle={props.setSelectedStyle}
-            setSelectedPhotos={props.setSelectedPhotos} />
+            setSelectedPhotos={props.setSelectedPhotos}
+            selectedStyle={props.selectedStyle} />
         )
         // return <img key={style.name} src={style.photos[0]['thumbnail_url']}></img>
       })}

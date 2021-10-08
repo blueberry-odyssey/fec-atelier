@@ -267,6 +267,14 @@ html {
   cursor: pointer;
 }
 
+.thumbnail-selected {
+  width: 80px;
+  height: 80px;
+  margin: 5px;
+  border-radius: 50%;
+  border: 2px solid rgb(96, 30, 158);
+}
+
 .sale-price {
   color: red;
 }
