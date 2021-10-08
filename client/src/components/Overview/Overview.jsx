@@ -5,6 +5,7 @@ import ProductInfo from './Product-Info/ProductInfo.jsx';
 import StyleSelector from './Style-Selector/StyleSelector.jsx';
 import ImageGallery from './Image-Gallery/ImageGallery.jsx';
 import UpdatedComponent from '../interactions.jsx';
+import ImageThumbnailSlider from './Image-Gallery/ImageThumbnailSlider.jsx';
 
 class Overview extends React.Component {
   constructor(props) {
