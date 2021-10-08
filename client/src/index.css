@@ -303,14 +303,15 @@ html {
   justify-content: space-around;
   align-items: flex-start;
   margin-bottom: 100px;
+  margin-top: -40px;
 }
 
 .reviews-header {
   display: inline-block;
   flex-flow: row nowrap;
   margin-top: 30px;
-  margin-left: 20px;
-
+  margin-left: 75px;
+  margin-bottom: 30px;
   /* flex-direction: row; */
   font-family: 'Playfair Display', serif;
   /* background: linear-gradient(90deg, rgb(96, 30, 158,1) 25%, white 50%); */
@@ -330,8 +331,8 @@ html {
   flex-grow: 2;
   flex: 2;
   /* width: 400px; */
-  padding: 50px;
-  margin-left: 15px;
+  padding: 30px;
+  margin-left: 55px;
   margin-top: -30px;
   /* flex-wrap: nowrap; */
   /* align-items: flex-start; */
@@ -374,27 +375,38 @@ html {
 .rating-breakdown-header {
   font-family: 'Playfair Display', serif;
   font-size: 20px;
+  margin-top: 16px;
+  margin-bottom: 1px;
+
 }
 
 .rating-filters-applied {
-  display: inline-block;
+  display: block;
   font-family: 'Playfair Display', serif;
-  font-size: 14px;
+  font-size: 13px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  margin-left: 9px;
 }
 
 .remove-rating-filters-btn {
   display: inline-block;
   font-family: 'Playfair Display', serif;
-  font-size: 14px;
+  font-size: 13px;
   background-color: white;
   width: 125px;
   height: 20px;
   border: none;
+  margin-left: -4px;
+  margin-bottom: 4px;
+
 }
 
 .star-rating {
-  display: inline;
-  padding: 2px;
+  display: inline-block;
+  margin-top: 3px;
+  margin-bottom: 4px;
+
 }
 
 p.star-rating:hover {
@@ -415,7 +427,7 @@ p.star-rating:hover {
 }
 
 .rating-bar-gray {
-  display: inline-block;
+  display: flex;
   width: 175px;
   height: 12px;
   z-index: -1;
@@ -423,10 +435,9 @@ p.star-rating:hover {
   overflow: hidden;
   background-color: rgb(207, 198, 198);
   text-align: center;
-  margin-top: -13px;
+  margin-top: -18px;
   margin-left: 60px;
   /* margin-bottom: 5px; */
-  display: flex;
   justify-content: space-between;
 }
 
@@ -440,7 +451,7 @@ p.star-rating:hover {
 
 .detail-bar-gray {
   display: inline-block;
-  width: 200px;
+  width: 230px;
   height: 12px;
   z-index: -1;
   position: absolute;
@@ -448,7 +459,7 @@ p.star-rating:hover {
   background-color: rgb(207, 198, 198);
   text-align: center;
   margin-top: -13px;
-  margin-left: 60px;
+  margin-left: 0px;
   /* margin-bottom: 5px; */
   display: flex;
   justify-content: space-between;
@@ -470,6 +481,44 @@ p.star-rating:hover {
   width: 25px;
   height: 22px;
   margin-top: -7px;
+}
+
+.detail-bar-row-two {
+  column-span: 2;
+}
+
+.detail-bar-row-three {
+  column-span: 3;
+}
+
+.detail-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 15px;
+  margin-top: 14px;
+  margin-bottom: 14px;
+
+}
+
+.detail-comment-row-two {
+  column-span: 2;
+  /* width: 100%; */
+}
+
+.detail-comment-row-three {
+  column-span: 3;
+  /* width: auto; */
+}
+
+.detail-comment-two {
+  font-family: 'Playfair Display', serif;
+  font-size: 11px;
+  width: 158px;
+}
+
+.detail-comment-three {
+  font-family: 'Playfair Display', serif;
+  font-size: 11px;
+  width: 88px;
 }
 
 .reviews-column {

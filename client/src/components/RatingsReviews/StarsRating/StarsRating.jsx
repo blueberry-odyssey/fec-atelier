@@ -15,7 +15,7 @@ export default class StarsRating extends React.Component {
   render() {
     let ratings = this.props.ratings;
     let starRating = [];
-    if (ratings === 0) { starRating = [emptyStar, emptyStar, emptyStar, emptyStar, emptyStar]; }
+    if (ratings === 0 || ratings === undefined) { starRating = [emptyStar, emptyStar, emptyStar, emptyStar, emptyStar]; }
     if (ratings > 0 && ratings <= 0.25) { starRating = [oneQuarterStar, emptyStar, emptyStar, emptyStar, emptyStar]; }
     if (ratings > 0.25 && ratings <= 0.5) { starRating = [halfStar, emptyStar, emptyStar, emptyStar, emptyStar]; }
     if (ratings > 0.5 && ratings <= 0.75) { starRating = [threeQuarterStar, emptyStar, emptyStar, emptyStar, emptyStar]; }

@@ -112,27 +112,37 @@ reviewsRouter.get('/meta/getMeta', (req, res) => {
         characteristics: results.data.characteristics,
         totalRatings: results.data.ratings
       };
-
+      console.log('check for results', results.data);
       //parse ratings average here
       let average;
       let totalVotes = 0;
       let totalScore = 0;
-      let votes = Object.values(results.data.ratings);
-      votes.forEach(vote => {
-        totalVotes += parseInt(vote);
-      });
-      for (var key in results.data.ratings) {
-        totalScore += parseInt(key) * parseInt(results.data.ratings[key]);
+      if (Object.keys(results.data.ratings).length > 0) {
+        let votes = Object.values(results.data.ratings);
+        votes.forEach(vote => {
+          totalVotes += parseInt(vote);
+        });
+        for (var key in results.data.ratings) {
+          totalScore += parseInt(key) * parseInt(results.data.ratings[key]);
+        }
+        average = totalScore / totalVotes;
+        average = average.toFixed(1);
+        parsedData["average"] = Number(average);
+      } else if (Object.keys(results.data.ratings).length === 0) {
+        parsedData["average"] = 0;
       }
-      average = totalScore / totalVotes;
-      parsedData["average"] = average.toFixed(1);
 
       //parse recommended percentage here
-      let trueRec = Number(results.data.recommended.true);
-      let total = Number(results.data.recommended.false) + trueRec;
-      let recommended = (trueRec / total) * 100;
-      parsedData["recommended"] = recommended.toFixed(2);
-      //console.log(parsedData);
+      if (Object.keys(results.data.recommended).length > 0) {
+        let trueRec = Number(results.data.recommended.true);
+        let total = Number(results.data.recommended.false) + trueRec;
+        let recommended = (trueRec / total) * 100;
+        recommended = recommended.toFixed(2);
+        parsedData["recommended"] = Number(recommended);
+      } else if (Object.keys(results.data.recommended).length === 0) {
+        parsedData["recommended"] = 0;
+      }
+      console.log('server parsed', parsedData);
       res.send(parsedData);
     })
     .catch((err) => {
