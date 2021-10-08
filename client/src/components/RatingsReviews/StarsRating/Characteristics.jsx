@@ -42,7 +42,7 @@ export default class Characteristics extends React.Component {
         arr[1].value = rounded;
       }
     })
-    // console.log('details', details);
+
     let detailObj = this.state.detailsObj;
     for (var i = 0; i < details.length; i++) {
       let current = details[i];
@@ -53,6 +53,7 @@ export default class Characteristics extends React.Component {
       }
     }
     this.setState({ details: details });
+    console.log('details', details);
   }
 
   render() {
@@ -61,18 +62,14 @@ export default class Characteristics extends React.Component {
           {this.state.details.map((factor, i) => (
             <div key={factor[1].id}>
               <p className='detail-name'>{factor[0]}</p>
-              <table>
-                <tbody>
-                  <tr className={factor[2].length === 2 ? 'detail-bar-row-two' : 'detail-bar-row-three'}>
-                    <td key={i}><DetailBarScale value={factor[1].value} /></td>
-                  </tr>
-                  <tr className={factor[2].length === 2 ? 'detail-comment-row-two' : 'detail-comment-row-three'}>
-                    {factor[2].map((comment, index) => (
-                      <td key={index} className={factor[2].length === 2 ? 'detail-comment-two' : 'detail-comment-three'}>{comment}</td>
-                    ))}
-                  </tr>
-                </tbody>
-              </table>
+              <div className={factor[2].length === 2 ? 'detail-bar-row-two' : 'detail-bar-row-three'}>
+                <DetailBarScale value={factor[1].value} />
+              </div>
+              <div className={factor[2].length === 2 ? 'detail-comment-row-two' : 'detail-comment-row-three'}>
+                {factor[2].map((comment, index) => (
+                  <p key={index} className={factor[2].length === 2 ? 'detail-comment-two' : 'detail-comment-three'}>{comment}</p>
+                ))}
+              </div>
             </div>
           ))}
       </div>
