@@ -154,8 +154,6 @@ export default class App extends React.Component {
   }
 
   render() {
-    // console.log(this.state.addOutfit)
-    //console.log('index state', this.state);
     if (this.state.updated === true) {
       return (
         <div className='app-body'>

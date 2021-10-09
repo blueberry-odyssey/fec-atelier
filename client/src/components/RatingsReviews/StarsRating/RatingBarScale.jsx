@@ -29,7 +29,6 @@ export default class RatingBarScale extends React.Component {
       divStyleGreen['width'] = 0;
     }
 
-
     return (
       <div className='rating-bar-gray'>
         <div className='rating-bar-green' style={divStyleGreen}></div>

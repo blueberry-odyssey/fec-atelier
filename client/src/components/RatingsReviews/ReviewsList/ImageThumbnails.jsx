@@ -9,7 +9,6 @@ const ImageThumbnails = (props) => {
 
   if (props.photos.length > 0) {
     return (
-      // <div className='review-block-images'>
       <>
         {props.photos.map(image => (
           <div key={image.id}>
@@ -20,7 +19,6 @@ const ImageThumbnails = (props) => {
           </div>
         ))}
         </>
-      // </div>
     )
   } else {
     return (

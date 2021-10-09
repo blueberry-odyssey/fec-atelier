@@ -3,9 +3,8 @@ import axios from 'axios';
 import Modal from 'react-modal';
 import CharsRatings from './CharsRatings.jsx';
 import ImageUpload from './ImageUpload.jsx';
-// import fullStar from './svg-stars/full-star.svg';
-// import emptyStar from './svg-stars/empty-star.svg';
-// import index from '../../index.css';
+import OverallRating from './OverallRating.jsx';
+import '../../../index.css';
 
 Modal.setAppElement('#app');
 
@@ -21,6 +20,7 @@ export default class ReviewForm extends React.Component {
       charsRating: [],
       disabled: false,
       rating: 0,
+      message: '',
       recommend: null,
       summary: '',
       body: '',
@@ -140,7 +140,6 @@ export default class ReviewForm extends React.Component {
         }
       }
     }
-    //console.log('checking for charsrating', this.state.charsRating);
   }
 
   getPhotos(photoArray) {
@@ -184,7 +183,7 @@ export default class ReviewForm extends React.Component {
 
     axios.post('/reviews/postReview', { params })
       .then(result => {
-        console.log('client post success', result);
+        console.log('client post success');
         this.props.getAllReviews();
       })
       .catch(err => { console.log(err); });
@@ -198,28 +197,16 @@ export default class ReviewForm extends React.Component {
           <form onSubmit={this.handleSubmit}>
 
             <label className='form-headline'>Write Your Review</label><br/>
-            <h4>About the "{this.state.productData.name}"</h4> {/* add product name here */}
+            <h4>About the "{this.state.productData.name}"</h4>
 
-            {/* rating */}
-            <label className='form-rating' htmlFor='rating'>Overall rating <span className='form-mandatory'>*</span> </label>
-            <span className='star-rating'>
-            <input type='radio' name='rating' value='1' onChange={this.handleInputChange} required></input>
-            <input type='radio' name='rating' value='2' onChange={this.handleInputChange} required></input>
-            <input type='radio' name='rating' value='3' onChange={this.handleInputChange} required></input>
-            <input type='radio' name='rating' value='4' onChange={this.handleInputChange} required></input>
-            <input type='radio' name='rating' value='5' onChange={this.handleInputChange} required></input>
-            </span>
-            <br/><br/>
+            <OverallRating message={this.state.message} handleInputChange={this.handleInputChange} />
 
-            {/* recommend */}
             <label className='form-recommend' htmlFor='recommend'>Do you recommend this product? <span className='form-mandatory'>*</span> </label>
             <input type='radio' name='recommend' value='true' onChange={this.handleInputChange} required></input><label>Yes</label>
             <input type='radio' name='recommend' value='false' onChange={this.handleInputChange} required></input><label>No</label><br/><br/>
 
-            {/* characteristics */}
             <CharsRatings chars={this.props.characteristics}/>
             <label className='form-characteristics' htmlFor='characteristics'>Characteristics <span className='form-mandatory'>*</span> </label><br/><br/>
-
               {this.state.charsRating.map(trait => (
                 <table style={{width: '100%'}} key={trait[0]}>
                   <thead>
@@ -246,37 +233,30 @@ export default class ReviewForm extends React.Component {
               ))}
             <br/>
 
-            {/* summary */}
             <label className='form-summary' htmlFor='summary'>Summary </label><br/>
             <input type='text' name='summary' size='50' maxLength='60' placeholder='i.e. Best purchase ever!' onChange={this.handleInputChange}></input><br/><br/>
 
-            {/* body */}
             <label className='form-body' htmlFor='body'>Body <span className='form-mandatory'>*</span> </label><br/>
             <textarea name='body' cols='60' rows='5' minLength='50' maxLength='1000' placeholder='Why did you like the product or not?' onChange={this.countChars} required></textarea>
             <p className='form-char-count'>{this.state.countStmt}{this.state.currentCount >= 50 ? null : this.state.charCount}</p><br/>
 
-            {/* photos -- change to accept url instead */}
             <ImageUpload getPhotos={this.getPhotos} />
             <br/><br/>
 
-            {/* name */}
             <label className='form-nickname' htmlFor='nickname'>Nickname <span className='form-mandatory'>*</span> </label>
             <p className='form-disclaimer'>For privacy reasons, do not use your full name</p>
             <input type='text' name='nickname' size='40' maxLength='60' placeholder='i.e. jackson11' onChange={this.handleInputChange} required></input><br/><br/>
 
-            {/* email */}
             <label className='form-email' htmlFor='email'>Email <span className='form-mandatory'>*</span> </label>
             <p className='form-disclaimer'>For authentication reasons, you will not be emailed</p>
             <input type='email' name='email' size='40' placeholder='i.e. jackson11@email.com' onChange={this.handleInputChange} required></input><br/><br/><br/><br/>
 
-            {/* submit button */}
             <input className='form-submit-btn' type='submit' value='Submit'></input>
           </form>
         </Modal>
       </div>
     )
   }
-
 }
 
 

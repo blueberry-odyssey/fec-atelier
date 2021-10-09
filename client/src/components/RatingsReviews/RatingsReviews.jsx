@@ -6,7 +6,6 @@ import UpdatedComponent from '../interactions.jsx';
 class RatingsReviews extends React.Component {
   constructor(props) {
     super(props);
-    // console.log('class ratings props:', props);
     this.state = {
       productData: props.productData,
       ratingFilters: []
@@ -54,4 +53,3 @@ class RatingsReviews extends React.Component {
 };
 
 export default UpdatedComponent(RatingsReviews);
-//export default RatingsReviews;

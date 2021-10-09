@@ -6,7 +6,6 @@ import halfStar from '../ReviewsList/svg-stars/halfStar.svg';
 import threeQuarterStar from '../ReviewsList/svg-stars/threeQuarterStar.svg';
 import fullStar from '../ReviewsList/svg-stars/fullStar.svg';
 
-
 export default class StarsRating extends React.Component {
   constructor(props) {
     super(props);

@@ -5,12 +5,9 @@ import MoreReviews from './MoreReviews.jsx';
 import ReviewForm from './ReviewForm.jsx';
 import SortDropdown from './SortDropdown.jsx';
 
-
 export default class ReviewsList extends React.Component {
-
   constructor(props) {
     super(props);
-    // console.log('reviews list props:', props);
     this.state = {
       id: props.id,
       productData: props.productData
@@ -54,7 +51,6 @@ export default class ReviewsList extends React.Component {
   }
 
   render() {
-    //console.log('reviews list props:', props);
     return (
       <div className='reviews-column'>
         <p>{this.props.reviews.length} reviews, sorted by: &nbsp;<SortDropdown sortReviews={this.sortReviews}/></p>

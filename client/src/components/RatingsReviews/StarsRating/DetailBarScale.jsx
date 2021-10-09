@@ -22,9 +22,9 @@ export default class DetailBarScale extends React.Component {
     }
     return (
       <div className='detail-bar-gray'>
-        <div className='detail-arrow-bar' style={divArrowBar}>
+        <span className='detail-arrow-bar' style={divArrowBar}>
         <img className='detail-arrow' src={downArrow} />
-        </div>
+        </span>
       </div>
     )
   }

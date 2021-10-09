@@ -13,6 +13,7 @@ export default class ReviewBlock extends React.Component {
     super(props);
     this.state = {
       reviews: props.reviews,
+      filtered: [],
       filters: props.ratingFilters
     }
     this.filterReviews = this.filterReviews.bind(this);
@@ -23,28 +24,26 @@ export default class ReviewBlock extends React.Component {
       this.setState({
         filters: this.props.ratingFilters
       }, () => {
-        if (this.state.filters.length > 0) {
-          this.filterReviews();
-        } else if (this.state.filters.length === 0) {
-          this.setState({
-            reviews: this.props.reviews
-          });
-        }
+        this.filterReviews();
       });
     }
   }
 
   filterReviews() {
-    if (this.state.reviews.length > 0) {
-      let filtered = [];
+    if (this.props.reviews.length > 0) {
+      let select = [];
       this.props.reviews.map(review => {
-        for (var i = 0; i < this.state.filters.length; i++) {
-          if (review.rating === this.state.filters[i]) {
-            filtered.push(review);
+        for (var i = 0; i < this.props.ratingFilters.length; i++) {
+          if (review.rating === this.props.ratingFilters[i]) {
+            select.push(review);
           }
         }
       })
-      this.setState({ reviews: filtered });
+      this.setState({ filtered: select });
+    } else if (this.props.ratingFilters.length === 0) {
+      this.setState({
+        filtered: []
+      });
     }
   }
 
@@ -52,7 +51,7 @@ export default class ReviewBlock extends React.Component {
     if (this.state.filters.length > 0) {
       return (
         <div className='review-list' >
-          {this.state.reviews.map(review => (
+          {this.state.filtered.map(review => (
             <div key={review.review_id} className='review-block'>
               <table>
                 <tbody>

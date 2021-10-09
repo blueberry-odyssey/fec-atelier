@@ -4,7 +4,6 @@ import DetailBarScale from './DetailBarScale.jsx';
 export default class Characteristics extends React.Component {
   constructor(props) {
     super(props);
-    //console.log('CHARS PROPS:', props);
     this.state = {
       chars: props.characteristics,
       details: [],
@@ -72,7 +71,6 @@ export default class Characteristics extends React.Component {
             </div>
           ))}
       </div>
-
     )
   }
 }
