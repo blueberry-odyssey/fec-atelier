@@ -17,6 +17,7 @@ export default class Carousel extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
+    // console.log('how many', prevProps, this.props)
     if (this.props.relatedItems !== prevProps.relatedItems) {
       this.setState({
         maxSlide: this.props.relatedItems.length * 240 - 900,

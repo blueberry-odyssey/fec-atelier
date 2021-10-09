@@ -24,7 +24,6 @@ export default function RelatedCarousel(
   }
 
   const popupModal = (modalProduct) => {
-    console.log('modal popup')
     setModalProduct(modalProduct);
     setDisplay(true);
     overlay.addEventListener('click', modalClose);

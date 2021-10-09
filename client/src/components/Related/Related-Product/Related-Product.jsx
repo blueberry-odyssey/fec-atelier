@@ -14,7 +14,18 @@ function RelatedProduct(
     removeOutfit,
     popupModal }) {
 
-  const [productID, setProductID] = useState(0)
+  const [productRating, setProductRating] = useState(0)
+
+  useEffect(() => {
+
+    // console.log('we did this', styleData)
+    axios.get('/reviews/meta/getMeta', { params: { product_id: product.id } })
+    .then(result => {
+      let rating = Number(result.data.average) || 0;
+      setProductRating(rating);
+    })
+    .catch(err => { console.log(err); });
+  })
 
   let oneStyleImg, originalPrice;
   let salePrice = null;
@@ -33,13 +44,6 @@ function RelatedProduct(
   const handleCloseClick = () => {
     removeOutfit(currentProduct)
   }
-
-  axios.get('/reviews/meta/getMeta', { params: { product_id: product.id } })
-    .then(result => {
-      let rating = Number(result.data.average) || 0;
-      setProductID(rating);
-    })
-    .catch(err => { console.log(err); });
 
   return (
     <div className='each-product' id={inOutfit ? 'outfit-product' : null}>
@@ -61,7 +65,7 @@ function RelatedProduct(
           </div>
           : <div>$ {originalPrice}</div>
         }
-        <StarsRating ratings={productID} />
+        <StarsRating ratings={productRating} />
       </section>
     </div>
   )

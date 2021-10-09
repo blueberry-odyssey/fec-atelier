@@ -200,7 +200,7 @@ export default class ReviewForm extends React.Component {
             <h4>About the "{this.state.productData.name}"</h4>
 
             <OverallRating message={this.state.message} handleInputChange={this.handleInputChange} />
-
+            <br/>
             <label className='form-recommend' htmlFor='recommend'>Do you recommend this product? <span className='form-mandatory'>*</span> </label>
             <input type='radio' name='recommend' value='true' onChange={this.handleInputChange} required></input><label>Yes</label>
             <input type='radio' name='recommend' value='false' onChange={this.handleInputChange} required></input><label>No</label><br/><br/>

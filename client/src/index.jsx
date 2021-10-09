@@ -37,7 +37,6 @@ export default class App extends React.Component {
     this.invokeAddToOutfits = this.invokeAddToOutfits.bind(this);
   }
 
-
   componentDidMount() {
     this.getReviews();
     this.getAllReviews();
@@ -51,7 +50,6 @@ export default class App extends React.Component {
       this.getMetadata();
       this.getAllReviews();
     }
-    // || this.state.product_id === '47421'
   }
 
   getProductData(productData) {
@@ -72,16 +70,13 @@ export default class App extends React.Component {
 
   updateOverviewProduct(newProductID) {
     let newProductIDString = newProductID.toString();
+    window.history.pushState(null, null, `/${newProductID}`);
     this.setState({
       relatedItems: [],
       product_id: newProductIDString,
       id: newProductID,
       count: 2
     })
-    // console.log('prod id', this.state.product_id)
-    //sets a new url product when clicking on related item
-    // window.location.pathname = newProductIDString;
-    window.history.pushState(null, null, `/${newProductID}`);
   }
 
   getReviews(sortValue) {
@@ -154,7 +149,6 @@ export default class App extends React.Component {
   }
 
   render() {
-    // console.log('thasss', this.state.ratings)
     //console.log('index state', this.state);
     if (this.state.updated === true) {
       return (

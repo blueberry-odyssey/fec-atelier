@@ -37,22 +37,26 @@ const RelatedProducts = function (
       })
       .catch(err => { console.log(err) });
   }
+
   return (
     <div className='related'>
+    { styleData.length && relatedItems.length &&
+    <>
       <h1>Related Products</h1>
       <Carousel
         productData={productData}
         relatedItems={relatedItems}
         styleData={styleData}
         updateOverviewProduct={updateOverviewProduct}
-        overviewCharacteristics={overviewCharacteristics} />
+        overviewCharacteristics={overviewCharacteristics}/>
       <h1>Make Your Fit</h1>
       <Carousel
         productData={productData}
         relatedItems={relatedItems}
         updateOverviewProduct={updateOverviewProduct}
         invokeAddToOutfits={invokeAddToOutfits}
-        addOutfit={addOutfit} />
+        addOutfit={addOutfit}/>
+        </>}
     </div>
   )
 }
