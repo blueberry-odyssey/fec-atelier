@@ -12,6 +12,7 @@ const ImageMagnify = function (props) {
     <div style={{ position: 'relative' }}>
       <img
         src={props.src}
+        alt='image'
         className='zoom-image'
         onClick={props.toggleZoomView}
         onMouseEnter={(event) => {

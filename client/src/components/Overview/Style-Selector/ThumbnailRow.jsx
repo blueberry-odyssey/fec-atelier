@@ -6,6 +6,7 @@ const ThumbnailRow = function (props) {
       {props.row.map(function (item) {
         return <img
           src={item.photos[0]['thumbnail_url']}
+          alt='thumbnail'
           className={props.selectedStyle.name === item.name ? 'thumbnail-selected' : 'thumbnail'}
           key={item.name}
           onClick={() => {

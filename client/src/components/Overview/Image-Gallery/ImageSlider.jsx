@@ -16,6 +16,7 @@ const ImageSlider = function (props) {
             return (
               <img
                 src={image.url}
+                alt='image'
                 key={index}
                 className='image'
                 onClick={() => {
