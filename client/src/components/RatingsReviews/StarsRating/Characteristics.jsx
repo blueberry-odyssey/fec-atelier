@@ -4,7 +4,6 @@ import DetailBarScale from './DetailBarScale.jsx';
 export default class Characteristics extends React.Component {
   constructor(props) {
     super(props);
-    //console.log('CHARS PROPS:', props);
     this.state = {
       chars: props.characteristics,
       details: [],
@@ -42,7 +41,7 @@ export default class Characteristics extends React.Component {
         arr[1].value = rounded;
       }
     })
-    console.log('details', details);
+
     let detailObj = this.state.detailsObj;
     for (var i = 0; i < details.length; i++) {
       let current = details[i];
@@ -58,25 +57,20 @@ export default class Characteristics extends React.Component {
   render() {
     return (
       <div className='characteristics-section'>
-        <table>
           {this.state.details.map((factor, i) => (
-            <tbody key={i}>
-            <tr className='detail-name'>
-              <td key={factor[0]}>{factor[0]}</td>
-            </tr>
-            <tr className='detail-bar-row'>
-              <td key={factor[1].id}><DetailBarScale value={factor[1].value} /></td>
-            </tr>
-            <tr className='detail-comment-row'>
-              {factor[2].map((comment, index) => (
-                <td key={index} className='detail-comment'>{comment}</td>
-              ))}
-            </tr>
-            </tbody>
+            <div key={factor[1].id}>
+              <p className='detail-name'>{factor[0]}</p>
+              <div className={factor[2].length === 2 ? 'detail-bar-row-two' : 'detail-bar-row-three'}>
+                <DetailBarScale value={factor[1].value} />
+              </div>
+              <div className={factor[2].length === 2 ? 'detail-comment-row-two' : 'detail-comment-row-three'}>
+                {factor[2].map((comment, index) => (
+                  <p key={index} className={factor[2].length === 2 ? 'detail-comment-two' : 'detail-comment-three'}>{comment}</p>
+                ))}
+              </div>
+            </div>
           ))}
-        </table>
       </div>
-
     )
   }
 }

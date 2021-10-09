@@ -373,43 +373,34 @@ div.stars-svg {
 /* ======== RATINGS & REVIEWS ======== */
 
 .reviews-container {
-  display: flex;
-  justify-content: space-around;
+  display: inline-flex;
+  justify-content: center;
   align-items: flex-start;
   margin-bottom: 100px;
+  margin-top: 0px;
+  width: 1000px;
 }
 
 .reviews-header {
   display: inline-block;
   flex-flow: row nowrap;
-  margin-top: 30px;
-  margin-left: 20px;
-
-  /* flex-direction: row; */
   font-family: 'Playfair Display', serif;
-  /* background: linear-gradient(90deg, rgb(96, 30, 158,1) 25%, white 50%); */
   border-radius: 10px;
   color: black;
   width: 1000px;
   height: 55px;
   padding: 10px;
-  font-size: 25px;
+  font-size: 28px;
   font-weight: bold;
 }
 
 .stars-column {
-  /* display: inline-block; */
   flex-flow: column nowrap;
   flex-shrink: 2;
   flex-grow: 2;
   flex: 2;
-  /* width: 400px; */
-  padding: 50px;
-  margin-left: 15px;
-  margin-top: -30px;
-  /* flex-wrap: nowrap; */
-  /* align-items: flex-start; */
-  /* border: 1px solid black; */
+  width: 250px;
+  padding: 30px;
 }
 
 .stars-rating {
@@ -441,34 +432,39 @@ div.stars-svg {
   font-style: italic;
 }
 
-/* .characteristics-section {
-
-} */
-
 .rating-breakdown-header {
   font-family: 'Playfair Display', serif;
   font-size: 20px;
+  margin-top: 16px;
+  margin-bottom: 1px;
+
 }
 
 .rating-filters-applied {
-  display: inline-block;
+  display: block;
   font-family: 'Playfair Display', serif;
-  font-size: 14px;
+  font-size: 13px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  margin-left: 9px;
 }
 
 .remove-rating-filters-btn {
   display: inline-block;
   font-family: 'Playfair Display', serif;
-  font-size: 14px;
+  font-size: 13px;
   background-color: white;
   width: 125px;
   height: 20px;
   border: none;
+  margin-left: -4px;
+  margin-bottom: 4px;
 }
 
 .star-rating {
-  display: inline;
-  padding: 2px;
+  display: inline-block;
+  margin-top: 3px;
+  margin-bottom: 4px;
 }
 
 p.star-rating:hover {
@@ -489,7 +485,7 @@ p.star-rating:hover {
 }
 
 .rating-bar-gray {
-  display: inline-block;
+  display: flex;
   width: 175px;
   height: 12px;
   z-index: -1;
@@ -497,10 +493,8 @@ p.star-rating:hover {
   overflow: hidden;
   background-color: rgb(207, 198, 198);
   text-align: center;
-  margin-top: -13px;
+  margin-top: -18px;
   margin-left: 60px;
-  /* margin-bottom: 5px; */
-  display: flex;
   justify-content: space-between;
 }
 
@@ -514,7 +508,7 @@ p.star-rating:hover {
 
 .detail-bar-gray {
   display: inline-block;
-  width: 200px;
+  width: 230px;
   height: 12px;
   z-index: -1;
   position: absolute;
@@ -522,14 +516,13 @@ p.star-rating:hover {
   background-color: rgb(207, 198, 198);
   text-align: center;
   margin-top: -13px;
-  margin-left: 60px;
-  /* margin-bottom: 5px; */
+  margin-left: 0px;
   display: flex;
   justify-content: space-between;
 }
 
 .detail-arrow-bar {
-  display: inline-block;
+  display: inline;
   height: 12px;
   z-index: 0;
   position: absolute;
@@ -537,7 +530,7 @@ p.star-rating:hover {
 }
 
 .detail-arrow {
-  display: inline-block;
+  display: inline;
   height: 12px;
   z-index: 0;
   position: absolute;
@@ -546,12 +539,46 @@ p.star-rating:hover {
   margin-top: -7px;
 }
 
+.detail-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 15px;
+  margin-top: 10px;
+  margin-bottom: 13px;
+}
+
+.detail-comment-row-two {
+  display: inline-flex;
+  justify-content: space-between;
+  width: 352px;
+  align-items: flex-start;
+}
+
+.detail-comment-row-three {
+  display: inline-flex;
+  justify-content: space-between;
+  width: 276px;
+  align-items: flex-start;
+}
+
+.detail-comment-two {
+  font-family: 'Playfair Display', serif;
+  font-size: 11px;
+  width: 158px;
+  margin-top: 0px;
+}
+
+.detail-comment-three {
+  font-family: 'Playfair Display', serif;
+  font-size: 11px;
+  width: 88px;
+  margin-top: 0px;
+}
+
 .reviews-column {
   flex-flow: column nowrap;
   flex-shrink: 2;
   flex-grow: 2;
   flex: 3;
-  /* overflow-y: auto; */
   width: 600px;
   height: 600px;
 }
@@ -598,7 +625,6 @@ p.star-rating:hover {
 }
 
 .review-body {
-  /* width: 250px; */
   padding: 5px;
   font-size: 15px;
   display: inline-block;
@@ -693,56 +719,59 @@ button:hover {
   font-weight: bold;
 }
 
-.form-rating {
+.form-rating-header {
   font-family: 'Playfair Display', serif;
-
-}
-
-/* .star-rating:not(old) {
   display: inline-block;
-  width: 7.5em;
-  height: 1.5em;
-  overflow: hidden;
-  vertical-align: bottom;
 }
 
-.star-rating:not(old) > input{
-  margin-right: -100%;
-  opacity: 0;
+.form-rating {
+  display: inline-block;
+  float: none;
+  height: 28px;
+  padding: 0 10px;
 }
 
-.star-rating:not(old) > label{
-  display: block;
-  float: right;
-  position: relative;
-  background: url('./components/RatingsReviews/ReviewsList/svg-stars/empty-star.svg');
-  background-size: contain;
+.form-rating-message {
+  display: inline-block;
+  font-family: 'Playfair Display', serif;
+  font-size: 14px;
 }
 
-.star-rating:not(old) > label{
-  display: block;
-  float: right;
-  position: relative;
-  background: url('./components/RatingsReviews/ReviewsList/svg-stars/empty-star.svg');
-  background-size: contain;
+.form-rating:not(:checked) > input {
+  position:absolute;
+  top:-9999px;
 }
 
-.star-rating:not(old) > label:before{
-  content: '';
-  display: block;
-  width: 1.5em;
-  height: 1.5em;
-  background: url('./components/RatingsReviews/ReviewsList/svg-stars/full-star.svg');
-  background-size: contain;
-  opacity: 0;
-  transition: opacity 0.2s linear;
+.form-rating:not(:checked) > label {
+  float:right;
+  width:1em;
+  overflow:hidden;
+  white-space:nowrap;
+  cursor:pointer;
+  font-size:25px;
+  color:#ccc;
 }
 
-.star-rating:not(old) > label:hover:before,
-.star-rating:not(old) > label:hover ~ label:before,
-.star-rating:not(:hover) > :checked ~ label:before{
-  opacity : 1;
-} */
+.form-rating:not(:checked) > label:before {
+  content: '★ ';
+}
+
+.form-rating > input:checked ~ label {
+  color: rgb(161, 6, 161);
+}
+
+.form-rating:not(:checked) > label:hover,
+.form-rating:not(:checked) > label:hover ~ label {
+  color: thistle;
+}
+
+.form-rating > input:checked + label:hover,
+.form-rating > input:checked + label:hover ~ label,
+.form-rating > input:checked ~ label:hover,
+.form-rating > input:checked ~ label:hover ~ label,
+.form-rating > label:hover ~ input:checked ~ label {
+  color: rgb(161, 6, 161);
+}
 
 .form-recommend {
   font-family: 'Playfair Display', serif;

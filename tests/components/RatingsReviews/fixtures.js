@@ -2,6 +2,8 @@ module.exports = {
   id: 47421,
   ratings: 3.5,
   recommended: 67,
+  helpfulness: 5,
+  ratings: { '1': '26', '2': '12', '3': '9', '4': '45', '5': '32' },
   characteristics: {
     "Fit": {
         "id": 159159,
@@ -20,6 +22,7 @@ module.exports = {
         "value": "3.6000000000000000"
     }
   },
+  body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
   reviews: [
     {
         "review_id": 781037,

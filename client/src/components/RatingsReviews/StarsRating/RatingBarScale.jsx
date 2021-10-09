@@ -17,14 +17,17 @@ export default class RatingBarScale extends React.Component {
 
   render() {
     let total = 0;
-    let totalRatings = Object.values(this.state.total);
-    for (var key in totalRatings) {
-      total += Number(totalRatings[key]);
+    let divStyleGreen = {};
+    if (Object.keys(this.state.total).length > 0) {
+      let totalRatings = Object.values(this.state.total);
+      for (var key in totalRatings) {
+        total += Number(totalRatings[key]);
+      }
+      let greenScale = (this.state.rating / total) * 175;
+      divStyleGreen['width'] = greenScale;
+    } else if (Object.keys(this.state.total).length === 0) {
+      divStyleGreen['width'] = 0;
     }
-    let greenScale = (this.state.rating / total) * 175;
-    let divStyleGreen = {
-      width: greenScale
-    };
 
     return (
       <div className='rating-bar-gray'>

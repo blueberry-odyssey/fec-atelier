@@ -19,9 +19,18 @@ export default class RatingsBreakdown extends React.Component {
     this.addRatingFilters = this.addRatingFilters.bind(this);
   }
 
+  componentDidUpdate(prevProps) {
+    if (prevProps.id !== this.props.id) {
+      this.setState({
+        filters: [],
+        filtersApplied: 'none',
+        recommended: this.props.recommended
+      });
+    }
+  }
+
   static getDerivedStateFromProps(props, state) {
     return {
-      recommended: props.recommended,
       five: Number(props.totalRatings['5']) || 0,
       four: Number(props.totalRatings['4']) || 0,
       three: Number(props.totalRatings['3']) || 0,
@@ -54,9 +63,9 @@ export default class RatingsBreakdown extends React.Component {
       <div className='stars-column'>
         <p className='stars-rating'>{this.props.ratings}&nbsp;</p>
         <StarsRating ratings={this.props.ratings} />
-        <p className='stars-recommend'>{this.state.recommended ? this.state.recommended : 0}% of reviews recommend this product</p>
+        <p className='stars-recommend'>{this.props.recommended ? this.props.recommended : 0}% of reviews recommend this product</p>
         <p className='rating-breakdown-header'>Rating Breakdown</p>
-        <p className='rating-filters-applied'>Filters applied: {this.state.filtersApplied.length > 0 ? this.state.filters.join(', ') : 'none'}</p>
+        <p className='rating-filters-applied'>Filters applied: {this.state.filters.length === 0 ? this.state.filtersApplied : this.state.filters.join(', ')}</p>
         <button className='remove-rating-filters-btn' onClick={()=>{this.removeAllFilters()}}>Remove all filters</button><br/>
         <p className='star-rating' onClick={()=>this.addRatingFilters(5)}>5 stars &nbsp; </p>
         <RatingBarScale rating={this.state.five} total={this.props.totalRatings}/><br/>

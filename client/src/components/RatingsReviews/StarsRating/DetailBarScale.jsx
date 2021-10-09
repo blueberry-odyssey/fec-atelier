@@ -1,18 +1,31 @@
 import React from 'react';
 import downArrow from './downArrow.svg';
 
-const DetailBarScale = (props) => {
-
-  let divArrowStyle = {
-    width: 100
+export default class DetailBarScale extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: props.value
+    }
   }
 
-  return (
-    <div className='detail-bar-gray'>
-      <div className='detail-arrow-bar' style={divArrowStyle}></div>
-      <img className='detail-arrow' src={downArrow} />
-    </div>
-  )
-}
+  componentDidUpdate(prevProps) {
+    if (prevProps.value !== this.props.value) {
+      this.setState({ value: this.props.value });
+    }
+  }
 
-export default DetailBarScale;
+  render() {
+    let val = Number(this.state.value);
+    let divArrowBar = {
+      'width': val * 46
+    }
+    return (
+      <div className='detail-bar-gray'>
+        <span className='detail-arrow-bar' style={divArrowBar}>
+        <img className='detail-arrow' src={downArrow} />
+        </span>
+      </div>
+    )
+  }
+}

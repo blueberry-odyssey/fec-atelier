@@ -41,7 +41,6 @@ export default class Date extends React.Component {
     this.setState({
       converted: convertedDate
     });
-    //console.log('check for date:', convertedDate);
   }
 
   render() {

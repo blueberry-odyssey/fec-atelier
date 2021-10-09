@@ -3,7 +3,6 @@ import React from 'react';
 export default class CharsRatings extends React.Component {
   constructor(props) {
     super(props);
-    // console.log('form chars props', props);
     this.state = {
       charsRating: []
     }
@@ -66,7 +65,6 @@ export default class CharsRatings extends React.Component {
         }
       }
     }
-    //console.log('checking for charsrating', this.state.charsRating);
   }
 
   render() {
