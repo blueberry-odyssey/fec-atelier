@@ -56,7 +56,6 @@ export default class Characteristics extends React.Component {
   }
 
   render() {
-    console.log('chars state', this.state);
     return (
       <div className='characteristics-section'>
         <table>

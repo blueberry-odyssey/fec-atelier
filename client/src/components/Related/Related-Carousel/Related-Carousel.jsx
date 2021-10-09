@@ -10,7 +10,7 @@ export default function RelatedCarousel(
     translate,
     overviewCharacteristics,
     productData }) {
-      // console.log('trying to close', styleData)
+
   const [displayModal, setDisplay] = useState(false);
   const [modalProduct, setModalProduct] = useState({});
 
@@ -34,15 +34,12 @@ export default function RelatedCarousel(
     <div>
       <div className='related-carousel' style={{ 'transform': `translateX(${translate}px)` }}>
         {relatedItems.map((product, idx) => {
-          // console.log('we have 2 many keys', product.id)
-          //remove any products that match current product, or if it's a duplicate
           return <RelatedProduct
             popupModal={popupModal}
             key={idx}
             product={product}
             styleData={styleData[idx]}
-            updateOverviewProduct={updateOverviewProduct}
-            overviewCharacteristics={overviewCharacteristics} />
+            updateOverviewProduct={updateOverviewProduct}/>
         })}
       </div>
       {displayModal && <ModalPopup
