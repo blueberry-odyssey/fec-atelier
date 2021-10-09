@@ -1,7 +1,7 @@
 .button-card {
   font-family: 'Cantarell', sans-serif;
   height: 24em;
-  width: 14em;
+  min-width: 14em;
   margin: 5px 5px 15px 5px;
   border-radius: 10px;
 }

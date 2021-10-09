@@ -92,12 +92,13 @@ export default class Carousel extends React.Component {
               updateOverviewProduct={updateOverviewProduct}
               overviewCharacteristics={overviewCharacteristics}
               translate={this.state.translate} />
-            : <OutfitCarousel
+              : <OutfitCarousel
               addOutfit={addOutfit}
               invokeAddToOutfits={invokeAddToOutfits}
               productData={productData}
               updateOverviewProduct={updateOverviewProduct}
-              overviewCharacteristics={overviewCharacteristics} />
+              overviewCharacteristics={overviewCharacteristics}
+              translate={this.state.translate} />
           }
         </div>
         <button
