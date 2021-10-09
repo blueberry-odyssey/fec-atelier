@@ -6,20 +6,19 @@ import UpdatedComponent from '../../interactions.jsx';
 
 
 const RelatedProducts = function (
-  {product_id,
-  addOutfit,
-  productData,
-  updateOverviewProduct,
-  overviewCharacteristics,
-  invokeAddToOutfits}) {
+  { product_id,
+    addOutfit,
+    productData,
+    updateOverviewProduct,
+    overviewCharacteristics,
+    invokeAddToOutfits }) {
 
   const [relatedItems, setRelatedItems] = useState([]);
   const [styleData, setStyleData] = useState([]);
 
   useEffect(() => {
     getRelatedProductsAndStyles();
-    return setRelatedItems([]);
-  }, [])
+  }, [product_id])
 
   const getRelatedProductsAndStyles = () => {
     axios.get('/products/findRelatedItems', { params: { id: product_id } })
@@ -40,14 +39,14 @@ const RelatedProducts = function (
   }
   return (
     <div className='related'>
-      <h1>related <span className='pink'>products</span></h1>
+      <h1>Related Products</h1>
       <Carousel
         productData={productData}
         relatedItems={relatedItems}
         styleData={styleData}
         updateOverviewProduct={updateOverviewProduct}
         overviewCharacteristics={overviewCharacteristics} />
-      <h1>make your fit</h1>
+      <h1>Make Your Fit</h1>
       <Carousel
         productData={productData}
         relatedItems={relatedItems}
