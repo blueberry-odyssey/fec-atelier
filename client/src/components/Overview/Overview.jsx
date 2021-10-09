@@ -84,7 +84,7 @@ class Overview extends React.Component {
     return (
       <div>
         <h1 className='title'>Blueberry <img src="./blueberry.svg" className='blueberry' /></h1>
-        <p className='site-message'>SALE! 50% OFF SELECT ITEMS!</p>
+        <p className='site-message'>SITE MESSAGE! SALE! SITE MESSAGE!</p>
 
         <div className='overview-container'>
           <div className='image-gallery'>

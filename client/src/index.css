@@ -123,6 +123,18 @@ html {
   cursor: crosshair;
 }
 
+.expanded-view-exit-btn {
+  width: 50px;
+  height: 300px;
+  font-family: 'Playfair Display', serif;
+  background-color: rgb(245, 246, 250);
+  color:rgb(96, 30, 158);
+  border-color: transparent;
+  border-radius: 50%;
+  margin-bottom: 10px;
+  font-size: large;
+}
+
 .image:hover {
   cursor: zoom-in;
 }

@@ -31,7 +31,7 @@ class ExpandedView extends React.Component {
     } else {
       return (
         <>
-          <button onClick={this.props.closeView}>X</button>
+          <button onClick={this.props.closeView} className='expanded-view-exit-btn'>X</button>
           <div>
             <FaArrowAltCircleLeft className='gallery-leftBtn' onClick={this.props.prevImage} />
             <FaArrowAltCircleRight className='gallery-rightBtn' onClick={this.props.nextImage} />
