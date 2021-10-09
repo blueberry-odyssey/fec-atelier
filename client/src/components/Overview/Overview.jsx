@@ -5,6 +5,7 @@ import ProductInfo from './Product-Info/ProductInfo.jsx';
 import StyleSelector from './Style-Selector/StyleSelector.jsx';
 import ImageGallery from './Image-Gallery/ImageGallery.jsx';
 import UpdatedComponent from '../interactions.jsx';
+import ImageThumbnailSlider from './Image-Gallery/ImageThumbnailSlider.jsx';
 
 class Overview extends React.Component {
   constructor(props) {
@@ -82,7 +83,7 @@ class Overview extends React.Component {
     //console.log('Overview.jsx props product_id', this.props);
     return (
       <div>
-        <h1 className='title'>Blueberry <img src="./blueberry.svg" className='blueberry' /></h1>
+        <h1 className='title'>Blueberry <img src="./blueberry.svg" alt='title' className='blueberry' /></h1>
         <p className='site-message'>SALE! 50% OFF SELECT ITEMS!</p>
 
         <div className='overview-container'>
@@ -93,11 +94,15 @@ class Overview extends React.Component {
           </div>
 
           <div className='product-details'>
-            <ProductInfo productData={this.state.productData} />
+            <ProductInfo
+              productData={this.state.productData}
+              totalReviews={this.props.totalReviews}
+              ratings={this.props.ratings} />
             <StyleSelector
               product_id={this.props['product_id']}
               setDefaultPhotos={this.setDefaultPhotos}
-              setSelectedPhotos={this.setSelectedPhotos} />
+              setSelectedPhotos={this.setSelectedPhotos}
+              invokeAddToOutfits={this.props.invokeAddToOutfits} />
           </div>
         </div>
       </div>

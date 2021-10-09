@@ -1,5 +1,6 @@
 import React from 'react';
 import ThumbnailSlider from './ThumbnailSlider.jsx';
+import ImageThumbnailSlider from './ImageThumbnailSlider.jsx';
 import { FaArrowAltCircleRight } from 'react-icons/fa';
 import { FaArrowAltCircleLeft } from 'react-icons/fa';
 
@@ -15,6 +16,7 @@ const ImageSlider = function (props) {
             return (
               <img
                 src={image.url}
+                alt='image'
                 key={index}
                 className='image'
                 onClick={() => {
@@ -26,11 +28,16 @@ const ImageSlider = function (props) {
         })}
       </div>
 
-      <ThumbnailSlider
+      {/* <ThumbnailSlider
         images={props.images}
         currentIndex={props.currentIndex}
         showImageAtIndex={props.showImageAtIndex}
-      />
+      /> */}
+
+      <ImageThumbnailSlider
+        images={props.images}
+        currentIndex={props.currentIndex}
+        showImageAtIndex={props.showImageAtIndex} />
 
     </>
   )

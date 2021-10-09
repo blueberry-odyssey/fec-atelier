@@ -1,12 +1,9 @@
 .related > h1 {
   font-family: 'Playfair Display', serif;
+  font-size: 27px;
   margin-bottom: 0;
-  background-color: rgb(96, 30, 158,1);
-  color: white;
+  /* background-color: rgb(96, 30, 158,1); */
+  color: rgb(96, 30, 158,1);
   border-radius: 10px;
-  padding: 5px;
-}
-
-.pink {
-  font-weight: 700;
+  padding: 2px 2px 2px 10px;
 }

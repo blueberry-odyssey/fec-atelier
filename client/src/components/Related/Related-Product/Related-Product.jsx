@@ -1,19 +1,20 @@
 import React, { useState, useEffect } from 'react';
-import './Related-Product.css'
-import ModalPopup from '../Modal-Popup/Modal-Popup.jsx'
-import UpdatedComponent from '../../interactions.jsx'
+import './Related-Product.css';
+import ModalPopup from '../Modal-Popup/Modal-Popup.jsx';
+import UpdatedComponent from '../../interactions.jsx';
+import StarsRating from '../../RatingsReviews/StarsRating/StarsRating.jsx';
+import axios from 'axios';
 
-function RelatedProduct(props) {
-  const {
-    currentProduct,
+function RelatedProduct(
+  { currentProduct,
     inOutfit,
     product,
     styleData,
     updateOverviewProduct,
-    overviewCharacteristics,
     removeOutfit,
-    popupModal
-  } = props;
+    popupModal }) {
+
+  const [productID, setProductID] = useState(0)
 
   let oneStyleImg, originalPrice;
   let salePrice = null;
@@ -27,12 +28,18 @@ function RelatedProduct(props) {
         salePrice = styleData.results[i].sale_price;
       }
     }
-    // console.log('og price', salePrice)
   }
 
   const handleCloseClick = () => {
     removeOutfit(currentProduct)
   }
+
+  axios.get('/reviews/meta/getMeta', { params: { product_id: product.id } })
+    .then(result => {
+      let rating = Number(result.data.average) || 0;
+      setProductID(rating);
+    })
+    .catch(err => { console.log(err); });
 
   return (
     <div className='each-product' id={inOutfit ? 'outfit-product' : null}>
@@ -40,8 +47,8 @@ function RelatedProduct(props) {
         <img alt={product.name} src={oneStyleImg} onClick={() => { updateOverviewProduct(product.id) }}></img>
         <div>
           {inOutfit
-          ? <i onClick={handleCloseClick} className="far fa-window-close starIcon"></i>
-          : <i onClick={()=> popupModal(product)} className="far fa-star starIcon"></i>}
+            ? <i onClick={handleCloseClick} className="far fa-window-close starIcon"></i>
+            : <i onClick={() => popupModal(product)} className="far fa-star starIcon"></i>}
         </div>
       </div>
       <section>
@@ -54,7 +61,7 @@ function RelatedProduct(props) {
           </div>
           : <div>$ {originalPrice}</div>
         }
-        <div>Star Rating</div>
+        <StarsRating ratings={productID} />
       </section>
     </div>
   )
