@@ -105,7 +105,11 @@ class Cart extends React.Component {
         </div>
         <div className='cart-buttons'>
           <button className='cart-button'><FaShoppingBag className='bag-icon' />     Add To Cart</button>
-          <button className='cart-button'><FaRegHeart className='heart-icon' /></button>
+          <button
+            className='cart-button'
+            onClick={() => { this.props.invokeAddToOutfits(true) }}>
+            <FaRegHeart className='heart-icon' />
+          </button>
         </div>
 
       </div>

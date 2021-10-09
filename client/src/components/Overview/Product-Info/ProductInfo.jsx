@@ -7,7 +7,7 @@ const ProductInfo = function (props) {
   //console.log('ProductInfo props product_id', props);
   return (
     <div>
-      <StarRating />
+      <StarRating totalReviews={props.totalReviews} ratings={props.ratings} />
       <ItemDetails category={props.productData.category} name={props.productData.name} description={props.productData.description} />
 
     </div>

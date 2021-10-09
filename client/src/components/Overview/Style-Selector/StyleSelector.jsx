@@ -65,8 +65,10 @@ class StyleSelector extends React.Component {
         <Thumbnails
           styles={this.state.styles}
           setSelectedStyle={this.setSelectedStyle}
-          setSelectedPhotos={this.props.setSelectedPhotos} />
-        <Cart selectedStyle={this.state.selectedStyle} />
+          setSelectedPhotos={this.props.setSelectedPhotos}
+          selectedStyle={this.state.selectedStyle} />
+
+        <Cart selectedStyle={this.state.selectedStyle} invokeAddToOutfits={this.props.invokeAddToOutfits} />
       </div>
     )
   }

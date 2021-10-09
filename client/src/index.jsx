@@ -165,6 +165,8 @@ export default class App extends React.Component {
               getProductData={this.getProductData}
               widgetName='Overview'
               invokeAddToOutfits={this.invokeAddToOutfits}
+              totalReviews={this.state.totalReviews}
+              ratings={this.state.ratings}
             />
           </div>
           <div className='component-3'>
@@ -180,7 +182,7 @@ export default class App extends React.Component {
               addOutfit={this.state.addOutfit}
               product_id={this.state.product_id} />
           </div>
-          <div className='component-2'>
+          <div className='component-2' id='reviews'>
             <RatingsReviews
               {...this.state}
               getReviews={this.getReviews}
