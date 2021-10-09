@@ -83,7 +83,7 @@ export default class OutfitCarousel extends React.Component {
       <div className='outfit-carousel' style={{ 'transform': `translateX(${translate}px)` }}>
         <div className='button-card' onClick={this.handleAddClick}>
           <p id='add-button'>+</p>
-          <p className='favorites'> favorites</p>
+          <p className='favorites'>favorites</p>
         </div>
         {this.state.outfits}
       </div>

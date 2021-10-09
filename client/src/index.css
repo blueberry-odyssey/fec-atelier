@@ -768,6 +768,7 @@ button:hover {
   flex-wrap: wrap;
   display: inline-block;
   margin: 10px;
+  z-index: 20;
 }
 
 .add-review-btn {

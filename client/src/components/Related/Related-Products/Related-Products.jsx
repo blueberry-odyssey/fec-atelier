@@ -39,14 +39,14 @@ const RelatedProducts = function (
   }
   return (
     <div className='related'>
-      <h1>related products</h1>
+      <h1>Related Products</h1>
       <Carousel
         productData={productData}
         relatedItems={relatedItems}
         styleData={styleData}
         updateOverviewProduct={updateOverviewProduct}
         overviewCharacteristics={overviewCharacteristics} />
-      <h1>make your fit</h1>
+      <h1>Make Your Fit</h1>
       <Carousel
         productData={productData}
         relatedItems={relatedItems}
