@@ -53,7 +53,6 @@ export default class Characteristics extends React.Component {
       }
     }
     this.setState({ details: details });
-    console.log('details', details);
   }
 
   render() {

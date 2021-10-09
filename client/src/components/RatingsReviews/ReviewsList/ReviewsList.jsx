@@ -21,12 +21,6 @@ export default class ReviewsList extends React.Component {
     this.markHelpful = this.markHelpful.bind(this);
   }
 
-  // componentDidUpdate(prevProps) {
-  //   if (prevProps.productData !== this.props.productData) {
-  //     this.setState({ productData: this.props.productData });
-  //   }
-  // }
-
   static getDerivedStateFromProps(props, state) {
     return {
       productData: props.productData,
@@ -65,6 +59,7 @@ export default class ReviewsList extends React.Component {
       <div className='reviews-column'>
         <p>{this.props.reviews.length} reviews, sorted by: &nbsp;<SortDropdown sortReviews={this.sortReviews}/></p>
         <ReviewBlock
+          ratingFilters={this.props.ratingFilters}
           reviews={this.props.reviews}
           markHelpful={this.markHelpful}
           reportReview={this.reportReview}/>

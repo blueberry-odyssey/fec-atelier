@@ -19,9 +19,18 @@ export default class RatingsBreakdown extends React.Component {
     this.addRatingFilters = this.addRatingFilters.bind(this);
   }
 
+  componentDidUpdate(prevProps) {
+    if (prevProps.id !== this.props.id) {
+      this.setState({
+        filters: [],
+        filtersApplied: 'none',
+        recommended: this.props.recommended
+      });
+    }
+  }
+
   static getDerivedStateFromProps(props, state) {
     return {
-      // recommended: props.recommended,
       five: Number(props.totalRatings['5']) || 0,
       four: Number(props.totalRatings['4']) || 0,
       three: Number(props.totalRatings['3']) || 0,

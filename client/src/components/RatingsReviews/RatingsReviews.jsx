@@ -18,7 +18,10 @@ class RatingsReviews extends React.Component {
 
   componentDidUpdate(prevProps) {
     if (prevProps.productData !== this.props.productData) {
-      this.setState({productData: this.props.productData});
+      this.setState({
+        productData: this.props.productData,
+        ratingFilters: []
+      });
     }
   }
 

@@ -16,19 +16,15 @@ export default class DetailBarScale extends React.Component {
   }
 
   render() {
-    console.log('detail bar props', this.state);
     let val = Number(this.state.value);
-
     let divArrowBar = {
       'width': val * 46
     }
-
     return (
       <div className='detail-bar-gray'>
         <div className='detail-arrow-bar' style={divArrowBar}>
         <img className='detail-arrow' src={downArrow} />
         </div>
-
       </div>
     )
   }
