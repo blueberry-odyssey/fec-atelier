@@ -1,17 +1,15 @@
 # fec-atelier
 Front End Capstone project for Hack Reactor
 
-Project Title: 
+# Project Title: 
+### Blueberry Odyssey
 
-##Blueberry Odyssey
+# Overview: 
+### A product detail page that contains several features such as the product overview, related items, and ratings & reviews.
 
-#Overview: 
-
-###A product detail page that contains several features such as the product overview, related items, and ratings & reviews.
-
-#Description:
+# Description:
   Overview:
-  ![alt text](https://github.com/blueberry-odyssey/fec-atelier/tree/related-items/assets/images/overview.png?raw=true)
+  ![Overview](./tree/related-items/assets/images/overview.png?raw=true)
 
   Related Items:  This widget contains a carousel of products associated with the top-level overview product. Products are retrieved from the database via calls to the Products API. The carousel was completely custom created and was reused in the "Outfit" portion of the widget. User's can click the star icon on related images to add them to the current outfit, and they may also add them from the overview widget with the heart icon. Outfits will persist through page refresh by being saved on browser storage.
 
