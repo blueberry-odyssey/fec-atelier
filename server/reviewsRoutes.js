@@ -60,7 +60,6 @@ reviewsRouter.post('/images', upload.single('image'), async (req, res) => {
   res.send({
     imagePath: `/images/${result.Key}`
   });
-  console.log('success upload');
 });
 
 
@@ -85,7 +84,6 @@ reviewsRouter.get('/getAllReviews', (req, res) => {
       res.status(400).send(err);
     });
 });
-
 
 reviewsRouter.get('/meta/getMeta', (req, res) => {
   let productId = parseInt(req.query.product_id);

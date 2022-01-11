@@ -25,13 +25,13 @@ class Overview extends React.Component {
   }
 
   componentDidMount() {
-    this.getProductDetails(this.props['product_id']);
+    this.getProductDetails(this.props.product_id);
     // this.getStyles(this.props['product_id']);
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps['product_id'] !== this.props['product_id']) {
-      this.getProductDetails(this.props['product_id']);
+    if (prevProps['product_id'] !== this.props.product_id) {
+      this.getProductDetails(this.props.product_id);
     }
   }
 

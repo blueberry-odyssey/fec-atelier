@@ -183,7 +183,6 @@ export default class ReviewForm extends React.Component {
 
     axios.post('/reviews/postReview', { params })
       .then(result => {
-        console.log('client post success');
         this.props.getAllReviews();
       })
       .catch(err => { console.log(err); });

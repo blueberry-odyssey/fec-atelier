@@ -1,8 +1,19 @@
 .carousel-slider {
   position: relative;
   overflow-x: hidden;
-  background: linear-gradient(90deg, rgb(186 186 186 / 0%) 75%, rgb(174 174 174) 100%);
+  /* background: linear-gradient(
+    270deg,
+    rgb(186 186 186 / 0%) 75%,
+    rgb(174 174 174) 100%
+  ); */
   border-radius: 10px;
+}
+.carousel-slider:nth-child(2) {
+  background: linear-gradient(
+    90deg,
+    rgb(186 186 186 / 0%) 75%,
+    rgb(174 174 174) 100%
+  );
 }
 
 .carousel-container {
@@ -22,11 +33,11 @@
 }
 
 .carousel-container > button:hover {
-  color:rgb(96, 30, 158);
+  color: rgb(96, 30, 158);
 }
 
 .left-button {
-  transform: rotate(180deg)
+  transform: rotate(180deg);
 }
 
 button > i {

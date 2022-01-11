@@ -27,11 +27,10 @@ function RelatedProduct(
     .catch(err => { console.log(err); });
   })
 
-  let oneStyleImg, originalPrice;
   let salePrice = null;
   if (styleData) {
-    oneStyleImg = styleData.results[0].photos[0].thumbnail_url;
-    originalPrice = styleData.results[0].original_price;
+    var oneStyleImg = styleData.results[0].photos[0].thumbnail_url;
+    var originalPrice = styleData.results[0].original_price;
     for (let i = 0; i < styleData.results.length; i++) {
       if (styleData.results[i]['default?']) {
         oneStyleImg = styleData.results[i].photos[0].thumbnail_url;

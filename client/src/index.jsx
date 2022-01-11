@@ -12,8 +12,8 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: 47421,
-      product_id: '47421',
+      id: 59558,
+      product_id: '59558',
       productData: {},
       relatedItems: [],
       styleData: [],
@@ -23,6 +23,7 @@ export default class App extends React.Component {
       page: 1,
       count: 2,
       reviews: [],
+      totalRatings: null,
       totalReviews: [],
       sort: null,
       updated: false,
@@ -38,10 +39,13 @@ export default class App extends React.Component {
   }
 
   componentDidMount() {
-    this.getReviews();
-    this.getAllReviews();
-    this.getMetadata();
-    this.setPathname();
+    const fetchData = async () => {
+      await this.getReviews();
+      await this.getMetadata();
+      await this.setPathname();
+    }
+    fetchData();
+    // this.getAllReviews();
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -53,7 +57,7 @@ export default class App extends React.Component {
   }
 
   getProductData(productData) {
-    this.setState({ productData: productData });
+    this.setState({ productData });
   }
 
   invokeAddToOutfits(trueOrFalse) {
@@ -80,21 +84,19 @@ export default class App extends React.Component {
   }
 
   getReviews(sortValue) {
-    let params;
+    let count, sort;
     if (sortValue !== undefined) {
-      params = {
-        product_id: this.state.id,
-        count: this.state.count - 2,
-        sort: sortValue
-      };
-    } else if (sortValue === undefined) {
-      params = {
-        product_id: this.state.id,
-        count: this.state.count,
-        sort: this.state.sort
-      };
+      count = this.state.count - 2;
+      sort = sortValue;
+    } else {
+      count = this.state.count;
+      sort = this.state.sort;
     }
-
+    let params = {
+      product_id: this.state.id,
+      count,
+      sort
+    }
     axios.get('/reviews/getAllReviews', { params })
       .then(result => {
         if (sortValue === undefined) {
@@ -126,7 +128,7 @@ export default class App extends React.Component {
 
   setPathname() {
     //redirects to the product in the url, invoked in componentDidMount
-    let pathname = window.location.pathname.split('/')[1] || '47421';
+    let pathname = window.location.pathname.split('/')[1] || '59558';
     let pathnameNumber = Number(pathname);
     this.setState({
       product_id: pathname,

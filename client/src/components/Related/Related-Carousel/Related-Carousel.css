@@ -3,7 +3,21 @@
   justify-content: space-between;
   max-width: 100vw;
   transition: transform 1s;
+  position: relative;
   /* border: solid black; */
   /* padding-left: 2em; */
 }
 
+.related-carousel:after {
+  content: "";
+  position: absolute;
+  z-index: 99;
+  pointer-events: none;
+  background-image: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 90%,
+    rgb(255, 255, 255)
+  );
+  width: 100%;
+  height: 100%;
+}

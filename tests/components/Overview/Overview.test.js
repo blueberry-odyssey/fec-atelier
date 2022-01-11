@@ -36,9 +36,6 @@ describe('Overview Testing', () => {
         }
       })
       .find(ProductInfo);
-
-    console.log(typeof childComponent.prop('productData'));
-
     expect(childComponent.prop('productData').name).toBe('Boo');
     expect(childComponent.prop('productData').category).toBe('Foo');
   })

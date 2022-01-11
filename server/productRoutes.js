@@ -18,17 +18,15 @@ productRouter.get('/getProductDetails', function (req, res) {
       res.end();
     })
     .catch(function (err) {
-      console.log('error in /getProductDetails: ', err);
+      // console.log('error in /getProductDetails: ', err);
       res.send(err);
       res.end();
     })
 });
 
 productRouter.get('/getStyles', function (req, res) {
-  //console.log('/getStyles reached: ', req.query['product_id']);
   axios.get(`${basePath}/products/${req.query['product_id']}/styles`, params)
     .then(function (styles) {
-      //console.log('styles!!: ', styles.data);
       res.send(styles.data.results);
       res.end();
     })

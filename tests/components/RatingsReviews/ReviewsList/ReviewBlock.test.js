@@ -12,8 +12,6 @@ describe('component has class name', () => {
 
   let testProps = wrapper.props();
 
-  console.log('REVIEW BLOCK TEST PROPS', testProps);
-
   test('component has class name', () => {
     expect(wrapper.find('div').hasClass('review-list')).toBe(true);
   });

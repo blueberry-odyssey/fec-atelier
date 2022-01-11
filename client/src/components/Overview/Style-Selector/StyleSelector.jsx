@@ -28,7 +28,7 @@ class StyleSelector extends React.Component {
     }
   }
 
-  getStyles(productId = '47421') {
+  getStyles(productId = '59558') {
     let context = this;
     axios({
       method: 'get',
@@ -37,9 +37,11 @@ class StyleSelector extends React.Component {
     })
       .then(function (styles) {
         //console.log('styles array: ', styles);
-        context.setState({ styles: styles.data });
-        context.setState({ selectedStyle: styles.data[0] });
-        context.setState({ defaultStyle: styles.data[0] });
+        context.setState({
+          styles: styles.data,
+          selectedStyle: styles.data[0],
+          defaultStyle: styles.data[0]
+        });
         context.props.setDefaultPhotos(styles.data[0].photos);
         context.props.setSelectedPhotos([]);
       })
@@ -55,9 +57,7 @@ class StyleSelector extends React.Component {
 
   render() {
     // console.log(this.props.styles[0].name);
-    // console.log('STATE: ', this.state.selectedStyle);
-    //console.log('PROPS: ', this.props);
-    let originalPrice = this.state.selectedStyle.original_price || 0;
+    var originalPrice = this.state.selectedStyle.original_price;
     return (
       <div>
         <Price original={originalPrice} sale={this.state.selectedStyle['sale_price']} />
